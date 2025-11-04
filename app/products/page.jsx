@@ -16,7 +16,7 @@ export default function Products() {
 
   return (
     <main style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Shop Eight Studios of 888</h1>
+      <h1>Shop Eight Studios</h1>
       <div
         style={{
           display: "grid",
