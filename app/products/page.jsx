@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Products() {
   const items = [
     {
@@ -63,3 +64,20 @@ export default function Products() {
     </main>
   );
 }
+
+<br />
+<Link href={item.details}>
+  <button
+    style={{
+      background: "white",
+      color: "black",
+      border: "1px solid black",
+      padding: "8px 16px",
+      borderRadius: "6px",
+      cursor: "pointer",
+      marginTop: "8px",
+    }}
+  >
+    See Details
+  </button>
+</Link>
