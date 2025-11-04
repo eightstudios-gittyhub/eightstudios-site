@@ -58,13 +58,8 @@ export default function Products() {
             >
               Buy Now
             </a>
-          </div>
-        ))}
-      </div>
-    </main>
-  );
-}
-
+            
+            
 <br />
 <Link href={item.details}>
   <button
@@ -81,3 +76,10 @@ export default function Products() {
     See Details
   </button>
 </Link>
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}
+
