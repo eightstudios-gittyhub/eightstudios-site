@@ -1,14 +1,14 @@
 export default function Products() {
   const items = [
     {
-      name: "888 Blue Beanie",
+      name: "888 Blue Beanie (black glitter)",
       price: "$60",
       img: "https://i.imgur.com/PmFzNSO.jpeg",
       link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00", // your Stripe link here
     },
     {
-      name: "Orange 1/1 Hoodie",
-      price: "$120",
+      name: "888 Blue Beanie (white glitter)",
+      price: "$60",
       img: "https://i.imgur.com/lnNufA4.jpeg",
       link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00",
     },
