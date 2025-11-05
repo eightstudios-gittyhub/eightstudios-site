@@ -1,17 +1,20 @@
 import Link from "next/link";
+
 export default function Products() {
   const items = [
     {
       name: "888 Blue Beanie (black glitter)",
       price: "$60",
       img: "https://i.imgur.com/PmFzNSO.jpeg",
-      link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00", // your Stripe link here
+      link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00",
+      details: "/products/bluebeanie-black",
     },
     {
       name: "888 Blue Beanie (white glitter)",
       price: "$60",
       img: "https://i.imgur.com/lnNufA4.jpeg",
       link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00",
+      details: "/products/bluebeanie-white",
     },
   ];
 
@@ -46,6 +49,8 @@ export default function Products() {
             />
             <h3>{item.name}</h3>
             <p>{item.price}</p>
+
+            {/* Buy Now button */}
             <a
               href={item.link}
               style={{
@@ -54,32 +59,33 @@ export default function Products() {
                 padding: "8px 16px",
                 borderRadius: "6px",
                 textDecoration: "none",
+                display: "inline-block",
+                marginBottom: "8px",
               }}
             >
               Buy Now
             </a>
-            
-            
-<br />
-<Link href={item.details}>
-  <button
-    style={{
-      background: "white",
-      color: "black",
-      border: "1px solid black",
-      padding: "8px 16px",
-      borderRadius: "6px",
-      cursor: "pointer",
-      marginTop: "8px",
-    }}
-  >
-    See Details
-  </button>
-</Link>
+
+            {/* See Details button */}
+            <br />
+            <Link href={item.details}>
+              <button
+                style={{
+                  background: "white",
+                  color: "black",
+                  border: "1px solid black",
+                  padding: "8px 16px",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  marginTop: "8px",
+                }}
+              >
+                See Details
+              </button>
+            </Link>
           </div>
         ))}
       </div>
     </main>
   );
 }
-
