@@ -16,13 +16,6 @@ export default function Products() {
       link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00",
       details: "/products/blue-beanie-white",
     },
-    {
-  name: "888 Red Beanie (white glitter)",
-  price: "$60",
-  img: "https://i.imgur.com/8qbYNCk.jpeg",
-  link: "", // leave blank until you create stripe link
-  details: "/products/red-beanie-white",
-},
 {
   name: "888 Red Beanie (white glitter)",
   price: "$60",
