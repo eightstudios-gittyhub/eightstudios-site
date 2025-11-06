@@ -12,7 +12,7 @@ export default function RedBeanieWhite() {
         Features a distressed red patch with triple “888” white glitter vinyl on ribbed knit.
         •888inc. •size - fits most
       </p>
-
+      
       <a 
         href="https://buy.stripe.com/5kQ28t9V56SC9bZfx85Rm02" 
         style={{
