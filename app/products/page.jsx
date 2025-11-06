@@ -21,7 +21,7 @@ export default function Products() {
   price: "$60",
   img: "https://i.imgur.com/8qbYNCk.jpeg",
   link: "https://buy.stripe.com/5kQ28t9V56SC9bZfx85Rm02",
-  details: "/products/red-beanie-white",
+  details: "/products/redbeanie-white",
 },
   ];
 
