@@ -7,14 +7,14 @@ export default function Products() {
       price: "$60",
       img: "https://i.imgur.com/PmFzNSO.jpeg",
       link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00",
-      details: "/products/bluebeanie-black",
+      details: "/products/blue-beanie-black",
     },
     {
       name: "888 Blue Beanie (white glitter)",
       price: "$60",
       img: "https://i.imgur.com/lnNufA4.jpeg",
       link: "https://buy.stripe.com/7sY14p0kv2Cm87V84G5Rm00",
-      details: "/products/bluebeanie-white",
+      details: "/products/blue-beanie-white",
     },
   ];
 
