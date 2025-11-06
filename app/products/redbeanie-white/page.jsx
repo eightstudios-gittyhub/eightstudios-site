@@ -10,11 +10,11 @@ export default function RedBeanieWhite() {
       <p style={{ marginTop: "15px", fontSize: "16px" }}>
         The 888 Red Beanie (White Glitter) is a 1/1 handmade design from Eight Studios.
         Features a distressed red patch with triple “888” white glitter vinyl on ribbed knit.
-        •888inc. •size - fits most
+        •888inc. •size – fits most
       </p>
-      
-      <a 
-        href="https://buy.stripe.com/5kQ28t9V56SC9bZfx85Rm02" 
+
+      <a
+        href="https://buy.stripe.com/5kQ28t9V56SC9bZfx85Rm02"
         style={{
           display: "inline-block",
           marginTop: "20px",
