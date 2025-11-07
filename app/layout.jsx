@@ -14,6 +14,13 @@ export default function RootLayout({ children }) {
           color: "#000",
         }}
       >
+      <nav style={{ display: "flex", justifyContent: "center", gap: "20px", padding: "15px 0", fontWeight: "600" }}>
+  <a href="/products/beanies">Beanies</a>
+  <a href="/products/hoodies">Hoodies</a>
+  <a href="/products/jeans">Jeans</a>
+  <a href="/products/shorts">Shorts</a>
+  <a href="/products/hats">Hats</a>
+</nav>
         {children}
       </body>
     </html>
