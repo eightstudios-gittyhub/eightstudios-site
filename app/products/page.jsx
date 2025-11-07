@@ -27,7 +27,7 @@ export default function Products() {
   name: "888 Yellow Beanie (white glitter)",
   price: "$60",
   img: "https://i.imgur.com/joswD1K.jpeg",
-  link: "",
+  link: "https://buy.stripe.com/fZu4gBgjtel44VJ98K5Rm04",
   details: "/products/yellowbeanie-white",
 },
   ];
