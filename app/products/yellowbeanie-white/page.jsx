@@ -3,10 +3,11 @@ export default function YellowBeanieWhite() {
     <main style={{ textAlign: "center", padding: "20px" }}>
       <h1>888 Yellow Beanie — White Glitter</h1>
 
-      <img src="" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
-      <img src="" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
-      <img src="" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
-
+      <img src="https://i.imgur.com/bQ1LuH8.jpeg"style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
+      <img src="https://i.imgur.com/QBT7GNy.jpeg"style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
+      <img src="https://i.imgur.com/DkN3Iah.jpeg"style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
+      <img src="https://i.imgur.com/0IaZhPM.jpeg"style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
+      <img src="https://i.imgur.com/k9ej3Rb.jpeg"style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
       <p style={{ marginTop: "15px", fontSize: "16px" }}>
         The 888 Yellow Beanie (White Glitter) is a 1/1 handmade design from Eight Studios.
         Features a distressed red patch with triple “888” white glitter vinyl on ribbed knit.
