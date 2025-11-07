@@ -15,7 +15,7 @@ export default function YellowBeanieWhite() {
       </p>
 
       <a
-        href="https://buy.stripe.com/6oUeVf0kvfp82NB84G5Rm01"
+        href=""
         style={{
           display: "inline-block",
           marginTop: "20px",
