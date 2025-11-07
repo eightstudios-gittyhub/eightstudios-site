@@ -14,7 +14,7 @@ export default function RedBeanieWhite() {
       </p>
 
       <a
-        href="https://buy.stripe.com/5kQ28t9V56SC9bZfx85Rm02"
+        href="https://buy.stripe.com/6oUeVf0kvfp82NB84G5Rm01"
         style={{
           display: "inline-block",
           marginTop: "20px",
