@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <main style={{ textAlign: "center", padding: "40px" }}>
-      <h1>Beanies</h1>
+      <h1>Hats</h1>
     </main>
   );
 }
