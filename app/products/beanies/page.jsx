@@ -3,7 +3,7 @@ export default function BeaniesPage() {
     {
       name: "Blue Beanie — White Glitter",
       link: "/products/beanies/blue-beanie-white",
-      img: "https://i.imgur.com/PmFzNSO.jpeg"
+      img: "https://i.imgur.com/C6WN82M.jpeg"
     },
     {
       name: "Blue Beanie — Black Glitter",
@@ -13,12 +13,12 @@ export default function BeaniesPage() {
     {
       name: "Red Beanie — White Glitter",
       link: "/products/beanies/redbeanie-white",
-      img: "https://i.imgur.com/PmFzNSO.jpeg"
+      img: "https://i.imgur.com/g7X2vrf.jpeg"
     },
     {
       name: "Yellow Beanie — White Glitter",
       link: "/products/beanies/yellowbeanie-white",
-      img: "https://i.imgur.com/PmFzNSO.jpeg"
+      img: "https://i.imgur.com/kCZE64z.jpeg"
     }
   ];
 
