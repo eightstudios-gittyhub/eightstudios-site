@@ -28,7 +28,7 @@ export default function BeaniesPage() {
     {
       name: "Green Beanie — White Glitter",
       link: "/products/beanies/greenbeanie-white",
-      img: ""
+      img: "https://i.imgur.com/xJVm6tH.jpeg"
     }
   ];
 
