@@ -20,6 +20,15 @@ export default function BeaniesPage() {
       link: "/products/beanies/yellowbeanie-white",
       img: "https://i.imgur.com/kCZE64z.jpeg"
     }
+    <div className="product-card">
+  <img
+    src="https://i.imgur.com/PUT_YOUR_GREEN_THUMBNAIL.jpeg"
+    alt="Green Beanie — Black Glitter"
+    style={{ width: "100%", borderRadius: "10px" }}
+  />
+  <h2>Green Beanie — Black Glitter</h2>
+  <a href="/products/beanies/greenbeanie-black">See Details →</a>
+</div>
   ];
 
   return (
