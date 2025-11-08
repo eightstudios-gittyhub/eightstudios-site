@@ -22,7 +22,7 @@ export default function BeaniesPage() {
     }
     <div className="product-card">
   <img
-    src="https://i.imgur.com/PUT_YOUR_GREEN_THUMBNAIL.jpeg"
+    src="https://i.imgur.com/A3vdEKR.jpeg"
     alt="Green Beanie — Black Glitter"
     style={{ width: "100%", borderRadius: "10px" }}
   />
