@@ -8,7 +8,7 @@ export default function GreenBeanieBlack() {
       <img src="https://i.imgur.com/gAdbCvn.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
 
       <a 
-        href="YOUR_STRIPE_LINK" 
+        href="https://buy.stripe.com/eVq8wR8R10ue0Ft4Su5Rm05" 
         style={{ 
           display: "inline-block", 
           marginTop: "20px", 
