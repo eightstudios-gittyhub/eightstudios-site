@@ -3,9 +3,9 @@ export default function GreenBeanieBlack() {
     <main style={{ textAlign: "center", padding: "20px" }}>
       <h1>888 Green Beanie — Black Glitter</h1>
 
-      <img src="YOUR_GREEN_MAIN_IMAGE" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
-      <img src="YOUR_GREEN_CLOSEUP_1" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
-      <img src="YOUR_GREEN_CLOSEUP_2" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
+      <img src="https://i.imgur.com/A3vdEKR.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
+      <img src="https://i.imgur.com/bJ2SfDA.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
+      <img src="https://i.imgur.com/gAdbCvn.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
 
       <a 
         href="YOUR_STRIPE_LINK" 
