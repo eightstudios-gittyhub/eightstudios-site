@@ -9,18 +9,33 @@ export default function RootLayout({ children }) {
       <body
         style={{
           margin: 0,
+          padding: 0,
           fontFamily: "Arial, sans-serif",
-          backgroundColor: "#fff",
-          color: "#000",
+          backgroundColor: "black",
+          color: "white",
         }}
       >
-      <nav style={{ display: "flex", justifyContent: "center", gap: "20px", padding: "15px 0", fontWeight: "600" }}>
-  <a href="/products/beanies">Beanies</a>
-  <a href="/products/hoodies">Hoodies</a>
-  <a href="/products/jeans">Jeans</a>
-  <a href="/products/shorts">Shorts</a>
-  <a href="/products/hats">Hats</a>
-</nav>
+        <nav
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "24px",
+            padding: "18px 0",
+            fontWeight: "600",
+            position: "sticky",
+            top: 0,
+            background: "rgba(0,0,0,0.85)",
+            backdropFilter: "blur(6px)",
+            zIndex: 999,
+          }}
+        >
+          <a href="/products/beanies" style={{ color: "white", textDecoration: "none" }}>Beanies</a>
+          <a href="/products/hoodies" style={{ color: "white", textDecoration: "none" }}>Hoodies</a>
+          <a href="/products/jeans" style={{ color: "white", textDecoration: "none" }}>Jeans</a>
+          <a href="/products/shorts" style={{ color: "white", textDecoration: "none" }}>Shorts</a>
+          <a href="/products/hats" style={{ color: "white", textDecoration: "none" }}>Hats</a>
+        </nav>
+
         {children}
       </body>
     </html>
