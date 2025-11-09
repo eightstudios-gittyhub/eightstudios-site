@@ -50,6 +50,21 @@ export default function JeansPage() {
           </a>
         ))}
       </div>
+
+      {/* FOOTER SECTION */}
+      <div style={{ marginTop: "70px", opacity: 0.7 }}>
+        <p style={{ marginBottom: "8px" }}>More pieces coming soon.</p>
+        <p>
+          Customize your own clothing — Inquire here:<br />
+          <a 
+            href="mailto:eight888studios@gmail.com"
+            style={{ color: "#aaa", textDecoration: "underline" }}
+          >
+            eight888studios@gmail.com
+          </a>
+        </p>
+      </div>
+
     </main>
   );
 }
