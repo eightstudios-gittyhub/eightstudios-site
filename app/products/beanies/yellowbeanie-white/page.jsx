@@ -14,7 +14,6 @@ export default function YellowBeanieWhite() {
         •888inc. •size – fits most
       </p>
 
-      <a
         href="https://buy.stripe.com/fZu4gBgjtel44VJ98K5Rm04"
         style={{
           display: "inline-block",
