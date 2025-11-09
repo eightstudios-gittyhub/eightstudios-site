@@ -24,7 +24,7 @@ export default function BeaniesPage() {
       name: "Green Beanie — Black Glitter",
       link: "/products/beanies/greenbeanie-black",
       img: "https://i.imgur.com/A3vdEKR.jpeg"
-    }
+    },
     {
       name: "Green Beanie — White Glitter",
       link: "/products/beanies/greenbeanie-white",
