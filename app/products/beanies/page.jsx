@@ -103,6 +103,7 @@ export default function BeaniesPage() {
   <option value="Blue">Blue</option>
   <option value="Purple">Purple</option>
   <option value="Pink">Pink</option>
+  <option value="Custom Request">Custom Request (Describe Below)</option>
 </select>
 
               <label>Patch Fabric Color</label>
