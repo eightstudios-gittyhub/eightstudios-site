@@ -93,15 +93,17 @@ export default function BeaniesPage() {
               <input type="hidden" name="_subject" value="New Custom Beanie Request" />
 
               <label>Base Beanie Color</label>
-              <select name="Base Beanie Color" required>
-                <option>Black</option>
-                <option>Blue</option>
-                <option>Yellow</option>
-                <option>Red</option>
-                <option>Gray</option>
-                <option>White</option>
-                <option>Custom Request (Describe Below)</option>
-              </select>
+              <select name="baseColor" required>
+  <option value="Black">Black</option>
+  <option value="White">White</option>
+  <option value="Red">Red</option>
+  <option value="Orange">Orange</option>
+  <option value="Yellow">Yellow</option>
+  <option value="Green">Green</option>
+  <option value="Blue">Blue</option>
+  <option value="Purple">Purple</option>
+  <option value="Pink">Pink</option>
+</select>
 
               <label>Patch Fabric Color</label>
               <select name="Patch Fabric Color" required>
