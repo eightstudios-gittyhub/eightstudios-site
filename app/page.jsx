@@ -22,7 +22,7 @@ export default function Home() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        paddingBottom: "120px", // makes space above fixed footer
+        paddingBottom: "40px",
       }}
     >
       {/* Glowing Logo */}
@@ -56,34 +56,7 @@ export default function Home() {
         <a href="/products/hats" style={linkStyle}>Hats</a>
       </div>
 
-      {/* Footer Label Banner */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "0",
-          left: "0",
-          width: "100%",
-          background: "black",
-          padding: "12px 0",
-          borderTop: "1px solid rgba(255,255,255,0.1)",
-          display: "flex",
-          justifyContent: "center",
-          zIndex: "999",
-        }}
-      >
-        <img
-          src="https://i.imgur.com/auNVWtZ.jpeg"
-          alt="Eight Studios Script"
-          style={{
-            width: "70%",
-            maxWidth: "580px",
-            opacity: "0.85",
-            filter: "drop-shadow(0 0 14px rgba(255,255,255,0.4))",
-          }}
-        />
-      </div>
-
-      {/* Animation */}
+      {/* Glow Animation */}
       <style>{`
         @keyframes pulse {
           0% { transform: scale(1); }
