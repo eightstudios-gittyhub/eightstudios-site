@@ -1,3 +1,16 @@
+"use client";
+
+const linkStyle = {
+  background: "#111",
+  padding: "14px 0",
+  borderRadius: "8px",
+  textDecoration: "none",
+  color: "white",
+  fontSize: "17px",
+  fontWeight: "600",
+  transition: "0.2s",
+};
+
 export default function Home() {
   return (
     <main
@@ -19,7 +32,8 @@ export default function Home() {
           alt="888 logo"
           style={{
             width: "200px",
-            filter: "drop-shadow(0 0 25px rgba(255,0,0,0.85)) drop-shadow(0 0 45px rgba(255,0,0,0.75))",
+            filter:
+              "drop-shadow(0 0 25px rgba(255,0,0,0.85)) drop-shadow(0 0 45px rgba(255,0,0,0.75))",
             animation: "pulse 3s ease-in-out infinite",
           }}
         />
@@ -56,8 +70,8 @@ export default function Home() {
         }}
       />
 
-      {/* Glow Animation */}
-      <style jsx>{`
+      {/* Global Glow Animation */}
+      <style>{`
         @keyframes pulse {
           0% { transform: scale(1); }
           50% { transform: scale(1.07); }
@@ -67,14 +81,3 @@ export default function Home() {
     </main>
   );
 }
-
-const linkStyle = {
-  background: "#111",
-  padding: "14px 0",
-  borderRadius: "8px",
-  textDecoration: "none",
-  color: "white",
-  fontSize: "17px",
-  fontWeight: "600",
-  transition: "0.2s",
-};
