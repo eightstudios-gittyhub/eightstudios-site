@@ -107,15 +107,18 @@ export default function BeaniesPage() {
 </select>
 
               <label>Patch Fabric Color</label>
-              <select name="Patch Fabric Color" required>
-                <option>Black Denim</option>
-                <option>Blue Denim</option>
-                <option>Red Bandana</option>
-                <option>Yellow Bandana</option>
-                <option>Cream Canvas</option>
-                <option>Patterned / Multi</option>
-                <option>Custom (Describe Below)</option>
-              </select>
+              <select name="patchMaterial" required>
+  <option value="Black Denim">Black Denim</option>
+  <option value="Blue Denim">Blue Denim</option>
+  <option value="Red Cotton">Red Cotton</option>
+  <option value="Orange Cotton">Orange Cotton</option>
+  <option value="Yellow Cotton">Yellow Cotton</option>
+  <option value="Green Cotton">Green Cotton</option>
+  <option value="Blue Cotton">Blue Cotton</option>
+  <option value="Purple Cotton">Purple Cotton</option>
+  <option value="Pink Cotton">Pink Cotton</option>
+  <option value="Custom">Custom (Describe Below)</option>
+</select>
 
               <label>Vinyl Style</label>
               <select name="Vinyl Style" required>
