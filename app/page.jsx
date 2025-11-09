@@ -2,35 +2,79 @@ export default function Home() {
   return (
     <main
       style={{
-        textAlign: "center",
-        padding: "60px 20px",
+        background: "black",
+        color: "white",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
+        padding: "40px 20px",
       }}
     >
-      <h1 style={{ fontSize: "32px", fontWeight: "700", marginBottom: "10px" }}>
-        Eight Studios of 888
-      </h1>
+      {/* Glowing Logo */}
+      <div style={{ position: "relative", marginBottom: "40px" }}>
+        <img
+          src="https://i.imgur.com/cvZxBNy.jpeg"
+          alt="888 logo"
+          style={{
+            width: "200px",
+            filter: "drop-shadow(0 0 25px rgba(255,0,0,0.85)) drop-shadow(0 0 45px rgba(255,0,0,0.75))",
+            animation: "pulse 3s ease-in-out infinite",
+          }}
+        />
+      </div>
 
-      <p style={{ fontSize: "16px", opacity: "0.8", marginBottom: "30px" }}>
-        Welcome to the official site and shop.
-      </p>
-
-      <a
-        href="/products/beanies"
+      {/* Category Navigation */}
+      <div
         style={{
-          background: "black",
-          color: "white",
-          padding: "14px 28px",
-          borderRadius: "10px",
-          textDecoration: "none",
-          fontSize: "18px",
-          fontWeight: "600",
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "14px",
+          width: "100%",
+          maxWidth: "450px",
+          marginBottom: "50px",
+          textAlign: "center",
         }}
       >
-        Enter Shop
-      </a>
+        <a href="/products/beanies" style={linkStyle}>Beanies</a>
+        <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
+        <a href="/products/jeans" style={linkStyle}>Jeans</a>
+        <a href="/products/shorts" style={linkStyle}>Shorts</a>
+        <a href="/products/hats" style={linkStyle}>Hats</a>
+      </div>
+
+      {/* Signature Script */}
+      <img
+        src="https://i.imgur.com/auNVWtZ.jpeg"
+        alt="Eight Studios Script"
+        style={{
+          width: "180px",
+          opacity: "0.8",
+          filter: "drop-shadow(0 0 12px rgba(255,0,0,0.5))",
+          marginTop: "20px",
+        }}
+      />
+
+      {/* Glow Animation */}
+      <style jsx>{`
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.07); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
     </main>
   );
 }
+
+const linkStyle = {
+  background: "#111",
+  padding: "14px 0",
+  borderRadius: "8px",
+  textDecoration: "none",
+  color: "white",
+  fontSize: "17px",
+  fontWeight: "600",
+  transition: "0.2s",
+};
