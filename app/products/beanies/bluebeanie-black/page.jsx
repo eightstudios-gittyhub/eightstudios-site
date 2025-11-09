@@ -23,7 +23,6 @@ export default function GreenBeanieBlack() {
         <br />•size – fits most
       </p>
 
-      <a
         href="https://buy.stripe.com/YOUR-STRIPE-LINK-HERE"
         style={{
           display: "inline-block",
