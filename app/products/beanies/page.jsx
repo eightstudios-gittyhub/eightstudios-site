@@ -1,3 +1,5 @@
+"use client";
+
 export default function BeaniesPage() {
   const products = [
     {
@@ -33,41 +35,71 @@ export default function BeaniesPage() {
   ];
 
   return (
-    <main style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Beanies</h1>
+    <main
+      style={{
+        background: "black",
+        minHeight: "100vh",
+        color: "white",
+        textAlign: "center",
+        padding: "40px 20px",
+      }}
+    >
+      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>Beanies</h1>
+      <p style={{ opacity: 0.8, marginBottom: "40px" }}>
+        Handcrafted 1/1 custom beanies. No restocks.
+      </p>
 
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: "20px",
-        marginTop: "30px"
-      }}>
-        {products.map((product) => (
-          <a 
-            key={product.link} 
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "28px",
+          justifyItems: "center",
+          maxWidth: "900px",
+          margin: "0 auto"
+        }}
+      >
+        {products.map((product, i) => (
+          <a
+            key={i}
             href={product.link}
             style={{
-              width: "160px",
               textDecoration: "none",
-              color: "#000",
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              padding: "10px"
+              color: "white",
+              width: "100%",
+              maxWidth: "190px",
             }}
           >
-            <img 
+            <img
               src={product.img}
-              style={{ width: "100%", borderRadius: "8px" }}
+              style={{
+                width: "100%",
+                borderRadius: "12px",
+                boxShadow: "0 0 25px rgba(255,255,255,0.08)",
+              }}
             />
-            <p style={{ marginTop: "10px", fontWeight: "600", fontSize: "14px" }}>
+            <p style={{ marginTop: "12px", fontWeight: "600", fontSize: "14px" }}>
               {product.name}
             </p>
-            <p style={{ fontSize: "14px", marginTop: "5px", opacity: 0.7 }}>
+            <p style={{ fontSize: "13px", opacity: 0.7, marginTop: "4px" }}>
               See Details →
             </p>
           </a>
         ))}
+      </div>
+
+      {/* FOOTER */}
+      <div style={{ marginTop: "70px", opacity: 0.7 }}>
+        <p style={{ marginBottom: "6px" }}>More pieces dropping soon.</p>
+        <p>
+          Custom requests:{" "}
+          <a
+            href="mailto:eight888studios@gmail.com"
+            style={{ color: "#aaa", textDecoration: "underline" }}
+          >
+            eight888studios@gmail.com
+          </a>
+        </p>
       </div>
     </main>
   );
