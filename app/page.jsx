@@ -22,22 +22,21 @@ export default function Home() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "40px 20px",
+        paddingBottom: "120px", // makes space above fixed footer
       }}
     >
       {/* Glowing Logo */}
-      <div style={{ position: "relative", marginBottom: "40px" }}>
-        <img
-          src="https://i.imgur.com/cvZxBNy.jpeg"
-          alt="888 logo"
-          style={{
-            width: "200px",
-            filter:
-              "drop-shadow(0 0 25px rgba(255,0,0,0.85)) drop-shadow(0 0 45px rgba(255,0,0,0.75))",
-            animation: "pulse 3s ease-in-out infinite",
-          }}
-        />
-      </div>
+      <img
+        src="https://i.imgur.com/cvZxBNy.jpeg"
+        alt="888 logo"
+        style={{
+          width: "230px",
+          filter:
+            "drop-shadow(0 0 40px rgba(255,255,255,0.9)) drop-shadow(0 0 80px rgba(120,180,255,0.8)) drop-shadow(0 0 120px rgba(140,255,200,0.6))",
+          animation: "pulse 3s ease-in-out infinite",
+          marginBottom: "45px",
+        }}
+      />
 
       {/* Category Navigation */}
       <div
@@ -47,7 +46,6 @@ export default function Home() {
           gap: "14px",
           width: "100%",
           maxWidth: "450px",
-          marginBottom: "50px",
           textAlign: "center",
         }}
       >
@@ -58,19 +56,34 @@ export default function Home() {
         <a href="/products/hats" style={linkStyle}>Hats</a>
       </div>
 
-      {/* Signature Script */}
-      <img
-        src="https://i.imgur.com/auNVWtZ.jpeg"
-        alt="Eight Studios Script"
+      {/* Footer Label Banner */}
+      <div
         style={{
-          width: "180px",
-          opacity: "0.8",
-          filter: "drop-shadow(0 0 12px rgba(255,0,0,0.5))",
-          marginTop: "20px",
+          position: "fixed",
+          bottom: "0",
+          left: "0",
+          width: "100%",
+          background: "black",
+          padding: "12px 0",
+          borderTop: "1px solid rgba(255,255,255,0.1)",
+          display: "flex",
+          justifyContent: "center",
+          zIndex: "999",
         }}
-      />
+      >
+        <img
+          src="https://i.imgur.com/auNVWtZ.jpeg"
+          alt="Eight Studios Script"
+          style={{
+            width: "70%",
+            maxWidth: "580px",
+            opacity: "0.85",
+            filter: "drop-shadow(0 0 14px rgba(255,255,255,0.4))",
+          }}
+        />
+      </div>
 
-      {/* Global Glow Animation */}
+      {/* Animation */}
       <style>{`
         @keyframes pulse {
           0% { transform: scale(1); }
