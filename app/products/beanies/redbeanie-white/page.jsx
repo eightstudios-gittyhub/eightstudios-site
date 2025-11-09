@@ -13,7 +13,6 @@ export default function RedBeanieWhite() {
         •888inc. •size – fits most
       </p>
 
-      <a
         href="https://buy.stripe.com/6oUeVf0kvfp82NB84G5Rm01"
         style={{
           display: "inline-block",
