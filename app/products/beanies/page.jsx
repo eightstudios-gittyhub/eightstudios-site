@@ -86,7 +86,7 @@ export default function BeaniesPage() {
             </p>
 
             <form
-              action="https://formsubmit.co/YOUR_EMAIL_HERE"
+              action="https://formsubmit.co/eight888studios@gmail.com"
               method="POST"
               style={{ display: "flex", flexDirection: "column", gap: "12px" }}
             >
