@@ -18,13 +18,12 @@
         style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "15px" }} 
       />
 
-      <p style={{ marginTop: "20px", fontSize: "18px" }}>
-        $60 — 1/1 Drop
+      <p style={{ marginTop: "20px", fontSize: "16px", lineHeight: "1.5" }}>
+        The 888 Blue Beanie (White Glitter) is a 1/1 handmade design from Eight Studios.
+        Features a distressed blue patch with triple “888” white glitter vinyl on ribbed knit.
+        <br />•888inc.
+        <br />•size – fits most
       </p>
-      The 888 Blue Beanie (White Glitter) is a 1/1 handmade design from Eight Studios.
-        Features a distressed blue patch with triple “888” White glitter vinyl on ribbed knit.
-        •888inc.
-        •size - fits most
 
       <a 
         href="https://buy.stripe.com/5kQ28t9V56SC9bZfx85Rm02" 
@@ -36,10 +35,11 @@
           color: "#fff",
           borderRadius: "8px",
           textDecoration: "none",
-          fontWeight: "600"
+          fontWeight: "600",
+          fontSize: "18px"
         }}
       >
-        Buy Now
+        Buy Now — $60
       </a>
     </main>
   );
