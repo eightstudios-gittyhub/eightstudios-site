@@ -7,7 +7,6 @@ export default function GreenBeanieWhite() {
       <img src="https://i.imgur.com/xJVm6tH.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
       <img src="https://i.imgur.com/xJVm6tH.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px", marginTop: "10px" }} />
       <img src="https://i.imgur.com/oOkLH96.jpeg" style={{ width: "80%", maxWidth: "400px", borderRadius: "10px" }} />
-      <a 
     <p style={{ marginTop: "15px", fontSize: "16px", lineHeight: "1.5" }}>
   The 888 Green Beanie (White Glitter) is a 1/1 handmade design from Eight Studios. 
   Features a distressed green patch with triple "888" white glitter vinyl on ribbed knit. 
