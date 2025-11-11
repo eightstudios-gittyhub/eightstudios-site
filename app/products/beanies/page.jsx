@@ -94,40 +94,55 @@ export default function BeaniesPage() {
 
               <label>Base Beanie Color</label>
               <select name="baseColor" required>
-  <option value="Black">Black</option>
-  <option value="White">White</option>
-  <option value="Red">Red</option>
-  <option value="Orange">Orange</option>
-  <option value="Yellow">Yellow</option>
-  <option value="Green">Green</option>
-  <option value="Blue">Blue</option>
-  <option value="Purple">Purple</option>
-  <option value="Pink">Pink</option>
-  <option value="Custom Request">Custom Request (Describe Below)</option>
-</select>
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Red">Red</option>
+                <option value="Orange">Orange</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+                <option value="Purple">Purple</option>
+                <option value="Pink">Pink</option>
+                <option value="Custom Request">Custom Request (Describe Below)</option>
+              </select>
 
               <label>Patch Fabric Color</label>
               <select name="patchMaterial" required>
-  <option value="Black Denim">Black Denim</option>
-  <option value="Blue Denim">Blue Denim</option>
-  <option value="Red Cotton">Red Cotton</option>
-  <option value="Orange Cotton">Orange Cotton</option>
-  <option value="Yellow Cotton">Yellow Cotton</option>
-  <option value="Green Cotton">Green Cotton</option>
-  <option value="Blue Cotton">Blue Cotton</option>
-  <option value="Purple Cotton">Purple Cotton</option>
-  <option value="Pink Cotton">Pink Cotton</option>
-  <option value="Custom">Custom (Describe Below)</option>
-</select>
+                <option value="Black Denim">Black Denim</option>
+                <option value="Blue Denim">Blue Denim</option>
+                <option value="Red Cotton">Red Cotton</option>
+                <option value="Orange Cotton">Orange Cotton</option>
+                <option value="Yellow Cotton">Yellow Cotton</option>
+                <option value="Green Cotton">Green Cotton</option>
+                <option value="Blue Cotton">Blue Cotton</option>
+                <option value="Purple Cotton">Purple Cotton</option>
+                <option value="Pink Cotton">Pink Cotton</option>
+                <option value="Custom">Custom (Describe Below)</option>
+              </select>
 
               <label>Vinyl Style</label>
-              <select name="Vinyl Style" required>
-                <option>White Glitter</option>
-                <option>Black Glitter</option>
-                <option>Matte Red</option>
-                <option>Matte Black</option>
-                <option>Reflective Silver</option>
-                <option>Custom Color (Describe Below)</option>
+              <select name="vinylStyle" required>
+                <option disabled>— Glitter —</option>
+                <option value="Glitter Black">Glitter Black</option>
+                <option value="Glitter White">Glitter White</option>
+                <option value="Glitter Red">Glitter Red</option>
+
+                <option disabled>— Matte —</option>
+                <option value="Matte Red-Pink">Matte Red-Pink</option>
+                <option value="Matte Black">Matte Black</option>
+                <option value="Matte White">Matte White</option>
+                <option value="Matte Silver">Matte Silver</option>
+                <option value="Matte Gold">Matte Gold</option>
+
+                <option disabled>— Specialty —</option>
+                <option value="Matte Camo">Matte Camo</option>
+                <option value="Shiny Holographic">Shiny Holographic</option>
+                <option value="Animal Print">Animal Print</option>
+
+                <option disabled>──────────────</option>
+                <option disabled>
+                  I will mention in my DM/email what I have available for Specialty Colors.
+                </option>
               </select>
 
               <label>Add-Ons</label>
