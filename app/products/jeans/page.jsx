@@ -7,6 +7,11 @@ export default function JeansPage() {
       link: "/products/jeans/plaid8-cargo-pjs",
       img: "https://i.imgur.com/NYQt6sa.jpeg"
     },
+    {
+      name: "Starfade Denim — 1/1",
+      link: "/products/jeans/starfade-denim",
+      img: "https://i.imgur.com/N9WTq1o.jpeg" // your thumbnail
+    },
   ];
 
   return (
@@ -25,42 +30,55 @@ export default function JeansPage() {
         Custom denim and patchwork pieces will appear here as new drops release.
       </p>
 
-      <div style={{ marginTop: "50px" }}>
+      {/* GRID SECTION */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: "40px",
+          justifyItems: "center",
+          marginTop: "50px"
+        }}
+      >
         {products.map((product, index) => (
-          <a
-            key={index}
-            href={product.link}
-            style={{
-              display: "block",
-              marginBottom: "40px",
-              textDecoration: "none",
-              color: "white"
-            }}
-          >
-            <img
-              src={product.img}
-              alt={product.name}
+          <div key={index} style={{ width: "90%", maxWidth: "250px" }}>
+            <a
+              href={product.link}
               style={{
-                width: "85%",
-                maxWidth: "350px",
-                borderRadius: "12px",
-                boxShadow: "0 0 30px rgba(255,255,255,0.08)"
+                textDecoration: "none",
+                color: "white",
+                display: "block"
               }}
-            />
-            <h2 style={{ marginTop: "12px", fontSize: "20px" }}>
-              {product.name}
-            </h2>
-            <p style={{ color: "#aaa", fontSize: "14px" }}>See Details →</p>
-          </a>
+            >
+              <img
+                src={product.img}
+                alt={product.name}
+                style={{
+                  width: "100%",
+                  borderRadius: "10px",
+                  boxShadow: "0 0 25px rgba(255,255,255,0.08)"
+                }}
+              />
+              <h2
+                style={{
+                  marginTop: "12px",
+                  fontSize: "18px",
+                  fontWeight: "500"
+                }}
+              >
+                {product.name}
+              </h2>
+              <p style={{ color: "#aaa", fontSize: "14px" }}>See Details →</p>
+            </a>
+          </div>
         ))}
       </div>
 
-      {/* FOOTER SECTION */}
+      {/* FOOTER */}
       <div style={{ marginTop: "70px", opacity: 0.7 }}>
         <p style={{ marginBottom: "8px" }}>More pieces coming soon.</p>
         <p>
-          Customize your own clothing — Inquire here:
-          <br />
+          Customize your own clothing — Inquire here:<br />
           <a
             href="mailto:eight888studios@gmail.com"
             style={{ color: "#aaa", textDecoration: "underline" }}
