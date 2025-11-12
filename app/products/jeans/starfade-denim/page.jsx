@@ -32,6 +32,30 @@ export default function StarfadeDenim() {
         <img src="https://i.imgur.com/4IaE5Uo.jpeg" alt="Starfade Denim patch detail" style={{ width: "100%", borderRadius: "10px" }} />
       </div>
 
+      {/* STRIPE BUTTON */}
+      <div style={{ margin: "30px 0" }}>
+        <a
+          href="https://buy.stripe.com/cNi8wRd7h7WG73R1Gi5Rm08"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-block",
+            background: "white",
+            color: "black",
+            padding: "12px 28px",
+            borderRadius: "6px",
+            fontWeight: "600",
+            textDecoration: "none",
+            fontSize: "16px",
+            transition: "all 0.3s ease"
+          }}
+          onMouseOver={(e) => (e.target.style.opacity = "0.85")}
+          onMouseOut={(e) => (e.target.style.opacity = "1")}
+        >
+          Buy Now
+        </a>
+      </div>
+
       {/* CONTACT SECTION */}
       <p style={{ opacity: 0.8 }}>
         For purchase or custom sizing inquiries, email{" "}
