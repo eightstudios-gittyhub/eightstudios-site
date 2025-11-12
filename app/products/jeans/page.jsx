@@ -39,6 +39,7 @@ export default function JeansPage() {
           >
             <img
               src={product.img}
+              alt={product.name}
               style={{
                 width: "85%",
                 maxWidth: "350px",
@@ -46,7 +47,10 @@ export default function JeansPage() {
                 boxShadow: "0 0 30px rgba(255,255,255,0.08)"
               }}
             />
-            <h2 style={{ marginTop: "12px", fontSize: "20px" }}>{product.name}</h2>
+            <h2 style={{ marginTop: "12px", fontSize: "20px" }}>
+              {product.name}
+            </h2>
+            <p style={{ color: "#aaa", fontSize: "14px" }}>See Details →</p>
           </a>
         ))}
       </div>
@@ -55,8 +59,9 @@ export default function JeansPage() {
       <div style={{ marginTop: "70px", opacity: 0.7 }}>
         <p style={{ marginBottom: "8px" }}>More pieces coming soon.</p>
         <p>
-          Customize your own clothing — Inquire here:<br />
-          <a 
+          Customize your own clothing — Inquire here:
+          <br />
+          <a
             href="mailto:eight888studios@gmail.com"
             style={{ color: "#aaa", textDecoration: "underline" }}
           >
@@ -64,7 +69,6 @@ export default function JeansPage() {
           </a>
         </p>
       </div>
-
     </main>
   );
-} 
+}
