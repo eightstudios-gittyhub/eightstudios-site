@@ -138,11 +138,6 @@ export default function BeaniesPage() {
                 <option value="Matte Camo">Matte Camo</option>
                 <option value="Shiny Holographic">Shiny Holographic</option>
                 <option value="Animal Print">Animal Print</option>
-
-                <option disabled>──────────────</option>
-                <option disabled>
-                  I will mention in my DM/email what I have available for Specialty Colors.
-                </option>
               </select>
 
               <label>Add-Ons</label>
@@ -150,8 +145,6 @@ export default function BeaniesPage() {
                 <option>None</option>
                 <option>Rhinestones</option>
                 <option>Extra Words in Vinyl</option>
-                <option>Double Patch Stack</option>
-                <option>Distressed Edges</option>
                 <option>Custom Add-On (Describe Below)</option>
               </select>
 
