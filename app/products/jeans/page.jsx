@@ -10,7 +10,7 @@ export default function JeansPage() {
     {
       name: "Starfade Denim — 1/1",
       link: "/products/jeans/starfade-denim",
-      img: "https://i.imgur.com/N9WTq1o.jpeg" // your thumbnail
+      img: "https://i.imgur.com/N9WTq1o.jpeg"
     },
   ];
 
@@ -19,18 +19,17 @@ export default function JeansPage() {
       style={{
         textAlign: "center",
         padding: "40px 20px",
-        background: "black",
+        backgroundColor: "black",
         minHeight: "100vh",
         color: "white"
       }}
     >
       <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>Jeans / Pants</h1>
 
-      <p style={{ marginTop: "10px", opacity: "0.8" }}>
+      <p style={{ marginTop: "10px", opacity: 0.8 }}>
         Custom denim and patchwork pieces will appear here as new drops release.
       </p>
 
-      {/* GRID SECTION */}
       <div
         style={{
           display: "grid",
@@ -56,14 +55,14 @@ export default function JeansPage() {
                 style={{
                   width: "100%",
                   borderRadius: "10px",
-                  boxShadow: "0 0 25px rgba(255,255,255,0.08)"
+                  boxShadow: "0 0 25px rgba(255, 255, 255, 0.08)"
                 }}
               />
               <h2
                 style={{
                   marginTop: "12px",
                   fontSize: "18px",
-                  fontWeight: "500"
+                  fontWeight: 500
                 }}
               >
                 {product.name}
@@ -74,7 +73,6 @@ export default function JeansPage() {
         ))}
       </div>
 
-      {/* FOOTER */}
       <div style={{ marginTop: "70px", opacity: 0.7 }}>
         <p style={{ marginBottom: "8px" }}>More pieces coming soon.</p>
         <p>
