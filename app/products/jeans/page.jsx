@@ -30,10 +30,11 @@ export default function JeansPage() {
         Custom denim and patchwork pieces will appear here as new drops release.
       </p>
 
+      {/* FIXED GRID — MATCHES BEANIES EXACTLY */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gridTemplateColumns: "repeat(2, 1fr)",   // ← FIXED
           gap: "40px",
           justifyItems: "center",
           marginTop: "50px"
