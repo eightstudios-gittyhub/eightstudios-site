@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
           color: "white",
         }}
       >
+        {/* Navigation */}
         <nav
           style={{
             display: "flex",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
             zIndex: 999,
           }}
         >
+          <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
           <a href="/products/beanies" style={{ color: "white", textDecoration: "none" }}>Beanies</a>
           <a href="/products/hoodies" style={{ color: "white", textDecoration: "none" }}>Hoodies</a>
           <a href="/products/jeans" style={{ color: "white", textDecoration: "none" }}>Jeans</a>
@@ -36,7 +38,34 @@ export default function RootLayout({ children }) {
           <a href="/products/hats" style={{ color: "white", textDecoration: "none" }}>Hats</a>
         </nav>
 
+        {/* Page Content */}
         {children}
+
+        {/* Opal Smoky Divider Line */}
+        <div
+          style={{
+            width: "100%",
+            height: "1px",
+            marginTop: "40px",
+            marginBottom: "20px",
+            background:
+              "linear-gradient(90deg, rgba(185,205,255,0.35), rgba(255,255,255,0.1), rgba(185,205,255,0.35))",
+          }}
+        />
+
+        {/* Footer */}
+        <footer
+          style={{
+            textAlign: "center",
+            padding: "30px 0",
+            color: "white",
+            fontSize: "12.5px",
+            letterSpacing: "0.4px",
+            opacity: 0.9,
+          }}
+        >
+          © 2025 Eight Studios™ · All Rights Reserved
+        </footer>
       </body>
     </html>
   );
