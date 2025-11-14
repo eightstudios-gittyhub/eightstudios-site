@@ -30,17 +30,17 @@ export default function Home() {
       }}
     >
 
-      {/* BACKGROUND GLOW (BEHIND EVERYTHING) */}
+      {/* FULL-SCREEN BACKGROUND GLOW */}
       <div
         style={{
           position: "absolute",
-          top: "5%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "550px",
-          height: "550px",
-          background: "radial-gradient(circle, rgba(170,210,255,0.5), rgba(0,0,0,0) 75%)",
-          filter: "blur(80px)",
+          top: "-20%",
+          left: "-20%",
+          width: "140vw",
+          height: "140vh",
+          background:
+            "radial-gradient(circle at center, rgba(170,210,255,0.45), rgba(0,0,0,1) 70%)",
+          filter: "blur(120px)",
           zIndex: -1,
         }}
       ></div>
