@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <main
       style={{
-        background: "black",
+        background: "transparent",
         color: "white",
         minHeight: "100vh",
         display: "flex",
