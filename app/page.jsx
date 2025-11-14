@@ -26,7 +26,6 @@ export default function Home() {
         justifyContent: "center",
         padding: "60px 20px",
         position: "relative",
-        overflow: "hidden",
       }}
     >
 
