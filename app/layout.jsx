@@ -11,11 +11,19 @@ export default function RootLayout({ children }) {
           margin: 0,
           padding: 0,
           fontFamily: "Arial, sans-serif",
-          backgroundColor: "black",
+
+          backgroundImage:
+            "radial-gradient(circle at center, rgba(185,205,255,0.23), rgba(0,0,0,1))",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          width: "100vw",
+          minHeight: "100vh",
+
           color: "white",
         }}
       >
-        {/* Navigation Wrapper (for fade shadows) */}
+        {/* Navigation Wrapper */}
         <div style={{ position: "sticky", top: 0, zIndex: 999 }}>
           {/* Left Fade */}
           <div
@@ -26,7 +34,8 @@ export default function RootLayout({ children }) {
               width: "35px",
               height: "100%",
               pointerEvents: "none",
-              background: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
+              background:
+                "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
               zIndex: 1000,
             }}
           />
@@ -40,7 +49,8 @@ export default function RootLayout({ children }) {
               width: "35px",
               height: "100%",
               pointerEvents: "none",
-              background: "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))",
+              background:
+                "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))",
               zIndex: 1000,
             }}
           />
@@ -61,28 +71,85 @@ export default function RootLayout({ children }) {
               overflowX: "auto",
               WebkitOverflowScrolling: "touch",
 
-              /** SNAP SCROLLING **/
               scrollSnapType: "x mandatory",
               scrollBehavior: "smooth",
 
-              // HIDE SCROLLBAR
               scrollbarWidth: "none",
               msOverflowStyle: "none",
             }}
           >
-            <a href="/" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Home</a>
-            <a href="/products/beanies" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Beanies</a>
-            <a href="/products/hoodies" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Hoodies</a>
-            <a href="/products/jeans" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Jeans</a>
-            <a href="/products/shorts" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Shorts</a>
-            <a href="/products/hats" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Hats</a>
+            <a
+              href="/"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                scrollSnapAlign: "start",
+              }}
+            >
+              Home
+            </a>
+
+            <a
+              href="/products/beanies"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                scrollSnapAlign: "start",
+              }}
+            >
+              Beanies
+            </a>
+
+            <a
+              href="/products/hoodies"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                scrollSnapAlign: "start",
+              }}
+            >
+              Hoodies
+            </a>
+
+            <a
+              href="/products/jeans"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                scrollSnapAlign: "start",
+              }}
+            >
+              Jeans
+            </a>
+
+            <a
+              href="/products/shorts"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                scrollSnapAlign: "start",
+              }}
+            >
+              Shorts
+            </a>
+
+            <a
+              href="/products/hats"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                scrollSnapAlign: "start",
+              }}
+            >
+              Hats
+            </a>
           </nav>
         </div>
 
         {/* Page Content */}
         {children}
 
-        {/* Thicker Opal Smoky Divider Line */}
+        {/* Divider Line */}
         <div
           style={{
             width: "100%",
@@ -110,4 +177,4 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+} 
