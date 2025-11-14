@@ -21,6 +21,9 @@ export default function RootLayout({ children }) {
             display: "flex",
             gap: "24px",
             padding: "18px 0",
+            paddingLeft: "20px",        // ← ADDED
+            paddingRight: "20px",       // ← ADDED
+            scrollPaddingLeft: "20px",  // ← ADDED
             fontWeight: "600",
             position: "sticky",
             top: 0,
@@ -53,7 +56,7 @@ export default function RootLayout({ children }) {
         <div
           style={{
             width: "100%",
-            height: "2px", // ← THICKENED HERE
+            height: "2px",
             marginTop: "40px",
             marginBottom: "20px",
             background:
