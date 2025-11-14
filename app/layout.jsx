@@ -17,27 +17,32 @@ export default function RootLayout({ children }) {
       >
         {/* Navigation */}
         <nav
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "24px",
-            padding: "18px 0",
-            fontWeight: "600",
-            position: "sticky",
-            top: 0,
-            background: "rgba(0,0,0,0.85)",
-            backdropFilter: "blur(6px)",
-            zIndex: 999,
-          }}
-        >
-          <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
-          <a href="/products/beanies" style={{ color: "white", textDecoration: "none" }}>Beanies</a>
-          <a href="/products/hoodies" style={{ color: "white", textDecoration: "none" }}>Hoodies</a>
-          <a href="/products/jeans" style={{ color: "white", textDecoration: "none" }}>Jeans</a>
-          <a href="/products/shorts" style={{ color: "white", textDecoration: "none" }}>Shorts</a>
-          <a href="/products/hats" style={{ color: "white", textDecoration: "none" }}>Hats</a>
-        </nav>
+  style={{
+    display: "flex",
+    gap: "24px",
+    padding: "18px 0",
+    fontWeight: "600",
+    position: "sticky",
+    top: 0,
+    background: "rgba(0,0,0,0.85)",
+    backdropFilter: "blur(6px)",
+    zIndex: 999,
 
+    // MOBILE FIXES ↓↓↓
+    overflowX: "auto",
+    whiteSpace: "nowrap",
+    WebkitOverflowScrolling: "touch",
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+  }}
+>
+  <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
+  <a href="/products/beanies" style={{ color: "white", textDecoration: "none" }}>Beanies</a>
+  <a href="/products/hoodies" style={{ color: "white", textDecoration: "none" }}>Hoodies</a>
+  <a href="/products/jeans" style={{ color: "white", textDecoration: "none" }}>Jeans</a>
+  <a href="/products/shorts" style={{ color: "white", textDecoration: "none" }}>Shorts</a>
+  <a href="/products/hats" style={{ color: "white", textDecoration: "none" }}>Hats</a>
+</nav>
         {/* Page Content */}
         {children}
 
