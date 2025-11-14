@@ -26,8 +26,7 @@ export default function RootLayout({ children }) {
               width: "35px",
               height: "100%",
               pointerEvents: "none",
-              background:
-                "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
+              background: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
               zIndex: 1000,
             }}
           />
@@ -41,8 +40,7 @@ export default function RootLayout({ children }) {
               width: "35px",
               height: "100%",
               pointerEvents: "none",
-              background:
-                "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))",
+              background: "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))",
               zIndex: 1000,
             }}
           />
@@ -53,25 +51,31 @@ export default function RootLayout({ children }) {
               display: "flex",
               gap: "24px",
               padding: "18px 0",
-              paddingLeft: "20px",       
-              paddingRight: "20px",      
-              scrollPaddingLeft: "20px", 
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              scrollPaddingLeft: "20px",
               fontWeight: "600",
               background: "rgba(0,0,0,0.85)",
               backdropFilter: "blur(6px)",
               whiteSpace: "nowrap",
               overflowX: "auto",
               WebkitOverflowScrolling: "touch",
+
+              /** SNAP SCROLLING **/
+              scrollSnapType: "x mandatory",
+              scrollBehavior: "smooth",
+
+              // HIDE SCROLLBAR
               scrollbarWidth: "none",
               msOverflowStyle: "none",
             }}
           >
-            <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
-            <a href="/products/beanies" style={{ color: "white", textDecoration: "none" }}>Beanies</a>
-            <a href="/products/hoodies" style={{ color: "white", textDecoration: "none" }}>Hoodies</a>
-            <a href="/products/jeans" style={{ color: "white", textDecoration: "none" }}>Jeans</a>
-            <a href="/products/shorts" style={{ color: "white", textDecoration: "none" }}>Shorts</a>
-            <a href="/products/hats" style={{ color: "white", textDecoration: "none" }}>Hats</a>
+            <a href="/" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Home</a>
+            <a href="/products/beanies" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Beanies</a>
+            <a href="/products/hoodies" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Hoodies</a>
+            <a href="/products/jeans" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Jeans</a>
+            <a href="/products/shorts" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Shorts</a>
+            <a href="/products/hats" style={{ color: "white", textDecoration: "none", scrollSnapAlign: "start" }}>Hats</a>
           </nav>
         </div>
 
