@@ -13,7 +13,8 @@ export default function RootLayout({ children }) {
           fontFamily: "Arial, sans-serif",
           backgroundColor: "black",
           color: "white",
-          overflowX: "hidden", // fixes sideways scrolling breaking your site
+          overflowX: "hidden",
+          width: "100%",
         }}
       >
         {/* Navigation Wrapper */}
@@ -67,18 +68,20 @@ export default function RootLayout({ children }) {
               msOverflowStyle: "none",
             }}
           >
-            {["Home","Beanies","Hoodies","Jeans","Shorts","Hats"].map((item) => (
-              <a
-                key={item}
-                href={item === "Home" ? "/" : `/products/${item.toLowerCase()}`}
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                {item}
-              </a>
-            ))}
+            {["Home", "Beanies", "Hoodies", "Jeans", "Shorts", "Hats"].map(
+              (item) => (
+                <a
+                  key={item}
+                  href={item === "Home" ? "/" : `/products/${item.toLowerCase()}`}
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                  }}
+                >
+                  {item}
+                </a>
+              )
+            )}
           </nav>
         </div>
 
