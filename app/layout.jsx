@@ -5,7 +5,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      style={{
+        overflowX: "hidden",   // hard-stop any horizontal scroll at root
+        width: "100%",
+      }}
+    >
       <body
         style={{
           margin: 0,
@@ -13,13 +19,21 @@ export default function RootLayout({ children }) {
           fontFamily: "Arial, sans-serif",
           backgroundColor: "black",
           color: "white",
-          overflowX: "hidden",
+          overflowX: "hidden", // extra safety
           width: "100%",
+          position: "relative",
         }}
       >
         {/* Navigation Wrapper */}
-        <div style={{ position: "sticky", top: 0, zIndex: 999 }}>
-          
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 999,
+            maxWidth: "100vw",
+            overflow: "hidden",
+          }}
+        >
           {/* Left Fade */}
           <div
             style={{
@@ -62,7 +76,7 @@ export default function RootLayout({ children }) {
               background: "rgba(0,0,0,0.85)",
               backdropFilter: "blur(6px)",
               whiteSpace: "nowrap",
-              overflowX: "auto",
+              overflowX: "auto",           // only the nav itself scrolls
               WebkitOverflowScrolling: "touch",
               scrollbarWidth: "none",
               msOverflowStyle: "none",
