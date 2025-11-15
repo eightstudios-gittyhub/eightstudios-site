@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       style={{
-        overflowX: "hidden",   // hard-stop any horizontal scroll at root
+        overflowX: "hidden",
         width: "100%",
       }}
     >
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           fontFamily: "Arial, sans-serif",
           backgroundColor: "black",
           color: "white",
-          overflowX: "hidden", // extra safety
+          overflowX: "hidden",
           width: "100%",
           position: "relative",
         }}
@@ -76,10 +76,13 @@ export default function RootLayout({ children }) {
               background: "rgba(0,0,0,0.85)",
               backdropFilter: "blur(6px)",
               whiteSpace: "nowrap",
-              overflowX: "auto",           // only the nav itself scrolls
+              overflowX: "auto",
               WebkitOverflowScrolling: "touch",
               scrollbarWidth: "none",
               msOverflowStyle: "none",
+              width: "100%",
+              maxWidth: "100vw",
+              scrollSnapType: "x mandatory",   // << SNAP ENABLED
             }}
           >
             {["Home", "Beanies", "Hoodies", "Jeans", "Shorts", "Hats"].map(
@@ -90,6 +93,7 @@ export default function RootLayout({ children }) {
                   style={{
                     color: "white",
                     textDecoration: "none",
+                    scrollSnapAlign: "center",   // << SNAP CENTER
                   }}
                 >
                   {item}
