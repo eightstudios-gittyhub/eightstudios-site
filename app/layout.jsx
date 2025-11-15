@@ -17,11 +17,17 @@ export default function RootLayout({ children }) {
           margin: 0,
           padding: 0,
           fontFamily: "Arial, sans-serif",
-          backgroundColor: "black",
           color: "white",
           overflowX: "hidden",
           width: "100%",
           position: "relative",
+
+          // Site-wide bluish smoky opal background glow
+          backgroundColor: "black",
+          backgroundImage:
+            "radial-gradient(circle at center, rgba(160, 200, 220, 0.35) 0%, rgba(0, 0, 0, 1) 70%)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
         }}
       >
         {/* Navigation Wrapper */}
@@ -82,7 +88,7 @@ export default function RootLayout({ children }) {
               msOverflowStyle: "none",
               width: "100%",
               maxWidth: "100vw",
-              scrollSnapType: "x mandatory",   // << SNAP ENABLED
+              scrollSnapType: "x mandatory",
             }}
           >
             {["Home", "Beanies", "Hoodies", "Jeans", "Shorts", "Hats"].map(
@@ -93,7 +99,7 @@ export default function RootLayout({ children }) {
                   style={{
                     color: "white",
                     textDecoration: "none",
-                    scrollSnapAlign: "center",   // << SNAP CENTER
+                    scrollSnapAlign: "center",
                   }}
                 >
                   {item}
