@@ -25,20 +25,37 @@ export default function Home() {
 
       {/* CATEGORY BUTTONS */}
       <div className="grid">
-        <a href="/products/beanies" style={linkStyle}>Beanies</a>
-        <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
-        <a href="/products/jeans" style={linkStyle}>Jeans</a>
-        <a href="/products/shorts" style={linkStyle}>Shorts</a>
-        <a href="/products/hats" style={{ ...linkStyle, gridColumn: "span 2" }}>
+        <a href="/products/beanies" style={linkStyle}>
+          Beanies
+        </a>
+        <a href="/products/hoodies" style={linkStyle}>
+          Hoodies
+        </a>
+        <a href="/products/jeans" style={linkStyle}>
+          Jeans
+        </a>
+        <a href="/products/shorts" style={linkStyle}>
+          Shorts
+        </a>
+        {/* full-width bottom button */}
+        <a
+          href="/products/hats"
+          style={{ ...linkStyle, gridColumn: "1 / -1" }}
+        >
           Hats
         </a>
       </div>
 
       {/* GLOBAL STYLES */}
       <style>{`
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
+
         .homepage {
           min-height: 100vh;
           width: 100%;
+          max-width: 100vw;
           background: radial-gradient(
             circle at center,
             rgba(160, 210, 255, 0.45),
@@ -62,8 +79,9 @@ export default function Home() {
         }
 
         .logo888 {
-          width: 230px;
+          width: min(230px, 80vw);
           margin-bottom: 55px;
+          display: block;
         }
 
         .grid {
@@ -71,8 +89,20 @@ export default function Home() {
           grid-template-columns: repeat(2, 1fr);
           gap: 16px;
           width: 100%;
-          max-width: 450px;
+          max-width: 380px;
+          margin: 0 auto;
           text-align: center;
+        }
+
+        /* Make the bottom button span full width cleanly */
+        .grid a:last-child {
+          justify-self: stretch;
+        }
+
+        @media (max-width: 360px) {
+          .grid {
+            max-width: 340px;
+          }
         }
       `}</style>
     </main>
