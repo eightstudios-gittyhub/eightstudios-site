@@ -1,80 +1,48 @@
-"use client";
-
-const linkStyle = {
-  background: "rgba(20,20,20,0.6)",
-  backdropFilter: "blur(8px)",
-  padding: "14px 0",
-  borderRadius: "10px",
-  textDecoration: "none",
-  color: "white",
-  fontSize: "17px",
-  fontWeight: "600",
-  border: "1px solid rgba(255,255,255,0.12)",
-  transition: "0.3s",
+export const metadata = {
+  title: "Eight Studios of 888",
+  description: "Official shop and brand website.",
 };
 
-export default function Home() {
+export default function RootLayout({ children }) {
   return (
-    <main className="homepage">
-      {/* LOGO */}
-      <img
-        src="https://i.imgur.com/cvZxBNy.jpeg"
-        alt="888 logo"
-        className="logo888"
-      />
+    <html lang="en">
+      <body
+        style={{
+          margin: 0,
+          padding: 0,
+          backgroundColor: "black",
+          color: "white",
+          overflowX: "hidden",
+          minHeight: "100vh",
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+        }}
+      >
+        {/* NAVIGATION */}
+        <nav
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "24px",
+            padding: "18px 0",
+            fontWeight: "600",
+            position: "sticky",
+            top: 0,
+            background: "rgba(0,0,0,0.85)",
+            backdropFilter: "blur(6px)",
+            zIndex: 999,
+          }}
+        >
+          <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
+          <a href="/products/beanies" style={{ color: "white", textDecoration: "none" }}>Beanies</a>
+          <a href="/products/hoodies" style={{ color: "white", textDecoration: "none" }}>Hoodies</a>
+          <a href="/products/jeans" style={{ color: "white", textDecoration: "none" }}>Jeans</a>
+          <a href="/products/shorts" style={{ color: "white", textDecoration: "none" }}>Shorts</a>
+          <a href="/products/hats" style={{ color: "white", textDecoration: "none" }}>Hats</a>
+        </nav>
 
-      {/* CATEGORY BUTTONS */}
-      <div className="grid">
-        <a href="/products/beanies" style={linkStyle}>Beanies</a>
-        <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
-        <a href="/products/jeans" style={linkStyle}>Jeans</a>
-        <a href="/products/shorts" style={linkStyle}>Shorts</a>
-        <a href="/products/hats" style={{ ...linkStyle, gridColumn: "span 2" }}>
-          Hats
-        </a>
-      </div>
-
-      {/* GLOBAL STYLES */}
-      <style>{`
-        .homepage {
-          min-height: 100vh;
-          width: 100%;
-          background: radial-gradient(
-            circle at center,
-            rgba(160, 210, 255, 0.45),
-            rgba(0, 0, 0, 1) 75%
-          );
-          background-size: 160% 160%;
-          animation: drift 18s ease-in-out infinite;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          padding: 60px 20px;
-          overflow: hidden;
-        }
-
-        @keyframes drift {
-          0% { background-position: 50% 50%; }
-          50% { background-position: 47% 53%; }
-          100% { background-position: 50% 50%; }
-        }
-
-        .logo888 {
-          width: 230px;
-          margin-bottom: 55px;
-        }
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
-          width: 100%;
-          max-width: 450px;
-          text-align: center;
-        }
-      `}</style>
-    </main>
+        {children}
+      </body>
+    </html>
   );
 }
