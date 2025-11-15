@@ -1,5 +1,5 @@
 "use client";
-export const dynamic = "force-dynamic";
+
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -50,7 +50,13 @@ export default function BeanieOrderPage() {
         padding: "40px 20px",
       }}
     >
-      <h1 style={{ fontSize: "28px", marginBottom: "20px", textAlign: "center" }}>
+      <h1
+        style={{
+          fontSize: "28px",
+          marginBottom: "20px",
+          textAlign: "center",
+        }}
+      >
         Confirm Your Order
       </h1>
 
@@ -62,7 +68,10 @@ export default function BeanieOrderPage() {
           Glitter Color: <strong>{glitter}</strong>
         </p>
 
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+        >
           <label>Your Instagram or Email</label>
           <input
             type="text"
