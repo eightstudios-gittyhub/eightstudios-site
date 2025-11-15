@@ -15,59 +15,16 @@ const linkStyle = {
 
 export default function Home() {
   return (
-    <main
-      style={{
-        background: "transparent",
-        color: "white",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "60px 20px",
-        position: "relative",
-      }}
-    >
-
-      {/* FULL-SCREEN BACKGROUND GLOW */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-20%",
-          left: "-20%",
-          width: "140vw",
-          height: "140vh",
-          background:
-            "radial-gradient(circle at center, rgba(170,210,255,0.45), rgba(0,0,0,1) 70%)",
-          filter: "blur(120px)",
-          zIndex: -1,
-        }}
-      ></div>
-
+    <main className="homepage">
       {/* LOGO */}
       <img
         src="https://i.imgur.com/cvZxBNy.jpeg"
         alt="888 logo"
-        style={{
-          width: "230px",
-          filter:
-            "drop-shadow(0 0 45px rgba(255,255,255,0.85)) drop-shadow(0 0 90px rgba(150,200,255,0.7)) drop-shadow(0 0 130px rgba(140,255,215,0.5))",
-          animation: "pulse 3s ease-in-out infinite",
-          marginBottom: "55px",
-        }}
+        className="logo888"
       />
 
-      {/* CATEGORY GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "16px",
-          width: "100%",
-          maxWidth: "450px",
-          textAlign: "center",
-        }}
-      >
+      {/* CATEGORY BUTTONS */}
+      <div className="grid">
         <a href="/products/beanies" style={linkStyle}>Beanies</a>
         <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
         <a href="/products/jeans" style={linkStyle}>Jeans</a>
@@ -77,12 +34,45 @@ export default function Home() {
         </a>
       </div>
 
-      {/* SMOOTH PULSE ANIMATION */}
+      {/* GLOBAL STYLES */}
       <style>{`
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.07); opacity: 1; }
-          100% { transform: scale(1); opacity: 1; }
+        .homepage {
+          min-height: 100vh;
+          width: 100%;
+          background: radial-gradient(
+            circle at center,
+            rgba(160, 210, 255, 0.45),
+            rgba(0, 0, 0, 1) 75%
+          );
+          background-size: 160% 160%;
+          animation: drift 18s ease-in-out infinite;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          padding: 60px 20px;
+          overflow: hidden;
+        }
+
+        @keyframes drift {
+          0% { background-position: 50% 50%; }
+          50% { background-position: 47% 53%; }
+          100% { background-position: 50% 50%; }
+        }
+
+        .logo888 {
+          width: 230px;
+          margin-bottom: 55px;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+          width: 100%;
+          max-width: 450px;
+          text-align: center;
         }
       `}</style>
     </main>
