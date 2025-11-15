@@ -4,37 +4,14 @@ import { useState } from "react";
 export default function BeaniesPage() {
   const [open, setOpen] = useState(false);
 
-  const products = [
-    {
-      name: "Blue Beanie — White Glitter",
-      link: "/products/beanies/blue-beanie-white",
-      img: "https://i.imgur.com/C6WN82M.jpeg"
-    },
-    {
-      name: "Blue Beanie — Black Glitter",
-      link: "/products/beanies/bluebeanie-black",
-      img: "https://i.imgur.com/PmFzNSO.jpeg"
-    },
-    {
-      name: "Red Beanie — White Glitter",
-      link: "/products/beanies/redbeanie-white",
-      img: "https://i.imgur.com/g7X2vrf.jpeg"
-    },
-    {
-      name: "Yellow Beanie — White Glitter",
-      link: "/products/beanies/yellowbeanie-white",
-      img: "https://i.imgur.com/kCZE64z.jpeg"
-    },
-    {
-      name: "Green Beanie — Black Glitter",
-      link: "/products/beanies/greenbeanie-black",
-      img: "https://i.imgur.com/A3vdEKR.jpeg"
-    },
-    {
-      name: "Green Beanie — White Glitter",
-      link: "/products/beanies/greenbeanie-white",
-      img: "https://i.imgur.com/xJVm6tH.jpeg"
-    },
+  // Images for the carousel
+  const images = [
+    "https://i.imgur.com/C6WN82M.jpeg", // Blue — White Glitter
+    "https://i.imgur.com/PmFzNSO.jpeg", // Blue — Black Glitter
+    "https://i.imgur.com/g7X2vrf.jpeg", // Red — White Glitter
+    "https://i.imgur.com/kCZE64z.jpeg", // Yellow — White Glitter
+    "https://i.imgur.com/A3vdEKR.jpeg", // Green — Black Glitter
+    "https://i.imgur.com/xJVm6tH.jpeg", // Green — White Glitter
   ];
 
   return (
@@ -47,18 +24,138 @@ export default function BeaniesPage() {
         padding: "40px 20px",
       }}
     >
-      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>Beanies</h1>
+      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>888 Long Beanie</h1>
       <p style={{ opacity: 0.8, marginBottom: "40px" }}>
-        Handcrafted 1/1 custom beanies. No restocks.
+        Handmade 1/1 luxury beanie — choose your patch color + glitter.
       </p>
 
-      {/* BUILD YOUR OWN BEANIE (COLLAPSIBLE) */}
+  {/* Image Carousel — Auto Snap */}
+      <div
+        style={{
+          display: "flex",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          scrollBehavior: "smooth",
+          WebkitOverflowScrolling: "touch",
+          borderRadius: "12px",
+          gap: "0px",
+        }}
+      >
+        {images.map((img, i) => (
+          <div
+            key={i}
+            style={{
+              minWidth: "100%",
+              scrollSnapAlign: "center",
+            }}
+          >
+            <img
+              src={img}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "12px",
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* DOT NAVIGATION */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "12px",
+          gap: "6px",
+        }}
+      >
+        {images.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              width: "8px",
+              height: "8px",
+              borderRadius: "50%",
+              backgroundColor: "gray",
+              opacity: 0.5,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* PRODUCT CUSTOMIZATION */}
+      <div
+        style={{
+          marginTop: "45px",
+          textAlign: "left",
+          maxWidth: "600px",
+          marginInline: "auto",
+        }}
+      >
+        <label style={{ fontSize: "16px" }}>Patch Color</label>
+        <select
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginTop: "8px",
+            borderRadius: "6px",
+            background: "#111",
+            color: "white",
+            border: "1px solid #444",
+            marginBottom: "25px",
+          }}
+        >
+          <option>Red</option>
+          <option>Orange</option>
+          <option>Yellow</option>
+          <option>Green</option>
+          <option>Blue</option>
+          <option>Purple</option>
+        </select>
+
+        <label style={{ fontSize: "16px" }}>Glitter Color</label>
+        <select
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginTop: "8px",
+            borderRadius: "6px",
+            background: "#111",
+            color: "white",
+            border: "1px solid #444",
+          }}
+        >
+          <option>White</option>
+          <option>Black</option>
+        </select>
+
+        {/* BUY BUTTON */}
+        <a
+          href="YOUR_STRIPE_LINK_HERE"
+          style={{
+            display: "block",
+            marginTop: "35px",
+            padding: "15px",
+            background: "white",
+            color: "black",
+            borderRadius: "6px",
+            textAlign: "center",
+            fontWeight: "600",
+            textDecoration: "none",
+          }}
+        >
+          Buy Now — $60
+        </a>
+      </div>
+
+      {/* CUSTOM BEANIE BUILDER — COLLAPSIBLE */}
       <div
         style={{
           backgroundColor: "#111",
           padding: "25px",
           borderRadius: "10px",
-          margin: "0 auto 60px",
+          margin: "60px auto",
           maxWidth: "600px",
           textAlign: "center",
         }}
@@ -73,7 +170,8 @@ export default function BeaniesPage() {
             fontWeight: "600",
             cursor: "pointer",
             width: "100%",
-            textShadow: "0 0 18px rgba(255,255,255,0.45), 0 0 32px rgba(255,255,255,0.25)"
+            textShadow:
+              "0 0 18px rgba(255,255,255,0.45), 0 0 32px rgba(255,255,255,0.25)",
           }}
         >
           {open ? "Close Custom Beanie Builder ▲" : "Build Your Own Beanie ▼"}
@@ -90,7 +188,11 @@ export default function BeaniesPage() {
               method="POST"
               style={{ display: "flex", flexDirection: "column", gap: "12px" }}
             >
-              <input type="hidden" name="_subject" value="New Custom Beanie Request" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Custom Beanie Request"
+              />
 
               <label>Base Beanie Color</label>
               <select name="baseColor" required>
@@ -103,7 +205,9 @@ export default function BeaniesPage() {
                 <option value="Blue">Blue</option>
                 <option value="Purple">Purple</option>
                 <option value="Pink">Pink</option>
-                <option value="Custom Request">Custom Request (Describe Below)</option>
+                <option value="Custom Request">
+                  Custom Request (Describe Below)
+                </option>
               </select>
 
               <label>Patch Fabric Color</label>
@@ -182,48 +286,8 @@ export default function BeaniesPage() {
         )}
       </div>
 
-      {/* PRODUCT GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "28px",
-          justifyItems: "center",
-          maxWidth: "900px",
-          margin: "0 auto",
-        }}
-      >
-        {products.map((product, i) => (
-          <a
-            key={i}
-            href={product.link}
-            style={{
-              textDecoration: "none",
-              color: "white",
-              width: "100%",
-              maxWidth: "190px",
-            }}
-          >
-            <img
-              src={product.img}
-              style={{
-                width: "100%",
-                borderRadius: "12px",
-                boxShadow: "0 0 25px rgba(255,255,255,0.08)",
-              }}
-            />
-            <p style={{ marginTop: "12px", fontWeight: "600", fontSize: "14px" }}>
-              {product.name}
-            </p>
-            <p style={{ fontSize: "13px", opacity: 0.7, marginTop: "4px" }}>
-              See Details →
-            </p>
-          </a>
-        ))}
-      </div>
-
       {/* FOOTER */}
-      <div style={{ marginTop: "70px", opacity: 0.7 }}>
+      <div style={{ marginTop: "30px", opacity: 0.7 }}>
         <p style={{ marginBottom: "6px" }}>More pieces dropping soon.</p>
         <p>
           Custom requests:{" "}
