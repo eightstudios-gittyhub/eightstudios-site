@@ -24,9 +24,26 @@ export default function BeaniesPage() {
         padding: "40px 20px",
       }}
     >
-      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>888 Long Beanie</h1>
-      <p style={{ opacity: 0.8, marginBottom: "40px" }}>
+      {/* TITLE */}
+      <h1
+        style={{
+          fontSize: "32px",
+          fontWeight: "700",
+          marginBottom: "10px",
+        }}
+      >
+        888 Long Beanie
+      </h1>
+
+      {/* DESCRIPTION */}
+      <p style={{ opacity: 0.85, marginBottom: "6px", fontSize: "16px" }}>
         Handmade 1/1 luxury beanie — choose your patch color + glitter.
+      </p>
+      <p style={{ opacity: 0.8, marginBottom: "6px", fontSize: "15px" }}>
+        • made by Eight Studios (888inc.)
+      </p>
+      <p style={{ opacity: 0.8, marginBottom: "35px", fontSize: "15px" }}>
+        • price: $60
       </p>
 
       {/* IMAGE CAROUSEL */}
@@ -38,6 +55,7 @@ export default function BeaniesPage() {
           scrollBehavior: "smooth",
           WebkitOverflowScrolling: "touch",
           borderRadius: "12px",
+          marginBottom: "40px",
         }}
       >
         {images.map((img, i) => (
@@ -55,7 +73,14 @@ export default function BeaniesPage() {
       </div>
 
       {/* OPTIONS */}
-      <div style={{ marginTop: "45px", textAlign: "left", maxWidth: "600px", marginInline: "auto" }}>
+      <div
+        style={{
+          textAlign: "left",
+          maxWidth: "600px",
+          marginInline: "auto",
+        }}
+      >
+        {/* Patch Color */}
         <label>Patch Color</label>
         <select
           value={patchColor}
@@ -79,6 +104,7 @@ export default function BeaniesPage() {
           <option>Purple</option>
         </select>
 
+        {/* Glitter */}
         <label>Glitter Color</label>
         <select
           value={glitter}
