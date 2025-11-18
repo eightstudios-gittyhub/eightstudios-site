@@ -1,15 +1,11 @@
 "use client";
-
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 export default function BeaniesPage() {
   const [patchColor, setPatchColor] = useState("Red");
   const [glitter, setGlitter] = useState("White");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [zoomed, setZoomed] = useState(false);
 
-  const carouselRef = useRef(null);
-
+  // Updated HD Images
   const images = [
     "https://i.imgur.com/eSfJnxK.jpeg",
     "https://i.imgur.com/6jcNs6U.jpeg",
@@ -23,25 +19,6 @@ export default function BeaniesPage() {
     "https://i.imgur.com/nay20w6.jpeg",
   ];
 
-  // Track scroll for dot indicators
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const handleScroll = () => {
-      const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
-      setCurrentIndex(index);
-    };
-
-    carousel.addEventListener("scroll", handleScroll);
-    return () => carousel.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Toggle zoom on tap
-  const toggleZoom = () => {
-    setZoomed((prev) => !prev);
-  };
-
   return (
     <main
       style={{
@@ -52,149 +29,85 @@ export default function BeaniesPage() {
         padding: "40px 20px",
       }}
     >
-      {/* PREMIUM TITLE */}
+      {/* Title */}
       <h1
         style={{
-          fontSize: "34px",
+          fontSize: "32px",
           fontWeight: "700",
-          marginBottom: "12px",
+          marginBottom: "10px",
         }}
       >
         888 Long Beanie
       </h1>
 
-      {/* SUBTEXT */}
-      <p
-        style={{
-          opacity: 0.88,
-          marginBottom: "8px",
-          fontSize: "16px",
-          lineHeight: "1.45",
-        }}
-      >
+      {/* Description */}
+      <p style={{ opacity: 0.85, marginBottom: "6px", fontSize: "16px" }}>
         Handmade 1/1 luxury beanie — choose your patch color + glitter.
       </p>
 
-      {/* CENTERED BULLET POINTS */}
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "15px",
-          opacity: 0.82,
-          lineHeight: "1.3",
-          marginBottom: "28px",
-        }}
-      >
-        <p style={{ margin: "4px 0" }}>• made by Eight Studios (888inc.)</p>
-        <p style={{ margin: "4px 0" }}>• price: $60</p>
+      {/* CENTERED BULLETS */}
+      <div style={{ marginTop: "10px", marginBottom: "30px", lineHeight: "22px" }}>
+        <p style={{ opacity: 0.8, fontSize: "15px" }}>• made by Eight Studios (888inc.)</p>
+        <p style={{ opacity: 0.8, fontSize: "15px" }}>• price: $60</p>
       </div>
 
       {/* DIVIDER */}
       <div
         style={{
           width: "100%",
-          height: "2px",
-          margin: "15px auto 35px auto",
-          background:
-            "linear-gradient(90deg, rgba(185,205,255,0.35), rgba(255,255,255,0.1), rgba(185,205,255,0.35))",
+          height: "1px",
+          background: "rgba(255,255,255,0.15)",
+          margin: "0 auto 35px auto",
         }}
       />
 
-      {/* CAROUSEL */}
-      <div style={{ position: "relative", marginBottom: "20px" }}>
-        {/* Left Fade */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            width: "60px",
-            height: "100%",
-            background: "linear-gradient(to right, rgba(0,0,0,0.8), transparent)",
-            zIndex: 5,
-            pointerEvents: "none",
-          }}
-        />
-
-        {/* Right Fade */}
-        <div
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            width: "60px",
-            height: "100%",
-            background: "linear-gradient(to left, rgba(0,0,0,0.8), transparent)",
-            zIndex: 5,
-            pointerEvents: "none",
-          }}
-        />
-
-        {/* SCROLLABLE IMAGES */}
-        <div
-          ref={carouselRef}
-          style={{
-            display: "flex",
-            overflowX: zoomed ? "hidden" : "auto",
-            scrollSnapType: "x mandatory",
-            scrollBehavior: "smooth",
-            borderRadius: "12px",
-            cursor: zoomed ? "zoom-out" : "zoom-in",
-          }}
-        >
-          {images.map((img, index) => (
-            <div
-              key={index}
+      {/* IMAGE CAROUSEL */}
+      <div
+        style={{
+          display: "flex",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          scrollBehavior: "smooth",
+          WebkitOverflowScrolling: "touch",
+          borderRadius: "12px",
+          marginBottom: "40px",
+        }}
+      >
+        {images.map((img, index) => (
+          <div
+            key={index}
+            style={{
+              minWidth: "100%",
+              scrollSnapAlign: "center",
+              perspective: "800px", // enables 3D tilt
+            }}
+          >
+            <img
+              src={img}
               style={{
-                minWidth: "100%",
-                scrollSnapAlign: "center",
-                overflow: "hidden",
+                width: "100%",
+                height: "500px", // FORCE SAME HEIGHT
+                objectFit: "cover", // FIXES THE BLACK SPACE
+                borderRadius: "12px",
+                transition: "transform 0.3s ease-out",
               }}
-            >
-              <img
-                src={img}
-                onClick={toggleZoom}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "12px",
-                  transition: "transform 0.35s ease",
-                  transform: zoomed ? "scale(1.9)" : "scale(1)",
-                  transformOrigin: "center center",
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-      {/* DOT INDICATORS */}
-      {!zoomed && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "6px",
-            marginBottom: "35px",
-          }}
-        >
-          {images.map((_, i) => (
-            <div
-              key={i}
-              style={{
-                width: currentIndex === i ? "9px" : "7px",
-                height: currentIndex === i ? "9px" : "7px",
-                borderRadius: "50%",
-                backgroundColor:
-                  currentIndex === i
-                    ? "rgba(255,255,255,0.9)"
-                    : "rgba(255,255,255,0.35)",
-                transition: "0.25s",
+                const rotateY = (x / rect.width - 0.5) * 10;
+                const rotateX = (y / rect.height - 0.5) * -10;
+
+                e.currentTarget.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
               }}
             />
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
 
       {/* OPTIONS */}
       <div
@@ -204,6 +117,7 @@ export default function BeaniesPage() {
           marginInline: "auto",
         }}
       >
+        {/* Patch Color */}
         <label>Patch Color</label>
         <select
           value={patchColor}
@@ -227,6 +141,7 @@ export default function BeaniesPage() {
           <option>Purple</option>
         </select>
 
+        {/* Glitter Color */}
         <label>Glitter Color</label>
         <select
           value={glitter}
@@ -245,6 +160,7 @@ export default function BeaniesPage() {
           <option>Black</option>
         </select>
 
+        {/* BUY BUTTON */}
         <a
           href={`/products/beanies/order?patch=${patchColor}&glitter=${glitter}`}
           style={{
