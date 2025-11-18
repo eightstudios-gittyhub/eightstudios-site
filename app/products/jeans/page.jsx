@@ -12,6 +12,11 @@ export default function JeansPage() {
       link: "/products/jeans/starfade-denim",
       img: "https://i.imgur.com/N9WTq1o.jpeg"
     },
+    {
+      name: "Blooming Through Concrete — 1/1",
+      link: "/products/jeans/blooming-through-concrete",
+      img: "https://i.imgur.com/zCDwOmK.jpeg" // main thumbnail
+    },
   ];
 
   return (
@@ -34,7 +39,7 @@ export default function JeansPage() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",   // ← FIXED
+          gridTemplateColumns: "repeat(2, 1fr)",
           gap: "40px",
           justifyItems: "center",
           marginTop: "50px"
