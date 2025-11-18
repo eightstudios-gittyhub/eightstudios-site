@@ -5,7 +5,7 @@ export default function BeaniesPage() {
   const [patchColor, setPatchColor] = useState("Red");
   const [glitter, setGlitter] = useState("White");
 
-  // Updated HD Images
+  // HD Images
   const images = [
     "https://i.imgur.com/eSfJnxK.jpeg",
     "https://i.imgur.com/6jcNs6U.jpeg",
@@ -45,13 +45,13 @@ export default function BeaniesPage() {
         Handmade 1/1 luxury beanie — choose your patch color + glitter.
       </p>
 
-      {/* CENTERED BULLETS */}
+      {/* Centered bulleted info */}
       <div style={{ marginTop: "10px", marginBottom: "30px", lineHeight: "22px" }}>
         <p style={{ opacity: 0.8, fontSize: "15px" }}>• made by Eight Studios (888inc.)</p>
         <p style={{ opacity: 0.8, fontSize: "15px" }}>• price: $60</p>
       </div>
 
-      {/* DIVIDER */}
+      {/* Divider */}
       <div
         style={{
           width: "100%",
@@ -79,15 +79,15 @@ export default function BeaniesPage() {
             style={{
               minWidth: "100%",
               scrollSnapAlign: "center",
-              perspective: "800px", // enables 3D tilt
+              perspective: "800px",
             }}
           >
             <img
               src={img}
               style={{
                 width: "100%",
-                height: "500px", // FORCE SAME HEIGHT
-                objectFit: "cover", // FIXES THE BLACK SPACE
+                height: "500px",
+                objectFit: "cover",
                 borderRadius: "12px",
                 transition: "transform 0.3s ease-out",
               }}
@@ -141,7 +141,7 @@ export default function BeaniesPage() {
           <option>Purple</option>
         </select>
 
-        {/* Glitter Color */}
+        {/* Glitter Option */}
         <label>Glitter Color</label>
         <select
           value={glitter}
@@ -160,9 +160,10 @@ export default function BeaniesPage() {
           <option>Black</option>
         </select>
 
-        {/* BUY BUTTON */}
+        {/* BUY BUTTON → STRIPE DIRECT CHECKOUT */}
         <a
-          href={`/products/beanies/order?patch=${patchColor}&glitter=${glitter}`}
+          href="https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09"
+          target="_blank"
           style={{
             display: "block",
             marginTop: "35px",
