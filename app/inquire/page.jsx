@@ -42,12 +42,14 @@ function InquireForm() {
         color: "white",
         maxWidth: "700px",
         margin: "0 auto",
+        position: "relative",
       }}
     >
       <h1 style={{ fontSize: "32px", textAlign: "center" }}>
         Inquire About This Piece
       </h1>
 
+      {/* Opal Glow Divider */}
       <div
         style={{
           width: "200px",
@@ -70,25 +72,77 @@ function InquireForm() {
         Referencing: <strong>{ref.replace(/-/g, " ")}</strong>
       </p>
 
-      {submitted ? (
+      {/* SUCCESS MODAL */}
+      {submitted && (
         <div
           style={{
-            marginTop: "40px",
-            textAlign: "center",
-            padding: "20px",
-            borderRadius: "12px",
-            background: "rgba(20,20,20,0.6)",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            boxShadow: "0 0 18px rgba(180,160,255,0.45)",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            height: "100vh",
+            width: "100vw",
+            background: "rgba(0,0,0,0.65)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            animation: "fadeIn 0.4s ease forwards",
+            zIndex: 999,
           }}
         >
-          <h2 style={{ marginBottom: "10px" }}>Inquiry Submitted ✔️</h2>
-          <p style={{ opacity: 0.8 }}>
-            I’ll reach out to you shortly through the contact info you provided.
-          </p>
+          <div
+            style={{
+              width: "90%",
+              maxWidth: "420px",
+              background: "rgba(20,20,20,0.7)",
+              padding: "30px 24px",
+              borderRadius: "14px",
+              border: "1px solid rgba(255,255,255,0.18)",
+              boxShadow: "0 0 22px rgba(180,160,255,0.55)",
+              textAlign: "center",
+              animation: "fadeIn 0.4s ease forwards",
+            }}
+          >
+            <h2
+              style={{
+                marginBottom: "10px",
+                fontSize: "24px",
+                fontWeight: "600",
+              }}
+            >
+              Inquiry Sent ✔️
+            </h2>
+
+            <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: "22px" }}>
+              Thank you — your request has been delivered.  
+              I’ll reach out shortly through the contact info you provided.
+            </p>
+
+            <a
+              href="/archives"
+              style={{
+                display: "inline-block",
+                padding: "12px 22px",
+                borderRadius: "10px",
+                background:
+                  "linear-gradient(90deg, rgba(120,110,150,0.35), rgba(150,130,200,0.35))",
+                boxShadow: "0 0 18px rgba(180,160,255,0.4)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "white",
+                fontSize: "16px",
+                fontWeight: "600",
+                textDecoration: "none",
+                transition: "0.3s",
+              }}
+            >
+              ← Return to Archive
+            </a>
+          </div>
         </div>
-      ) : (
+      )}
+
+      {/* FORM (hidden when submitted) */}
+      {!submitted && (
         <form
           onSubmit={handleSubmit}
           style={{
@@ -145,12 +199,23 @@ function InquireForm() {
               color: "white",
               border: "1px solid rgba(255,255,255,0.15)",
               cursor: "pointer",
+              transition: "0.3s",
             }}
           >
             Submit Inquiry
           </button>
         </form>
       )}
+
+      {/* KEYFRAME ANIMATION */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}
+      </style>
     </main>
   );
 }
