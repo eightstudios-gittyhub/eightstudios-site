@@ -7,10 +7,29 @@ function InquireForm() {
   const params = useSearchParams();
   const ref = params.get("ref") || "Archive Garment";
 
+  const [instagram, setInstagram] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await fetch("/api/send-inquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        instagram,
+        email,
+        phone,
+        message,
+        ref,
+      }),
+    });
+
     setSubmitted(true);
   };
 
@@ -29,7 +48,6 @@ function InquireForm() {
         Inquire About This Piece
       </h1>
 
-      {/* Opal Glow Divider */}
       <div
         style={{
           width: "200px",
@@ -84,6 +102,8 @@ function InquireForm() {
             type="text"
             required
             placeholder="Your Instagram @"
+            value={instagram}
+            onChange={(e) => setInstagram(e.target.value)}
             style={inputStyle}
           />
 
@@ -91,18 +111,24 @@ function InquireForm() {
             type="email"
             required
             placeholder="Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             style={inputStyle}
           />
 
           <input
             type="text"
             placeholder="Your Phone Number (optional)"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             style={inputStyle}
           />
 
           <textarea
             placeholder="Describe what you want inspired by this piece..."
             rows={5}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             style={{ ...inputStyle, resize: "none" }}
           />
 
