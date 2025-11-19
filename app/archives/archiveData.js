@@ -1,5 +1,3 @@
-// /app/archives/archiveData.js
-
 export const archiveItems = [
   {
     name: "Kokopelli Orange Hoodie — 1/1",
