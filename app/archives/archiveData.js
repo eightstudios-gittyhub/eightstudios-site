@@ -16,7 +16,7 @@ export const archiveItems = [
   {
     name: "888 Bleach Flannel — 1/1",
     slug: "888-flannel",
-    img: "https://i.imgur.com/g7X2vrf.jpeg",
+    img: "https://i.imgur.com/OIZgwsu.jpeg",   // UPDATED IMAGE
     description:
       "Bleach-treated flannel with 888 branding, custom fade patterns, and heat-set vinyl graphics.",
   },
