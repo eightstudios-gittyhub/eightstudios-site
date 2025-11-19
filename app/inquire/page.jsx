@@ -1,9 +1,9 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 
-export default function InquirePage() {
+function InquireForm() {
   const params = useSearchParams();
   const ref = params.get("ref") || "Archive Garment";
 
@@ -52,7 +52,6 @@ export default function InquirePage() {
         Referencing: <strong>{ref.replace(/-/g, " ")}</strong>
       </p>
 
-      {/* SUCCESS MESSAGE */}
       {submitted ? (
         <div
           style={{
@@ -81,7 +80,6 @@ export default function InquirePage() {
             marginTop: "20px",
           }}
         >
-          {/* Instagram @ */}
           <input
             type="text"
             required
@@ -89,7 +87,6 @@ export default function InquirePage() {
             style={inputStyle}
           />
 
-          {/* Email */}
           <input
             type="email"
             required
@@ -97,24 +94,18 @@ export default function InquirePage() {
             style={inputStyle}
           />
 
-          {/* Phone Number */}
           <input
             type="text"
             placeholder="Your Phone Number (optional)"
             style={inputStyle}
           />
 
-          {/* Message */}
           <textarea
             placeholder="Describe what you want inspired by this piece..."
             rows={5}
-            style={{
-              ...inputStyle,
-              resize: "none",
-            }}
+            style={{ ...inputStyle, resize: "none" }}
           />
 
-          {/* Submit */}
           <button
             type="submit"
             style={{
@@ -148,3 +139,11 @@ const inputStyle = {
   outline: "none",
   backdropFilter: "blur(6px)",
 };
+
+export default function Page() {
+  return (
+    <Suspense>
+      <InquireForm />
+    </Suspense>
+  );
+}
