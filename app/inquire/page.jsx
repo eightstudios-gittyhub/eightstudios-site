@@ -154,7 +154,6 @@ function InquireForm() {
         >
           <input
             type="text"
-            required
             placeholder="Your Instagram @"
             value={instagram}
             onChange={(e) => setInstagram(e.target.value)}
