@@ -123,7 +123,7 @@ export default function ArchiveDetail({ params }) {
       </p>
 
       <a
-        href={`/custom-request?ref=${item.slug}`}
+  href={`/inquire?ref=${item.slug}`}
         style={{
           display: "inline-block",
           padding: "14px 26px",
