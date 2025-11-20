@@ -15,7 +15,7 @@ export const archiveItems = [
       "Bleach-treated flannel with 888 branding, custom fade patterns, and heat-set vinyl graphics.",
   },
   {
-  name: "888 Phone Case Nature — 1/1",
+  name: "888Phone Case Nature — 1/1",
   slug: "888-phone-case-nature",
   images: [
     "https://i.imgur.com/Sc34kYG.jpeg",
@@ -24,6 +24,10 @@ export const archiveItems = [
     "https://i.imgur.com/DhebAIt.jpeg",
     "https://i.imgur.com/xnZsqP0.jpeg"
   ],
-  description: "888 Phone Case Nature, used about 20 materials.",
+  description: "• made by Eight Studios (888inc.)
+  
+  • price for something like this $50-$88
+  
+  888Phone Case Nature, used about 20 materials.",
   },
 ];
