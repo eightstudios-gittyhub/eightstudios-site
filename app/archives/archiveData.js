@@ -2,6 +2,19 @@
 
 export const archiveItems = [
   {
+  name: "Skinny Jeans 888Halloween Edition",
+  slug: "skinny-jeans-888halloween-edition",
+  images: [
+    "https://i.imgur.com/QSzHsYr.jpeg", // main thumbnail
+    "https://i.imgur.com/ew8YVn9.jpeg",
+    "https://i.imgur.com/VD4vY5h.jpeg",
+    "https://i.imgur.com/Gx5NeY5.jpeg",
+    "https://i.imgur.com/57weq3B.jpeg",
+  ],
+  description:
+    "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75",
+},
+  {
     name: "888 Bleach Flannel — 1/1",
     slug: "888-flannel",
     images: [
