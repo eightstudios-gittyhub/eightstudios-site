@@ -113,17 +113,16 @@ export default function ArchiveDetail({ params }) {
       {/* ⭐ OPAL GLOW DESCRIPTION TEXT ⭐ */}
       <p
         style={{
-          opacity: 0.90,
           whiteSpace: "pre-line",
-          lineHeight: "1.6",
+          lineHeight: "1.65",
           fontSize: "16px",
           marginTop: "30px",
           marginBottom: "40px",
           textShadow: `
-            0 0 6px rgba(255, 180, 255, 0.45),
-            0 0 12px rgba(170, 110, 255, 0.35),
-            0 0 24px rgba(120, 90, 255, 0.25),
-            0 0 38px rgba(110, 60, 255, 0.25)
+            0 0 8px rgba(255, 180, 255, 0.55),
+            0 0 16px rgba(170, 110, 255, 0.45),
+            0 0 28px rgba(120, 90, 255, 0.35),
+            0 0 44px rgba(110, 60, 255, 0.35)
           `,
         }}
       >
@@ -191,7 +190,6 @@ export default function ArchiveDetail({ params }) {
         }
 
         .thumbButton img {
-          display: block;
           width: 70px;
           height: 70px;
           object-fit: cover;
