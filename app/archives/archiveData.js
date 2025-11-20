@@ -15,28 +15,6 @@ export const archiveItems = [
       "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75\n✨ Made in 2023 (Opal Glow Edition)",
   },
 
-  // Version 2
-  {
-    name: "Skinny Jeans 888Halloween Edition — 1/1 (Alt Version)",
-    slug: "skinny-jeans-888halloween-edition-alt",
-    images: [
-      "https://i.imgur.com/QSzHsYr.jpeg",
-    ],
-    description:
-      "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75\n✨ Made in 2023 (Opal Glow Edition)",
-  },
-
-  // Version 3
-  {
-    name: "Skinny Jeans 888Halloween Edition — 1/1 (Alt Version 2)",
-    slug: "skinny-jeans-888halloween-edition-alt2",
-    images: [
-      "https://i.imgur.com/QSzHsYr.jpeg",
-    ],
-    description:
-      "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75",
-  },
-
   {
     name: "888 Bleach Flannel — 1/1",
     slug: "888-flannel",
