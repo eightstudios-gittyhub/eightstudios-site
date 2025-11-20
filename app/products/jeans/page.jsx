@@ -3,6 +3,11 @@
 export default function JeansPage() {
   const products = [
     {
+  name: "Arctic Oil Spill — 1/1",
+  link: "/products/jeans/arctic-oil-spill",
+  img: "https://i.imgur.com/5p9IhQ0.jpeg"
+    },
+    {
       name: "Plaid8 Cargo PJ’s — 1/1",
       link: "/products/jeans/plaid8-cargo-pjs",
       img: "https://i.imgur.com/NYQt6sa.jpeg"
