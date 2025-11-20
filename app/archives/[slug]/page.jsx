@@ -37,7 +37,7 @@ export default function ArchiveDetail({ params }) {
     if (!images.length || touchStartX === null) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX;
 
-    const threshold = 40; // swipe sensitivity
+    const threshold = 40;
     if (Math.abs(deltaX) > threshold) {
       if (deltaX < 0 && activeIndex < images.length - 1) {
         setActiveIndex(activeIndex + 1);
@@ -84,7 +84,7 @@ export default function ArchiveDetail({ params }) {
               onTouchEnd={handleTouchEnd}
             >
               <img
-                key={images[activeIndex]} // helps trigger transition
+                key={images[activeIndex]}
                 src={images[activeIndex]}
                 alt={`${item.name} - image ${activeIndex + 1}`}
               />
@@ -110,20 +110,28 @@ export default function ArchiveDetail({ params }) {
         )}
       </div>
 
+      {/* ⭐ OPAL GLOW DESCRIPTION TEXT ⭐ */}
       <p
         style={{
-          opacity: 0.85,
+          opacity: 0.90,
+          whiteSpace: "pre-line",
           lineHeight: "1.6",
           fontSize: "16px",
           marginTop: "30px",
           marginBottom: "40px",
+          textShadow: `
+            0 0 6px rgba(255, 180, 255, 0.45),
+            0 0 12px rgba(170, 110, 255, 0.35),
+            0 0 24px rgba(120, 90, 255, 0.25),
+            0 0 38px rgba(110, 60, 255, 0.25)
+          `,
         }}
       >
         {item.description}
       </p>
 
       <a
-  href={`/inquire?ref=${item.slug}`} 
+        href={`/inquire?ref=${item.slug}`}
         style={{
           display: "inline-block",
           padding: "14px 26px",
