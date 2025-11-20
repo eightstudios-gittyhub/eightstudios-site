@@ -215,4 +215,4 @@ export default function ArchiveDetail({ params }) {
       `}</style>
     </main>
   );
-}
+} 
