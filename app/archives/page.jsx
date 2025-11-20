@@ -15,10 +15,12 @@ export default function ArchivePage() {
         textAlign: "center",
       }}
     >
+      {/* PAGE TITLE */}
       <h1 style={{ fontSize: "36px", marginBottom: "6px" }}>
         Eight Studios Archive
       </h1>
 
+      {/* TITLE UNDERLINE GLOW */}
       <div
         style={{
           width: "180px",
@@ -30,45 +32,46 @@ export default function ArchivePage() {
         }}
       />
 
+      {/* SUBTEXT */}
       <p style={{ opacity: 0.8, marginBottom: "40px" }}>
         Explore past 1/1 creations, sold items, prototypes, and exclusive Eight
         Studios pieces.
       </p>
 
-      {/* RESPONSIVE GRID */}
-      <div
-        id="archive-grid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)", // desktop 5 across
-          gap: "24px",
-          maxWidth: "1600px",
-          margin: "0 auto",
-          padding: "0 10px",
-        }}
-      >
-        <style>
-          {`
-            @media (max-width: 1200px) {
-              #archive-grid {
-                grid-template-columns: repeat(3, 1fr);
-              }
-            }
+      {/* RESPONSIVE GRID STYLES */}
+      <style>
+        {`
+          #archive-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 10px;
+          }
 
-            @media (max-width: 800px) {
-              #archive-grid {
-                grid-template-columns: repeat(2, 1fr);
-              }
+          @media (max-width: 1200px) {
+            #archive-grid {
+              grid-template-columns: repeat(3, 1fr);
             }
+          }
 
-            @media (max-width: 550px) {
-              #archive-grid {
-                grid-template-columns: repeat(1, 1fr);
-              }
+          @media (max-width: 800px) {
+            #archive-grid {
+              grid-template-columns: repeat(2, 1fr);
             }
-          `}
-        </style>
+          }
 
+          @media (max-width: 550px) {
+            #archive-grid {
+              grid-template-columns: repeat(1, 1fr);
+            }
+          }
+        `}
+      </style>
+
+      {/* GRID */}
+      <div id="archive-grid">
         {archiveItems.map((item) => {
           const thumb = item.images?.[0];
 
@@ -88,6 +91,7 @@ export default function ArchivePage() {
                 transition: "0.3s",
               }}
             >
+              {/* THUMBNAIL */}
               <div
                 style={{
                   width: "100%",
@@ -99,9 +103,9 @@ export default function ArchivePage() {
                 }}
               />
 
+              {/* TEXT AREA */}
               <div style={{ padding: "16px" }}>
                 <h2 style={{ fontSize: "18px", margin: 0 }}>{item.name}</h2>
-
                 <p
                   style={{
                     opacity: 0.7,
