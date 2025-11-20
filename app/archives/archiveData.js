@@ -2,6 +2,29 @@
 
 export const archiveItems = [
   {
+    name: "888Jeans (001) first jeans made ever.",
+    slug: "888jeans-001",
+    images: [
+      "https://i.imgur.com/lLhgT5B.jpeg",
+      "https://i.imgur.com/I8YxmdX.jpeg",
+      "https://i.imgur.com/PckWuDk.jpeg",
+      "https://i.imgur.com/h8hWMkK.jpeg",
+      "https://i.imgur.com/UsyxIR6.jpeg",
+      "https://i.imgur.com/yZrrK8w.jpeg",
+      "https://i.imgur.com/DF0ybXg.jpeg",
+      "https://i.imgur.com/TeyMG5w.jpeg",
+    ],
+    description:
+      `888Jeans — used about 15 materials.
+
+• made by Eight Studios (888inc.)
+
+• price: for something like this, inquire.  
+
+•made in 2022`,
+  },
+
+  {
     name: "Skinny Jeans 888Halloween Edition — 1/1",
     slug: "skinny-jeans-888halloween-edition",
     images: [
