@@ -35,13 +35,14 @@ export default function ArchivePage() {
         Studios pieces.
       </p>
 
-      {/* GRID */}
+      {/* GRID — 5 ITEMS ACROSS */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+          gridTemplateColumns: "repeat(5, 1fr)", // EXACTLY 5 per row
           gap: "24px",
-          maxWidth: "1200px",
+          padding: "0 10px",
+          maxWidth: "1600px",
           margin: "0 auto",
         }}
       >
@@ -59,6 +60,8 @@ export default function ArchivePage() {
                 overflow: "hidden",
                 border: "1px solid rgba(255,255,255,0.12)",
                 transition: "0.3s",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <div
