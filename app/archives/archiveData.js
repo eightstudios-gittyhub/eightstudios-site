@@ -30,4 +30,21 @@ export const archiveItems = [
   
   888Phone Case Nature, used about 20 materials.",
   },
+  {
+  name: "888Phone Crimson Sharkbite Case — 1/1",
+  slug: "888-phone-crimson-sharkbite-case",
+  images: [
+    "https://i.imgur.com/LJiA1tW.jpeg",
+    "https://i.imgur.com/IVH3tQw.jpeg",
+    "https://i.imgur.com/VU0GXLD.jpeg",
+    "https://i.imgur.com/95TZEiu.jpeg",
+    "https://i.imgur.com/LWiuUUh.jpeg"
+  ],
+  description:
+    "• made by Eight Studios (888inc.)\n\n" +
+    
+    "• price for something like this $55-$88\n\n" +
+    
+    "888Phone Crimson Sharkbite Case, used about 10 materials.",
+},
 ];
