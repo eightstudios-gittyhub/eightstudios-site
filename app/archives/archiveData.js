@@ -12,7 +12,7 @@ export const archiveItems = [
       "https://i.imgur.com/57weq3B.jpeg",
     ],
     description:
-      "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75\n✨ Made in 2023 (Opal Glow Edition)",
+      "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75\n • Made in 2023",
   },
 
   {
