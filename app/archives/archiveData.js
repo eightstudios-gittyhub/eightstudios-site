@@ -41,10 +41,8 @@ export const archiveItems = [
     "https://i.imgur.com/LWiuUUh.jpeg"
   ],
   description:
-    "• made by Eight Studios (888inc.)\n\n" +
-    
+    "• made by Eight Studios (888inc.)\n" +
     "• price for something like this $55-$88\n\n" +
-    
-    "888Phone Crimson Sharkbite Case, used about 10 materials.",
+    "888Phone Crimson Sharkbite Case — used about 10 materials.",
 },
 ];
