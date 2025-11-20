@@ -68,7 +68,9 @@ export default function ArcticOilSpill() {
 
       {/* BUY BUTTON */}
       <a
-        href="#"
+        href="https://buy.stripe.com/3cI3cx1ozel42NBgBc5Rm0a"
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           display: "inline-block",
           marginTop: "40px",
