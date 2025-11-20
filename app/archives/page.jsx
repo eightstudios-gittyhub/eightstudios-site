@@ -43,7 +43,7 @@ export default function ArchivePage() {
         {`
           #archive-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(5, 1fr); /* Desktop */
             gap: 24px;
             max-width: 1600px;
             margin: 0 auto;
@@ -52,19 +52,13 @@ export default function ArchivePage() {
 
           @media (max-width: 1200px) {
             #archive-grid {
-              grid-template-columns: repeat(3, 1fr);
+              grid-template-columns: repeat(3, 1fr); /* Tablets */
             }
           }
 
-          @media (max-width: 800px) {
+          @media (max-width: 768px) {
             #archive-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-
-          @media (max-width: 550px) {
-            #archive-grid {
-              grid-template-columns: repeat(1, 1fr);
+              grid-template-columns: repeat(2, 1fr); /* Phones */
             }
           }
         `}
