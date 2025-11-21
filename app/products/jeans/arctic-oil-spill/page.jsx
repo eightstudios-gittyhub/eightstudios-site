@@ -22,9 +22,23 @@ export default function ArcticOilSpill() {
       }}
     >
       {/* TITLE */}
-      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>
-        Arctic Oil Spill • size - 30W/30L
+      <h1 style={{ fontSize: "32px", marginBottom: "6px" }}>
+        Arctic Oil Spill
       </h1>
+
+      {/* SIZE LINE UNDER TITLE */}
+      <p
+        style={{
+          marginTop: "0px",
+          marginBottom: "20px",
+          fontSize: "18px",
+          color: "rgba(255, 255, 255, 0.6)", // same tone as footer line
+          textShadow: "0 0 8px rgba(255,255,255,0.35)", // same glow
+          letterSpacing: "0.5px",
+        }}
+      >
+        size — 30W/30L
+      </p>
 
       {/* DESCRIPTION BLOCK */}
       <div
