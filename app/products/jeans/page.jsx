@@ -3,9 +3,9 @@
 export default function JeansPage() {
   const products = [
     {
-  name: "Arctic Oil Spill — 1/1",
-  link: "/products/jeans/arctic-oil-spill",
-  img: "https://i.imgur.com/5p9IhQ0.jpeg"
+      name: "Arctic Oil Spill — 1/1",
+      link: "/products/jeans/arctic-oil-spill",
+      img: "https://i.imgur.com/5p9IhQ0.jpeg"
     },
     {
       name: "Plaid8 Cargo PJ’s — 1/1",
@@ -18,9 +18,9 @@ export default function JeansPage() {
       img: "https://i.imgur.com/N9WTq1o.jpeg"
     },
     {
-      name: "Blooming Through Concrete — 1/1",
+      name: "Blooming Through Concrete — 1/1 Women’s Jeans",
       link: "/products/jeans/blooming-through-concrete",
-      img: "https://i.imgur.com/zCDwOmK.jpeg" // main thumbnail
+      img: "https://i.imgur.com/zCDwOmK.jpeg"
     },
   ];
 
@@ -40,7 +40,7 @@ export default function JeansPage() {
         Custom denim and patchwork pieces will appear here as new drops release.
       </p>
 
-      {/* FIXED GRID — MATCHES BEANIES EXACTLY */}
+      {/* FIXED GRID */}
       <div
         style={{
           display: "grid",
@@ -69,6 +69,8 @@ export default function JeansPage() {
                   boxShadow: "0 0 25px rgba(255, 255, 255, 0.08)"
                 }}
               />
+
+              {/* TITLE WITH CONDITIONAL PINK GLOW */}
               <h2
                 style={{
                   marginTop: "12px",
@@ -76,8 +78,23 @@ export default function JeansPage() {
                   fontWeight: 500
                 }}
               >
-                {product.name}
+                {product.name.includes("Blooming Through Concrete") ? (
+                  <>
+                    Blooming Through Concrete — 1/1{" "}
+                    <span
+                      style={{
+                        textShadow: "0 0 10px rgba(255,120,160,0.85)",
+                        color: "white"
+                      }}
+                    >
+                      Women’s Jeans
+                    </span>
+                  </>
+                ) : (
+                  product.name
+                )}
               </h2>
+
               <p style={{ color: "#aaa", fontSize: "14px" }}>See Details →</p>
             </a>
           </div>
