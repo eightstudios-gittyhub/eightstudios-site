@@ -1,17 +1,12 @@
 "use client";
 
-export default function ProductPageTemplate({
+export default function ProductPage({
   title,
   size,
+  price,
   description,
-  images,
-  stripe
+  images = [],
 }) {
-  const purpleGlow = {
-    color: "#caa9ff",
-    textShadow: "0 0 12px #b388ff, 0 0 22px #caa9ff"
-  };
-
   return (
     <main
       style={{
@@ -19,78 +14,69 @@ export default function ProductPageTemplate({
         color: "white",
         padding: "40px 20px",
         textAlign: "center",
-        minHeight: "100vh"
+        minHeight: "100vh",
       }}
     >
       {/* TITLE */}
-      <h1 style={{ fontSize: "32px", marginBottom: "6px" }}>{title}</h1>
+      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>{title}</h1>
 
-      {/* SIZE LINE — ALWAYS PURPLE GLOW */}
-      <p
-        style={{
-          marginTop: "0px",
-          marginBottom: "20px",
-          fontSize: "18px",
-          ...purpleGlow
-        }}
-      >
-        {size}
-      </p>
+      {/* SIZE */}
+      {size && (
+        <p
+          style={{
+            fontSize: "18px",
+            marginBottom: price ? "8px" : "25px",
+            color: "#d291ff",
+            textShadow: "0 0 8px #b34dff, 0 0 12px #b34dff",
+          }}
+        >
+          size — {size}
+        </p>
+      )}
+
+      {/* PRICE */}
+      {price && (
+        <p
+          style={{
+            fontSize: "18px",
+            marginBottom: "25px",
+            color: "white",
+            opacity: 0.9,
+          }}
+        >
+          price — {price}
+        </p>
+      )}
 
       {/* DESCRIPTION */}
-      <div
-        style={{
-          margin: "0 auto",
-          marginBottom: "30px",
-          fontSize: "16px",
-          lineHeight: "1.6"
-        }}
-      >
-        {description.split("\n").map((line, i) => (
-          <p key={i} style={{ margin: "6px 0" }}>
-            {line}
-          </p>
-        ))}
-      </div>
+      {description && (
+        <div
+          style={{
+            fontSize: "16px",
+            lineHeight: "1.6",
+            marginBottom: "30px",
+            whiteSpace: "pre-line",
+          }}
+        >
+          {description}
+        </div>
+      )}
 
       {/* IMAGES */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "16px",
-          maxWidth: "980px",
-          margin: "0 auto 40px"
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         {images.map((src, i) => (
           <img
             key={i}
             src={src}
-            style={{ width: "100%", borderRadius: "10px" }}
+            style={{
+              width: "100%",
+              maxWidth: "500px",
+              margin: "0 auto",
+              borderRadius: "4px",
+            }}
           />
         ))}
       </div>
-
-      {/* BUY BUTTON */}
-      <a
-        href={stripe}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "inline-block",
-          marginTop: "20px",
-          backgroundColor: "white",
-          color: "black",
-          padding: "12px 28px",
-          borderRadius: "8px",
-          fontWeight: "600",
-          textDecoration: "none",
-          fontSize: "16px"
-        }}
-      >
-        Buy Now
-      </a>
     </main>
   );
 }
