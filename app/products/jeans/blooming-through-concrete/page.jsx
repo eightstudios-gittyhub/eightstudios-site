@@ -15,6 +15,13 @@ export default function BloomingThroughConcrete() {
     "https://i.imgur.com/SteLeNb.jpeg",
   ];
 
+  // purple glow style
+  const purpleGlow = {
+    color: "#caa9ff",
+    textShadow: "0 0 12px #b388ff, 0 0 22px #caa9ff",
+    letterSpacing: "0.5px",
+  };
+
   return (
     <main
       style={{
@@ -36,9 +43,7 @@ export default function BloomingThroughConcrete() {
           marginTop: "6px",
           marginBottom: "20px",
           fontSize: "18px",
-          color: "rgba(255,255,255,0.6)",
-          textShadow: "0 0 8px rgba(255,255,255,0.35)",
-          letterSpacing: "0.5px",
+          ...purpleGlow,
         }}
       >
         1/1 luxury woman’s jeans
@@ -50,9 +55,7 @@ export default function BloomingThroughConcrete() {
           marginTop: "0px",
           marginBottom: "20px",
           fontSize: "18px",
-          color: "rgba(255,255,255,0.6)",
-          textShadow: "0 0 8px rgba(255,255,255,0.35)",
-          letterSpacing: "0.5px",
+          ...purpleGlow,
         }}
       >
         size — 8 (29–31.5 in waist)
@@ -66,6 +69,7 @@ export default function BloomingThroughConcrete() {
           fontSize: "16px",
           lineHeight: "1.6",
           opacity: 0.9,
+          ...purpleGlow,
         }}
       >
         • made by Eight Studios (888inc.) <br />
