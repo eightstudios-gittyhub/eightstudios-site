@@ -5,7 +5,11 @@ export default function Plaid8CargoPjs() {
     <ProductPageTemplate
       title='888 “Plaid8 Cargo PJ’s” — 1/1'
       size="Fits Waist — 30–36"
-      description={`• one-of-one plaid cargo pants with 888 print pattern placement
+      price="$60"
+      description={`• price: $60
+• made by Eight Studios (888inc.)
+• made in 2024
+• one-of-one plaid cargo pants with 888 print pattern placement
 • elastic waistband · fits 30–36 comfortably
 • no restocks — one-time release`}
       images={[
