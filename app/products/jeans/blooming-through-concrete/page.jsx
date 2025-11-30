@@ -30,12 +30,12 @@ export default function BloomingThroughConcrete() {
         minHeight: "100vh",
       }}
     >
-      {/* TITLE (white — stays white) */}
+      {/* TITLE (white) */}
       <h1 style={{ fontSize: "32px", marginBottom: "0px" }}>
         Blooming Through Concrete
       </h1>
 
-      {/* SUBTITLE (this was grey → now purple) */}
+      {/* PURPLE LINE #1 */}
       <p
         style={{
           marginTop: "6px",
@@ -47,7 +47,7 @@ export default function BloomingThroughConcrete() {
         1/1 luxury woman’s jeans
       </p>
 
-      {/* SIZE LINE (grey → purple) */}
+      {/* PURPLE LINE #2 */}
       <p
         style={{
           marginTop: "0px",
@@ -59,14 +59,15 @@ export default function BloomingThroughConcrete() {
         size — 8 (29–31.5 in waist)
       </p>
 
-      {/* DESCRIPTION (these were grey → purple) */}
+      {/* EVERYTHING BELOW STAYS WHITE */}
       <div
         style={{
           margin: "0 auto",
           marginBottom: "30px",
           fontSize: "16px",
           lineHeight: "1.6",
-          ...purpleGlow,
+          color: "white",
+          textShadow: "none",
         }}
       >
         • made by Eight Studios (888inc.) <br />
@@ -76,7 +77,7 @@ export default function BloomingThroughConcrete() {
         • handmade 1/1 luxury woman’s jeans
       </div>
 
-      {/* IMAGES (unchanged) */}
+      {/* IMAGES */}
       <div
         style={{
           display: "flex",
@@ -99,7 +100,7 @@ export default function BloomingThroughConcrete() {
         ))}
       </div>
 
-      {/* BUY BUTTON (white — stays white) */}
+      {/* BUY BUTTON (white) */}
       <a
         href="#"
         target="_blank"
