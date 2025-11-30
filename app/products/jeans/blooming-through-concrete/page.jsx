@@ -23,15 +23,15 @@ export default function BloomingThroughConcrete() {
   return (
     <main
       style={{
-        backgroundColor: "black",
-        color: "white",
-        padding: "40px 20px",
         textAlign: "center",
+        padding: "40px 20px",
+        background: "black",
+        color: "white",
         minHeight: "100vh",
       }}
     >
       {/* TITLE (white) */}
-      <h1 style={{ fontSize: "32px", marginBottom: "0px" }}>
+      <h1 style={{ fontSize: "28px", marginBottom: "8px" }}>
         Blooming Through Concrete
       </h1>
 
@@ -39,7 +39,7 @@ export default function BloomingThroughConcrete() {
       <p
         style={{
           marginTop: "6px",
-          marginBottom: "20px",
+          marginBottom: "10px",
           fontSize: "18px",
           ...purpleGlow,
         }}
@@ -51,7 +51,7 @@ export default function BloomingThroughConcrete() {
       <p
         style={{
           marginTop: "0px",
-          marginBottom: "20px",
+          marginBottom: "28px",
           fontSize: "18px",
           ...purpleGlow,
         }}
@@ -59,13 +59,13 @@ export default function BloomingThroughConcrete() {
         size — 8 (29–31.5 in waist)
       </p>
 
-      {/* EVERYTHING BELOW STAYS WHITE */}
+      {/* DESCRIPTION (white) */}
       <div
         style={{
-          margin: "0 auto",
-          marginBottom: "30px",
+          margin: "0 auto 30px",
           fontSize: "16px",
           lineHeight: "1.6",
+          maxWidth: "700px",
           color: "white",
           textShadow: "none",
         }}
@@ -77,14 +77,14 @@ export default function BloomingThroughConcrete() {
         • handmade 1/1 luxury woman’s jeans
       </div>
 
-      {/* IMAGES */}
+      {/* IMAGE GRID (MATCHES STARFADE EXACTLY) */}
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          maxWidth: "600px",
-          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "16px",
+          maxWidth: "980px",
+          margin: "0 auto 40px",
         }}
       >
         {images.map((src, i) => (
@@ -94,30 +94,47 @@ export default function BloomingThroughConcrete() {
             alt="Blooming Through Concrete"
             style={{
               width: "100%",
-              borderRadius: "12px",
+              borderRadius: "10px",
+              objectFit: "cover",
             }}
           />
         ))}
       </div>
 
-      {/* BUY BUTTON (white) */}
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "inline-block",
-          marginTop: "40px",
-          backgroundColor: "white",
-          color: "black",
-          padding: "12px 28px",
-          borderRadius: "8px",
-          fontWeight: "600",
-          textDecoration: "none",
-        }}
-      >
-        Buy Now
-      </a>
+      {/* BUY BUTTON (WHITE — MATCHES STARFADE) */}
+      <div style={{ margin: "30px 0" }}>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-block",
+            background: "white",
+            color: "black",
+            padding: "12px 28px",
+            borderRadius: "6px",
+            fontWeight: "600",
+            textDecoration: "none",
+            fontSize: "16px",
+            transition: "all 0.3s ease",
+          }}
+          onMouseOver={(e) => (e.target.style.opacity = "0.85")}
+          onMouseOut={(e) => (e.target.style.opacity = "1")}
+        >
+          Buy Now
+        </a>
+      </div>
+
+      {/* CONTACT (white + underline) */}
+      <p style={{ opacity: 0.8 }}>
+        For purchase or custom sizing inquiries, email{" "}
+        <a
+          href="mailto:eight888studios@gmail.com"
+          style={{ color: "#aaa", textDecoration: "underline" }}
+        >
+          eight888studios@gmail.com
+        </a>
+      </p>
     </main>
   );
 }
