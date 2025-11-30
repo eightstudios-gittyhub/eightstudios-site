@@ -70,7 +70,7 @@ export default function JeansPage() {
                 }}
               />
 
-              {/* TITLE WITH STRONGER PINK GLOW */}
+              {/* TITLE WITH LIGHT LUXURY PINK GLOW */}
               <h2
                 style={{
                   marginTop: "12px",
@@ -83,11 +83,9 @@ export default function JeansPage() {
                     Blooming Through Concrete — 1/1{" "}
                     <span
                       style={{
+                        color: "white",
                         textShadow:
-                          "0 0 12px rgba(255, 120, 160, 0.95), \
-                           0 0 18px rgba(255, 150, 180, 0.85), \
-                           0 0 24px rgba(255, 180, 200, 0.75)",
-                        color: "white"
+                          "0 0 6px rgba(255,170,200,0.75), 0 0 12px rgba(255,150,180,0.55)"
                       }}
                     >
                       Women’s Jeans
