@@ -70,7 +70,7 @@ export default function JeansPage() {
                 }}
               />
 
-              {/* TITLE WITH CONDITIONAL PINK GLOW */}
+              {/* TITLE WITH STRONGER PINK GLOW */}
               <h2
                 style={{
                   marginTop: "12px",
@@ -83,7 +83,10 @@ export default function JeansPage() {
                     Blooming Through Concrete — 1/1{" "}
                     <span
                       style={{
-                        textShadow: "0 0 10px rgba(255,120,160,0.85)",
+                        textShadow:
+                          "0 0 12px rgba(255, 120, 160, 0.95), \
+                           0 0 18px rgba(255, 150, 180, 0.85), \
+                           0 0 24px rgba(255, 180, 200, 0.75)",
                         color: "white"
                       }}
                     >
