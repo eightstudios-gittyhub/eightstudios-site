@@ -6,7 +6,13 @@ export default function ProductPage({
   price,
   description,
   images = [],
+  stripe, // Stripe link per product
 }) {
+  const purpleGlow = {
+    color: "#caa9ff",
+    textShadow: "0 0 12px #b388ff, 0 0 22px #caa9ff",
+  };
+
   return (
     <main
       style={{
@@ -18,16 +24,15 @@ export default function ProductPage({
       }}
     >
       {/* TITLE */}
-      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>{title}</h1>
+      <h1 style={{ fontSize: "32px", marginBottom: "6px" }}>{title}</h1>
 
       {/* SIZE */}
       {size && (
         <p
           style={{
             fontSize: "18px",
-            marginBottom: price ? "8px" : "25px",
-            color: "#d291ff",
-            textShadow: "0 0 8px #b34dff, 0 0 12px #b34dff",
+            marginBottom: price ? "10px" : "25px",
+            ...purpleGlow,
           }}
         >
           size — {size}
@@ -52,9 +57,11 @@ export default function ProductPage({
       {description && (
         <div
           style={{
+            margin: "0 auto",
+            marginBottom: "30px",
             fontSize: "16px",
             lineHeight: "1.6",
-            marginBottom: "30px",
+            maxWidth: "700px",
             whiteSpace: "pre-line",
           }}
         >
@@ -63,20 +70,45 @@ export default function ProductPage({
       )}
 
       {/* IMAGES */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "16px",
+          maxWidth: "980px",
+          margin: "0 auto 40px",
+        }}
+      >
         {images.map((src, i) => (
           <img
             key={i}
             src={src}
-            style={{
-              width: "100%",
-              maxWidth: "500px",
-              margin: "0 auto",
-              borderRadius: "4px",
-            }}
+            style={{ width: "100%", borderRadius: "10px" }}
           />
         ))}
       </div>
+
+      {/* STRIPE BUTTON */}
+      {stripe && (
+        <a
+          href={stripe}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-block",
+            backgroundColor: "white",
+            color: "black",
+            padding: "12px 28px",
+            borderRadius: "8px",
+            fontWeight: "600",
+            textDecoration: "none",
+            fontSize: "16px",
+            marginTop: "20px",
+          }}
+        >
+          Buy Now
+        </a>
+      )}
     </main>
   );
 }
