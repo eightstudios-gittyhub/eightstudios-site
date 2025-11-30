@@ -6,8 +6,7 @@ export default function StarfadeDenim() {
       title="Starfade Denim — 1/1"
       size="Remodeled Skinny Stacks, 32W 35L"
       price="$270"
-      description={`• price: $270
-• made by Eight Studios (888inc.)
+      description={`• made by Eight Studios (888inc.)
 • made in 2024
 • one-of-one stacked denim`}
       images={[
