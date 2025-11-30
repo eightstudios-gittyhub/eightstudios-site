@@ -22,7 +22,6 @@ export default function RootLayout({ children }) {
           width: "100%",
           position: "relative",
 
-          // Site-wide bluish smoky opal background glow
           backgroundColor: "black",
           backgroundImage:
             "radial-gradient(circle at center, rgba(160, 200, 220, 0.35) 0%, rgba(0, 0, 0, 1) 70%)",
@@ -35,9 +34,11 @@ export default function RootLayout({ children }) {
           style={{
             position: "sticky",
             top: 0,
-            zIndex: 999,
+            zIndex: 9999, // FIXED — makes nav always above content
             maxWidth: "100vw",
             overflow: "hidden",
+            background: "rgba(0,0,0,0.85)",
+            backdropFilter: "blur(6px)",
           }}
         >
           {/* Left Fade */}
@@ -51,7 +52,7 @@ export default function RootLayout({ children }) {
               pointerEvents: "none",
               background:
                 "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
-              zIndex: 1000,
+              zIndex: 10000,
             }}
           />
 
@@ -66,7 +67,7 @@ export default function RootLayout({ children }) {
               pointerEvents: "none",
               background:
                 "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))",
-              zIndex: 1000,
+              zIndex: 10000,
             }}
           />
 
@@ -74,13 +75,10 @@ export default function RootLayout({ children }) {
           <nav
             style={{
               display: "flex",
-              gap: "24px",
-              padding: "18px 0",
-              paddingLeft: "20px",
-              paddingRight: "20px",
+              gap: "30px",
+              padding: "18px 20px",
               fontWeight: "600",
-              background: "rgba(0,0,0,0.85)",
-              backdropFilter: "blur(6px)",
+
               whiteSpace: "nowrap",
               overflowX: "auto",
               WebkitOverflowScrolling: "touch",
@@ -100,6 +98,13 @@ export default function RootLayout({ children }) {
                     color: "white",
                     textDecoration: "none",
                     scrollSnapAlign: "center",
+                    paddingBottom: "4px",
+                    paddingTop: "4px",
+
+                    // Larger tap zone for mobile — makes clicking easier
+                    paddingLeft: "4px",
+                    paddingRight: "4px",
+                    display: "inline-block",
                   }}
                 >
                   {item}
@@ -110,7 +115,9 @@ export default function RootLayout({ children }) {
         </div>
 
         {/* Page Content */}
-        {children}
+        <main style={{ position: "relative", zIndex: 1 }}>
+          {children}
+        </main>
 
         {/* Divider Line */}
         <div
