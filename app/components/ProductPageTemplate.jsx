@@ -6,7 +6,7 @@ export default function ProductPage({
   price,
   description,
   images = [],
-  stripe, // Stripe link per product
+  stripe,
 }) {
   const purpleGlow = {
     color: "#caa9ff",
@@ -24,7 +24,7 @@ export default function ProductPage({
       }}
     >
       {/* TITLE */}
-      <h1 style={{ fontSize: "32px", marginBottom: "6px" }}>{title}</h1>
+      <h1 style={{ fontSize: "32px", marginBottom: "8px" }}>{title}</h1>
 
       {/* SIZE */}
       {size && (
@@ -39,17 +39,17 @@ export default function ProductPage({
         </p>
       )}
 
-      {/* PRICE */}
+      {/* PRICE (COLON VERSION LIKE YOU WANT) */}
       {price && (
         <p
           style={{
             fontSize: "18px",
-            marginBottom: "25px",
+            marginBottom: "20px",
             color: "white",
-            opacity: 0.9,
+            opacity: 0.92,
           }}
         >
-          price — {price}
+          price: {price}
         </p>
       )}
 
@@ -88,7 +88,7 @@ export default function ProductPage({
         ))}
       </div>
 
-      {/* STRIPE BUTTON */}
+      {/* BUY BUTTON */}
       {stripe && (
         <a
           href={stripe}
