@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           style={{
             position: "sticky",
             top: 0,
-            zIndex: 9999, // FIXED — makes nav always above content
+            zIndex: 9999,
             maxWidth: "100vw",
             overflow: "hidden",
             background: "rgba(0,0,0,0.85)",
@@ -73,6 +73,7 @@ export default function RootLayout({ children }) {
 
           {/* Navigation */}
           <nav
+            id="top-nav"
             style={{
               display: "flex",
               gap: "30px",
@@ -84,35 +85,87 @@ export default function RootLayout({ children }) {
               WebkitOverflowScrolling: "touch",
               scrollbarWidth: "none",
               msOverflowStyle: "none",
+
               width: "100%",
               maxWidth: "100vw",
-              scrollSnapType: "x mandatory",
+
+              scrollBehavior: "smooth",
             }}
           >
             {["Home", "Beanies", "Hoodies", "Jeans", "Shorts", "Hats"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={item === "Home" ? "/" : `/products/${item.toLowerCase()}`}
-                  style={{
-                    color: "white",
-                    textDecoration: "none",
-                    scrollSnapAlign: "center",
-                    paddingBottom: "4px",
-                    paddingTop: "4px",
+              (item) => {
+                const link =
+                  item === "Home"
+                    ? "/"
+                    : `/products/${item.toLowerCase()}`;
 
-                    // Larger tap zone for mobile — makes clicking easier
-                    paddingLeft: "4px",
-                    paddingRight: "4px",
-                    display: "inline-block",
-                  }}
-                >
-                  {item}
-                </a>
-              )
+                return (
+                  <a
+                    key={item}
+                    href={link}
+                    data-nav={item.toLowerCase()}
+                    style={{
+                      color: "white",
+                      textDecoration: "none",
+                      padding: "4px",
+                      display: "inline-block",
+                    }}
+                  >
+                    {item}
+                  </a>
+                );
+              }
             )}
           </nav>
         </div>
+
+        {/* AUTO CENTER SCRIPT */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener("DOMContentLoaded", () => {
+                const nav = document.getElementById("top-nav");
+                const links = nav.querySelectorAll("a");
+                const currentPath = window.location.pathname;
+
+                let activeLink = null;
+                links.forEach(link => {
+                  if (link.getAttribute("href") === currentPath) {
+                    activeLink = link;
+                  }
+                });
+
+                if (activeLink) {
+                  const offset =
+                    activeLink.offsetLeft -
+                    nav.clientWidth / 2 +
+                    activeLink.clientWidth / 2;
+
+                  nav.scrollTo({
+                    left: offset,
+                    behavior: "smooth",
+                  });
+                }
+
+                // When tapping any nav item, center it
+                links.forEach(link => {
+                  link.addEventListener("click", () => {
+                    const rect = link.getBoundingClientRect();
+                    const offset =
+                      link.offsetLeft -
+                      nav.clientWidth / 2 +
+                      link.clientWidth / 2;
+
+                    nav.scrollTo({
+                      left: offset,
+                      behavior: "smooth",
+                    });
+                  });
+                });
+              });
+            `,
+          }}
+        />
 
         {/* Page Content */}
         <main style={{ position: "relative", zIndex: 1 }}>
