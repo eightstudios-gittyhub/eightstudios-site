@@ -5,7 +5,10 @@ export default function StarfadeDenim() {
     <ProductPageTemplate
       title="Starfade Denim — 1/1"
       size="Remodeled Skinny Stacks, 32W 35L"
-      description={`• made by Eight Studios (888inc.)
+      price="$270"
+      description={`• price: $270
+• made by Eight Studios (888inc.)
+• made in 2024
 • one-of-one stacked denim`}
       images={[
         "https://i.imgur.com/U4Bth9g.jpeg",
