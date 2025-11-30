@@ -15,11 +15,9 @@ export default function BloomingThroughConcrete() {
     "https://i.imgur.com/SteLeNb.jpeg",
   ];
 
-  // purple glow for GREY TEXT ONLY
   const purpleGlow = {
     color: "#caa9ff",
     textShadow: "0 0 12px #b388ff, 0 0 22px #caa9ff",
-    letterSpacing: "0.5px",
   };
 
   return (
@@ -32,12 +30,12 @@ export default function BloomingThroughConcrete() {
         minHeight: "100vh",
       }}
     >
-      {/* TITLE (white, untouched) */}
+      {/* TITLE (white — stays white) */}
       <h1 style={{ fontSize: "32px", marginBottom: "0px" }}>
         Blooming Through Concrete
       </h1>
 
-      {/* SUBTITLE (was grey → now purple) */}
+      {/* SUBTITLE (this was grey → now purple) */}
       <p
         style={{
           marginTop: "6px",
@@ -49,7 +47,7 @@ export default function BloomingThroughConcrete() {
         1/1 luxury woman’s jeans
       </p>
 
-      {/* SIZE LINE (was grey → now purple) */}
+      {/* SIZE LINE (grey → purple) */}
       <p
         style={{
           marginTop: "0px",
@@ -61,7 +59,7 @@ export default function BloomingThroughConcrete() {
         size — 8 (29–31.5 in waist)
       </p>
 
-      {/* DESCRIPTION BLOCK (these were also grey → now purple) */}
+      {/* DESCRIPTION (these were grey → purple) */}
       <div
         style={{
           margin: "0 auto",
@@ -101,7 +99,7 @@ export default function BloomingThroughConcrete() {
         ))}
       </div>
 
-      {/* BUY BUTTON (white, unchanged) */}
+      {/* BUY BUTTON (white — stays white) */}
       <a
         href="#"
         target="_blank"
