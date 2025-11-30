@@ -3,7 +3,7 @@ import ProductPageTemplate from "@/components/ProductPageTemplate";
 export default function BloomingThroughConcrete() {
   return (
     <ProductPageTemplate
-      title="Blooming Through Concrete — 1/1"
+      title="Blooming Through Concrete — 1/1 woman’s jeans"
       size="size — 8 (29–31.5 in waist)"
       description={`• made by Eight Studios (888inc.)
 • price: $150
@@ -18,8 +18,7 @@ export default function BloomingThroughConcrete() {
         "https://i.imgur.com/gj1iGm0.jpeg",
         "https://i.imgur.com/Cp6VDwN.jpeg",
         "https://i.imgur.com/qdewo2k.jpeg",
-        "https://i.imgur.com/Qm0wt5b.jpeg",
-        "https://i.imgur.com/SteLeNb.jpeg",
+        "https://i.imgur.com/Qm0wt5b.jpeg"
       ]}
       stripe="#"
     />
