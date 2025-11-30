@@ -8,7 +8,6 @@ export default function Plaid8CargoPjs() {
       price="$60"
       description={`• made by Eight Studios (888inc.)
 • made in 2024
-• one-of-one plaid cargo pants with 888 print pattern placement
 • elastic waistband · fits 30–36 comfortably
 • no restocks — one-time release`}
       images={[
