@@ -16,83 +16,106 @@ export default function BloomingThroughConcrete() {
   ];
 
   return (
-    <div
+    <main
       style={{
-        padding: "20px",
-        maxWidth: "900px",
-        margin: "0 auto",
-        fontFamily: "Arial, sans-serif",
+        backgroundColor: "black",
         color: "white",
+        padding: "40px 20px",
+        textAlign: "center",
+        minHeight: "100vh",
       }}
     >
-      {/* Title */}
-      <h1
-        style={{
-          textAlign: "center",
-          fontSize: "32px",
-          marginBottom: "20px",
-          fontWeight: "700",
-        }}
-      >
+      {/* TITLE */}
+      <h1 style={{ fontSize: "32px", marginBottom: "0px" }}>
         Blooming Through Concrete
       </h1>
 
-      {/* Image gallery */}
+      {/* SUBTITLE — WOMAN'S JEANS */}
+      <p
+        style={{
+          marginTop: "6px",
+          marginBottom: "20px",
+          fontSize: "18px",
+          color: "rgba(255,255,255,0.6)",
+          textShadow: "0 0 8px rgba(255,255,255,0.35)",
+          letterSpacing: "0.5px",
+        }}
+      >
+        1/1 luxury woman’s jeans
+      </p>
+
+      {/* SIZE LINE */}
+      <p
+        style={{
+          marginTop: "0px",
+          marginBottom: "20px",
+          fontSize: "18px",
+          color: "rgba(255,255,255,0.6)",
+          textShadow: "0 0 8px rgba(255,255,255,0.35)",
+          letterSpacing: "0.5px",
+        }}
+      >
+        size — 8 (29–31.5 in waist)
+      </p>
+
+      {/* DESCRIPTION BLOCK */}
+      <div
+        style={{
+          margin: "0 auto",
+          marginBottom: "30px",
+          fontSize: "16px",
+          lineHeight: "1.6",
+          opacity: 0.9,
+        }}
+      >
+        • made by Eight Studios (888inc.) <br />
+        <br />
+        • price: $150 <br />
+        <br />
+        • handmade 1/1 luxury woman’s jeans
+      </div>
+
+      {/* IMAGES */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "14px",
-          marginBottom: "20px",
+          gap: "20px",
+          maxWidth: "600px",
+          margin: "0 auto",
         }}
       >
         {images.map((src, i) => (
           <img
             key={i}
             src={src}
-            alt={`Blooming Through Concrete Image ${i + 1}`}
+            alt="Blooming Through Concrete"
             style={{
               width: "100%",
               borderRadius: "12px",
-              objectFit: "cover",
             }}
           />
         ))}
       </div>
 
-      {/* Description */}
-      <div
+      {/* BUY BUTTON */}
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
-          background: "rgba(255,255,255,0.05)",
-          padding: "18px",
-          borderRadius: "12px",
-          lineHeight: "1.6",
-          fontSize: "16px",
+          display: "inline-block",
+          marginTop: "40px",
+          backgroundColor: "white",
+          color: "black",
+          padding: "12px 28px",
+          borderRadius: "8px",
+          fontWeight: "600",
+          textDecoration: "none",
         }}
       >
-        <p><strong>Handmade 1/1 luxury woman’s jeans</strong></p>
-        <p>• size - 8 (about 29–31.5 inch waist)</p>
-        <p>• made by Eight Studios (888inc.)</p>
-        <p>• price: <strong>$150</strong></p>
-      </div>
-
-      {/* Buy button */}
-      <div style={{ marginTop: "30px", textAlign: "center" }}>
-        <a
-          href="#"
-          style={{
-            padding: "14px 26px",
-            background: "white",
-            color: "black",
-            borderRadius: "8px",
-            fontWeight: "700",
-            textDecoration: "none",
-            fontSize: "18px",
-          }}
-        >
-          Buy Now
-        </a>
-      </div>
-    </div>
+        Buy Now
+      </a>
+    </main>
   );
 }
