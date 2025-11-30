@@ -6,8 +6,9 @@ export default function Page() {
       title="Hand-Sewn Woodland Camo — 1/1"
       size="30W / 30L"
       price="$200"
-      description={`• made by Eight Studios (888inc.) 
-
+      description={`• price: $200
+• made by Eight Studios (888inc.)
+• made in 2024
 • 10hrs of work — all hand sewn (only 10 mins machine sewing). Handmade 1/1 luxury men's jeans.`}
       images={[
         "https://i.imgur.com/B3323uR.jpeg",
