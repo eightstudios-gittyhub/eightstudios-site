@@ -40,10 +40,10 @@ export default function AmbassadorThanks() {
         <h3 style={{ marginBottom: "6px", ...glow }}>💸 Cash App</h3>
 
         <a
-          href="cashapp://send?recipient=$KylieRivers420"
+          href="cashapp://send?recipient=%24KylieRivers420"
           style={{
             display: "inline-block",
-            marginTop: "5px",
+            marginTop: "10px",
             padding: "12px 22px",
             backgroundColor: "#caa9ff",
             color: "black",
@@ -58,11 +58,11 @@ export default function AmbassadorThanks() {
         </a>
 
         {/* WEB FALLBACK */}
-        <p style={{ marginTop: "12px" }}>
+        <p style={{ marginTop: "18px" }}>
           <a
             href="https://cash.app/$KylieRivers420"
             target="_blank"
-            style={{ color: "#caa9ff" }}
+            style={{ color: "#caa9ff", textDecoration: "none" }}
           >
             Or pay via cash.app/$KylieRivers420
           </a>
@@ -76,7 +76,7 @@ export default function AmbassadorThanks() {
             href="sms:5184770592"
             style={{
               display: "inline-block",
-              marginTop: "5px",
+              marginTop: "10px",
               padding: "12px 22px",
               backgroundColor: "#caa9ff",
               color: "black",
