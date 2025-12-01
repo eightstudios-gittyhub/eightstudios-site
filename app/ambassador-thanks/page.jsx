@@ -35,48 +35,32 @@ export default function AmbassadorThanks() {
           boxShadow: "0 0 25px rgba(140,100,255,0.25)",
         }}
       >
-
         {/* CASH APP */}
-        <h3 style={{ marginBottom: "6px", ...glow }}>💸 Cash App</h3>
+        <h3 style={{ marginBottom: "8px", ...glow }}>💸 Cash App</h3>
 
-        <a
-          href="cashapp://send?recipient=%24KylieRivers420"
-          style={{
-            display: "inline-block",
-            marginTop: "10px",
-            padding: "12px 22px",
-            backgroundColor: "#caa9ff",
-            color: "black",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            fontSize: "16px",
-            textDecoration: "none",
-            boxShadow: "0 0 18px #b388ff",
-          }}
-        >
-          Open Cash App
-        </a>
-
-        {/* WEB FALLBACK */}
-        <p style={{ marginTop: "18px" }}>
+        <p style={{ marginBottom: "20px" }}>
           <a
             href="https://cash.app/$KylieRivers420"
             target="_blank"
-            style={{ color: "#caa9ff", textDecoration: "none" }}
+            style={{
+              color: "#caa9ff",
+              textDecoration: "none",
+              fontSize: "18px",
+            }}
           >
-            Or pay via cash.app/$KylieRivers420
+            cash.app/$KylieRivers420
           </a>
         </p>
 
         {/* APPLE PAY */}
-        <div style={{ marginTop: "35px" }}>
-          <h3 style={{ marginBottom: "6px", ...glow }}> Apple Pay</h3>
+        <div style={{ marginTop: "20px" }}>
+          <h3 style={{ marginBottom: "8px", ...glow }}> Apple Pay</h3>
 
           <a
             href="sms:5184770592"
             style={{
               display: "inline-block",
-              marginTop: "10px",
+              marginTop: "5px",
               padding: "12px 22px",
               backgroundColor: "#caa9ff",
               color: "black",
