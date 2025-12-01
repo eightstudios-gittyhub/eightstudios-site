@@ -21,7 +21,7 @@ export default function AmbassadorAccess() {
       </p>
 
       <form
-        action="https://formsubmit.co/YOUR_EMAIL_HERE"
+        action="https://formsubmit.co/eight888studios@gmail.com"
         method="POST"
         style={{
           maxWidth: "500px",
@@ -29,10 +29,8 @@ export default function AmbassadorAccess() {
           textAlign: "left",
         }}
       >
-        {/* Don’t show the reCAPTCHA page */}
         <input type="hidden" name="_captcha" value="false" />
 
-        {/* Redirect to your thank-you page */}
         <input
           type="hidden"
           name="_next"
@@ -41,36 +39,21 @@ export default function AmbassadorAccess() {
 
         {/* NAME */}
         <label style={{ display: "block", marginBottom: "8px" }}>Name</label>
-        <input
-          type="text"
-          name="name"
-          required
-          style={inputStyle}
-        />
+        <input type="text" name="name" required style={inputStyle} />
 
         {/* INSTAGRAM */}
         <label style={{ display: "block", margin: "20px 0 8px" }}>
           Instagram Handle
         </label>
-        <input
-          type="text"
-          name="instagram"
-          required
-          style={inputStyle}
-        />
+        <input type="text" name="instagram" required style={inputStyle} />
 
         {/* EMAIL */}
         <label style={{ display: "block", margin: "20px 0 8px" }}>
           Email
         </label>
-        <input
-          type="email"
-          name="email"
-          required
-          style={inputStyle}
-        />
+        <input type="email" name="email" required style={inputStyle} />
 
-        {/* GARMENT TYPE */}
+        {/* ITEM */}
         <label style={{ display: "block", margin: "20px 0 8px" }}>
           What item do you want?
         </label>
@@ -84,15 +67,11 @@ export default function AmbassadorAccess() {
           <option value="Other">Other</option>
         </select>
 
-        {/* OTHER INPUT */}
+        {/* OTHER FIELD */}
         <label style={{ display: "block", margin: "20px 0 8px" }}>
           If Other, describe it:
         </label>
-        <textarea
-          name="other_description"
-          rows="4"
-          style={inputStyle}
-        ></textarea>
+        <textarea name="other_description" rows="4" style={inputStyle} />
 
         {/* SUBMIT */}
         <button
