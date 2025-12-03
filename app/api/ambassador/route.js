@@ -71,4 +71,4 @@ export async function POST(request) {
     console.error("Ambassador Error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
-}
+} 
