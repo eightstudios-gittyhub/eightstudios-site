@@ -1,99 +1,149 @@
 "use client";
+import { useState } from "react";
 
 export default function AmbassadorAccess() {
+  const [form, setForm] = useState({
+    name: "",
+    instagram: "",
+    email: "",
+    message: "",
+    hiddenField: "", // honeypot
+  });
+
+  const [status, setStatus] = useState(null);
+
+  const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    const res = await fetch("/api/ambassador", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) setStatus("success");
+    else setStatus("error");
+  };
+
   return (
     <main
       style={{
-        backgroundColor: "black",
+        background: "black",
         color: "white",
+        padding: "40px",
         minHeight: "100vh",
-        padding: "40px 20px",
-        textAlign: "center",
       }}
     >
-      <h1 style={{ fontSize: "32px", marginBottom: "10px" }}>
-        Eight Studios — Ambassador Intake
+      <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>
+        Ambassador Application
       </h1>
 
-      <p style={{ marginBottom: "30px", opacity: 0.8 }}>
-        Fill this out to join the Ambassador Program.  
-        After submitting, you’ll receive the Apple Pay / Cash App details.
-      </p>
-
-      {/* IMPORTANT — Updated to use your Resend API route */}
       <form
-        action="/api/ambassador"
-        method="POST"
+        onSubmit={submit}
         style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
           maxWidth: "500px",
-          margin: "0 auto",
-          textAlign: "left",
         }}
       >
-        {/* NAME */}
-        <label style={{ display: "block", marginBottom: "8px" }}>Name</label>
-        <input type="text" name="name" required style={inputStyle} />
+        {/* HONEYPOT (hidden from humans) */}
+        <input
+          type="text"
+          name="hiddenField"
+          value={form.hiddenField}
+          onChange={update}
+          style={{ display: "none" }}
+          autoComplete="off"
+        />
 
-        {/* INSTAGRAM */}
-        <label style={{ display: "block", margin: "20px 0 8px" }}>
-          Instagram Handle
-        </label>
-        <input type="text" name="instagram" required style={inputStyle} />
+        <input
+          name="name"
+          placeholder="Full Name"
+          value={form.name}
+          onChange={update}
+          required
+          style={{
+            padding: "12px",
+            background: "#111",
+            border: "1px solid #444",
+            color: "white",
+          }}
+        />
 
-        {/* EMAIL */}
-        <label style={{ display: "block", margin: "20px 0 8px" }}>
-          Email
-        </label>
-        <input type="email" name="email" required style={inputStyle} />
+        <input
+          name="instagram"
+          placeholder="@instagram"
+          value={form.instagram}
+          onChange={update}
+          required
+          style={{
+            padding: "12px",
+            background: "#111",
+            border: "1px solid #444",
+            color: "white",
+          }}
+        />
 
-        {/* ITEM */}
-        <label style={{ display: "block", margin: "20px 0 8px" }}>
-          What item do you want?
-        </label>
-        <select name="item" required style={inputStyle}>
-          <option value="">Select item…</option>
-          <option value="Beanie">Beanie</option>
-          <option value="Hoodie">Hoodie</option>
-          <option value="T-Shirt">T-Shirt</option>
-          <option value="Jeans">Jeans</option>
-          <option value="Phone Case">Phone Case</option>
-          <option value="Other">Other</option>
-        </select>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email address"
+          value={form.email}
+          onChange={update}
+          required
+          style={{
+            padding: "12px",
+            background: "#111",
+            border: "1px solid #444",
+            color: "white",
+          }}
+        />
 
-        {/* OTHER FIELD */}
-        <label style={{ display: "block", margin: "20px 0 8px" }}>
-          If Other, describe it:
-        </label>
-        <textarea name="other_description" rows="4" style={inputStyle} />
+        <textarea
+          name="message"
+          placeholder="Why do you want to join?"
+          value={form.message}
+          onChange={update}
+          rows={4}
+          required
+          style={{
+            padding: "12px",
+            background: "#111",
+            border: "1px solid #444",
+            color: "white",
+          }}
+        />
 
-        {/* SUBMIT */}
         <button
           type="submit"
           style={{
-            marginTop: "30px",
-            padding: "14px 30px",
-            width: "100%",
-            backgroundColor: "#caa9ff",
+            padding: "14px",
+            background: "#caa9ff",
             color: "black",
-            fontWeight: "bold",
-            fontSize: "16px",
-            borderRadius: "6px",
             border: "none",
+            fontWeight: "bold",
             cursor: "pointer",
           }}
         >
           Submit
         </button>
       </form>
+
+      {status === "loading" && <p style={{ marginTop: 20 }}>Sending…</p>}
+      {status === "success" && (
+        <p style={{ marginTop: 20, color: "#b388ff" }}>
+          Application submitted!
+        </p>
+      )}
+      {status === "error" && (
+        <p style={{ marginTop: 20, color: "red" }}>
+          Error — please try again.
+        </p>
+      )}
     </main>
   );
 }
-
-const inputStyle = {
-  width: "100%",
-  padding: "12px",
-  borderRadius: "6px",
-  border: "1px solid #444",
-  backgroundColor: "#111",
-  color: "white",
-};
