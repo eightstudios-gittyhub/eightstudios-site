@@ -20,8 +20,9 @@ export default function AmbassadorAccess() {
         After submitting, you’ll receive the Apple Pay / Cash App details.
       </p>
 
+      {/* IMPORTANT — Updated to use your Resend API route */}
       <form
-        action="https://formsubmit.co/eight888studios@gmail.com"
+        action="/api/ambassador"
         method="POST"
         style={{
           maxWidth: "500px",
@@ -29,14 +30,6 @@ export default function AmbassadorAccess() {
           textAlign: "left",
         }}
       >
-        <input type="hidden" name="_captcha" value="false" />
-
-        <input
-          type="hidden"
-          name="_next"
-          value="https://eightstudios.org/ambassador-thanks"
-        />
-
         {/* NAME */}
         <label style={{ display: "block", marginBottom: "8px" }}>Name</label>
         <input type="text" name="name" required style={inputStyle} />
