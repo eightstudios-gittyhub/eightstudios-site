@@ -6,8 +6,10 @@ export default function AmbassadorAccess() {
     name: "",
     instagram: "",
     email: "",
+    item: "",
+    otherItem: "",
     message: "",
-    hiddenField: "", // honeypot
+    hiddenField: "",
   });
 
   const [status, setStatus] = useState(null);
@@ -38,7 +40,7 @@ export default function AmbassadorAccess() {
       }}
     >
       <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>
-        Ambassador Application
+        Ambassador Intake
       </h1>
 
       <form
@@ -50,7 +52,7 @@ export default function AmbassadorAccess() {
           maxWidth: "500px",
         }}
       >
-        {/* HONEYPOT (hidden from humans) */}
+        {/* HONEYPOT */}
         <input
           type="text"
           name="hiddenField"
@@ -60,34 +62,27 @@ export default function AmbassadorAccess() {
           autoComplete="off"
         />
 
+        {/* NAME */}
         <input
           name="name"
           placeholder="Full Name"
           value={form.name}
           onChange={update}
           required
-          style={{
-            padding: "12px",
-            background: "#111",
-            border: "1px solid #444",
-            color: "white",
-          }}
+          style={inputStyle}
         />
 
+        {/* INSTAGRAM */}
         <input
           name="instagram"
           placeholder="@instagram"
           value={form.instagram}
           onChange={update}
           required
-          style={{
-            padding: "12px",
-            background: "#111",
-            border: "1px solid #444",
-            color: "white",
-          }}
+          style={inputStyle}
         />
 
+        {/* EMAIL */}
         <input
           type="email"
           name="email"
@@ -95,29 +90,82 @@ export default function AmbassadorAccess() {
           value={form.email}
           onChange={update}
           required
-          style={{
-            padding: "12px",
-            background: "#111",
-            border: "1px solid #444",
-            color: "white",
-          }}
+          style={inputStyle}
         />
 
+        {/* ITEM DROPDOWN */}
+        <select
+          name="item"
+          value={form.item}
+          onChange={update}
+          required
+          style={{ ...inputStyle, color: "white" }}
+        >
+          <option value="">Select item type…</option>
+          <option value="Beanie">Beanie</option>
+          <option value="Hoodie">Hoodie</option>
+          <option value="Jeans">Jeans</option>
+          <option value="Phone Case">Phone Case</option>
+          <option value="Other">Other</option>
+        </select>
+
+        {/* IF OTHER */}
+        {form.item === "Other" && (
+          <input
+            name="otherItem"
+            placeholder="Describe your item"
+            value={form.otherItem}
+            onChange={update}
+            style={inputStyle}
+          />
+        )}
+
+        {/* ⭐ BEANIE PRICE INFO */}
+        {form.item === "Beanie" && (
+          <div
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              padding: "18px",
+              borderRadius: "10px",
+              marginTop: "4px",
+              lineHeight: 1.5,
+            }}
+          >
+            <h3 style={{ marginBottom: "8px", color: "#caa9ff" }}>
+              Beanie — Custom 1/1
+            </h3>
+
+            <p>
+              <strong>Standard Retail Value (you don’t pay this):</strong>
+              <br />$30 – $88
+            </p>
+
+            <p style={{ marginTop: "10px" }}>
+              <strong>Ambassador Contribution:</strong>
+              <br />Materials Fee Only
+            </p>
+
+            <p style={{ marginTop: "10px", opacity: 0.75 }}>
+              (Covers garment [unless provided], rhinestones,
+              vinyl/screenprint, thread. Final materials cost is calculated after
+              we finalize your exact design + style.)
+            </p>
+          </div>
+        )}
+
+        {/* MESSAGE */}
         <textarea
           name="message"
-          placeholder="Why do you want to join?"
+          placeholder="Describe what you want made"
           value={form.message}
           onChange={update}
           rows={4}
           required
-          style={{
-            padding: "12px",
-            background: "#111",
-            border: "1px solid #444",
-            color: "white",
-          }}
+          style={inputStyle}
         />
 
+        {/* SUBMIT */}
         <button
           type="submit"
           style={{
@@ -129,14 +177,15 @@ export default function AmbassadorAccess() {
             cursor: "pointer",
           }}
         >
-          Submit
+          Submit Intake
         </button>
       </form>
 
+      {/* STATUS */}
       {status === "loading" && <p style={{ marginTop: 20 }}>Sending…</p>}
       {status === "success" && (
         <p style={{ marginTop: 20, color: "#b388ff" }}>
-          Application submitted!
+          Intake submitted! I’ll reach out soon.
         </p>
       )}
       {status === "error" && (
@@ -147,3 +196,11 @@ export default function AmbassadorAccess() {
     </main>
   );
 }
+
+const inputStyle = {
+  padding: "12px",
+  background: "#111",
+  border: "1px solid #444",
+  color: "white",
+  borderRadius: "6px",
+};
