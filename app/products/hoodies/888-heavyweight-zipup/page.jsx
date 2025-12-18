@@ -4,8 +4,8 @@ export default function HeavyweightZipup() {
   return (
     <ProductPageTemplate
       title="888 Heavyweight Zipup — 1/1"
-      size="Choose your size"
-      price="$—" // change if needed
+      sizes={["S", "M", "L", "XL"]}
+      price="$—"
       description={`Handmade 1/1 heavyweight luxury zip-up hoodie — Choose your size.
 
 Made to Order
