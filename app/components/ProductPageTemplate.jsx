@@ -23,17 +23,29 @@ export default function ProductPage({
         minHeight: "100vh",
       }}
     >
-      {/* TITLE — FIXED TO ALWAYS STAY ONE LINE */}
+      {/* TITLE — DESKTOP LARGE, MOBILE SMALLER */}
       <h1
         style={{
-          fontSize: "32px",
           marginBottom: "8px",
           whiteSpace: "nowrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
+          padding: "0 10px",
         }}
       >
-        {title}
+        <span className="product-title">{title}</span>
+
+        <style jsx>{`
+          .product-title {
+            font-size: 32px;
+          }
+
+          @media (max-width: 480px) {
+            .product-title {
+              font-size: 24px;
+            }
+          }
+        `}</style>
       </h1>
 
       {/* SIZE */}
