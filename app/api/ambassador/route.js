@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// 🔐 INIT RESEND
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // 🔐 DISCORD WEBHOOK
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
 
@@ -13,6 +10,20 @@ let lastSubmissionTime = 0;
 // SERVER ROUTE
 export async function POST(request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+
+    // 🛑 HARD STOP IF KEY IS MISSING (prevents build crash)
+    if (!apiKey) {
+      console.error("RESEND_API_KEY missing");
+      return NextResponse.json(
+        { error: "Email service not configured" },
+        { status: 500 }
+      );
+    }
+
+    // 🔐 INIT RESEND (SAFE — runtime only)
+    const resend = new Resend(apiKey);
+
     const data = await request.json();
 
     // 🛑 1 — Honeypot (bot check)
@@ -23,13 +34,19 @@ export async function POST(request) {
     // 🛑 2 — Rate limit (3 sec)
     const now = Date.now();
     if (now - lastSubmissionTime < 3000) {
-      return NextResponse.json({ error: "Too many submissions" }, { status: 429 });
+      return NextResponse.json(
+        { error: "Too many submissions" },
+        { status: 429 }
+      );
     }
     lastSubmissionTime = now;
 
     // 🧼 3 — Validation
     if (!data.name || !data.email || !data.instagram || !data.message) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing fields" },
+        { status: 400 }
+      );
     }
 
     // 📧 4 — SEND EMAIL
@@ -47,28 +64,33 @@ export async function POST(request) {
     });
 
     // 📢 5 — DISCORD NOTIFICATION
-    await fetch(DISCORD_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        embeds: [
-          {
-            title: "New Ambassador Application",
-            color: 11141290,
-            fields: [
-              { name: "Name", value: data.name },
-              { name: "Instagram", value: data.instagram },
-              { name: "Email", value: data.email },
-              { name: "Message", value: data.message },
-            ],
-          },
-        ],
-      }),
-    });
+    if (DISCORD_WEBHOOK) {
+      await fetch(DISCORD_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          embeds: [
+            {
+              title: "New Ambassador Application",
+              color: 11141290,
+              fields: [
+                { name: "Name", value: data.name },
+                { name: "Instagram", value: data.instagram },
+                { name: "Email", value: data.email },
+                { name: "Message", value: data.message },
+              ],
+            },
+          ],
+        }),
+      });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Ambassador Error:", err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Server error" },
+      { status: 500 }
+    );
   }
-} 
+}
