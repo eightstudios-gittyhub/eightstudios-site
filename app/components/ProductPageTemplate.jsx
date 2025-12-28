@@ -23,8 +23,18 @@ export default function ProductPage({
         minHeight: "100vh",
       }}
     >
-      {/* TITLE */}
-      <h1 style={{ fontSize: "32px", marginBottom: "8px" }}>{title}</h1>
+      {/* TITLE — FIXED TO ALWAYS STAY ONE LINE */}
+      <h1
+        style={{
+          fontSize: "32px",
+          marginBottom: "8px",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {title}
+      </h1>
 
       {/* SIZE */}
       {size && (
@@ -39,7 +49,7 @@ export default function ProductPage({
         </p>
       )}
 
-      {/* PRICE (COLON VERSION LIKE YOU WANT) */}
+      {/* PRICE */}
       {price && (
         <p
           style={{
@@ -83,7 +93,10 @@ export default function ProductPage({
           <img
             key={i}
             src={src}
-            style={{ width: "100%", borderRadius: "10px" }}
+            style={{
+              width: "100%",
+              borderRadius: "10px",
+            }}
           />
         ))}
       </div>
