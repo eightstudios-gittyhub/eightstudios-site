@@ -42,17 +42,19 @@ Please allow 1–2 weeks for production and processing before shipment.
     >
       {/* CUSTOM OPTIONS */}
       <div style={containerStyle}>
-        {/* Patch Color — FIXED ORDER */}
+        {/* Patch Color — UPDATED */}
         <Field label="Patch Color">
           <Select
             options={[
               "Black",
               "White",
-              "Red",     // ← moved here
+              "Red",
+              "Orange", // ✅ added here
               "Yellow",
               "Green",
               "Blue",
               "Purple",
+              "Jean / Other Material (DM to specify)", // ✅ added at bottom
             ]}
           />
         </Field>
@@ -93,6 +95,7 @@ Please allow 1–2 weeks for production and processing before shipment.
                   "White",
                   "Black",
                   "Red",
+                  "Orange",
                   "Yellow",
                   "Green",
                   "Blue",
