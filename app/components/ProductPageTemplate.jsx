@@ -1,12 +1,14 @@
 "use client";
 
-export default function ProductPage({
+export default function ProductPageTemplate({
   title,
   size,
+  sizes,
   price,
   description,
   images = [],
   stripe,
+  children, // ✅ ADDED
 }) {
   const purpleGlow = {
     color: "#caa9ff",
@@ -48,7 +50,7 @@ export default function ProductPage({
         `}</style>
       </h1>
 
-      {/* SIZE */}
+      {/* SIZE (single) */}
       {size && (
         <p
           style={{
@@ -61,11 +63,39 @@ export default function ProductPage({
         </p>
       )}
 
+      {/* SIZES (dropdown) */}
+      {Array.isArray(sizes) && sizes.length > 0 && (
+        <div style={{ maxWidth: "520px", margin: "18px auto 6px", textAlign: "left" }}>
+          <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
+            Size
+          </label>
+          <select
+            style={{
+              width: "100%",
+              background: "rgba(255,255,255,0.06)",
+              color: "white",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: "10px",
+              padding: "12px 14px",
+              outline: "none",
+            }}
+            defaultValue={sizes[0]}
+          >
+            {sizes.map((s) => (
+              <option key={s} value={s} style={{ color: "black" }}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       {/* PRICE */}
       {price && (
         <p
           style={{
             fontSize: "18px",
+            marginTop: "10px",
             marginBottom: "20px",
             color: "white",
             opacity: 0.92,
@@ -105,6 +135,7 @@ export default function ProductPage({
           <img
             key={i}
             src={src}
+            alt=""
             style={{
               width: "100%",
               borderRadius: "10px",
@@ -112,6 +143,9 @@ export default function ProductPage({
           />
         ))}
       </div>
+
+      {/* ✅ CUSTOM OPTIONS GO HERE (THIS IS THE WHOLE POINT) */}
+      {children}
 
       {/* BUY BUTTON */}
       {stripe && (
@@ -136,4 +170,4 @@ export default function ProductPage({
       )}
     </main>
   );
-} 
+}
