@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import ProductPageTemplate from "@/components/ProductPageTemplate";
 
@@ -18,7 +20,7 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
 • high quality heavyweight hoodie
 • 2 zippers
 • rhinestones and patchwork
-      `}
+`}
       images={[
         "https://i.imgur.com/pIeNzKp.jpeg",
         "https://i.imgur.com/9ebeoTs.jpeg",
@@ -30,92 +32,91 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
       stripe="https://buy.stripe.com/REPLACE_WITH_YOUR_LINK"
     >
       {/* CUSTOMIZATION OPTIONS */}
-      <div
-        style={{
-          maxWidth: "520px",
-          margin: "0 auto 22px",
-          textAlign: "left",
-        }}
-      >
-        <div style={{ marginBottom: "14px" }}>
-          <label style={labelStyle}>Patch Color</label>
-          <select style={selectStyle} defaultValue="Red">
-            {["Red", "Black", "White", "Yellow", "Green", "Blue", "Purple"].map((v) => (
-              <option key={v} value={v} style={{ color: "black" }}>
-                {v}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div style={containerStyle}>
+        {/* Patch Color */}
+        <Field label="Patch Color">
+          <Select
+            options={["Red", "Black", "White", "Yellow", "Green", "Blue", "Purple"]}
+          />
+        </Field>
 
-        <div style={{ marginBottom: "14px" }}>
-          <label style={labelStyle}>
-            Vinyl Color
-            <span style={hintStyle}>DM me to see what’s available.</span>
-          </label>
-          <select style={selectStyle} defaultValue="DM for availability">
-            <option value="DM for availability" style={{ color: "black" }}>
-              DM for availability
-            </option>
-          </select>
-        </div>
+        {/* Vinyl Color */}
+        <Field
+          label="Vinyl Color"
+          hint="DM me to see what’s available."
+        >
+          <Select options={["DM for availability"]} />
+        </Field>
 
-        <div style={{ marginBottom: "14px" }}>
-          <label style={labelStyle}>888 Style</label>
-          <select style={selectStyle} defaultValue="Single Stack 888">
-            {["Single Stack 888", "Double Stack 888"].map((v) => (
-              <option key={v} value={v} style={{ color: "black" }}>
-                {v}
-              </option>
-            ))}
-          </select>
-        </div>
+        {/* 888 Style */}
+        <Field label="888 Style">
+          <Select options={["Single Stack 888", "Double Stack 888"]} />
+        </Field>
 
-        <div style={{ marginBottom: "14px" }}>
-          <label style={labelStyle}>Rhinestones</label>
+        {/* Rhinestones */}
+        <Field label="Rhinestones">
           <select
             style={selectStyle}
             value={rhinestones}
             onChange={(e) => setRhinestones(e.target.value)}
           >
-            {["No", "Yes"].map((v) => (
-              <option key={v} value={v} style={{ color: "black" }}>
-                {v}
-              </option>
-            ))}
+            <option value="No" style={{ color: "black" }}>No</option>
+            <option value="Yes" style={{ color: "black" }}>Yes</option>
           </select>
-        </div>
+        </Field>
 
-        {/* ✅ ONLY SHOW THESE IF RHINESTONES === YES */}
+        {/* CONDITIONAL OPTIONS */}
         {rhinestones === "Yes" && (
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-            <div>
-              <label style={labelStyle}>Rhinestone Color</label>
-              <select style={selectStyle} defaultValue="White">
-                {["Red", "Yellow", "Green", "Blue", "Purple", "Black", "White"].map((v) => (
-                  <option key={v} value={v} style={{ color: "black" }}>
-                    {v}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <Field label="Rhinestone Color">
+              <Select
+                options={["Red", "Yellow", "Green", "Blue", "Purple", "Black", "White"]}
+              />
+            </Field>
 
-            <div>
-              <label style={labelStyle}>Rhinestone Size</label>
-              <select style={selectStyle} defaultValue="Medium">
-                {["Small", "Medium", "Large"].map((v) => (
-                  <option key={v} value={v} style={{ color: "black" }}>
-                    {v}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <Field label="Rhinestone Size">
+              <Select options={["Small", "Medium", "Large"]} />
+            </Field>
           </div>
         )}
       </div>
     </ProductPageTemplate>
   );
 }
+
+/* ---------- Reusable UI ---------- */
+
+function Field({ label, hint, children }) {
+  return (
+    <div style={{ marginBottom: "14px" }}>
+      <label style={labelStyle}>
+        {label}
+        {hint && <span style={hintStyle}>{hint}</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+function Select({ options }) {
+  return (
+    <select style={selectStyle}>
+      {options.map((o) => (
+        <option key={o} value={o} style={{ color: "black" }}>
+          {o}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+/* ---------- Styles ---------- */
+
+const containerStyle = {
+  maxWidth: "520px",
+  margin: "0 auto 24px",
+  textAlign: "left",
+};
 
 const selectStyle = {
   width: "100%",
