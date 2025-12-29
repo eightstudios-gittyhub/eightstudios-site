@@ -1,6 +1,9 @@
+import { useState } from "react";
 import ProductPageTemplate from "@/components/ProductPageTemplate";
 
 export default function HeavyweightZipup() {
+  const [rhinestones, setRhinestones] = useState("No");
+
   return (
     <ProductPageTemplate
       title="888 Heavyweight Zipup — 1/1"
@@ -35,9 +38,7 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
         }}
       >
         <div style={{ marginBottom: "14px" }}>
-          <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
-            Patch Color
-          </label>
+          <label style={labelStyle}>Patch Color</label>
           <select style={selectStyle} defaultValue="Red">
             {["Red", "Black", "White", "Yellow", "Green", "Blue", "Purple"].map((v) => (
               <option key={v} value={v} style={{ color: "black" }}>
@@ -48,11 +49,9 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
         </div>
 
         <div style={{ marginBottom: "14px" }}>
-          <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
+          <label style={labelStyle}>
             Vinyl Color
-            <span style={{ display: "block", fontSize: "12px", opacity: 0.7, marginTop: "4px" }}>
-              DM me to see what’s available.
-            </span>
+            <span style={hintStyle}>DM me to see what’s available.</span>
           </label>
           <select style={selectStyle} defaultValue="DM for availability">
             <option value="DM for availability" style={{ color: "black" }}>
@@ -62,9 +61,7 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
         </div>
 
         <div style={{ marginBottom: "14px" }}>
-          <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
-            888 Style
-          </label>
+          <label style={labelStyle}>888 Style</label>
           <select style={selectStyle} defaultValue="Single Stack 888">
             {["Single Stack 888", "Double Stack 888"].map((v) => (
               <option key={v} value={v} style={{ color: "black" }}>
@@ -75,10 +72,12 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
         </div>
 
         <div style={{ marginBottom: "14px" }}>
-          <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
-            Rhinestones
-          </label>
-          <select style={selectStyle} defaultValue="No">
+          <label style={labelStyle}>Rhinestones</label>
+          <select
+            style={selectStyle}
+            value={rhinestones}
+            onChange={(e) => setRhinestones(e.target.value)}
+          >
             {["No", "Yes"].map((v) => (
               <option key={v} value={v} style={{ color: "black" }}>
                 {v}
@@ -87,33 +86,32 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
           </select>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-          <div>
-            <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
-              Rhinestone Color
-            </label>
-            <select style={selectStyle} defaultValue="White">
-              {["Red", "Yellow", "Green", "Blue", "Purple", "Black", "White"].map((v) => (
-                <option key={v} value={v} style={{ color: "black" }}>
-                  {v}
-                </option>
-              ))}
-            </select>
-          </div>
+        {/* ✅ ONLY SHOW THESE IF RHINESTONES === YES */}
+        {rhinestones === "Yes" && (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+            <div>
+              <label style={labelStyle}>Rhinestone Color</label>
+              <select style={selectStyle} defaultValue="White">
+                {["Red", "Yellow", "Green", "Blue", "Purple", "Black", "White"].map((v) => (
+                  <option key={v} value={v} style={{ color: "black" }}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
-              Rhinestone Size
-            </label>
-            <select style={selectStyle} defaultValue="Medium">
-              {["Small", "Medium", "Large"].map((v) => (
-                <option key={v} value={v} style={{ color: "black" }}>
-                  {v}
-                </option>
-              ))}
-            </select>
+            <div>
+              <label style={labelStyle}>Rhinestone Size</label>
+              <select style={selectStyle} defaultValue="Medium">
+                {["Small", "Medium", "Large"].map((v) => (
+                  <option key={v} value={v} style={{ color: "black" }}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </ProductPageTemplate>
   );
@@ -127,4 +125,17 @@ const selectStyle = {
   borderRadius: "10px",
   padding: "12px 14px",
   outline: "none",
+};
+
+const labelStyle = {
+  display: "block",
+  fontSize: "14px",
+  marginBottom: "6px",
+};
+
+const hintStyle = {
+  display: "block",
+  fontSize: "12px",
+  opacity: 0.7,
+  marginTop: "4px",
 };
