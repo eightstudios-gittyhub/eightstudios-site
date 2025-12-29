@@ -5,6 +5,15 @@ import ProductPageTemplate from "@/components/ProductPageTemplate";
 
 export default function HeavyweightZipup() {
   const [rhinestones, setRhinestones] = useState("No");
+  const [rhinestoneSizes, setRhinestoneSizes] = useState([]);
+
+  const toggleSize = (size) => {
+    setRhinestoneSizes((prev) =>
+      prev.includes(size)
+        ? prev.filter((s) => s !== size)
+        : [...prev, size]
+    );
+  };
 
   return (
     <ProductPageTemplate
@@ -14,7 +23,7 @@ export default function HeavyweightZipup() {
       description={`Handmade 1/1 heavyweight luxury zip-up hoodie — Choose your size.
 
 Made to Order
-Certain products are made to order. Please allow 1–2 weeks for production and processing before shipment.
+Please allow 1–2 weeks for production and processing before shipment.
 
 • made by Eight Studios (888inc.)
 • high quality heavyweight hoodie
@@ -31,20 +40,15 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
       ]}
       stripe="https://buy.stripe.com/REPLACE_WITH_YOUR_LINK"
     >
-      {/* CUSTOMIZATION OPTIONS */}
+      {/* CUSTOM OPTIONS */}
       <div style={containerStyle}>
         {/* Patch Color */}
         <Field label="Patch Color">
-          <Select
-            options={["Red", "Black", "White", "Yellow", "Green", "Blue", "Purple"]}
-          />
+          <Select options={["Red", "Black", "White", "Yellow", "Green", "Blue", "Purple"]} />
         </Field>
 
         {/* Vinyl Color */}
-        <Field
-          label="Vinyl Color"
-          hint="DM me to see what’s available."
-        >
+        <Field label="Vinyl Color" hint="DM me to see what’s available.">
           <Select options={["DM for availability"]} />
         </Field>
 
@@ -58,7 +62,12 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
           <select
             style={selectStyle}
             value={rhinestones}
-            onChange={(e) => setRhinestones(e.target.value)}
+            onChange={(e) => {
+              setRhinestones(e.target.value);
+              if (e.target.value === "No") {
+                setRhinestoneSizes([]);
+              }
+            }}
           >
             <option value="No" style={{ color: "black" }}>No</option>
             <option value="Yes" style={{ color: "black" }}>Yes</option>
@@ -67,28 +76,50 @@ Certain products are made to order. Please allow 1–2 weeks for production and 
 
         {/* CONDITIONAL OPTIONS */}
         {rhinestones === "Yes" && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+          <>
             <Field label="Rhinestone Color">
               <Select
                 options={["Red", "Yellow", "Green", "Blue", "Purple", "Black", "White"]}
               />
             </Field>
 
-            <Field label="Rhinestone Size">
-              <Select options={["Small", "Medium", "Large"]} />
-            </Field>
-          </div>
+            {/* MULTI-SELECT SIZE */}
+            <div style={{ marginBottom: "20px" }}>
+              <label style={labelStyle}>Rhinestone Size</label>
+
+              <div style={pillRowStyle}>
+                {["Small", "Medium", "Large"].map((size) => {
+                  const active = rhinestoneSizes.includes(size);
+
+                  return (
+                    <button
+                      key={size}
+                      type="button"
+                      onClick={() => toggleSize(size)}
+                      style={{
+                        ...pillStyle,
+                        backgroundColor: active ? "white" : "transparent",
+                        color: active ? "black" : "white",
+                      }}
+                    >
+                      {size}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </>
         )}
       </div>
     </ProductPageTemplate>
   );
 }
 
-/* ---------- Reusable UI ---------- */
+/* ---------- UI HELPERS ---------- */
 
 function Field({ label, hint, children }) {
   return (
-    <div style={{ marginBottom: "14px" }}>
+    <div style={{ marginBottom: "16px" }}>
       <label style={labelStyle}>
         {label}
         {hint && <span style={hintStyle}>{hint}</span>}
@@ -110,11 +141,11 @@ function Select({ options }) {
   );
 }
 
-/* ---------- Styles ---------- */
+/* ---------- STYLES ---------- */
 
 const containerStyle = {
   maxWidth: "520px",
-  margin: "0 auto 24px",
+  margin: "0 auto 28px",
   textAlign: "left",
 };
 
@@ -139,4 +170,20 @@ const hintStyle = {
   fontSize: "12px",
   opacity: 0.7,
   marginTop: "4px",
+};
+
+const pillRowStyle = {
+  display: "flex",
+  gap: "10px",
+  marginTop: "8px",
+  flexWrap: "wrap",
+};
+
+const pillStyle = {
+  padding: "10px 16px",
+  borderRadius: "999px",
+  border: "1px solid rgba(255,255,255,0.25)",
+  background: "transparent",
+  fontSize: "14px",
+  cursor: "pointer",
 };
