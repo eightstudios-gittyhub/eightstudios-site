@@ -42,9 +42,19 @@ Please allow 1–2 weeks for production and processing before shipment.
     >
       {/* CUSTOM OPTIONS */}
       <div style={containerStyle}>
-        {/* Patch Color */}
+        {/* Patch Color — FIXED ORDER */}
         <Field label="Patch Color">
-          <Select options={["Red", "Black", "White", "Yellow", "Green", "Blue", "Purple"]} />
+          <Select
+            options={[
+              "Black",
+              "White",
+              "Red",     // ← moved here
+              "Yellow",
+              "Green",
+              "Blue",
+              "Purple",
+            ]}
+          />
         </Field>
 
         {/* Vinyl Color */}
@@ -79,7 +89,15 @@ Please allow 1–2 weeks for production and processing before shipment.
           <>
             <Field label="Rhinestone Color">
               <Select
-                options={["Red", "Yellow", "Green", "Blue", "Purple", "Black", "White"]}
+                options={[
+                  "White",
+                  "Black",
+                  "Red",
+                  "Yellow",
+                  "Green",
+                  "Blue",
+                  "Purple",
+                ]}
               />
             </Field>
 
