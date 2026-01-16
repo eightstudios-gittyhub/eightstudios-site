@@ -9,7 +9,7 @@ export default function OrderContent() {
   const glitter = search.get("glitter");
 
   const [contact, setContact] = useState("");
-  const stripeLink = "YOUR_STRIPE_LINK_HERE";
+  const stripeLink = "https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09";
 
   const handleSubmit = (e) => {
     e.preventDefault();
