@@ -1,5 +1,7 @@
 "use client";
 
+import CheckoutButton from "./CheckoutButton"; // ✅ NEW (Stripe Checkout Sessions)
+
 export default function ProductPageTemplate({
   title,
   size,
@@ -147,7 +149,12 @@ export default function ProductPageTemplate({
       {/* ✅ CUSTOM OPTIONS GO HERE (THIS IS THE WHOLE POINT) */}
       {children}
 
-      {/* BUY BUTTON */}
+      {/* ✅ NEW: Stripe Checkout Session button (ambassador tracking) */}
+      <div style={{ marginTop: "20px" }}>
+        <CheckoutButton priceId="price_1SUxWTPqXvDuEmoMwfyDt9YZ" quantity={1} />
+      </div>
+
+      {/* OLD BUY BUTTON (Payment Link) — keep if you still want it */}
       {stripe && (
         <a
           href={stripe}
