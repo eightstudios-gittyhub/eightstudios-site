@@ -2,7 +2,12 @@
 
 import { getAmbRef, setAmbRef } from "../../lib/ambassadorRef";
 
-export default function CheckoutButton({ priceId, quantity = 1 }) {
+export default function CheckoutButton({
+  priceId,
+  quantity = 1,
+  label = "Buy Now",
+  style,
+}) {
   async function go() {
     const params = new URLSearchParams(window.location.search);
     const refFromUrl = params.get("ref");
@@ -16,11 +21,18 @@ export default function CheckoutButton({ priceId, quantity = 1 }) {
       body: JSON.stringify({ priceId, quantity, ref }),
     });
 
-    if (!res.ok) throw new Error(await res.text());
+    if (!res.ok) {
+      const msg = await res.text();
+      throw new Error(msg);
+    }
 
     const data = await res.json();
     window.location.href = data.url;
   }
 
-  return <button onClick={go}>Checkout</button>;
+  return (
+    <button onClick={go} style={style}>
+      {label}
+    </button>
+  );
 }
