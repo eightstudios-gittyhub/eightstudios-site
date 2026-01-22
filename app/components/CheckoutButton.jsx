@@ -9,6 +9,12 @@ export default function CheckoutButton({
   style,
 }) {
   async function go() {
+    if (!priceId) {
+      alert("Missing priceId for this item.");
+      return;
+    }
+
+    // if URL has ?ref=jay, store it too (nice for testing)
     const params = new URLSearchParams(window.location.search);
     const refFromUrl = params.get("ref");
     if (refFromUrl) setAmbRef(refFromUrl);
@@ -21,17 +27,15 @@ export default function CheckoutButton({
       body: JSON.stringify({ priceId, quantity, ref }),
     });
 
-    if (!res.ok) {
-      const msg = await res.text();
-      throw new Error(msg);
-    }
+    const text = await res.text();
+    if (!res.ok) throw new Error(text);
 
-    const data = await res.json();
+    const data = JSON.parse(text);
     window.location.href = data.url;
   }
 
   return (
-    <button onClick={go} style={style}>
+    <button type="button" onClick={go} style={style}>
       {label}
     </button>
   );
