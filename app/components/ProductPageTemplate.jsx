@@ -1,6 +1,6 @@
 "use client";
 
-import CheckoutButton from "./CheckoutButton"; // ✅ NEW (Stripe Checkout Sessions)
+import CheckoutButton from "./CheckoutButton";
 
 export default function ProductPageTemplate({
   title,
@@ -9,12 +9,28 @@ export default function ProductPageTemplate({
   price,
   description,
   images = [],
-  stripe,
-  children, // ✅ ADDED
+  stripe,     // optional fallback (old payment link)
+  priceId,    // ✅ NEW: Stripe Price ID for Checkout Sessions
+  children,
 }) {
   const purpleGlow = {
     color: "#caa9ff",
     textShadow: "0 0 12px #b388ff, 0 0 22px #caa9ff",
+  };
+
+  const buyButtonStyle = {
+    display: "inline-block",
+    backgroundColor: "white",
+    color: "black",
+    padding: "12px 28px",
+    borderRadius: "12px",
+    fontWeight: "600",
+    textDecoration: "none",
+    fontSize: "16px",
+    marginTop: "20px",
+    border: "none",
+    cursor: "pointer",
+    minWidth: "220px",
   };
 
   return (
@@ -67,7 +83,13 @@ export default function ProductPageTemplate({
 
       {/* SIZES (dropdown) */}
       {Array.isArray(sizes) && sizes.length > 0 && (
-        <div style={{ maxWidth: "520px", margin: "18px auto 6px", textAlign: "left" }}>
+        <div
+          style={{
+            maxWidth: "520px",
+            margin: "18px auto 6px",
+            textAlign: "left",
+          }}
+        >
           <label style={{ display: "block", fontSize: "14px", marginBottom: "6px" }}>
             Size
           </label>
@@ -146,35 +168,30 @@ export default function ProductPageTemplate({
         ))}
       </div>
 
-      {/* ✅ CUSTOM OPTIONS GO HERE (THIS IS THE WHOLE POINT) */}
+      {/* ✅ CUSTOM OPTIONS GO HERE */}
       {children}
 
-      {/* ✅ NEW: Stripe Checkout Session button (ambassador tracking) */}
-      <div style={{ marginTop: "20px" }}>
-        <CheckoutButton priceId="price_1SUxWTPqXvDuEmoMwfyDt9YZ" quantity={1} />
-      </div>
-
-      {/* OLD BUY BUTTON (Payment Link) — keep if you still want it */}
-      {stripe && (
+      {/* ✅ ONE clean Buy Now button:
+          - Uses Checkout Sessions if priceId exists (ambassador tracking)
+          - Falls back to old Payment Link if stripe exists
+      */}
+      {priceId ? (
+        <CheckoutButton
+          priceId={priceId}
+          quantity={1}
+          label={price ? `Buy Now — ${price}` : "Buy Now"}
+          style={buyButtonStyle}
+        />
+      ) : stripe ? (
         <a
           href={stripe}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
-            backgroundColor: "white",
-            color: "black",
-            padding: "12px 28px",
-            borderRadius: "8px",
-            fontWeight: "600",
-            textDecoration: "none",
-            fontSize: "16px",
-            marginTop: "20px",
-          }}
+          style={buyButtonStyle}
         >
-          Buy Now
+          {price ? `Buy Now — ${price}` : "Buy Now"}
         </a>
-      )}
+      ) : null}
     </main>
   );
 }
