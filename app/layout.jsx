@@ -1,3 +1,5 @@
+import AmbassadorCapture from "./components/AmbassadorCapture";
+
 export const metadata = {
   title: "Eight Studios of 888",
   description: "Official shop and brand website.",
@@ -29,6 +31,8 @@ export default function RootLayout({ children }) {
           backgroundSize: "100% 100%",
         }}
       >
+        <AmbassadorCapture />
+
         {/* Navigation Wrapper */}
         <div
           style={{
