@@ -17,8 +17,10 @@ export default function Long888BeanieHandSewn() {
 • comfortable deep fit
 • made in-house`}
       images={[
-        "https://i.imgur.com/YOURIMAGE3.jpeg",
-        "https://i.imgur.com/YOURIMAGE4.jpeg",
+        "https://i.imgur.com/vdjnkAZ.jpeg",
+        "https://i.imgur.com/uOeuXdr.jpeg",
+        "https://i.imgur.com/vzN5Th6.jpeg",
+        "https://i.imgur.com/Ulbvs0E.jpeg",
       ]}
     />
   );
