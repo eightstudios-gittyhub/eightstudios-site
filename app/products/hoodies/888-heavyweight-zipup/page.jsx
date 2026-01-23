@@ -38,7 +38,7 @@ Please allow 1–2 weeks for production and processing before shipment.
         "https://i.imgur.com/lElGmrN.jpeg",
         "https://i.imgur.com/fJTOTE8.jpeg",
       ]}
-      stripe="https://buy.stripe.com/REPLACE_WITH_YOUR_LINK"
+      stripe="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d"
     >
       {/* CUSTOM OPTIONS */}
       <div style={containerStyle}>
