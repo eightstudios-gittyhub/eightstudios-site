@@ -17,8 +17,8 @@ export default function Short888Beanie() {
 • limited 1/1 piece
 • made in-house`}
       images={[
-        "https://i.imgur.com/YOURIMAGE1.jpeg",
-        "https://i.imgur.com/YOURIMAGE2.jpeg",
+        "https://i.imgur.com/0F8sDMG.jpeg",
+        "https://i.imgur.com/WBvyvvd.jpeg",
       ]}
     />
   );
