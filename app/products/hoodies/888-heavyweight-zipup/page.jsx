@@ -60,9 +60,19 @@ Please allow 1–2 weeks for production and processing before shipment.
         </Field>
 
         {/* Vinyl Color */}
-        <Field label="Vinyl Color" hint="DM me to see what’s available.">
-          <Select options={["DM for availability"]} />
-        </Field>
+<Field label="Vinyl Color" hint="DM me to see what’s available.">
+  <Select
+    options={[
+      "Glitter Black",
+      "Glitter White",
+      "Glitter Red",
+      "Glitter Green",
+      "Glitter Purple",
+      "Glitter Gold",
+    ]}
+  />
+</Field>
+
 
         {/* 888 Style */}
         <Field label="888 Style">
