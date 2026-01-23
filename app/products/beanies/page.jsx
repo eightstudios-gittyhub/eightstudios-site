@@ -42,7 +42,7 @@ export default function BeaniesIndexPage() {
       </h1>
 
       <p style={{ opacity: 0.8, marginBottom: "35px" }}>
-        Handmade 1/1 pieces by Eight Studios (888inc.)
+        Every piece is made to order & crafted in-studio by Eight Studios (888inc.)
       </p>
 
       <div
