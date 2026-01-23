@@ -17,7 +17,7 @@ export default function StarfadeDenim() {
         "https://i.imgur.com/v5uYwtC.jpeg",
         "https://i.imgur.com/4IaE5Uo.jpeg",
       ]}
-      stripe="https://buy.stripe.com/cNi8wRd7h7WG73R1Gi5Rm08"
+      "https://buy.stripe.com/cNifZjgjtel41Jx70C5Rm0b8"
     />
   );
 }
