@@ -21,6 +21,9 @@ export default function Page() {
         "https://i.imgur.com/yU86GOT.jpeg",
         "https://i.imgur.com/O9sgchl.jpeg",
       ]}
+      stripe={{
+        link: "https://buy.stripe.com/bJeaEZ0kv2CmcobckW5Rm0c",
+      }}
     />
   );
 }
