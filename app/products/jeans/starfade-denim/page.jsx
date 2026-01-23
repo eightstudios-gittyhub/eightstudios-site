@@ -23,7 +23,7 @@ export default function StarfadeDenim() {
       price="$270"
       description={descriptionLines.map((line) => `• ${line}`).join("\n")}
       images={images}
-      stripe="https://buy.stripe.com/cNifZjgjtel41Jx70C5Rm0b8"
+      stripe="https://buy.stripe.com/cNifZjgjtel41Jx70C5Rm0b"
     />
   );
 }
