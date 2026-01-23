@@ -8,6 +8,7 @@ export default function Page() {
       title="Camo Fragment Shorts — 1/1"
       size="29W"
       price="$120"
+      stripe="https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e"
       description={`• made by Eight Studios (888inc.)
 • made in 2024
 • was made for commission but the guy didn't want it anymore`}
