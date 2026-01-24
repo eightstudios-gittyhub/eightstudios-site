@@ -21,7 +21,7 @@ export default function BeaniesIndexPage() {
     {
       title: "888Long Beanie — Hand-Sewn",
       price: "$75",
-      href: "/peoducts/beanies/888-long-beanie-hand-sewn",
+      href: "/products/beanies/888-long-beanie-hand-sewn",
       img: "https://i.imgur.com/vdjnkAZ.jpeg",
       subtitle: "Hand-sewn patch • long fit",
     },
