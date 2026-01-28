@@ -65,7 +65,6 @@ export const archiveItems = [
       "https://i.imgur.com/ipz9q8C.jpeg",
       "https://i.imgur.com/WYu6krb.jpeg",
       "https://i.imgur.com/d4njN1p.jpeg",
-      "https://i.imgur.com/CUHJXgU.jpeg",
     ],
     description:
       `888Blue Moonstone 001 — used about 21 materials. 
