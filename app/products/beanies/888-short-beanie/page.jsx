@@ -20,6 +20,7 @@ export default function Short888Beanie() {
         "https://i.imgur.com/0F8sDMG.jpeg",
         "https://i.imgur.com/WBvyvvd.jpeg",
       ]}
+      stripe="https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f"
     />
   );
 }
