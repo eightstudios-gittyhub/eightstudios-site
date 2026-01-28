@@ -55,6 +55,27 @@ export const archiveItems = [
       "Skinny Jeans 888Halloween Edition — used about 8 materials.\n• made by Eight Studios (888inc.)\n• price: for something like this $35–$75\n • Made in 2023",
   },
 
+   {
+    name: "888Blue Moonstone 001",
+    slug: "888blue-moonstone-jeans",
+    images: [
+      "https://i.imgur.com/CUHJXgU.jpeg",
+      "https://i.imgur.com/uXJvrQd.jpeg",
+      "https://i.imgur.com/IzK7OdG.jpeg",
+      "https://i.imgur.com/ipz9q8C.jpeg",
+      "https://i.imgur.com/WYu6krb.jpeg",
+      "https://i.imgur.com/d4njN1p.jpeg",
+      "https://i.imgur.com/CUHJXgU.jpeg",
+    ],
+    description:
+      `888Blue Moonstone 001 — used about 21 materials. 
+
+• made by Eight Studios (888inc.)
+•over 30hrs of sewing / construction 
+• price: for something like this, inquire.
+•made in 2023`,
+  },
+  
   {
     name: "888 Bleach Flannel — 1/1",
     slug: "888-flannel",
