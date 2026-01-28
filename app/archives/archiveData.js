@@ -110,7 +110,23 @@ export const archiveItems = [
     description:
       "Bleach-treated flannel with 888 branding, custom fade patterns, and heat-set vinyl graphics.",
   },
-
+  
+{
+    name: "888Flame Hoodie",
+    slug: "888flame-hoodie",
+    images: [
+      "https://i.imgur.com/yaOixYh.jpeg",
+      "https://i.imgur.com/kKPR75i.jpeg",
+      "https://i.imgur.com/bqFmEVb.jpeg",
+    ],
+    description:
+      `888Flame Hoodie  — used about 6 materials. 
+• made by Eight Studios (888inc.)
+• made for myself
+• price: for something like this, inquire.  
+• made in 2022`,
+  },
+  
   {
     name: "888Phone Case Nature — 1/1",
     slug: "888-phone-case-nature",
