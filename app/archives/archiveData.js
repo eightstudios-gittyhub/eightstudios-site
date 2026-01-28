@@ -23,7 +23,24 @@ export const archiveItems = [
 
 •made in 2022`,
   },
+{
+    name: "888Moss Jeans",
+    slug: "888moss-jeans",
+    images: [
+      "https://i.imgur.com/SfeD7IY.jpeg",
+      "https://i.imgur.com/ic2GMmD.jpeg",
+      "https://i.imgur.com/c4QrqpC.jpeg",
+      "https://i.imgur.com/TzoHH70.jpeg",
+      "https://i.imgur.com/zIl0Urn.jpeg",
+    ],
+    description:
+      `888Moss Jeans — used about 30 materials. 
 
+• made by Eight Studios (888inc.)
+•over 20hrs of sewing / construction 
+• price: for something like this, inquire.
+•made in 2023`,
+  },
   {
     name: "Skinny Jeans 888Halloween Edition — 1/1",
     slug: "skinny-jeans-888halloween-edition",
