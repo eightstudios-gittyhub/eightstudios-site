@@ -153,6 +153,73 @@ export default function AmbassadorAccess() {
             </p>
           </div>
         )}
+ {form.item === "Hoodie" && (
+          <div
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              padding: "18px",
+              borderRadius: "10px",
+              marginTop: "4px",
+              lineHeight: 1.5,
+            }}
+          >
+            <h3 style={{ marginBottom: "8px", color: "#caa9ff" }}>
+              Hoodie — Custom 1/1
+            </h3>
+
+            <p>Handmade 1/1 hooded garments by Eight Studios.</p>
+
+            <p>
+              <strong>Standard Retail Value (you don’t pay this):</strong>
+              <br />$150 – $250
+            </p>
+
+            <p style={{ marginTop: "10px" }}>
+              <strong>Ambassador Contribution:</strong>
+              <br />Materials Fee Only
+            </p>
+
+            <p style={{ marginTop: "10px", opacity: 0.75 }}>
+              (Covers garment [unless provided], rhinestones,
+              vinyl/screenprint, thread. Final materials cost is calculated after
+              we finalize your exact design + style.)
+            </p>
+          </div>
+        )}
+
+        {form.item === "Phone Case" && (
+          <div
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              padding: "18px",
+              borderRadius: "10px",
+              marginTop: "4px",
+              lineHeight: 1.5,
+            }}
+          >
+            <h3 style={{ marginBottom: "8px", color: "#caa9ff" }}>
+              Phone Case — Custom 1/1
+            </h3>
+
+            <p>
+              <strong>Standard Retail Value (you don’t pay this):</strong>
+              <br />$30 – $88
+            </p>
+
+            <p style={{ marginTop: "10px" }}>
+              <strong>Ambassador Contribution:</strong>
+              <br />Materials Fee Only
+            </p>
+
+            <p style={{ marginTop: "10px", opacity: 0.75 }}>
+              (Covers garment [unless provided], rhinestones,
+              vinyl/screenprint, thread. Final materials cost is calculated after
+              we finalize your exact design + style.)
+            </p>
+          </div>
+        )}
 
         {/* MESSAGE */}
         <textarea
