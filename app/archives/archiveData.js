@@ -142,4 +142,22 @@ export const archiveItems = [
       "• price for something like this $55–$88\n\n" +
       "888Phone Crimson Sharkbite Case — used about 10 materials.",
   },
+   {
+    name: "888Wildprint Mosaic Case",
+    slug: "888wildprint-case",
+    images: [
+      "https://i.imgur.com/47I8dEk.jpeg",
+      "https://i.imgur.com/J6jFQHc.jpeg",
+      "https://i.imgur.com/SbnvfFY.jpeg",
+      "https://i.imgur.com/fEFkblA.jpeg",
+      "https://i.imgur.com/cwNvCvP.jpeg",
+    ],
+    description:
+      `888Wildprint Mosaic Case — used about 5 materials. 
+• made by Eight Studios (888inc.)
+• made for commission
+• price: for something like this, inquire. 
+• made in 2024`,
+  },
+];
 ];
