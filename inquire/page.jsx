@@ -6,12 +6,51 @@ import { useState } from "react";
 export default function InquirePage() {
   const params = useSearchParams();
   const ref = params.get("ref") || "Archive Garment";
+  const normalizedRef = ref.replace(/-/g, " ");
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/send-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ref: normalizedRef,
+          instagram,
+          email,
+          phone,
+          message,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Unable to submit inquiry.");
+      }
+
+      setSubmitted(true);
+      setInstagram("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch (err) {
+      setError(err.message || "Unable to submit inquiry.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,6 +90,7 @@ export default function InquirePage() {
         }}
       >
         Referencing: <strong>{ref.replace(/-/g, " ")}</strong>
+        Referencing: <strong>{normalizedRef}</strong>
       </p>
 
       {submitted ? (
@@ -87,6 +127,8 @@ export default function InquirePage() {
             required
             placeholder="Your Instagram @"
             style={inputStyle}
+            value={instagram}
+            onChange={(e) => setInstagram(e.target.value)}
           />
 
           {/* Email */}
@@ -95,6 +137,8 @@ export default function InquirePage() {
             required
             placeholder="Your Email"
             style={inputStyle}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           {/* Phone */}
@@ -102,6 +146,8 @@ export default function InquirePage() {
             type="text"
             placeholder="Your Phone Number (optional)"
             style={inputStyle}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
           />
 
           {/* Message */}
@@ -109,11 +155,18 @@ export default function InquirePage() {
             placeholder="Describe what you want inspired by this piece..."
             rows={5}
             style={{ ...inputStyle, resize: "none" }}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
           />
+
+          {error ? (
+            <p style={{ color: "#f28b82", marginTop: "-8px" }}>{error}</p>
+          ) : null}
 
           {/* Submit */}
           <button
             type="submit"
+            disabled={isSubmitting}
             style={{
               padding: "14px",
               fontSize: "17px",
@@ -125,9 +178,12 @@ export default function InquirePage() {
               color: "white",
               border: "1px solid rgba(255,255,255,0.15)",
               cursor: "pointer",
+              cursor: isSubmitting ? "not-allowed" : "pointer",
+              opacity: isSubmitting ? 0.7 : 1,
             }}
           >
             Submit Inquiry
+            {isSubmitting ? "Submitting..." : "Submit Inquiry"}
           </button>
         </form>
       )}
@@ -144,4 +200,5 @@ const inputStyle = {
   fontSize: "16px",
   outline: "none",
   backdropFilter: "blur(6px)",
+};
 };
