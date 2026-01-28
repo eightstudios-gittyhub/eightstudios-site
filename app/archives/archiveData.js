@@ -74,6 +74,28 @@ export const archiveItems = [
 • price: for something like this, inquire.
 •made in 2023`,
   },
+
+   {
+    name: "888Puff Patch 001",
+    slug: "888puff-patch-jeans",
+    images: [
+      "https://i.imgur.com/VnANMJz.jpeg",
+      "https://i.imgur.com/yh6Jlmw.jpeg",
+      "https://i.imgur.com/qQhXrO5.jpeg",
+      "https://i.imgur.com/RoOGzpP.jpeg",
+      "https://i.imgur.com/uOTMGyw.jpeg",
+      "https://i.imgur.com/D5hBHfH.jpeg",
+      "https://i.imgur.com/4VmWT7B.jpeg",
+    ],
+    description:
+      `888Puff Patch 001 — used about 13 materials.
+
+• made by Eight Studios (888inc.)
+• Skinny Jeans Black
+• 9hrs of sewing / construction
+• price: for something like this, inquire.
+• made in 2024`,
+  },
   
   {
     name: "888 Bleach Flannel — 1/1",
