@@ -160,4 +160,3 @@ export const archiveItems = [
 • made in 2024`,
   },
 ];
-];
