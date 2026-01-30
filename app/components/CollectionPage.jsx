@@ -81,10 +81,7 @@ export default function CollectionPage({
         >
           {products.map((product) => (
             <Link key={product.link} href={product.link} className="product-card">
-              <div
-                className="product-image"
-                style={{ backgroundImage: `url(${product.img})` }}
-              >
+              <div className="product-image">
                 <img
                   src={product.img}
                   alt={product.title}
@@ -280,13 +277,10 @@ export default function CollectionPage({
           aspect-ratio: 4 / 5;
           overflow: hidden;
           background-color: rgba(255, 255, 255, 0.06);
-          background-position: center;
-          background-size: contain;
-          background-repeat: no-repeat;
+          border-radius: 16px 16px 0 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 10px;
           box-sizing: border-box;
           color: #f5f5f5;
         }
@@ -294,7 +288,8 @@ export default function CollectionPage({
         .product-image img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
+          object-position: center;
           display: block;
           color: inherit;
         }
