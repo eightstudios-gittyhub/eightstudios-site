@@ -1,9 +1,9 @@
-import CollectionPage from "../../components/CollectionPage";  const hoodies = [ 
+import CollectionPage from "../../components/CollectionPage";
 
 export default function HoodiesPage() {
   const hoodies = [
-    {  
-           title: "888 Heavyweight Zipup — 1/1",
+    {
+      title: "888 Heavyweight Zipup — 1/1",
       link: "/products/hoodies/888-heavyweight-zipup",
       img: "https://i.imgur.com/pIeNzKp.jpeg",
       subtitle: "Handmade zip-up hoodie",
@@ -16,4 +16,5 @@ export default function HoodiesPage() {
       description="Handmade 1/1 hooded garments by Eight Studios."
       products={hoodies}
     />
-    }
+  );
+}
