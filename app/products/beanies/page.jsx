@@ -11,16 +11,16 @@ export default function BeaniesIndexPage() {
     },
     {
       title: "888Short Beanie",
-      price: "$30"
-      ,link: "/products/beanies/888-short-beanie",
+      price: "$30",
+      link: "/products/beanies/888-short-beanie",
       img: "https://i.imgur.com/0F8sDMG.jpeg",
       subtitle: "Short / cropped fit",
     },
     {
       title: "888Long Beanie — Hand-Sewn",
       price: "$75",
-            link: "/products/beanies/888-long-beanie-hand-sewn"
- img: "https://i.imgur.com/vdjnkAZ.jpeg",
+      link: "/products/beanies/888-long-beanie-hand-sewn",
+      img: "https://i.imgur.com/vdjnkAZ.jpeg",
       subtitle: "Hand-sewn patch • long fit",
     },
   ];
