@@ -40,6 +40,7 @@ export default function JeansPage() {
       description="Custom denim and patchwork pieces will appear here as new drops release."
       products={products}
       emptyMessage="More pieces coming soon. Customize your own clothing — inquire at eight888studios@gmail.com."
+      hideSubtitle
     />
   );
 }

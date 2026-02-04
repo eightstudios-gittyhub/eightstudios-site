@@ -104,9 +104,6 @@ export default function CollectionPage({
                   </div>
                 )}
                 <div className="product-title">{product.title}</div>
-                {product.subtitle && (
-                  <div className="product-subtitle">{product.subtitle}</div>
-                )}
                 {product.price && <div className="product-price">{product.price}</div>}
                 <div className="product-cta">{product.cta ?? ctaLabel}</div>
               </div>
@@ -199,163 +196,135 @@ export default function CollectionPage({
         }
 
         .control-button.active {
-          border-color: rgba(255, 255, 255, 0.5);
-          background: rgba(255, 255, 255, 0.12);
+          border-color: rgba(255, 255, 255, 0.55);
+          background: rgba(255, 255, 255, 0.08);
         }
 
         .grid-icon {
-          display: grid;
-          gap: 2px;
           width: 18px;
           height: 18px;
-        }
-
-        .grid-icon span {
-          display: block;
-          background: rgba(255, 255, 255, 0.65);
-          border-radius: 2px;
+          display: grid;
+          gap: 2px;
         }
 
         .grid-1 {
           grid-template-columns: 1fr;
-          grid-template-rows: 1fr;
-        }
-
-        .grid-1 span:nth-child(n + 2) {
-          display: none;
         }
 
         .grid-2 {
           grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: repeat(2, 1fr);
-        }
-
-        .grid-2 span:nth-child(n + 5) {
-          display: none;
         }
 
         .grid-3 {
           grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(2, 1fr);
+        }
+
+        .grid-icon span {
+          display: block;
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 3px;
+          opacity: 0.7;
         }
 
         .product-grid {
           display: grid;
           grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-          gap: 20px;
+          gap: 24px;
           max-width: 1100px;
           margin: 0 auto;
-          text-align: left;
         }
 
-        :global(.product-card) {
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          overflow: hidden;
+        .product-card {
           text-decoration: none;
-          color: #f5f5f5;
-          background: rgba(10, 10, 10, 0.9);
+          color: inherit;
+          border-radius: 18px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.02);
+          overflow: hidden;
           display: flex;
           flex-direction: column;
           min-height: 100%;
           transition: transform 0.2s ease, border 0.2s ease;
         }
 
-        :global(.product-card:visited) {
-          color: #f5f5f5;
-        }
-
-        :global(.product-card *) {
+        .product-card:visited,
+        .product-card:hover,
+        .product-card:focus,
+        .product-card:active {
           color: inherit;
           text-decoration: none;
         }
 
-        :global(.product-card:hover) {
+        .product-card:hover {
           transform: translateY(-4px);
           border-color: rgba(255, 255, 255, 0.25);
         }
 
         .product-image {
           width: 100%;
-          aspect-ratio: 4 / 5;
-          overflow: hidden;
-          background-color: rgba(255, 255, 255, 0.06);
+          aspect-ratio: 1 / 1.2;
+          background-size: cover;
           background-position: center;
-          background-size: contain;
-          background-repeat: no-repeat;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px;
-          box-sizing: border-box;
-          color: #f5f5f5;
+          position: relative;
         }
 
         .product-image img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
-          display: block;
-          color: inherit;
+          object-fit: cover;
+          opacity: 0;
         }
 
         .product-body {
-          padding: 16px;
-          display: grid;
+          padding: 18px;
+          display: flex;
+          flex-direction: column;
           gap: 8px;
+          align-items: center;
         }
 
         .product-thumb {
           width: 52px;
           height: 52px;
           border-radius: 12px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          background: rgba(255, 255, 255, 0.04);
-          display: flex;
-          align-items: center;
-          justify-content: center;
           overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .product-thumb img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          display: block;
         }
 
         .product-title {
           font-size: 16px;
           font-weight: 600;
-          color: #ffffff;
-        }
-
-        .product-subtitle {
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.7);
+          color: #fff;
+          text-decoration: none;
         }
 
         .product-price {
-          font-size: 15px;
-          font-weight: 600;
-          color: #ffffff;
+          font-size: 14px;
+          opacity: 0.85;
         }
 
         .product-cta {
           font-size: 13px;
-          color: rgba(255, 255, 255, 0.6);
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          opacity: 0.7;
+          margin-top: 8px;
+          color: #cbd5f5;
+          text-decoration: none;
         }
 
         .empty-state {
-          margin-top: 40px;
           opacity: 0.6;
+          margin-top: 40px;
         }
 
         @media (max-width: 900px) {
-          .collection-title {
-            font-size: 30px;
-          }
-
           .product-grid {
             grid-template-columns: repeat(var(--tablet-columns), minmax(0, 1fr));
           }
@@ -363,11 +332,7 @@ export default function CollectionPage({
 
         @media (max-width: 600px) {
           .collection {
-            padding: 40px 16px 64px;
-          }
-
-          .collection-title {
-            font-size: 26px;
+            padding: 36px 16px 60px;
           }
 
           .product-grid {
