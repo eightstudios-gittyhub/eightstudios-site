@@ -31,6 +31,31 @@ export default function RootLayout({ children }) {
           backgroundSize: "100% 100%",
         }}
       >
+        <style>{`
+          body a,
+          body a:link,
+          body a:visited,
+          body a:hover,
+          body a:focus,
+          body a:active {
+            color: inherit;
+            text-decoration: none;
+          }
+
+          .product-card,
+          .product-card:link,
+          .product-card:visited,
+          .product-card:hover,
+          .product-card:focus,
+          .product-card:active {
+            color: #fff !important;
+            text-decoration: none !important;
+          }
+
+          .product-card * {
+            text-decoration: none !important;
+          }
+        `}</style>
         <AmbassadorCapture />
 
         {/* Navigation Wrapper */}
