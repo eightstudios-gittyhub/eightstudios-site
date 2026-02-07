@@ -2,6 +2,12 @@ import CollectionPage from "@/components/CollectionPage";
 
 export default function JeansPage() {
   const products = [
+     {
+      title: "Blue MoonStone 02",
+      link: "/products/jeans/blue-moonstone-02",
+      img: "https://i.imgur.com/NkY6FRi.jpeg",
+      subtitle: "Custom MoonStone Denim",
+    },
     {
       title: "Hand-Sewn Woodland Camo — 1/1",
       link: "/products/jeans/hand-sewn-woodland-camo",

@@ -21,7 +21,7 @@ export default function BloomingThroughConcrete() {
         "https://i.imgur.com/qdewo2k.jpeg",
         "https://i.imgur.com/Qm0wt5b.jpeg"
       ]}
-      stripe="#"
+      stripe="https://buy.stripe.com/eVq7sNc3d5Oy2NB1Gi5Rm0h"
     />
   );
 }

@@ -255,7 +255,7 @@ export default function CollectionPage({
         .product-card:hover,
         .product-card:focus,
         .product-card:active {
-          color: #fff;
+         color: #fff;
           text-decoration: none;
         }
 
@@ -320,7 +320,7 @@ export default function CollectionPage({
 
         .product-price {
           font-size: 14px;
-          color: #fff;
+           color: #fff;
           opacity: 0.85;
         }
 
