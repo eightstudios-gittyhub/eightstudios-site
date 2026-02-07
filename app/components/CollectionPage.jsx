@@ -22,7 +22,7 @@ export default function CollectionPage({
   const { tabletColumns, mobileColumns } = useMemo(() => {
     return {
       tabletColumns: Math.min(columns, 2),
-      mobileColumns: 1,
+       mobileColumns: columns,
     };
   }, [columns]);
 
