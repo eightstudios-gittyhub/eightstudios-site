@@ -104,6 +104,9 @@ export default function CollectionPage({
                   </div>
                 )}
                 <div className="product-title">{product.title}</div>
+                {product.subtitle && (
+                  <div className="product-subtitle">{product.subtitle}</div>
+                )}
                 {product.price && <div className="product-price">{product.price}</div>}
                 <div className="product-cta">{product.cta ?? ctaLabel}</div>
               </div>
@@ -236,7 +239,7 @@ export default function CollectionPage({
 
         .product-card {
           text-decoration: none;
-          color: inherit;
+          color: #fff;
           border-radius: 18px;
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: rgba(255, 255, 255, 0.02);
@@ -247,11 +250,16 @@ export default function CollectionPage({
           transition: transform 0.2s ease, border 0.2s ease;
         }
 
+        .product-card:link,
         .product-card:visited,
         .product-card:hover,
         .product-card:focus,
         .product-card:active {
-          color: inherit;
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .product-card * {
           text-decoration: none;
         }
 
@@ -304,8 +312,15 @@ export default function CollectionPage({
           text-decoration: none;
         }
 
+        .product-subtitle {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.65);
+          opacity: 0.65;
+        }
+
         .product-price {
           font-size: 14px;
+          color: #fff;
           opacity: 0.85;
         }
 
