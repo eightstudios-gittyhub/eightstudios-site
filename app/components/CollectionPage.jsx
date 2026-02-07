@@ -104,6 +104,9 @@ export default function CollectionPage({
                   </div>
                 )}
                 <div className="product-title">{product.title}</div>
+                {product.subtitle && (
+                  <div className="product-subtitle">{product.subtitle}</div>
+                )}
                 {product.price && <div className="product-price">{product.price}</div>}
                 <div className="product-cta">{product.cta ?? ctaLabel}</div>
               </div>
@@ -247,11 +250,12 @@ export default function CollectionPage({
           transition: transform 0.2s ease, border 0.2s ease;
         }
 
+        .product-card:link,
         .product-card:visited,
         .product-card:hover,
         .product-card:focus,
         .product-card:active {
-          color: #fff;
+         color: #fff;
           text-decoration: none;
         }
 
