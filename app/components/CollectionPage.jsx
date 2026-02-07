@@ -236,7 +236,7 @@ export default function CollectionPage({
 
         .product-card {
           text-decoration: none;
-          color: inherit;
+          color: #fff;
           border-radius: 18px;
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: rgba(255, 255, 255, 0.02);
@@ -251,7 +251,11 @@ export default function CollectionPage({
         .product-card:hover,
         .product-card:focus,
         .product-card:active {
-          color: inherit;
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .product-card * {
           text-decoration: none;
         }
 
