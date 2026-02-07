@@ -312,8 +312,15 @@ export default function CollectionPage({
           text-decoration: none;
         }
 
+        .product-subtitle {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.65);
+          opacity: 0.65;
+        }
+
         .product-price {
           font-size: 14px;
+           color: #fff;
           opacity: 0.85;
         }
 
