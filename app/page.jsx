@@ -26,6 +26,7 @@ export default function Home() {
       {/* CATEGORY BUTTONS */}
       <div className="grid">
         <a href="/products/beanies" style={linkStyle}>Beanies</a>
+         <a href="/products/phone-cases" style={linkStyle}>Phone Cases</a>
         <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
         <a href="/products/jeans" style={linkStyle}>Jeans</a>
         <a href="/products/shorts" style={linkStyle}>Shorts</a>
