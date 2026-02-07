@@ -14,6 +14,7 @@ export default function BlueMoonstone02() {
         "https://i.imgur.com/rxLVFwQ.jpeg",
         "https://i.imgur.com/oQssGxj.jpeg",
       ]}
+      stripe="https://buy.stripe.com/fZubJ3d7h2Cm5ZN98K5Rm0i"
     />
   );
 }
