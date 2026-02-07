@@ -320,7 +320,7 @@ export default function CollectionPage({
 
         .product-price {
           font-size: 14px;
-          color: #fff;
+           color: #fff;
           opacity: 0.85;
         }
 
