@@ -145,29 +145,6 @@ export default function ProductPageTemplate({
         </div>
       )}
 
-      {/* IMAGES */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "16px",
-          maxWidth: "980px",
-          margin: "0 auto 40px",
-        }}
-      >
-        {images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            style={{
-              width: "100%",
-              borderRadius: "10px",
-            }}
-          />
-        ))}
-      </div>
-
       {/* ✅ CUSTOM OPTIONS GO HERE */}
       {children}
 
@@ -192,6 +169,29 @@ export default function ProductPageTemplate({
           {price ? `Buy Now — ${price}` : "Buy Now"}
         </a>
       ) : null}
+
+      {/* IMAGES */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "16px",
+          maxWidth: "980px",
+          margin: "0 auto 40px",
+        }}
+      >
+        {images.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt=""
+            style={{
+              width: "100%",
+              borderRadius: "10px",
+            }}
+          />
+        ))}
+      </div>
     </main>
   );
 }
