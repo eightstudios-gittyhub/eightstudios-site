@@ -255,7 +255,7 @@ export default function CollectionPage({
         .product-card:hover,
         .product-card:focus,
         .product-card:active {
-         color: #fff;
+          color: #fff;
           text-decoration: none;
         }
 
