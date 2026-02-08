@@ -5,15 +5,7 @@ import ProductPageTemplate from "@/components/ProductPageTemplate";
 
 export default function HeavyweightZipup() {
   const [rhinestones, setRhinestones] = useState("No");
-  const [rhinestoneSizes, setRhinestoneSizes] = useState([]);
-
-  const toggleSize = (size) => {
-    setRhinestoneSizes((prev) =>
-      prev.includes(size)
-        ? prev.filter((s) => s !== size)
-        : [...prev, size]
-    );
-  };
+  const [rhinestoneSize, setRhinestoneSize] = useState("");
 
   return (
     <ProductPageTemplate
@@ -91,7 +83,7 @@ Please allow 1–2 weeks for production and processing before shipment.
             onChange={(e) => {
               setRhinestones(e.target.value);
               if (e.target.value === "No") {
-                setRhinestoneSizes([]);
+                setRhinestoneSize("");
               }
             }}
           >
@@ -124,13 +116,13 @@ Please allow 1–2 weeks for production and processing before shipment.
 
               <div style={pillRowStyle}>
                 {["Small", "Medium", "Large"].map((size) => {
-                  const active = rhinestoneSizes.includes(size);
+                  const active = rhinestoneSize === size;
 
                   return (
                     <button
                       key={size}
                       type="button"
-                      onClick={() => toggleSize(size)}
+                      onClick={() => setRhinestoneSize(size)}
                       style={{
                         ...pillStyle,
                         backgroundColor: active ? "white" : "transparent",
