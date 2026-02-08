@@ -1,37 +1,27 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// 🔐 DISCORD WEBHOOK
-const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
-
-// 🔐 RATE LIMIT (simple)
 let lastSubmissionTime = 0;
 
-// SERVER ROUTE
 export async function POST(request) {
   try {
     const apiKey = process.env.RESEND_API_KEY;
+    const notifyEmail = process.env.MY_EMAIL;
 
-    // 🛑 HARD STOP IF KEY IS MISSING (prevents build crash)
-    if (!apiKey) {
-      console.error("RESEND_API_KEY missing");
+    if (!apiKey || !notifyEmail) {
+      console.error("Missing RESEND_API_KEY or MY_EMAIL");
       return NextResponse.json(
         { error: "Email service not configured" },
         { status: 500 }
       );
     }
 
-    // 🔐 INIT RESEND (SAFE — runtime only)
-    const resend = new Resend(apiKey);
-
     const data = await request.json();
 
-    // 🛑 1 — Honeypot (bot check)
-    if (data.hiddenField) {
-      return NextResponse.json({ error: "Bot detected" }, { status: 400 });
+    if (data?.hiddenField) {
+      return NextResponse.json({ success: true });
     }
 
-    // 🛑 2 — Rate limit (3 sec)
     const now = Date.now();
     if (now - lastSubmissionTime < 3000) {
       return NextResponse.json(
@@ -41,56 +31,42 @@ export async function POST(request) {
     }
     lastSubmissionTime = now;
 
-    // 🧼 3 — Validation
-    if (!data.name || !data.email || !data.instagram || !data.message) {
+    const { name, instagram, email, item, otherItem, message } = data;
+
+    if (!name || !instagram || !email || !item || !message) {
       return NextResponse.json(
-        { error: "Missing fields" },
+        { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // 📧 4 — SEND EMAIL
+    if (item === "Other" && !otherItem) {
+      return NextResponse.json(
+        { error: "Missing item description" },
+        { status: 400 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     await resend.emails.send({
       from: "Eight Studios <noreply@eightstudios.org>",
-      to: process.env.MY_EMAIL,
-      subject: "New Ambassador Application",
+      to: notifyEmail,
+      subject: "New Ambassador Intake",
       html: `
-        <h2>Ambassador Form Submission</h2>
-        <p><b>Name:</b> ${data.name}</p>
-        <p><b>Instagram:</b> ${data.instagram}</p>
-        <p><b>Email:</b> ${data.email}</p>
-        <p><b>Message:</b> ${data.message}</p>
+        <h2>Ambassador Intake</h2>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Instagram:</b> ${instagram}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Item:</b> ${item}</p>
+        <p><b>Other Item:</b> ${otherItem || "N/A"}</p>
+        <p><b>Message:</b> ${message}</p>
       `,
     });
 
-    // 📢 5 — DISCORD NOTIFICATION
-    if (DISCORD_WEBHOOK) {
-      await fetch(DISCORD_WEBHOOK, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          embeds: [
-            {
-              title: "New Ambassador Application",
-              color: 11141290,
-              fields: [
-                { name: "Name", value: data.name },
-                { name: "Instagram", value: data.instagram },
-                { name: "Email", value: data.email },
-                { name: "Message", value: data.message },
-              ],
-            },
-          ],
-        }),
-      });
-    }
-
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("Ambassador Error:", err);
-    return NextResponse.json(
-      { error: "Server error" },
-      { status: 500 }
-    );
+    console.error("Ambassador Intake Error:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
