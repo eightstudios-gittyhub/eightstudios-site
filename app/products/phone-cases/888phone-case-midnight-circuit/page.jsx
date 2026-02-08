@@ -6,7 +6,7 @@ export default function PhoneCaseMidnightCircuit() {
   return (
     <ProductPageTemplate
       title="888Phone Case Midnight Circuit — 1/1"
-      size="iPhone 16 (in purple glow)"
+      size="iPhone 16"
       price="$60"
       description={`Hand made iPhone 16 case with hand sewn aspects.
 
