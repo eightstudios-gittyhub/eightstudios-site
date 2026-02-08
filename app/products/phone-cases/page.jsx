@@ -7,7 +7,7 @@ export default function PhoneCasesPage() {
       price: "$60",
       link: "/products/phone-cases/888phone-case-midnight-circuit",
       img: "https://i.imgur.com/3n1cHwZ.jpeg",
-      subtitle: "iPhone 16 (purple glow)",
+      subtitle: "iPhone 16",
     },
   ];
 
