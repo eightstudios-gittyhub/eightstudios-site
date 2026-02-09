@@ -121,7 +121,7 @@ export default function RootLayout({ children }) {
               scrollBehavior: "smooth",
             }}
           >
-            {[
+         {[
               { label: "Home", href: "/" },
               { label: "Beanies", href: "/products/beanies" },
               { label: "Phone Cases", href: "/products/phone-cases" },
