@@ -121,30 +121,31 @@ export default function RootLayout({ children }) {
               scrollBehavior: "smooth",
             }}
           >
-            {["Home", "Beanies", "Hoodies", "Jeans", "Shorts", "Hats"].map(
-              (item) => {
-                const link =
-                  item === "Home"
-                    ? "/"
-                    : `/products/${item.toLowerCase()}`;
-
-                return (
-                  <a
-                    key={item}
-                    href={link}
-                    data-nav={item.toLowerCase()}
-                    style={{
-                      color: "white",
-                      textDecoration: "none",
-                      padding: "4px",
-                      display: "inline-block",
-                    }}
-                  >
-                    {item}
-                  </a>
-                );
-              }
-            )}
+            {[
+              { label: "Home", href: "/" },
+              { label: "Beanies", href: "/products/beanies" },
+              { label: "Phone Cases", href: "/products/phone-cases" },
+              { label: "Hoodies", href: "/products/hoodies" },
+              { label: "Jeans", href: "/products/jeans" },
+              { label: "Shorts", href: "/products/shorts" },
+              { label: "Hats", href: "/products/hats" },
+            ].map((item) => {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  data-nav={item.label.toLowerCase().replace(" ", "-")}
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                    padding: "4px",
+                    display: "inline-block",
+                  }}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
         </div>
 
