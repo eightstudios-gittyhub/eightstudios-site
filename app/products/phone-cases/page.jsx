@@ -21,7 +21,7 @@ export default function PhoneCasesPage() {
   return (
     <CollectionPage
       title="Phone Cases"
-      description="1/1 — phone cases below"
+      description="888Phone Case Midnight Circuit Micro Drop — Down Below"
       products={products}
       emptyMessage="More pieces coming soon."
     />
