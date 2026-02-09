@@ -8,6 +8,7 @@ export default function PhoneCaseMidnightCircuit16Plus() {
       title="888Phone Case Midnight Circuit — 1/1"
       size="iPhone 16 Plus"
       price="$60"
+      stripeLink="https://buy.stripe.com/3cIcN7gjtel4fAndp05Rm0j"
       description={`Hand made iPhone 16 Plus case with hand sewn aspects.
 
 • made by Eight Studios (888inc.)
