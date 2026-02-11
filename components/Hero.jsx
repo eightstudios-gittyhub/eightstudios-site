@@ -1,55 +1,125 @@
-1  import styles from "./Hero.module.css";
-2  
-3  const linkStyle = {
-4    background: "rgba(20,20,20,0.6)",
-5    backdropFilter: "blur(8px)",
-6    padding: "14px 0",
-7    borderRadius: "10px",
-8    textDecoration: "none",
-9    color: "white",
-10   fontSize: "17px",
-11   fontWeight: "600",
-12   border: "1px solid rgba(255,255,255,0.12)",
-13   transition: "0.3s",
-14 };
-15 
-16 export default function Hero() {
-17   return (
-18     <main className={styles.homepage}>
-19       <div className={styles.heroBackground} aria-hidden="true" />
-20       <div className={styles.heroOverlay} aria-hidden="true" />
-21       <img
-22         src="/hero/the-world-blimp.webp"
-23         alt="Airship silhouette with 'THE WORLD' text"
-24         className={styles.srOnly}
-25       />
-26 
-27       <div className={styles.content}>
-28         <img
-29           src="https://i.imgur.com/cvZxBNy.jpeg"
-30           alt="888 logo"
-31           className={styles.logo888}
-32         />
-33 
-34         <div className={styles.grid}>
-35           <a href="/products/beanies" style={linkStyle}>Beanies</a>
-36           <a href="/products/phone-cases" style={linkStyle}>Phone Cases</a>
-37           <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
-38           <a href="/products/jeans" style={linkStyle}>Jeans</a>
-39           <a href="/products/shorts" style={linkStyle}>Shorts</a>
-40           <a href="/products/hats" style={{ ...linkStyle, gridColumn: "1 / -1" }}>
-41             Hats
-42           </a>
-43         </div>
-44 
-45         <div className={styles.archiveSection}>
-46           <div className={styles.opalDivider} />
-47 
-48           <a href="/archives" className={styles.archiveButton}>
-49             Explore the Eight Studios Archive →
-50           </a>
-51         </div>
-52       </div>
-53     </main>
-54   );
-55 }
+diff --git a/components/Hero.module.css b/components/Hero.module.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..7ed7fc5a90bc9df7ab07e37f5257e15d94aa103d
+--- /dev/null
++++ b/components/Hero.module.css
+@@ -0,0 +1,119 @@
++.homepage {
++  position: relative;
++  min-height: 100vh;
++  width: 100%;
++  max-width: 100vw;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  color: white;
++  padding: 60px 20px;
++  overflow: hidden;
++}
++
++.heroBackground {
++  position: absolute;
++  inset: 0;
++  background-image: url("/hero/the-world-blimp.webp");
++  background-size: cover;
++  background-position: center;
++  background-repeat: no-repeat;
++  transform: scale(1.02);
++}
++
++.heroOverlay {
++  position: absolute;
++  inset: 0;
++  background: linear-gradient(
++    180deg,
++    rgba(0, 0, 0, 0.45) 0%,
++    rgba(0, 0, 0, 0.62) 55%,
++    rgba(0, 0, 0, 0.78) 100%
++  );
++}
++
++.content {
++  position: relative;
++  z-index: 1;
++  width: 100%;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++}
++
++.logo888 {
++  width: min(230px, 80vw);
++  margin-bottom: 55px;
++  display: block;
++}
++
++.grid {
++  display: grid;
++  grid-template-columns: repeat(2, 1fr);
++  gap: 16px;
++  width: 100%;
++  max-width: 380px;
++  margin: 0 auto;
++  text-align: center;
++}
++
++.archiveSection {
++  margin-top: 50px;
++  text-align: center;
++}
++
++.opalDivider {
++  width: 200px;
++  height: 2px;
++  margin: 0 auto 26px;
++  background: linear-gradient(
++    90deg,
++    rgba(255, 255, 255, 0) 0%,
++    rgba(180, 160, 255, 0.9) 50%,
++    rgba(255, 255, 255, 0) 100%
++  );
++  box-shadow: 0 0 14px rgba(180, 160, 255, 0.8);
++  border-radius: 2px;
++}
++
++.archiveButton {
++  display: inline-block;
++  padding: 14px 30px;
++  background: linear-gradient(
++    90deg,
++    rgba(120, 110, 150, 0.35),
++    rgba(150, 130, 200, 0.35)
++  );
++  box-shadow: 0 0 18px rgba(180, 160, 255, 0.45);
++  border-radius: 12px;
++  color: white;
++  text-decoration: none;
++  font-size: 18px;
++  font-weight: 600;
++  backdrop-filter: blur(6px);
++  border: 1px solid rgba(255, 255, 255, 0.15);
++  transition: 0.25s;
++}
++
++.archiveButton:hover {
++  box-shadow: 0 0 22px rgba(200, 180, 255, 0.65);
++  transform: translateY(-1px);
++}
++
++.srOnly {
++  position: absolute;
++  width: 1px;
++  height: 1px;
++  padding: 0;
++  margin: -1px;
++  overflow: hidden;
++  clip: rect(0, 0, 0, 0);
++  white-space: nowrap;
++  border: 0;
++}
++
++@media (max-width: 360px) {
++  .grid {
++    max-width: 340px;
++  }
++}
