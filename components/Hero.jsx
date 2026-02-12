@@ -19,18 +19,12 @@ export default function Hero() {
       <div className={styles.heroBackground} aria-hidden="true" />
       <div className={styles.heroOverlay} aria-hidden="true" />
       <img
-        src="/hero/the-world-blimp.webp"
+        src="/hero/the-world-is-yours.png"
         alt="Airship silhouette with 'THE WORLD' text"
         className={styles.srOnly}
       />
 
       <div className={styles.content}>
-        <img
-          src="https://i.imgur.com/cvZxBNy.jpeg"
-          alt="888 logo"
-          className={styles.logo888}
-        />
-
         <div className={styles.grid}>
           <a href="/products/beanies" style={linkStyle}>Beanies</a>
           <a href="/products/phone-cases" style={linkStyle}>Phone Cases</a>

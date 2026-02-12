@@ -14,7 +14,7 @@
 .heroBackground {
   position: absolute;
   inset: 0;
-  background-image: url("/hero/the-world-blimp.webp");
+  background-image: url("/hero/the-world-is-yours.gif"), url("/hero/the-world-is-yours.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
