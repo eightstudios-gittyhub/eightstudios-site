@@ -18,6 +18,9 @@ export default function RootLayout({ children }) {
         style={{
           margin: 0,
           padding: 0,
+          minHeight: "100svh",
+          display: "flex",
+          flexDirection: "column",
           fontFamily: "Arial, sans-serif",
           color: "white",
           overflowX: "hidden",
@@ -218,7 +221,7 @@ export default function RootLayout({ children }) {
         />
 
         {/* Page Content */}
-        <main style={{ position: "relative", zIndex: 1 }}>
+        <main style={{ position: "relative", zIndex: 1, flex: 1, display: "flex" }}>
           {children}
         </main>
 
