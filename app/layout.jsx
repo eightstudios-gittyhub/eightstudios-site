@@ -207,8 +207,8 @@ export default function RootLayout({ children }) {
           style={{
             width: "100%",
             height: "2px",
-            marginTop: "45px",
-            marginBottom: "20px",
+            marginTop: "28px",
+            marginBottom: "10px",
             background:
               "linear-gradient(90deg, rgba(185,205,255,0.35), rgba(255,255,255,0.1), rgba(185,205,255,0.35))",
           }}
@@ -218,7 +218,7 @@ export default function RootLayout({ children }) {
         <footer
           style={{
             textAlign: "center",
-            padding: "30px 0",
+            padding: "10px 0 6px",
             fontSize: "12.5px",
             opacity: 0.88,
           }}
