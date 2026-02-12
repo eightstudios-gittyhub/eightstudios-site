@@ -1,125 +1,49 @@
-diff --git a/components/Hero.module.css b/components/Hero.module.css
-new file mode 100644
-index 0000000000000000000000000000000000000000..7ed7fc5a90bc9df7ab07e37f5257e15d94aa103d
---- /dev/null
-+++ b/components/Hero.module.css
-@@ -0,0 +1,119 @@
-+.homepage {
-+  position: relative;
-+  min-height: 100vh;
-+  width: 100%;
-+  max-width: 100vw;
-+  display: flex;
-+  flex-direction: column;
-+  align-items: center;
-+  color: white;
-+  padding: 60px 20px;
-+  overflow: hidden;
-+}
-+
-+.heroBackground {
-+  position: absolute;
-+  inset: 0;
-+  background-image: url("/hero/the-world-blimp.webp");
-+  background-size: cover;
-+  background-position: center;
-+  background-repeat: no-repeat;
-+  transform: scale(1.02);
-+}
-+
-+.heroOverlay {
-+  position: absolute;
-+  inset: 0;
-+  background: linear-gradient(
-+    180deg,
-+    rgba(0, 0, 0, 0.45) 0%,
-+    rgba(0, 0, 0, 0.62) 55%,
-+    rgba(0, 0, 0, 0.78) 100%
-+  );
-+}
-+
-+.content {
-+  position: relative;
-+  z-index: 1;
-+  width: 100%;
-+  display: flex;
-+  flex-direction: column;
-+  align-items: center;
-+}
-+
-+.logo888 {
-+  width: min(230px, 80vw);
-+  margin-bottom: 55px;
-+  display: block;
-+}
-+
-+.grid {
-+  display: grid;
-+  grid-template-columns: repeat(2, 1fr);
-+  gap: 16px;
-+  width: 100%;
-+  max-width: 380px;
-+  margin: 0 auto;
-+  text-align: center;
-+}
-+
-+.archiveSection {
-+  margin-top: 50px;
-+  text-align: center;
-+}
-+
-+.opalDivider {
-+  width: 200px;
-+  height: 2px;
-+  margin: 0 auto 26px;
-+  background: linear-gradient(
-+    90deg,
-+    rgba(255, 255, 255, 0) 0%,
-+    rgba(180, 160, 255, 0.9) 50%,
-+    rgba(255, 255, 255, 0) 100%
-+  );
-+  box-shadow: 0 0 14px rgba(180, 160, 255, 0.8);
-+  border-radius: 2px;
-+}
-+
-+.archiveButton {
-+  display: inline-block;
-+  padding: 14px 30px;
-+  background: linear-gradient(
-+    90deg,
-+    rgba(120, 110, 150, 0.35),
-+    rgba(150, 130, 200, 0.35)
-+  );
-+  box-shadow: 0 0 18px rgba(180, 160, 255, 0.45);
-+  border-radius: 12px;
-+  color: white;
-+  text-decoration: none;
-+  font-size: 18px;
-+  font-weight: 600;
-+  backdrop-filter: blur(6px);
-+  border: 1px solid rgba(255, 255, 255, 0.15);
-+  transition: 0.25s;
-+}
-+
-+.archiveButton:hover {
-+  box-shadow: 0 0 22px rgba(200, 180, 255, 0.65);
-+  transform: translateY(-1px);
-+}
-+
-+.srOnly {
-+  position: absolute;
-+  width: 1px;
-+  height: 1px;
-+  padding: 0;
-+  margin: -1px;
-+  overflow: hidden;
-+  clip: rect(0, 0, 0, 0);
-+  white-space: nowrap;
-+  border: 0;
-+}
-+
-+@media (max-width: 360px) {
-+  .grid {
-+    max-width: 340px;
-+  }
-+}
+import styles from "./Hero.module.css";
+
+const linkStyle = {
+  background: "rgba(20,20,20,0.6)",
+  backdropFilter: "blur(8px)",
+  padding: "14px 0",
+  borderRadius: "10px",
+  textDecoration: "none",
+  color: "white",
+  fontSize: "17px",
+  fontWeight: "600",
+  border: "1px solid rgba(255,255,255,0.12)",
+  transition: "0.3s",
+};
+
+export default function Hero() {
+  return (
+    <main className={styles.homepage}>
+      <div className={styles.heroBackground} aria-hidden="true" />
+      <div className={styles.heroOverlay} aria-hidden="true" />
+      <img
+        src="https://i.imgur.com/0YQY7Qn.jpeg"
+        alt="Airship silhouette with 'THE WORLD' text"
+        className={styles.srOnly}
+      />
+
+      <div className={styles.content}>
+        <div className={styles.grid}>
+          <a href="/products/beanies" style={linkStyle}>Beanies</a>
+          <a href="/products/phone-cases" style={linkStyle}>Phone Cases</a>
+          <a href="/products/hoodies" style={linkStyle}>Hoodies</a>
+          <a href="/products/jeans" style={linkStyle}>Jeans</a>
+          <a href="/products/shorts" style={linkStyle}>Shorts</a>
+          <a href="/products/hats" style={{ ...linkStyle, gridColumn: "1 / -1" }}>
+            Hats
+          </a>
+        </div>
+
+        <div className={styles.archiveSection}>
+          <div className={styles.opalDivider} />
+
+          <a href="/archives" className={styles.archiveButton}>
+            Explore the Eight Studios Archive →
+          </a>
+        </div>
+      </div>
+    </main>
+  );
+}
