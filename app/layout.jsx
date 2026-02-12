@@ -165,7 +165,21 @@ export default function RootLayout({ children }) {
                   }
                 });
 
-                if (activeLink) {
+                const centerEntireNav = () => {
+                  const centeredOffset = Math.max(
+                    0,
+                    (nav.scrollWidth - nav.clientWidth) / 2
+                  );
+
+                  nav.scrollTo({
+                    left: centeredOffset,
+                    behavior: "smooth",
+                  });
+                };
+
+                if (currentPath === "/") {
+                  centerEntireNav();
+                } else if (activeLink) {
                   const offset =
                     activeLink.offsetLeft -
                     nav.clientWidth / 2 +
@@ -176,6 +190,12 @@ export default function RootLayout({ children }) {
                     behavior: "smooth",
                   });
                 }
+
+                window.addEventListener("resize", () => {
+                  if (window.location.pathname === "/") {
+                    centerEntireNav();
+                  }
+                });
 
                 // When tapping any nav item, center it
                 links.forEach(link => {
@@ -207,8 +227,8 @@ export default function RootLayout({ children }) {
           style={{
             width: "100%",
             height: "2px",
-            marginTop: "45px",
-            marginBottom: "20px",
+            marginTop: "28px",
+            marginBottom: "10px",
             background:
               "linear-gradient(90deg, rgba(185,205,255,0.35), rgba(255,255,255,0.1), rgba(185,205,255,0.35))",
           }}
@@ -218,7 +238,7 @@ export default function RootLayout({ children }) {
         <footer
           style={{
             textAlign: "center",
-            padding: "30px 0",
+            padding: "10px 0 6px",
             fontSize: "12.5px",
             opacity: 0.88,
           }}
