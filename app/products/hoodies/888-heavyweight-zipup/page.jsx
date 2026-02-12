@@ -25,10 +25,11 @@ export default function HeavyweightZipup() {
 Made to Order
 Please allow 1–2 weeks for production and processing before shipment.
 
-• made by Eight Studios (888inc.)
-• high quality heavyweight hoodie
+• Made by Eight Studios (888inc.)
+• High quality heavyweight Unisex hoodie
 • 2 zippers
-• rhinestones and patchwork
+• 50/50 Cotton & Poly
+• Rhinestones and patchwork
 `}
       images={[
         "https://i.imgur.com/zs9DCQw.jpeg",
