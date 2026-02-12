@@ -14,7 +14,7 @@
 .heroBackground {
   position: absolute;
   inset: 0;
-  background-image: url("/hero/the-world-is-yours.gif"), url("/hero/the-world-is-yours.png");
+  background-image: url("https://media1.tenor.com/m/d0UTIPbEt5gAAAAd/the-world-is-yours-ship.gif"), url("/hero/the-world-is-yours.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
