@@ -19,8 +19,8 @@ export default function Hero() {
       <div className={styles.heroBackground} aria-hidden="true" />
       <div className={styles.heroOverlay} aria-hidden="true" />
       <img
-        src="https://i.imgur.com/0YQY7Qn.jpeg"
-        alt="Airship silhouette with 'THE WORLD' text"
+        src="https://media0.giphy.com/media/3o6ZsVLEnhslyoSkg0/giphy_s.jpg"
+        alt="Airship in a dark sky background"
         className={styles.srOnly}
       />
 

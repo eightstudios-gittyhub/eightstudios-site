@@ -14,7 +14,9 @@
 .heroBackground {
   position: absolute;
   inset: 0;
-  background-image: url("https://i.imgur.com/0YQY7Qn.jpeg");
+  background-image:
+    url("https://media0.giphy.com/media/3o6ZsVLEnhslyoSkg0/giphy.gif"),
+    url("https://media0.giphy.com/media/3o6ZsVLEnhslyoSkg0/giphy_s.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
