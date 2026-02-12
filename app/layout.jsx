@@ -165,7 +165,21 @@ export default function RootLayout({ children }) {
                   }
                 });
 
-                if (activeLink) {
+                const centerEntireNav = () => {
+                  const centeredOffset = Math.max(
+                    0,
+                    (nav.scrollWidth - nav.clientWidth) / 2
+                  );
+
+                  nav.scrollTo({
+                    left: centeredOffset,
+                    behavior: "smooth",
+                  });
+                };
+
+                if (currentPath === "/") {
+                  centerEntireNav();
+                } else if (activeLink) {
                   const offset =
                     activeLink.offsetLeft -
                     nav.clientWidth / 2 +
@@ -176,6 +190,12 @@ export default function RootLayout({ children }) {
                     behavior: "smooth",
                   });
                 }
+
+                window.addEventListener("resize", () => {
+                  if (window.location.pathname === "/") {
+                    centerEntireNav();
+                  }
+                });
 
                 // When tapping any nav item, center it
                 links.forEach(link => {
