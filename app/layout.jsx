@@ -221,7 +221,7 @@ export default function RootLayout({ children }) {
         />
 
         {/* Page Content */}
-        <main style={{ position: "relative", zIndex: 1, flex: 1 }}>
+        <main style={{ position: "relative", zIndex: 1, flex: 1, display: "flex" }}>
           {children}
         </main>
 

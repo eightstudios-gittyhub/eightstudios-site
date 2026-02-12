@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  min-height: calc(100svh - 84px);
+  min-height: 100%;
   padding: 28px 20px 18px;
   overflow: hidden;
 }
@@ -161,7 +161,6 @@
 
 @media (max-width: 767px) {
   .homepage {
-    min-height: calc(100svh - 78px);
     padding-top: 18px;
   }
 
