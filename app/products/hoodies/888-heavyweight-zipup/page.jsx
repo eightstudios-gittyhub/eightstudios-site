@@ -26,8 +26,8 @@ Made to Order
 Please allow 1–2 weeks for production and processing before shipment.
 
 • Made by Eight Studios (888inc.)
-• High quality heavyweight Unisex hoodie
-• 2 zippers
+• High quality heavyweight unisex hoodie
+• 2 zippers 
 • 50/50 Cotton & Poly
 • Rhinestones and patchwork
 `}
