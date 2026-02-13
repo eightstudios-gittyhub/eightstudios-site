@@ -9,7 +9,7 @@ export default function ProductPageTemplate({
   price,
   description,
   images = [],
-  stripe,     // optional fallback (old payment link)
+stripeLink,     // optional fallback (old payment link)
   priceId,    // ✅ NEW: Stripe Price ID for Checkout Sessions
   children,
 }) {
