@@ -193,6 +193,7 @@ const selectStyle = {
   borderRadius: "10px",
   padding: "12px 14px",
   outline: "none",
+  boxSizing: "border-box",
 };
 
 const labelStyle = {

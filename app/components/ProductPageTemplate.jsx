@@ -61,6 +61,8 @@ export default function ProductPageTemplate({
         padding: "40px 20px",
         textAlign: "center",
         minHeight: "100vh",
+        boxSizing: "border-box",
+        overflowX: "hidden",
       }}
     >
       {/* TITLE — DESKTOP LARGE, MOBILE SMALLER */}
@@ -194,7 +196,7 @@ export default function ProductPageTemplate({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(220px, 100%), 1fr))",
           gap: "16px",
           maxWidth: "980px",
           margin: "0 auto 40px",
