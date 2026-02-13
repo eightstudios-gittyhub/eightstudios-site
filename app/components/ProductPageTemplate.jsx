@@ -9,8 +9,18 @@ export default function ProductPageTemplate({
   price,
   description,
   images = [],
-stripeLink,     // optional fallback (old payment link)
-  priceId,    // ✅ NEW: Stripe Price ID for Checkout Sessions
+
+  // ✅ NEW: media supports images + videos in one grid
+  // If not provided, we automatically build it from `images`
+  media = null,
+
+  // ✅ Payment link support (both names)
+  stripe,       // old prop name (some pages may still use this)
+  stripeLink,   // new prop name (your pages use this)
+
+  // ✅ Stripe Checkout Sessions
+  priceId,
+
   children,
 }) {
   const purpleGlow = {
@@ -32,6 +42,16 @@ stripeLink,     // optional fallback (old payment link)
     cursor: "pointer",
     minWidth: "220px",
   };
+
+  // ✅ use stripeLink if provided, otherwise fallback to stripe
+  const paymentLink = stripeLink || stripe;
+
+  // ✅ Backward compatibility:
+  // If `media` is provided use it, otherwise build it from `images`
+  const normalizedMedia =
+    Array.isArray(media) && media.length > 0
+      ? media
+      : images.map((src) => ({ type: "image", src }));
 
   return (
     <main
@@ -149,8 +169,8 @@ stripeLink,     // optional fallback (old payment link)
       {children}
 
       {/* ✅ ONE clean Buy Now button:
-          - Uses Checkout Sessions if priceId exists (ambassador tracking)
-          - Falls back to old Payment Link if stripe exists
+          - Uses Checkout Sessions if priceId exists
+          - Falls back to Payment Link (stripeLink OR stripe)
       */}
       {priceId ? (
         <CheckoutButton
@@ -159,9 +179,9 @@ stripeLink,     // optional fallback (old payment link)
           label={price ? `Buy Now — ${price}` : "Buy Now"}
           style={buyButtonStyle}
         />
-      ) : stripe ? (
+      ) : paymentLink ? (
         <a
-          href={stripe}
+          href={paymentLink}
           target="_blank"
           rel="noopener noreferrer"
           style={buyButtonStyle}
@@ -170,7 +190,7 @@ stripeLink,     // optional fallback (old payment link)
         </a>
       ) : null}
 
-      {/* IMAGES */}
+      {/* ✅ MEDIA GRID (images + videos) */}
       <div
         style={{
           display: "grid",
@@ -180,17 +200,42 @@ stripeLink,     // optional fallback (old payment link)
           margin: "0 auto 40px",
         }}
       >
-        {images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            style={{
-              width: "100%",
-              borderRadius: "10px",
-            }}
-          />
-        ))}
+        {normalizedMedia.map((item, i) => {
+          const src = item?.src || "";
+          const key = src || `media-${i}`;
+          const type = item?.type || "image";
+
+          if (type === "video") {
+            return (
+              <video
+                key={key}
+                controls
+                playsInline
+                preload="metadata"
+                poster={item?.poster || undefined}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "10px",
+                }}
+              >
+                <source src={src} type="video/mp4" />
+              </video>
+            );
+          }
+
+          return (
+            <img
+              key={key}
+              src={src}
+              alt={item?.alt || ""}
+              style={{
+                width: "100%",
+                borderRadius: "10px",
+              }}
+            />
+          );
+        })}
       </div>
     </main>
   );
