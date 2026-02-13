@@ -19,8 +19,8 @@ export default function PhoneCaseMidnightCircuit16Plus() {
     { type: "image", src: "https://i.imgur.com/f3hODjn.jpeg" },
     { type: "image", src: "https://i.imgur.com/h7SE89i.jpeg" },
     { type: "image", src: "https://i.imgur.com/MpCDJb5.jpeg" },
-    { type: "image", src: "https://i.imgur.com/oDL41hp.jpeg" },
     { type: "video", src: "https://cxhpuhqooldzg4t0.public.blob.vercel-storage.com/phonecase1.mp4" },
+    { type: "video", src: "https://cxhpuhqooldzg4t0.public.blob.vercel-storage.com/phonecase2.mp4" },
   ]}
 />
   );
