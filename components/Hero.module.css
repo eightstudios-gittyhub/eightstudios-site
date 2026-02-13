@@ -100,15 +100,82 @@
 
 
 .categoryLink {
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(8px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px) saturate(160%) brightness(0.98) contrast(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(160%) brightness(0.98) contrast(1.1);
   padding: 14px 0;
-  border-radius: 10px;
-  color: white;
+  border-radius: 16px;
+  color: rgba(255, 255, 255, 0.98);
   font-size: 17px;
   font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: 0.3s;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -10px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, backdrop-filter 0.2s ease;
+}
+
+.categoryLink::before,
+.categoryLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.categoryLink::before {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.06) 45%,
+      rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.categoryLink::after {
+  inset: 2px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  opacity: 0.72;
+}
+
+.categoryLink:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.24);
+  border-color: rgba(255, 255, 255, 0.26);
+  backdrop-filter: blur(10px) saturate(160%) brightness(0.98) contrast(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(160%) brightness(0.98) contrast(1.1);
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.2);
+}
+
+.categoryLink:active {
+  transform: translateY(0);
+}
+
+.categoryLink:focus-visible {
+  outline: none;
+  box-shadow:
+    0 7px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 0 0 2px rgba(255, 255, 255, 0.32);
+}
+
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .categoryLink {
+    background: rgba(0, 0, 0, 0.34);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
 .categoryWide {
