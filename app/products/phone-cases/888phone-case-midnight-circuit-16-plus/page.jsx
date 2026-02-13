@@ -15,11 +15,11 @@ export default function PhoneCaseMidnightCircuit16Plus() {
 • Time spent: 3hrs
 (shipping available within 3-5 days of payment)`}
       images={[
-        "https://i.imgur.com/3n1cHwZ.jpeg",
-        "https://i.imgur.com/2qJrdbr.jpeg",
-        "https://i.imgur.com/hq4UGvj.jpeg",
-        "https://i.imgur.com/I4iQt4v.jpeg",
-        "https://i.imgur.com/4lmy8AE.jpeg",
+        "https://i.imgur.com/BNHTJQE.jpeg",
+        "https://i.imgur.com/f3hODjn.jpeg",
+        "https://i.imgur.com/h7SE89i.jpeg",
+        "https://i.imgur.com/MpCDJb5.jpeg",
+        "https://i.imgur.com/oDL41hp.jpeg",
       ]}
     />
   );
