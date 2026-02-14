@@ -41,6 +41,8 @@ export default function ProductPageTemplate({
         padding: "40px 20px",
         textAlign: "center",
         minHeight: "100vh",
+        width: "100%",
+        maxWidth: "100vw",
         boxSizing: "border-box",
         overflowX: "hidden",
       }}
@@ -104,6 +106,7 @@ export default function ProductPageTemplate({
               borderRadius: "10px",
               padding: "12px 14px",
               outline: "none",
+              boxSizing: "border-box",
             }}
             defaultValue={sizes[0]}
           >
