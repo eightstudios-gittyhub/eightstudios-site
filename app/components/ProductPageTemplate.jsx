@@ -43,6 +43,15 @@ export default function ProductPageTemplate({
     minWidth: "220px",
   };
 
+  const mediaItemStyle = {
+    width: "min(100%, 560px)",
+    height: "auto",
+    maxHeight: "min(760px, 70vh)",
+    objectFit: "contain",
+    background: "black",
+    borderRadius: "10px",
+  };
+
   // ✅ use stripeLink if provided, otherwise fallback to stripe
   const paymentLink = stripeLink || stripe;
 
@@ -190,14 +199,17 @@ export default function ProductPageTemplate({
         </a>
       ) : null}
 
-      {/* ✅ MEDIA GRID (images + videos) */}
+      {/* ✅ HORIZONTAL MEDIA SCROLL (images + videos) */}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "16px",
-          maxWidth: "980px",
+          display: "flex",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          scrollBehavior: "smooth",
+          WebkitOverflowScrolling: "touch",
+          borderRadius: "12px",
           margin: "0 auto 40px",
+          maxWidth: "980px",
         }}
       >
         {normalizedMedia.map((item, i) => {
@@ -207,36 +219,50 @@ export default function ProductPageTemplate({
 
           if (type === "video") {
             return (
-              <video
+              <div
                 key={key}
-                controls
-                playsInline
-                preload="metadata"
-                poster={item?.poster || undefined}
                 style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "10px",
+                  minWidth: "100%",
+                  scrollSnapAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <source src={src} type="video/mp4" />
-              </video>
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={item?.poster || undefined}
+                  style={mediaItemStyle}
+                >
+                  <source src={src} type="video/mp4" />
+                </video>
+              </div>
             );
           }
 
           return (
-            <img
+            <div
               key={key}
-              src={src}
-              alt={item?.alt || ""}
               style={{
-                width: "100%",
-                borderRadius: "10px",
+                minWidth: "100%",
+                scrollSnapAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            />
+            >
+              <img
+                src={src}
+                alt={item?.alt || ""}
+                style={mediaItemStyle}
+              />
+            </div>
           );
         })}
       </div>
+
     </main>
   );
 }
