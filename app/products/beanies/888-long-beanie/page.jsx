@@ -63,6 +63,7 @@ export default function LongBeaniePage() {
 
       {/* IMAGE CAROUSEL */}
       <div
+        className="beanie-carousel"
         style={{
           display: "flex",
           overflowX: "auto",
@@ -76,6 +77,7 @@ export default function LongBeaniePage() {
         {images.map((img, index) => (
           <div
             key={index}
+            className="beanie-slide"
             style={{
               minWidth: "100%",
               scrollSnapAlign: "center",
@@ -83,6 +85,7 @@ export default function LongBeaniePage() {
             }}
           >
             <img
+              className="beanie-slide-image"
               src={img}
               alt={`888 Long Beanie ${index + 1}`}
               style={{
@@ -109,6 +112,22 @@ export default function LongBeaniePage() {
           </div>
         ))}
       </div>
+
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .beanie-slide {
+            display: flex;
+            justify-content: center;
+          }
+
+          .beanie-slide-image {
+            width: min(100%, 560px) !important;
+            height: 760px !important;
+            object-fit: contain !important;
+            background: #000;
+          }
+        }
+      `}</style>
 
       {/* OPTIONS */}
       <div
