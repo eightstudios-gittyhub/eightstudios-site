@@ -3,6 +3,13 @@ import CollectionPage from "../../components/CollectionPage";
 export default function PhoneCasesPage() {
   const products = [
     {
+      title: "8 Noir Rosé Case — 1/1",
+      price: "$35",
+      link: "/products/phone-cases/8-noir-rose-case-iphone-11",
+      img: "https://i.imgur.com/9oQI8Fv.jpeg",
+      subtitle: "iPhone 11",
+    },
+    {
       title: "8Cognac Star Case — 1/1",
       price: "$50",
       link: "/products/phone-cases/8cognac-star-case",
