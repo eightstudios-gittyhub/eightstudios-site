@@ -9,7 +9,7 @@ export default function NoirRoseCaseIPhone11() {
       size="iPhone 11"
       price="$35"
       stripeLink="https://buy.stripe.com/3cI6oJaZ94Ku0Ft0Ce5Rm0m"
-      description={`Hand made iPhone 11 case with hand sewn aspects.
+      description={`Hand made iPhone 11 case.
 
 • made by Eight Studios (888inc.)
 • Time spent: 3hrs
