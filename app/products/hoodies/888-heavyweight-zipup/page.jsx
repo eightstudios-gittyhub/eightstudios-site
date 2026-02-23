@@ -2,10 +2,28 @@
 
 import { useState } from "react";
 import ProductPageTemplate from "@/components/ProductPageTemplate";
+import CheckoutButton from "@/components/CheckoutButton";
 
 export default function HeavyweightZipup() {
+  const [size, setSize] = useState("S");
+  const [blankColorway, setBlankColorway] = useState("Black");
+  const [patchColor, setPatchColor] = useState("Black");
+  const [vinylColor, setVinylColor] = useState("Glitter Black");
+  const [eightStyle, setEightStyle] = useState("Single Stack 888");
   const [rhinestones, setRhinestones] = useState("No");
+  const [rhinestoneColor, setRhinestoneColor] = useState("White");
   const [rhinestoneSizes, setRhinestoneSizes] = useState([]);
+
+  const checkoutCustomizations = {
+    size,
+    blankColorway,
+    patchColor,
+    vinylColor,
+    eightStyle,
+    rhinestones,
+    rhinestoneColor: rhinestones === "Yes" ? rhinestoneColor : "N/A",
+    rhinestoneSizes: rhinestones === "Yes" ? rhinestoneSizes.join(", ") || "None" : "N/A",
+  };
 
   const blackColorwayImages = [
     "https://i.imgur.com/zs9DCQw.jpeg",
@@ -47,7 +65,6 @@ export default function HeavyweightZipup() {
   return (
     <ProductPageTemplate
       title="888Heavyweight Zipup — 1/1"
-      sizes={["S", "M", "L", "XL"]}
       price="$150"
       description={`Handmade 1/1 heavyweight luxury zip-up hoodie — Choose your size.
 
@@ -61,13 +78,32 @@ Please allow 1–2 weeks for production and processing before shipment.
 • Rhinestones and patchwork
 `}
       galleries={galleries}
-      stripe="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d"
     >
       {/* CUSTOM OPTIONS */}
       <div style={containerStyle}>
+        <Field label="Size">
+          <Select
+            required
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+            options={["S", "M", "L", "XL"]}
+          />
+        </Field>
+
+        <Field label="Blank Hoodie Colorway">
+          <Select
+            required
+            value={blankColorway}
+            onChange={(e) => setBlankColorway(e.target.value)}
+            options={["Black", "Brown", "Navy", "Dark Grey", "Pink"]}
+          />
+        </Field>
+
         {/* Patch Color — UPDATED */}
         <Field label="Patch Color">
           <Select
+            value={patchColor}
+            onChange={(e) => setPatchColor(e.target.value)}
             options={[
               "Black",
               "White",
@@ -85,6 +121,8 @@ Please allow 1–2 weeks for production and processing before shipment.
         {/* Vinyl Color */}
 <Field label="Vinyl Color" hint="DM me to see what’s available.">
   <Select
+    value={vinylColor}
+    onChange={(e) => setVinylColor(e.target.value)}
     options={[
       "Glitter Black",
       "Glitter White",
@@ -99,7 +137,11 @@ Please allow 1–2 weeks for production and processing before shipment.
 
         {/* 888 Style */}
         <Field label="888 Style">
-          <Select options={["Single Stack 888", "Double Stack 888"]} />
+          <Select
+            value={eightStyle}
+            onChange={(e) => setEightStyle(e.target.value)}
+            options={["Single Stack 888", "Double Stack 888"]}
+          />
         </Field>
 
         {/* Rhinestones */}
@@ -124,6 +166,8 @@ Please allow 1–2 weeks for production and processing before shipment.
           <>
             <Field label="Rhinestone Color">
               <Select
+                value={rhinestoneColor}
+                onChange={(e) => setRhinestoneColor(e.target.value)}
                 options={[
                   "White",
                   "Black",
@@ -164,6 +208,15 @@ Please allow 1–2 weeks for production and processing before shipment.
             </div>
           </>
         )}
+
+        <CheckoutButton
+          unitAmount={15000}
+          productName="888Heavyweight Zipup — 1/1"
+          quantity={1}
+          customizations={checkoutCustomizations}
+          label="Buy Now — $150"
+          style={buyButtonStyle}
+        />
       </div>
     </ProductPageTemplate>
   );
@@ -183,9 +236,9 @@ function Field({ label, hint, children }) {
   );
 }
 
-function Select({ options }) {
+function Select({ options, ...props }) {
   return (
-    <select style={selectStyle}>
+    <select style={selectStyle} {...props}>
       {options.map((o) => (
         <option key={o} value={o} style={{ color: "black" }}>
           {o}
@@ -240,4 +293,19 @@ const pillStyle = {
   background: "transparent",
   fontSize: "14px",
   cursor: "pointer",
+};
+
+const buyButtonStyle = {
+  display: "inline-block",
+  backgroundColor: "white",
+  color: "black",
+  padding: "12px 28px",
+  borderRadius: "12px",
+  fontWeight: "600",
+  textDecoration: "none",
+  fontSize: "16px",
+  marginTop: "20px",
+  border: "none",
+  cursor: "pointer",
+  minWidth: "220px",
 };
