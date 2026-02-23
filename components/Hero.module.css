@@ -185,6 +185,9 @@
 .archiveSection {
   margin-top: 24px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .opalDivider {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./Hero.module.css";
+import ContactSection from "./ContactSection";
 
 export default function Hero() {
   return (
@@ -30,6 +31,8 @@ export default function Hero() {
           <Link href="/archives" className={styles.archiveButton}>
             Explore the Eight Studios Archive →
           </Link>
+
+          <ContactSection />
         </div>
       </div>
     </main>
