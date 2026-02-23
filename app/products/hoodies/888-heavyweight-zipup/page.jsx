@@ -7,28 +7,32 @@ export default function HeavyweightZipup() {
   const [rhinestones, setRhinestones] = useState("No");
   const [rhinestoneSizes, setRhinestoneSizes] = useState([]);
 
+  const blackColorwayImages = [
+    "https://i.imgur.com/zs9DCQw.jpeg",
+    "https://i.imgur.com/za1S4xn.jpeg",
+    "https://i.imgur.com/pIeNzKp.jpeg",
+    "https://i.imgur.com/9ebeoTs.jpeg",
+    "https://i.imgur.com/LFh7uSL.jpeg",
+  ];
+
+  const grayColorwayImages = [
+    "https://i.imgur.com/MruWXFF.jpeg",
+    "https://i.imgur.com/fKZ4sQE.jpeg",
+    "https://i.imgur.com/XW95aM4.jpeg",
+    "https://i.imgur.com/lElGmrN.jpeg",
+    "https://i.imgur.com/fJTOTE8.jpeg",
+  ];
+
   const galleries = [
     {
       id: "black",
       title: "Black Colorway",
-      images: [
-        "https://i.imgur.com/zs9DCQw.jpeg",
-        "https://i.imgur.com/za1S4xn.jpeg",
-        "https://i.imgur.com/pIeNzKp.jpeg",
-        "https://i.imgur.com/9ebeoTs.jpeg",
-        "https://i.imgur.com/MruWXFF.jpeg",
-      ],
+      images: blackColorwayImages,
     },
     {
       id: "gray",
       title: "Gray Colorway",
-      images: [
-        "https://i.imgur.com/LFh7uSL.jpeg",
-        "https://i.imgur.com/fKZ4sQE.jpeg",
-        "https://i.imgur.com/XW95aM4.jpeg",
-        "https://i.imgur.com/lElGmrN.jpeg",
-        "https://i.imgur.com/fJTOTE8.jpeg",
-      ],
+      images: grayColorwayImages,
     },
   ];
 
