@@ -21,6 +21,11 @@ export default function HeavyweightZipup() {
     "https://i.imgur.com/XW95aM4.jpeg",
     "https://i.imgur.com/lElGmrN.jpeg",
     "https://i.imgur.com/fJTOTE8.jpeg",
+    "https://i.imgur.com/XcEhQOO.jpeg",
+    "https://i.imgur.com/U9Vc3cV.jpeg",
+    "https://i.imgur.com/8ApQqnC.jpeg",
+    "https://i.imgur.com/JF4wbwD.jpeg",
+    "https://i.imgur.com/vid4xZV.jpeg",
   ];
 
   const galleries = [
