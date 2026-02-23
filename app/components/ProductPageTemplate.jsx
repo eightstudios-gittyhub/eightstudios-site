@@ -1,6 +1,139 @@
 "use client";
 
+import { useRef, useState } from "react";
 import CheckoutButton from "./CheckoutButton";
+
+function MediaCarousel({ items = [] }) {
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+
+    const width = scrollRef.current.clientWidth;
+    if (!width) return;
+
+    const index = Math.round(scrollRef.current.scrollLeft / width);
+    setActiveIndex(index);
+  };
+
+  const scrollToIndex = (index) => {
+    if (!scrollRef.current) return;
+
+    scrollRef.current.scrollTo({
+      left: scrollRef.current.clientWidth * index,
+      behavior: "smooth",
+    });
+    setActiveIndex(index);
+  };
+
+  const mediaItemStyle = {
+    width: "min(100%, 560px)",
+    height: "auto",
+    maxHeight: "min(760px, 70vh)",
+    objectFit: "contain",
+    background: "black",
+    borderRadius: "10px",
+  };
+
+  return (
+    <>
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        style={{
+          display: "flex",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          scrollBehavior: "smooth",
+          WebkitOverflowScrolling: "touch",
+          borderRadius: "12px",
+          margin: "0 auto",
+          maxWidth: "980px",
+        }}
+      >
+        {items.map((item, i) => {
+          const src = item?.src || "";
+          const key = src || `media-${i}`;
+          const type = item?.type || "image";
+
+          if (type === "video") {
+            return (
+              <div
+                key={key}
+                style={{
+                  minWidth: "100%",
+                  scrollSnapAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={item?.poster || undefined}
+                  style={mediaItemStyle}
+                >
+                  <source src={src} type="video/mp4" />
+                </video>
+              </div>
+            );
+          }
+
+          return (
+            <div
+              key={key}
+              style={{
+                minWidth: "100%",
+                scrollSnapAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img src={src} alt={item?.alt || ""} style={mediaItemStyle} />
+            </div>
+          );
+        })}
+      </div>
+
+      {items.length > 1 && (
+        <div
+          style={{
+            marginTop: "12px",
+            display: "flex",
+            justifyContent: "center",
+            gap: "8px",
+          }}
+        >
+          {items.map((_, index) => {
+            const isActive = index === activeIndex;
+
+            return (
+              <button
+                key={`dot-${index}`}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                onClick={() => scrollToIndex(index)}
+                style={{
+                  width: "9px",
+                  height: "9px",
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.8)",
+                  background: isActive ? "white" : "transparent",
+                  cursor: "pointer",
+                  padding: 0,
+                }}
+              />
+            );
+          })}
+        </div>
+      )}
+    </>
+  );
+}
 
 export default function ProductPageTemplate({
   title,
@@ -13,6 +146,9 @@ export default function ProductPageTemplate({
   // ✅ NEW: media supports images + videos in one grid
   // If not provided, we automatically build it from `images`
   media = null,
+
+  // ✅ optional grouped galleries (e.g. colorways)
+  galleries = null,
 
   // ✅ Payment link support (both names)
   stripe,       // old prop name (some pages may still use this)
@@ -41,15 +177,6 @@ export default function ProductPageTemplate({
     border: "none",
     cursor: "pointer",
     minWidth: "220px",
-  };
-
-  const mediaItemStyle = {
-    width: "min(100%, 560px)",
-    height: "auto",
-    maxHeight: "min(760px, 70vh)",
-    objectFit: "contain",
-    background: "black",
-    borderRadius: "10px",
   };
 
   // ✅ use stripeLink if provided, otherwise fallback to stripe
@@ -199,68 +326,31 @@ export default function ProductPageTemplate({
         </a>
       ) : null}
 
-      {/* ✅ HORIZONTAL MEDIA SCROLL (images + videos) */}
-      <div
-        style={{
-          display: "flex",
-          overflowX: "auto",
-          scrollSnapType: "x mandatory",
-          scrollBehavior: "smooth",
-          WebkitOverflowScrolling: "touch",
-          borderRadius: "12px",
-          margin: "0 auto 40px",
-          maxWidth: "980px",
-        }}
-      >
-        {normalizedMedia.map((item, i) => {
-          const src = item?.src || "";
-          const key = src || `media-${i}`;
-          const type = item?.type || "image";
+      {/* ✅ MEDIA AREA */}
+      <div style={{ margin: "0 auto 40px", maxWidth: "980px" }}>
+        {Array.isArray(galleries) && galleries.length > 0 ? (
+          galleries.map((gallery, index) => {
+            const galleryMedia = (gallery?.images || []).map((src) => ({ type: "image", src }));
 
-          if (type === "video") {
             return (
-              <div
-                key={key}
-                style={{
-                  minWidth: "100%",
-                  scrollSnapAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster={item?.poster || undefined}
-                  style={mediaItemStyle}
+              <section key={gallery?.id || `gallery-${index}`} style={{ marginTop: index === 0 ? "0" : "22px" }}>
+                <h3
+                  style={{
+                    textAlign: "left",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    marginBottom: "12px",
+                  }}
                 >
-                  <source src={src} type="video/mp4" />
-                </video>
-              </div>
+                  {gallery?.title}
+                </h3>
+                <MediaCarousel items={galleryMedia} />
+              </section>
             );
-          }
-
-          return (
-            <div
-              key={key}
-              style={{
-                minWidth: "100%",
-                scrollSnapAlign: "center",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={src}
-                alt={item?.alt || ""}
-                style={mediaItemStyle}
-              />
-            </div>
-          );
-        })}
+          })
+        ) : (
+          <MediaCarousel items={normalizedMedia} />
+        )}
       </div>
 
     </main>
