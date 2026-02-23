@@ -7,10 +7,13 @@ export default function CheckoutButton({
   quantity = 1,
   label = "Buy Now",
   style,
+  customizations,
+  unitAmount,
+  productName,
 }) {
   async function go() {
-    if (!priceId) {
-      alert("Missing priceId for this item.");
+    if (!priceId && !unitAmount) {
+      alert("Missing checkout pricing for this item.");
       return;
     }
 
@@ -24,7 +27,14 @@ export default function CheckoutButton({
     const res = await fetch("/api/checkout/session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ priceId, quantity, ref }),
+      body: JSON.stringify({
+        priceId,
+        quantity,
+        ref,
+        customizations,
+        unitAmount,
+        productName,
+      }),
     });
 
     const text = await res.text();
