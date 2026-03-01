@@ -210,6 +210,7 @@ Please allow 1–2 weeks for production and processing before shipment.
         )}
 
         <CheckoutButton
+          stripeLink="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d"
           unitAmount={15000}
           productName="888Heavyweight Zipup — 1/1"
           quantity={1}
