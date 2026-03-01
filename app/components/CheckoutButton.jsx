@@ -4,6 +4,7 @@ import { getAmbRef, setAmbRef } from "../../lib/ambassadorRef";
 
 export default function CheckoutButton({
   priceId,
+  stripeLink,
   quantity = 1,
   label = "Buy Now",
   style,
@@ -12,6 +13,11 @@ export default function CheckoutButton({
   productName,
 }) {
   async function go() {
+    if (stripeLink) {
+      window.location.href = stripeLink;
+      return;
+    }
+
     if (!priceId && !unitAmount) {
       alert("Missing checkout pricing for this item.");
       return;
