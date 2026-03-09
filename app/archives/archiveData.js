@@ -175,4 +175,23 @@ export const archiveItems = [
 • price: for something like this, inquire. 
 • made in 2024`,
   },
+  {
+    name: "Blood Stain Ruins",
+    slug: "blood-stain-ruins",
+    images: [
+      "https://i.imgur.com/SbtjF5F.jpeg",
+      "https://i.imgur.com/A0LV7kv.jpeg",
+      "https://i.imgur.com/Grvih5V.jpeg",
+      "https://i.imgur.com/iHijbFD.jpeg",
+      "https://i.imgur.com/p7egSe5.jpeg",
+    ],
+    description:
+      `Blood Stain Ruins
+
+• size: 32W 32L
+• made by Eight Studios (888inc.)
+• time spent: 7 hrs
+• price: $200
+• made in 2025`,
+  },
 ];
