@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import ProductPageTemplate from "@/components/ProductPageTemplate";
+import ProductPageTemplate, {
+  buyButtonStyle,
+  labelStyle,
+  optionPanelStyle,
+  selectStyle,
+} from "@/components/ProductPageTemplate";
 import CheckoutButton from "@/components/CheckoutButton";
 
 export default function HeavyweightZipup() {
@@ -249,28 +254,9 @@ function Select({ options, ...props }) {
   );
 }
 
-/* ---------- STYLES ---------- */
-
 const containerStyle = {
-  maxWidth: "520px",
+  ...optionPanelStyle,
   margin: "0 auto 28px",
-  textAlign: "left",
-};
-
-const selectStyle = {
-  width: "100%",
-  background: "rgba(255,255,255,0.06)",
-  color: "white",
-  border: "1px solid rgba(255,255,255,0.15)",
-  borderRadius: "10px",
-  padding: "12px 14px",
-  outline: "none",
-};
-
-const labelStyle = {
-  display: "block",
-  fontSize: "14px",
-  marginBottom: "6px",
 };
 
 const hintStyle = {
@@ -294,19 +280,4 @@ const pillStyle = {
   background: "transparent",
   fontSize: "14px",
   cursor: "pointer",
-};
-
-const buyButtonStyle = {
-  display: "inline-block",
-  backgroundColor: "white",
-  color: "black",
-  padding: "12px 28px",
-  borderRadius: "12px",
-  fontWeight: "600",
-  textDecoration: "none",
-  fontSize: "16px",
-  marginTop: "20px",
-  border: "none",
-  cursor: "pointer",
-  minWidth: "220px",
 };
