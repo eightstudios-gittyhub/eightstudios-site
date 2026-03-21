@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import CheckoutButton from "./CheckoutButton";
 
@@ -196,6 +198,15 @@ const selectStyle = {
   outline: "none",
 };
 
+const collectionLabels = {
+  beanies: "Beanies",
+  "phone-cases": "Phone Cases",
+  hoodies: "Hoodies",
+  jeans: "Jeans",
+  shorts: "Shorts",
+  hats: "Hats",
+};
+
 const buyButtonStyle = {
   display: "block",
   width: "100%",
@@ -227,7 +238,19 @@ export default function ProductPageTemplate({
   ctaNote,
   children,
 }) {
+  const pathname = usePathname();
   const paymentLink = stripeLink || stripe;
+
+  const pathSegments = pathname?.split("/").filter(Boolean) || [];
+  const isProductDetailRoute =
+    pathSegments.length === 3 &&
+    pathSegments[0] === "products" &&
+    Boolean(pathSegments[1]) &&
+    Boolean(pathSegments[2]);
+  const collectionSlug = isProductDetailRoute ? pathSegments[1] : null;
+  const collectionPath = isProductDetailRoute ? `/${pathSegments.slice(0, 2).join("/")}` : null;
+  const collectionLabel = collectionSlug ? collectionLabels[collectionSlug] : null;
+  const backLinkLabel = collectionLabel ? `← Back to ${collectionLabel}` : null;
 
   const normalizedMedia =
     Array.isArray(media) && media.length > 0
@@ -257,6 +280,31 @@ export default function ProductPageTemplate({
           margin: "0 auto",
         }}
       >
+        {collectionPath && backLinkLabel && (
+          <Link
+            href={collectionPath}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              color: "white",
+              textDecoration: "none",
+              fontSize: "14px",
+              fontWeight: 600,
+              letterSpacing: "0.02em",
+              padding: "10px 14px",
+              borderRadius: "999px",
+              border: "1px solid rgba(255,255,255,0.2)",
+              background: "rgba(255,255,255,0.06)",
+              margin: "0 auto 24px",
+              width: "fit-content",
+            }}
+            aria-label={backLinkLabel}
+          >
+            {backLinkLabel}
+          </Link>
+        )}
+
         <section
           style={{
             maxWidth: "720px",
