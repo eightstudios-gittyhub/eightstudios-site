@@ -28,11 +28,14 @@ function MediaCarousel({ items = [] }) {
   };
 
   const mediaItemStyle = {
+    display: "block",
     width: "100%",
-    height: "500px",
-    objectFit: "cover",
+    maxWidth: "100%",
+    height: "clamp(360px, 78vw, 620px)",
+    objectFit: "contain",
     borderRadius: "12px",
     background: "black",
+    margin: "0 auto",
   };
 
   return (
@@ -42,10 +45,15 @@ function MediaCarousel({ items = [] }) {
         onScroll={handleScroll}
         style={{
           display: "flex",
+          width: "100%",
+          maxWidth: "100%",
           overflowX: "auto",
+          overflowY: "hidden",
           scrollSnapType: "x mandatory",
           scrollBehavior: "smooth",
           WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
           borderRadius: "12px",
           margin: "0 auto",
         }}
@@ -61,9 +69,11 @@ function MediaCarousel({ items = [] }) {
                 key={key}
                 className="product-slide"
                 style={{
-                  minWidth: "100%",
+                  flex: "0 0 100%",
+                  width: "100%",
+                  maxWidth: "100%",
                   scrollSnapAlign: "center",
-                  perspective: "800px",
+                  boxSizing: "border-box",
                 }}
               >
                 <video
@@ -85,9 +95,11 @@ function MediaCarousel({ items = [] }) {
               key={key}
               className="product-slide"
               style={{
-                minWidth: "100%",
+                flex: "0 0 100%",
+                width: "100%",
+                maxWidth: "100%",
                 scrollSnapAlign: "center",
-                perspective: "800px",
+                boxSizing: "border-box",
               }}
             >
               <img
@@ -104,7 +116,7 @@ function MediaCarousel({ items = [] }) {
       {items.length > 1 && (
         <div
           style={{
-            marginTop: "12px",
+            marginTop: "14px",
             display: "flex",
             justifyContent: "center",
             gap: "8px",
@@ -135,17 +147,24 @@ function MediaCarousel({ items = [] }) {
       )}
 
       <style jsx>{`
+        div::-webkit-scrollbar {
+          display: none;
+        }
+
         @media (min-width: 1024px) {
           .product-slide {
             display: flex;
             justify-content: center;
+            align-items: center;
           }
 
           .product-slide-media {
-            width: min(100%, 560px) !important;
-            height: 760px !important;
+            width: auto !important;
+            max-width: min(100%, 680px) !important;
+            height: min(760px, 78vh) !important;
             object-fit: contain !important;
-            background: #000;
+            object-position: center !important;
+            background: transparent !important;
           }
         }
       `}</style>
@@ -154,9 +173,10 @@ function MediaCarousel({ items = [] }) {
 }
 
 const optionPanelStyle = {
-  textAlign: "left",
-  maxWidth: "600px",
+  width: "100%",
+  maxWidth: "520px",
   marginInline: "auto",
+  textAlign: "left",
 };
 
 const labelStyle = {
@@ -168,19 +188,21 @@ const labelStyle = {
 
 const selectStyle = {
   width: "100%",
+  boxSizing: "border-box",
   padding: "12px",
   borderRadius: "6px",
   background: "#111",
   color: "white",
   border: "1px solid #444",
-  marginBottom: "25px",
+  marginBottom: "20px",
   outline: "none",
 };
 
 const buyButtonStyle = {
   display: "block",
   width: "100%",
-  marginTop: "35px",
+  boxSizing: "border-box",
+  marginTop: "28px",
   padding: "15px",
   background: "white",
   color: "black",
@@ -214,7 +236,12 @@ export default function ProductPageTemplate({
       ? media
       : images.map((src) => ({ type: "image", src }));
 
-  const hasPurchasePanel = Boolean(children) || (Array.isArray(sizes) && sizes.length > 0) || priceId || paymentLink || ctaNote;
+  const hasPurchasePanel =
+    Boolean(children) ||
+    (Array.isArray(sizes) && sizes.length > 0) ||
+    priceId ||
+    paymentLink ||
+    ctaNote;
 
   return (
     <main
@@ -222,123 +249,142 @@ export default function ProductPageTemplate({
         background: "black",
         minHeight: "100vh",
         color: "white",
-        textAlign: "center",
-        padding: "40px 20px",
+        padding: "40px 20px 64px",
       }}
     >
-      <section style={{ maxWidth: "760px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontSize: "clamp(24px, 4vw, 32px)",
-            fontWeight: 700,
-            marginBottom: "10px",
-            lineHeight: 1.2,
-          }}
-        >
-          {title}
-        </h1>
-
-        {description && (
-          <div
-            style={{
-              opacity: 0.85,
-              marginBottom: "6px",
-              fontSize: "16px",
-              lineHeight: 1.6,
-              whiteSpace: "pre-line",
-            }}
-          >
-            {description}
-          </div>
-        )}
-
-        {(size || price) && (
-          <div style={{ marginTop: "10px", marginBottom: "30px", lineHeight: "22px" }}>
-            {size && <p style={{ opacity: 0.8, fontSize: "15px" }}>• size: {size}</p>}
-            {price && <p style={{ opacity: 0.8, fontSize: "15px" }}>• price: {price}</p>}
-          </div>
-        )}
-      </section>
-
       <div
         style={{
           width: "100%",
-          maxWidth: "1200px",
-          height: "1px",
-          background: "rgba(255,255,255,0.15)",
-          margin: "0 auto 35px auto",
+          maxWidth: "860px",
+          margin: "0 auto",
         }}
-      />
+      >
+        <section
+          style={{
+            maxWidth: "720px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "clamp(24px, 4vw, 32px)",
+              fontWeight: 700,
+              margin: "0 0 10px",
+              lineHeight: 1.2,
+            }}
+          >
+            {title}
+          </h1>
 
-      <div style={{ margin: "0 auto 40px", maxWidth: "980px" }}>
-        {Array.isArray(galleries) && galleries.length > 0 ? (
-          galleries.map((gallery, index) => {
-            const galleryMedia = (gallery?.images || []).map((src) => ({ type: "image", src }));
-
-            return (
-              <section
-                key={gallery?.id || `gallery-${index}`}
-                style={{ marginTop: index === 0 ? "0" : "22px" }}
-              >
-                <h3
-                  style={{
-                    textAlign: "left",
-                    fontSize: "20px",
-                    fontWeight: 600,
-                    marginBottom: "12px",
-                  }}
-                >
-                  {gallery?.title}
-                </h3>
-                <MediaCarousel items={galleryMedia} />
-              </section>
-            );
-          })
-        ) : (
-          <MediaCarousel items={normalizedMedia} />
-        )}
-      </div>
-
-      {hasPurchasePanel && (
-        <section style={optionPanelStyle}>
-          {Array.isArray(sizes) && sizes.length > 0 && (
-            <div>
-              <label style={labelStyle}>Size</label>
-              <select style={selectStyle} defaultValue={sizes[0]}>
-                {sizes.map((s) => (
-                  <option key={s} value={s} style={{ color: "black" }}>
-                    {s}
-                  </option>
-                ))}
-              </select>
+          {description && (
+            <div
+              style={{
+                opacity: 0.85,
+                marginBottom: "8px",
+                fontSize: "16px",
+                lineHeight: 1.6,
+                whiteSpace: "pre-line",
+              }}
+            >
+              {description}
             </div>
           )}
 
-          {children}
-
-          {priceId ? (
-            <CheckoutButton
-              priceId={priceId}
-              quantity={1}
-              label={price ? `Buy Now — ${price}` : "Buy Now"}
-              style={buyButtonStyle}
-            />
-          ) : paymentLink ? (
-            <a
-              href={paymentLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={buyButtonStyle}
-            >
-              {price ? `Buy Now — ${price}` : "Buy Now"}
-            </a>
-          ) : null}
-
-          {ctaNote && (
-            <p style={{ opacity: 0.6, fontSize: "12px", marginTop: "10px" }}>{ctaNote}</p>
+          {(size || price) && (
+            <div style={{ marginTop: "10px", lineHeight: "22px" }}>
+              {size && <p style={{ opacity: 0.8, fontSize: "15px", margin: 0 }}>• size: {size}</p>}
+              {price && <p style={{ opacity: 0.8, fontSize: "15px", margin: 0 }}>• price: {price}</p>}
+            </div>
           )}
         </section>
-      )}
+
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "760px",
+            height: "1px",
+            background: "rgba(255,255,255,0.15)",
+            margin: "28px auto 32px",
+          }}
+        />
+
+        <section
+          style={{
+            width: "100%",
+            maxWidth: "760px",
+            margin: "0 auto 32px",
+          }}
+        >
+          {Array.isArray(galleries) && galleries.length > 0 ? (
+            galleries.map((gallery, index) => {
+              const galleryMedia = (gallery?.images || []).map((src) => ({ type: "image", src }));
+
+              return (
+                <section
+                  key={gallery?.id || `gallery-${index}`}
+                  style={{ marginTop: index === 0 ? "0" : "28px" }}
+                >
+                  <h3
+                    style={{
+                      textAlign: "left",
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      margin: "0 0 12px",
+                    }}
+                  >
+                    {gallery?.title}
+                  </h3>
+                  <MediaCarousel items={galleryMedia} />
+                </section>
+              );
+            })
+          ) : (
+            <MediaCarousel items={normalizedMedia} />
+          )}
+        </section>
+
+        {hasPurchasePanel && (
+          <section style={optionPanelStyle}>
+            {Array.isArray(sizes) && sizes.length > 0 && (
+              <div>
+                <label style={labelStyle}>Size</label>
+                <select style={selectStyle} defaultValue={sizes[0]}>
+                  {sizes.map((s) => (
+                    <option key={s} value={s} style={{ color: "black" }}>
+                      {s}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {children}
+
+            {priceId ? (
+              <CheckoutButton
+                priceId={priceId}
+                quantity={1}
+                label={price ? `Buy Now — ${price}` : "Buy Now"}
+                style={buyButtonStyle}
+              />
+            ) : paymentLink ? (
+              <a
+                href={paymentLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={buyButtonStyle}
+              >
+                {price ? `Buy Now — ${price}` : "Buy Now"}
+              </a>
+            ) : null}
+
+            {ctaNote && (
+              <p style={{ opacity: 0.6, fontSize: "12px", margin: "10px 0 0" }}>{ctaNote}</p>
+            )}
+          </section>
+        )}
+      </div>
     </main>
   );
 }
