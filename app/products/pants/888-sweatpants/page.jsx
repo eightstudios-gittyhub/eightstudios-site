@@ -4,6 +4,7 @@ export default function EightStudiosSweatpants() {
   return (
     <ProductPageTemplate
       title="888 Sweatpants — 1/1"
+      size="Large"
       price="$45 + 8$ shipping"
       description={`• made by Eight Studios (888inc.)
 • no restocks — one-time release
@@ -14,6 +15,7 @@ export default function EightStudiosSweatpants() {
         "https://i.imgur.com/TIsivwC.jpeg",
         "https://i.imgur.com/FEaMSLj.jpeg",
       ]}
+      stripe="https://buy.stripe.com/14AfZjeblel487V70C5Rm0n"
     />
   );
 }
