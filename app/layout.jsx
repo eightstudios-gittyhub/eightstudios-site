@@ -126,9 +126,10 @@ export default function RootLayout({ children }) {
           >
          {[
               { label: "Home", href: "/" },
-              { label: "Beanies", href: "/products/beanies" },
               { label: "Phone Cases", href: "/products/phone-cases" },
               { label: "Hoodies", href: "/products/hoodies" },
+              { label: "Beanies", href: "/products/beanies" },
+              { label: "Pants", href: "/products/jeans" },
               { label: "Jeans", href: "/products/jeans" },
               { label: "Shorts", href: "/products/shorts" },
               { label: "Hats", href: "/products/hats" },
