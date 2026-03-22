@@ -20,7 +20,8 @@ export default function Hero() {
           <Link href="/products/hoodies" className={styles.categoryLink}>Hoodies</Link>
           <Link href="/products/jeans" className={styles.categoryLink}>Jeans</Link>
           <Link href="/products/shorts" className={styles.categoryLink}>Shorts</Link>
-          <Link href="/products/hats" className={`${styles.categoryLink} ${styles.categoryWide}`}>
+          <Link href="/products/pants" className={styles.categoryLink}>Pants</Link>
+          <Link href="/products/hats" className={`${styles.categoryLink} ${styles.categoryWideDesktop}`}>
             Hats
           </Link>
         </div>

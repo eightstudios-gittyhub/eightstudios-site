@@ -178,8 +178,14 @@
   }
 }
 
-.categoryWide {
-  grid-column: 1 / -1;
+.categoryWideDesktop {
+  grid-column: auto;
+}
+
+@media (min-width: 768px) {
+  .categoryWideDesktop {
+    grid-column: 1 / -1;
+  }
 }
 
 .archiveSection {
