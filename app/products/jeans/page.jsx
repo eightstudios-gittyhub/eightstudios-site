@@ -21,12 +21,6 @@ export default function JeansPage() {
       subtitle: "Custom wash denim",
     },
     {
-      title: "Plaid8 Cargo PJ’s — 1/1",
-      link: "/products/jeans/plaid8-cargo-pjs",
-      img: "https://i.imgur.com/NYQt6sa.jpeg",
-      subtitle: "Cargo-inspired patchwork",
-    },
-    {
       title: "Starfade Denim — 1/1",
       link: "/products/jeans/starfade-denim",
       img: "https://i.imgur.com/N9WTq1o.jpeg",
