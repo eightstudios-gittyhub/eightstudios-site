@@ -2,7 +2,7 @@ import CollectionPage from "@/components/CollectionPage";
 
 export default function JeansPage() {
   const products = [
-     {
+    {
       title: "Blue MoonStone 02",
       link: "/products/jeans/blue-moonstone-02",
       img: "https://i.imgur.com/NkY6FRi.jpeg",
@@ -21,19 +21,6 @@ export default function JeansPage() {
       subtitle: "Custom wash denim",
     },
     {
-      title: "Plaid8 Cargo PJ’s — 1/1",
-      link: "/products/jeans/plaid8-cargo-pjs",
-      img: "https://i.imgur.com/NYQt6sa.jpeg",
-      subtitle: "Cargo-inspired patchwork",
-    },
-    {
-      title: "888 Sweatpants — 1/1",
-      link: "/products/pants/888-sweatpants",
-      img: "https://i.imgur.com/KqBrlZA.jpeg",
-      subtitle: "One-time release",
-      price: "$45 + 8$ shipping",
-    },
-    {
       title: "Starfade Denim — 1/1",
       link: "/products/jeans/starfade-denim",
       img: "https://i.imgur.com/N9WTq1o.jpeg",
@@ -49,8 +36,8 @@ export default function JeansPage() {
 
   return (
     <CollectionPage
-      title="Jeans / Pants"
-      description="Custom denim and patchwork pieces will appear here as new drops release."
+      title="Jeans"
+      description="Custom denim pieces will appear here as new drops release."
       products={products}
       emptyMessage="More pieces coming soon. Customize your own clothing — inquire at eight888studios@gmail.com."
       hideSubtitle
