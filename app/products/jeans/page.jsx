@@ -27,6 +27,13 @@ export default function JeansPage() {
       subtitle: "Cargo-inspired patchwork",
     },
     {
+      title: "888 Sweatpants — 1/1",
+      link: "/products/pants/888-sweatpants",
+      img: "https://i.imgur.com/KqBrlZA.jpeg",
+      subtitle: "One-time release",
+      price: "$45 + 8$ shipping",
+    },
+    {
       title: "Starfade Denim — 1/1",
       link: "/products/jeans/starfade-denim",
       img: "https://i.imgur.com/N9WTq1o.jpeg",

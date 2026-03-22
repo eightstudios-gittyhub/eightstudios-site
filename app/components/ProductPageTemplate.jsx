@@ -203,6 +203,7 @@ const collectionLabels = {
   "phone-cases": "Phone Cases",
   hoodies: "Hoodies",
   jeans: "Jeans",
+  pants: "Pants",
   shorts: "Shorts",
   hats: "Hats",
 };
