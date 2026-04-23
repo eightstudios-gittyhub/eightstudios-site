@@ -10,17 +10,15 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
 }
 
-/* NAV */
+/* NAV (HOME ONLY) */
 .nav {
   position: sticky;
   top: 0;
-
   display: flex;
-  gap: 20px;
+  justify-content: center;
   padding: 15px;
 
   background: rgba(0,0,0,0.6);
@@ -36,7 +34,7 @@ body {
 /* HEADER */
 .header {
   text-align: center;
-  padding: 30px 20px 10px;
+  padding: 30px;
 }
 
 .header h1 {
@@ -54,14 +52,12 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-
-  padding: 40px;
+  padding: 30px;
 }
 
-/* PRODUCT CARD */
+/* CARD */
 .card {
   width: 230px;
-
   border-radius: 18px;
 
   background: rgba(255,255,255,0.08);
@@ -70,7 +66,6 @@ body {
   backdrop-filter: blur(15px);
 
   overflow: hidden;
-
   cursor: pointer;
 
   transition: 0.25s;
@@ -78,11 +73,10 @@ body {
 
 .card:hover {
   transform: translateY(-8px) scale(1.03);
-  background: rgba(0,200,255,0.12);
+  background: rgba(0,200,255,0.15);
   border: 1px solid rgba(0,200,255,0.4);
 }
 
-/* IMAGE */
 .card img {
   width: 100%;
   height: 180px;
@@ -96,36 +90,22 @@ body {
 
 .title {
   font-weight: bold;
-  font-size: 16px;
 }
 
-.subtitle {
-  font-size: 12px;
-  opacity: 0.7;
-  margin-top: 4px;
-}
-
-.price {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #00c8ff;
-}
-
-/* EMPTY MESSAGE */
-.empty {
+/* NOTE */
+.note {
   text-align: center;
   opacity: 0.6;
-  margin-top: 20px;
+  margin: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- NAV (HOME ONLY) -->
 <div class="nav">
   <a href="index.html">Home</a>
-  <a href="products.html">All Products</a>
 </div>
 
 <!-- HEADER -->
@@ -134,58 +114,36 @@ body {
   <p>Custom beanie drops will appear here.</p>
 </div>
 
-<!-- GRID -->
-<div class="grid" id="productGrid"></div>
+<!-- PRODUCTS -->
+<div class="grid">
 
-<div class="empty">More items coming soon.</div>
-
-<script>
-const products = [
-  {
-    title: "888 Long Beanie — Hand Sewn",
-    price: "$75",
-    link: "/products/beanies/888-long-beanie-hand-sewn",
-    img: "https://i.imgur.com/vdjnkAZ.jpeg",
-    subtitle: "Hand-sewn patch • long fit"
-  },
-  {
-    title: "888 Long Beanie — 1/1",
-    price: "$60",
-    link: "/products/beanies/888-long-beanie",
-    img: "https://i.imgur.com/eSfJnxK.jpeg",
-    subtitle: "Custom patch + glitter"
-  },
-  {
-    title: "888 Short Beanie — 1/1",
-    price: "$30",
-    link: "/products/beanies/888-short-beanie",
-    img: "https://i.imgur.com/0F8sDMG.jpeg",
-    subtitle: "Cropped fit • hand-sewn patch"
-  }
-];
-
-const grid = document.getElementById("productGrid");
-
-products.forEach(p => {
-  const card = document.createElement("div");
-  card.className = "card";
-
-  card.innerHTML = `
-    <img src="${p.img}" alt="${p.title}">
+  <div class="card">
+    <img src="https://i.imgur.com/vdjnkAZ.jpeg">
     <div class="content">
-      <div class="title">${p.title}</div>
-      <div class="subtitle">${p.subtitle}</div>
-      <div class="price">${p.price}</div>
+      <div class="title">888 Long Beanie — Hand Sewn</div>
     </div>
-  `;
+  </div>
 
-  card.onclick = () => {
-    window.location.href = p.link;
-  };
+  <div class="card">
+    <img src="https://i.imgur.com/eSfJnxK.jpeg">
+    <div class="content">
+      <div class="title">888 Long Beanie — 1/1</div>
+    </div>
+  </div>
 
-  grid.appendChild(card);
-});
-</script>
+  <div class="card">
+    <img src="https://i.imgur.com/0F8sDMG.jpeg">
+    <div class="content">
+      <div class="title">888 Short Beanie — 1/1</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NOTE -->
+<div class="note">
+More items coming soon. Customize your own clothing — eight888studios@gmail.com
+</div>
 
 </body>
 </html>
