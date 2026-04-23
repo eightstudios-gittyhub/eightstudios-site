@@ -1,1 +1,169 @@
-Comeing Soon
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Studios</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: radial-gradient(circle at center, rgba(0,200,255,0.25), black 70%);
+  background-attachment: fixed;
+}
+
+/* NAVBAR */
+.nav {
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  gap: 25px;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* CATEGORY GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  width: 80%;
+  max-width: 700px;
+}
+
+.card {
+  padding: 20px;
+  background: rgba(255,255,255,0.08);
+  text-align: center;
+  border-radius: 12px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* PRODUCTS SECTION */
+.products {
+  padding: 50px 20px;
+  display: none;
+}
+
+.product {
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px 25px;
+  background: white;
+  color: black;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="#">Home</a>
+  <a href="#" onclick="showProducts()">Products</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="title">EIGHT STUDIOS</div>
+
+  <div class="grid">
+    <div class="card" onclick="filter('Beanies')">Beanies</div>
+    <div class="card" onclick="filter('Hoodies')">Hoodies</div>
+    <div class="card" onclick="filter('Jeans')">Jeans</div>
+    <div class="card" onclick="filter('Shorts')">Shorts</div>
+    <div class="card" onclick="filter('Pants')">Pants</div>
+    <div class="card" onclick="filter('Hats')">Hats</div>
+  </div>
+
+  <div class="btn" onclick="showProducts()">View Products</div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products" id="products">
+  <h2>Products</h2>
+
+  <div class="product" data-type="Shorts">🔥 Shorts Product</div>
+  <div class="product" data-type="Hoodies">🔥 Hoodie Product</div>
+  <div class="product" data-type="Beanies">🔥 Beanie Product</div>
+  <div class="product" data-type="Jeans">🔥 Jeans Product</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Eight Studios
+</footer>
+
+<script>
+function showProducts() {
+  document.getElementById("products").style.display = "block";
+  window.scrollTo({
+    top: document.getElementById("products").offsetTop,
+    behavior: "smooth"
+  });
+}
+
+function filter(type) {
+  showProducts();
+
+  let items = document.querySelectorAll(".product");
+
+  items.forEach(item => {
+    if (item.dataset.type === type) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
