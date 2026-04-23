@@ -87,6 +87,12 @@ nav a:hover {
   transition: 0.3s;
 }
 
+a.btn {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
 .btn:hover {
   border: 1px solid #7a5cff;
   box-shadow: 0 0 20px #7a5cff;
@@ -138,33 +144,35 @@ nav a:hover {
 
 <!-- NAV -->
 <nav>
-  <a href="#">Home</a>
-  <a href="#">Phone Cases</a>
-  <a href="#">Hoodies</a>
-  <a href="#">Beanies</a>
-  <a href="#">Pants</a>
-  <a href="#">Jeans</a>
-  <a href="#">Shorts</a>
-  <a href="#">Hats</a>
+  <a href="/">Home</a>
+  <a href="/products/phone-cases">Phone Cases</a>
+  <a href="/products/hoodies">Hoodies</a>
+  <a href="/products/beanies">Beanies</a>
+  <a href="/products/pants">Pants</a>
+  <a href="/products/jeans">Jeans</a>
+  <a href="/products/shorts">Shorts</a>
+  <a href="/products/hats">Hats</a>
 </nav>
 
 <!-- MAIN -->
 <div class="container">
 
   <div class="grid">
-    <div class="btn">Beanies</div>
-    <div class="btn">Phone Cases</div>
 
-    <div class="btn">Hoodies</div>
-    <div class="btn">Jeans</div>
+    <a href="/products/beanies" class="btn">Beanies</a>
+    <a href="/products/phone-cases" class="btn">Phone Cases</a>
 
-    <div class="btn">Shorts</div>
-    <div class="btn">Pants</div>
+    <a href="/products/hoodies" class="btn">Hoodies</a>
+    <a href="/products/jeans" class="btn">Jeans</a>
 
-    <div class="btn wide">Hats</div>
+    <a href="/products/shorts" class="btn">Shorts</a>
+    <a href="/products/pants" class="btn">Pants</a>
+
+    <a href="/products/hats" class="btn wide">Hats</a>
+
   </div>
 
-  <div class="explore">Explore the Eight Studios Archive →</div>
+  <a href="/archive" class="explore">Explore the Eight Studios Archive →</a>
 
   <div class="footer">
     <div class="social">Instagram - @eight888studios</div>
