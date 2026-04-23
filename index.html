@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Studios</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1526401485004-2aa7b2c6f7a6') no-repeat center center/cover;
+  color: white;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  gap: 25px;
+  padding: 15px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+nav a:hover {
+  opacity: 1;
+}
+
+/* CENTER CONTENT */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  gap: 15px;
+}
+
+/* BUTTON STYLE */
+.btn {
+  width: 260px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(20,20,20,0.6);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  border: 1px solid #7a5cff;
+  box-shadow: 0 0 15px #7a5cff;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* WIDE BUTTON */
+.wide {
+  grid-column: span 2;
+}
+
+/* EXPLORE BUTTON */
+.explore {
+  margin-top: 10px;
+  width: 300px;
+  padding: 15px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #7a5cff, #b66dff);
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.explore:hover {
+  opacity: 0.85;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.social {
+  margin-top: 10px;
+  padding: 12px 25px;
+  border-radius: 15px;
+  background: rgba(20,20,20,0.7);
+  display: inline-block;
+  backdrop-filter: blur(10px);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Phone Cases</a>
+  <a href="#">Hoodies</a>
+  <a href="#">Beanies</a>
+  <a href="#">Pants</a>
+  <a href="#">Jeans</a>
+  <a href="#">Shorts</a>
+  <a href="#">Hats</a>
+</nav>
+
+<!-- MAIN -->
+<div class="container">
+
+  <div class="grid">
+    <div class="btn">Beanies</div>
+    <div class="btn">Phone Cases</div>
+
+    <div class="btn">Hoodies</div>
+    <div class="btn">Jeans</div>
+
+    <div class="btn">Shorts</div>
+    <div class="btn">Pants</div>
+
+    <div class="btn wide">Hats</div>
+  </div>
+
+  <div class="explore">Explore the Eight Studios Archive →</div>
+
+  <div class="footer">
+    <div class="social">Instagram - @eight888studios</div>
+    <p style="margin-top:10px;">eight888studios@gmail.com</p>
+  </div>
+
+</div>
+
+</body>
+</html>
