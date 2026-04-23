@@ -10,24 +10,19 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
-  overflow-x: hidden;
 }
 
 /* NAV */
 .nav {
   position: sticky;
   top: 0;
-
   display: flex;
   justify-content: space-between;
   padding: 15px 25px;
 
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(15px);
-
-  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .nav a {
@@ -37,27 +32,19 @@ body {
   opacity: 0.8;
 }
 
-.nav a:hover {
-  opacity: 1;
-}
-
 /* HERO */
 .hero {
   height: 90vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 35px;
 }
 
 .title {
   font-size: 55px;
   font-weight: bold;
-  letter-spacing: 3px;
-  text-shadow: 0 0 25px rgba(0,200,255,0.3);
 }
 
 /* GRID */
@@ -68,7 +55,7 @@ body {
   gap: 18px;
 }
 
-/* 🧊 LESS ROUND GLASS BUTTONS */
+/* BUTTONS */
 .card {
   width: 150px;
   height: 110px;
@@ -77,15 +64,12 @@ body {
   align-items: center;
   justify-content: center;
 
-  border-radius: 18px; /* ⬅️ less circular */
+  border-radius: 18px;
 
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
 
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 
   font-weight: bold;
   cursor: pointer;
@@ -97,77 +81,52 @@ body {
   transform: translateY(-7px) scale(1.05);
   background: rgba(0,200,255,0.15);
   border: 1px solid rgba(0,200,255,0.4);
-  box-shadow: 0 15px 40px rgba(0,200,255,0.25);
-}
-
-/* MAIN BUTTON */
-.btn {
-  padding: 15px 35px;
-
-  border-radius: 18px; /* match style */
-
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.25);
-
-  backdrop-filter: blur(15px);
-
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-
-  transition: 0.2s;
-}
-
-.btn:hover {
-  transform: scale(1.07);
-  background: rgba(0,200,255,0.2);
-  box-shadow: 0 10px 35px rgba(0,200,255,0.25);
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 25px;
-  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
   <a href="products.html">Products</a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 
   <div class="title">EIGHT STUDIOS</div>
 
-  <!-- CATEGORY BUTTONS -->
   <div class="grid">
 
-    <div class="card"><a href="beanies.html" style="color:white;text-decoration:none;">Beanies</a></div>
-    <div class="card"><a href="products.html" style="color:white;text-decoration:none;">Hoodies</a></div>
-    <div class="card"><a href="products.html" style="color:white;text-decoration:none;">Jeans</a></div>
-    <div class="card"><a href="products.html" style="color:white;text-decoration:none;">Shorts</a></div>
-    <div class="card"><a href="products.html" style="color:white;text-decoration:none;">Pants</a></div>
-    <div class="card"><a href="products.html" style="color:white;text-decoration:none;">Hats</a></div>
+    <div class="card">
+      <a href="https://eightstudios.org/beanies.html" style="color:white;text-decoration:none;">
+        Beanies
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="products.html" style="color:white;text-decoration:none;">Hoodies</a>
+    </div>
+
+    <div class="card">
+      <a href="products.html" style="color:white;text-decoration:none;">Jeans</a>
+    </div>
+
+    <div class="card">
+      <a href="products.html" style="color:white;text-decoration:none;">Shorts</a>
+    </div>
+
+    <div class="card">
+      <a href="products.html" style="color:white;text-decoration:none;">Pants</a>
+    </div>
+
+    <div class="card">
+      <a href="products.html" style="color:white;text-decoration:none;">Hats</a>
+    </div>
 
   </div>
 
-  <!-- MAIN BUTTON -->
-  <a class="btn" href="products.html">View All Products</a>
-
 </div>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 Eight Studios
-</footer>
 
 </body>
 </html>
