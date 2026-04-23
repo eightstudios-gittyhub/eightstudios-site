@@ -13,10 +13,27 @@
   font-family: Arial, sans-serif;
 }
 
+/* BACKGROUND */
 body {
-  height: 100vh;
-  background: url(https://eightstudios.org/the-world-is-yours-ship.gif') no-repeat center center/cover;
+  min-height: 100vh;
+  background-image: url('https://eightstudios.org/the-world-is-yours-ship.gif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: white;
+}
+
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
 }
 
 /* NAVBAR */
@@ -33,6 +50,7 @@ nav a {
   text-decoration: none;
   font-size: 14px;
   opacity: 0.8;
+  transition: 0.2s;
 }
 
 nav a:hover {
@@ -45,7 +63,14 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  height: 80vh;
+  gap: 15px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
 
@@ -64,14 +89,8 @@ nav a:hover {
 
 .btn:hover {
   border: 1px solid #7a5cff;
-  box-shadow: 0 0 15px #7a5cff;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  box-shadow: 0 0 20px #7a5cff;
+  transform: translateY(-2px);
 }
 
 /* WIDE BUTTON */
@@ -82,7 +101,7 @@ nav a:hover {
 /* EXPLORE BUTTON */
 .explore {
   margin-top: 10px;
-  width: 300px;
+  width: 320px;
   padding: 15px;
   border-radius: 15px;
   background: linear-gradient(90deg, #7a5cff, #b66dff);
@@ -94,13 +113,14 @@ nav a:hover {
 
 .explore:hover {
   opacity: 0.85;
+  box-shadow: 0 0 20px #7a5cff;
 }
 
 /* FOOTER */
 .footer {
   margin-top: 20px;
   text-align: center;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .social {
@@ -111,7 +131,6 @@ nav a:hover {
   display: inline-block;
   backdrop-filter: blur(10px);
 }
-
 </style>
 </head>
 
