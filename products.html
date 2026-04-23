@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products - Eight Studios</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+
+  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* TITLE */
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+
+  padding: 40px;
+}
+
+/* 🧊 GLASS PRODUCT CARDS */
+.card {
+  width: 220px;
+  height: 160px;
+
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(0,200,255,0.15);
+  border: 1px solid rgba(0,200,255,0.4);
+}
+
+/* PRODUCT NAME */
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* CATEGORY */
+.cat {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* PRICE */
+.price {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00c8ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+</div>
+
+<h1>All Products</h1>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="name">Blue Hoodie</div>
+    <div class="cat">Hoodies</div>
+    <div class="price">$45</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Black Beanie</div>
+    <div class="cat">Beanies</div>
+    <div class="price">$15</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Street Jeans</div>
+    <div class="cat">Jeans</div>
+    <div class="price">$60</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Summer Shorts</div>
+    <div class="cat">Shorts</div>
+    <div class="price">$30</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Cargo Pants</div>
+    <div class="cat">Pants</div>
+    <div class="price">$55</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Snapback Hat</div>
+    <div class="cat">Hats</div>
+    <div class="price">$25</div>
+  </div>
+
+</div>
+
+</body>
+</html>
