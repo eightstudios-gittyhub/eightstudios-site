@@ -1,30 +1,191 @@
-import CollectionPage from "../../components/CollectionPage";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beanies - Eight Studios</title>
 
-export default function BeaniesPage() {
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+
+  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 30px 20px 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.header p {
+  opacity: 0.7;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+
+  padding: 40px;
+}
+
+/* PRODUCT CARD */
+.card {
+  width: 230px;
+
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(15px);
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(0,200,255,0.12);
+  border: 1px solid rgba(0,200,255,0.4);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* TEXT */
+.content {
+  padding: 12px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.subtitle {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.price {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00c8ff;
+}
+
+/* EMPTY MESSAGE */
+.empty {
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="products.html">All Products</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>🧢 Beanies</h1>
+  <p>Custom beanie drops will appear here.</p>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="productGrid"></div>
+
+<div class="empty">More items coming soon.</div>
+
+<script>
 const products = [
-{
-title: "888 Long Beanie — Hand Sewn",
-price: "$75",
-link: "/products/beanies/888-long-beanie-hand-sewn",
-img: "https://i.imgur.com/vdjnkAZ.jpeg",
-subtitle: "Hand-sewn patch • long fit",
-},
-{
-title: "888 Long Beanie — 1/1",
-price: "$60",
-link: "/products/beanies/888-long-beanie",
-img: "https://i.imgur.com/eSfJnxK.jpeg",
-subtitle: "Custom patch + glitter",
-},
-{
-title: "888 Short Beanie — 1/1",
-price: "$30",
-link: "/products/beanies/888-short-beanie",
-img: "https://i.imgur.com/0F8sDMG.jpeg",
-subtitle: "Cropped fit • hand-sewn patch",
-},
+  {
+    title: "888 Long Beanie — Hand Sewn",
+    price: "$75",
+    link: "/products/beanies/888-long-beanie-hand-sewn",
+    img: "https://i.imgur.com/vdjnkAZ.jpeg",
+    subtitle: "Hand-sewn patch • long fit"
+  },
+  {
+    title: "888 Long Beanie — 1/1",
+    price: "$60",
+    link: "/products/beanies/888-long-beanie",
+    img: "https://i.imgur.com/eSfJnxK.jpeg",
+    subtitle: "Custom patch + glitter"
+  },
+  {
+    title: "888 Short Beanie — 1/1",
+    price: "$30",
+    link: "/products/beanies/888-short-beanie",
+    img: "https://i.imgur.com/0F8sDMG.jpeg",
+    subtitle: "Cropped fit • hand-sewn patch"
+  }
 ];
 
-return (
-<CollectionPage title="Beanies" description="Custom beanie drops will appear here." products={products} emptyMessage="More items coming soon." />
-);
+const grid = document.getElementById("productGrid");
+
+products.forEach(p => {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <img src="${p.img}" alt="${p.title}">
+    <div class="content">
+      <div class="title">${p.title}</div>
+      <div class="subtitle">${p.subtitle}</div>
+      <div class="price">${p.price}</div>
+    </div>
+  `;
+
+  card.onclick = () => {
+    window.location.href = p.link;
+  };
+
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
