@@ -3,24 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eight Studios</title>
+<title>Products - Eight Studios</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background: radial-gradient(circle at center, rgba(0,200,255,0.25), black 70%);
+
+  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
 }
 
 /* NAV */
 .nav {
   position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.85);
   display: flex;
   gap: 20px;
   padding: 15px;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
 }
 
 .nav a {
@@ -29,19 +32,10 @@ body {
   font-weight: bold;
 }
 
-/* HERO */
-.hero {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-
-.title {
-  font-size: 40px;
-  font-weight: bold;
+/* TITLE */
+h1 {
+  text-align: center;
+  margin-top: 30px;
 }
 
 /* GRID */
@@ -49,60 +43,61 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-}
+  gap: 25px;
 
-/* 📦 BOX BUTTONS */
-.card {
-  width: 150px;
-  height: 100px;
-  border-radius: 12px; /* slight rounding */
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.1);
-  font-weight: bold;
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-/* HOVER */
-.card:hover {
-  background: rgba(0,200,255,0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,200,255,0.4);
-}
-
-/* PRODUCTS */
-.products {
-  display: none;
   padding: 40px;
 }
 
-.product {
-  margin: 10px;
-  padding: 15px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-}
+/* 🧊 GLASS PRODUCT CARDS */
+.card {
+  width: 220px;
+  height: 160px;
 
-/* BUTTON */
-.btn {
-  padding: 12px 25px;
-  background: white;
-  color: black;
-  border-radius: 30px;
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+  transition: 0.25s;
   cursor: pointer;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(0,200,255,0.15);
+  border: 1px solid rgba(0,200,255,0.4);
+}
+
+/* PRODUCT NAME */
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* CATEGORY */
+.cat {
+  font-size: 12px;
   opacity: 0.7;
+}
+
+/* PRICE */
+.price {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #00c8ff;
 }
 </style>
 </head>
@@ -110,44 +105,51 @@ footer {
 <body>
 
 <div class="nav">
-  <a href="#">Home</a>
-  <a href="#" onclick="showProducts()">Products</a>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
 </div>
 
-<div class="hero">
-  <div class="title">EIGHT STUDIOS</div>
+<h1>All Products</h1>
 
-  <div class="grid">
-    <div class="card" onclick="filter('Beanies')">Beanies</div>
-    <div class="card" onclick="filter('Hoodies')">Hoodies</div>
-    <div class="card" onclick="filter('Jeans')">Jeans</div>
-    <div class="card" onclick="filter('Shorts')">Shorts</div>
-    <div class="card" onclick="filter('Pants')">Pants</div>
-    <div class="card" onclick="filter('Hats')">Hats</div>
+<div class="grid">
+
+  <div class="card">
+    <div class="name">Blue Hoodie</div>
+    <div class="cat">Hoodies</div>
+    <div class="price">$45</div>
   </div>
 
-  <div class="btn" onclick="showProducts()">View Products</div>
+  <div class="card">
+    <div class="name">Black Beanie</div>
+    <div class="cat">Beanies</div>
+    <div class="price">$15</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Street Jeans</div>
+    <div class="cat">Jeans</div>
+    <div class="price">$60</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Summer Shorts</div>
+    <div class="cat">Shorts</div>
+    <div class="price">$30</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Cargo Pants</div>
+    <div class="cat">Pants</div>
+    <div class="price">$55</div>
+  </div>
+
+  <div class="card">
+    <div class="name">Snapback Hat</div>
+    <div class="cat">Hats</div>
+    <div class="price">$25</div>
+  </div>
+
 </div>
-
-<footer>
-  © 2026 Eight Studios
-</footer>
-
-<script>
-function showProducts() {
-  document.getElementById("products").style.display = "block";
-}
-
-function filter(type) {
-  showProducts();
-
-  let items = document.querySelectorAll(".product");
-
-  items.forEach(item => {
-    item.style.display = item.dataset.type === type ? "block" : "none";
-  });
-}
-</script>
 
 </body>
 </html>
