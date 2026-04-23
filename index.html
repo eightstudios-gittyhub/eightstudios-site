@@ -49,15 +49,15 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
 }
 
-/* ✅ PERFECT CIRCLE BUTTONS */
+/* 📦 BOX BUTTONS */
 .card {
-  width: 130px;
-  aspect-ratio: 1 / 1; /* forces perfect circle */
-  border-radius: 50%;
-  
+  width: 150px;
+  height: 100px;
+  border-radius: 12px; /* slight rounding */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,8 +72,8 @@ body {
 /* HOVER */
 .card:hover {
   background: rgba(0,200,255,0.3);
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(0,200,255,0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,200,255,0.4);
 }
 
 /* PRODUCTS */
