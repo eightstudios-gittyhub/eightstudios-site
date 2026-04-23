@@ -10,40 +10,68 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+
+  /* 🌊 GIF BACKGROUND */
+  background: url("https://eightstudios.org/the-world-is-yours-ship.gif") center center / cover no-repeat fixed;
+
+  overflow-x: hidden;
+}
+
+/* 🌑 DARK OVERLAY FOR READABILITY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
 }
 
 /* NAV */
 .nav {
   position: sticky;
   top: 0;
+
   display: flex;
   justify-content: center;
+  gap: 20px;
   padding: 15px;
 
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  opacity: 0.8;
+}
+
+.nav a:hover {
+  opacity: 1;
 }
 
 /* HERO */
 .hero {
   height: 90vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 35px;
 }
 
 .title {
   font-size: 55px;
   font-weight: bold;
+  letter-spacing: 3px;
+  text-shadow: 0 0 25px rgba(0,200,255,0.4);
 }
 
 /* GRID */
@@ -54,7 +82,7 @@ body {
   gap: 18px;
 }
 
-/* BUTTONS */
+/* 🧊 GLASS BUTTONS */
 .card {
   width: 150px;
   height: 110px;
@@ -69,6 +97,9 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
 
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 
   font-weight: bold;
   cursor: pointer;
@@ -80,16 +111,35 @@ body {
   transform: translateY(-7px) scale(1.05);
   background: rgba(0,200,255,0.15);
   border: 1px solid rgba(0,200,255,0.4);
+  box-shadow: 0 15px 40px rgba(0,200,255,0.25);
+}
+
+/* LINKS */
+.card a {
+  color: white;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🌑 OVERLAY -->
+<div class="overlay"></div>
+
+<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 
   <div class="title">EIGHT STUDIOS</div>
@@ -97,32 +147,37 @@ body {
   <div class="grid">
 
     <div class="card">
-      <a href="beanies.html" style="color:white;text-decoration:none;">Beanies</a>
+      <a href="https://eightstudios.org/beanies.html">Beanies</a>
     </div>
 
     <div class="card">
-      <a href="Hoodies.html" style="color:white;text-decoration:none;">Hoodies</a>
+      <a href="https://eightstudios.org/Hoodies.html">Hoodies</a>
     </div>
 
     <div class="card">
-      <a href="Jeans.html" style="color:white;text-decoration:none;">Jeans</a>
+      <a href="https://eightstudios.org/Jeans.html">Jeans</a>
     </div>
 
     <div class="card">
-      <a href="Shorts.html" style="color:white;text-decoration:none;">Shorts</a>
+      <a href="https://eightstudios.org/Shorts.html">Shorts</a>
     </div>
 
     <div class="card">
-      <a href="products.html" style="color:white;text-decoration:none;">Pants</a>
+      <a href="products.html">Pants</a>
     </div>
 
     <div class="card">
-      <a href="products.html" style="color:white;text-decoration:none;">Hats</a>
+      <a href="products.html">Hats</a>
     </div>
 
   </div>
 
 </div>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Eight Studios
+</footer>
 
 </body>
 </html>
