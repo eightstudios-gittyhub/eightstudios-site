@@ -14,7 +14,7 @@ body {
   background-attachment: fixed;
 }
 
-/* NAVBAR */
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -23,7 +23,6 @@ body {
   display: flex;
   gap: 25px;
   padding: 15px;
-  overflow-x: auto;
 }
 
 .nav a {
@@ -47,39 +46,84 @@ body {
   font-weight: bold;
 }
 
-/* 🔥 CIRCLE BUTTON GRID */
+/* GRID */
 .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
-  width: 80%;
-  max-width: 700px;
+  gap: 30px;
 }
 
-/* 🔵 CIRCLE BUTTONS */
+/* 🔥 COOL BUTTONS */
 .card {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.08);
   text-align: center;
-  transition: 0.25s;
-  cursor: pointer;
+
   font-weight: bold;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  background: radial-gradient(circle at 30% 30%, rgba(0,255,255,0.25), rgba(0,0,0,0.9));
+  border: 1px solid rgba(0,255,255,0.3);
+
+  transition: all 0.3s ease;
 }
 
-/* ✨ HOVER EFFECT */
+/* spinning glow ring */
+.card::before {
+  content: "";
+  position: absolute;
+  width: 160%;
+  height: 160%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(0,255,255,0.6),
+    transparent,
+    rgba(255,0,150,0.6),
+    transparent
+  );
+  animation: spin 4s linear infinite;
+}
+
+/* inner circle */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: black;
+  z-index: 1;
+}
+
+/* text on top */
+.card span {
+  position: relative;
+  z-index: 2;
+}
+
+/* hover glow */
 .card:hover {
-  background: rgba(0,200,255,0.3);
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0,200,255,0.6);
+  transform: scale(1.15) rotate(3deg);
+  box-shadow: 0 0 30px rgba(0,255,255,0.6),
+              0 0 60px rgba(255,0,150,0.4);
 }
 
-/* PRODUCTS SECTION */
+/* animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* PRODUCTS */
 .products {
   padding: 50px 20px;
   display: none;
@@ -125,12 +169,12 @@ footer {
   <div class="title">EIGHT STUDIOS</div>
 
   <div class="grid">
-    <div class="card" onclick="filter('Beanies')">Beanies</div>
-    <div class="card" onclick="filter('Hoodies')">Hoodies</div>
-    <div class="card" onclick="filter('Jeans')">Jeans</div>
-    <div class="card" onclick="filter('Shorts')">Shorts</div>
-    <div class="card" onclick="filter('Pants')">Pants</div>
-    <div class="card" onclick="filter('Hats')">Hats</div>
+    <div class="card" onclick="filter('Beanies')"><span>Beanies</span></div>
+    <div class="card" onclick="filter('Hoodies')"><span>Hoodies</span></div>
+    <div class="card" onclick="filter('Jeans')"><span>Jeans</span></div>
+    <div class="card" onclick="filter('Shorts')"><span>Shorts</span></div>
+    <div class="card" onclick="filter('Pants')"><span>Pants</span></div>
+    <div class="card" onclick="filter('Hats')"><span>Hats</span></div>
   </div>
 
   <div class="btn" onclick="showProducts()">View Products</div>
