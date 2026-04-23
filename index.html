@@ -11,7 +11,6 @@ body {
   font-family: Arial, sans-serif;
   color: white;
   background: radial-gradient(circle at center, rgba(0,200,255,0.25), black 70%);
-  background-attachment: fixed;
 }
 
 /* NAV */
@@ -19,9 +18,8 @@ body {
   position: sticky;
   top: 0;
   background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(6px);
   display: flex;
-  gap: 25px;
+  gap: 20px;
   padding: 15px;
 }
 
@@ -36,8 +34,8 @@ body {
   height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 30px;
 }
 
@@ -51,88 +49,43 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
 }
 
-/* 🔥 COOL BUTTONS */
+/* ✅ PERFECT CIRCLE BUTTONS */
 .card {
   width: 130px;
-  height: 130px;
+  aspect-ratio: 1 / 1; /* forces perfect circle */
   border-radius: 50%;
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 
+  background: rgba(255,255,255,0.1);
   font-weight: bold;
-  letter-spacing: 1px;
-
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
 
-  background: radial-gradient(circle at 30% 30%, rgba(0,255,255,0.25), rgba(0,0,0,0.9));
-  border: 1px solid rgba(0,255,255,0.3);
-
-  transition: all 0.3s ease;
+  transition: 0.2s;
 }
 
-/* spinning glow ring */
-.card::before {
-  content: "";
-  position: absolute;
-  width: 160%;
-  height: 160%;
-  background: conic-gradient(
-    from 0deg,
-    transparent,
-    rgba(0,255,255,0.6),
-    transparent,
-    rgba(255,0,150,0.6),
-    transparent
-  );
-  animation: spin 4s linear infinite;
-}
-
-/* inner circle */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  background: black;
-  z-index: 1;
-}
-
-/* text on top */
-.card span {
-  position: relative;
-  z-index: 2;
-}
-
-/* hover glow */
+/* HOVER */
 .card:hover {
-  transform: scale(1.15) rotate(3deg);
-  box-shadow: 0 0 30px rgba(0,255,255,0.6),
-              0 0 60px rgba(255,0,150,0.4);
-}
-
-/* animation */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  background: rgba(0,200,255,0.3);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0,200,255,0.5);
 }
 
 /* PRODUCTS */
 .products {
-  padding: 50px 20px;
   display: none;
+  padding: 40px;
 }
 
 .product {
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
   margin: 10px;
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
   border-radius: 10px;
 }
 
@@ -143,7 +96,6 @@ body {
   color: black;
   border-radius: 30px;
   cursor: pointer;
-  font-weight: bold;
 }
 
 /* FOOTER */
@@ -157,40 +109,34 @@ footer {
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="#">Home</a>
   <a href="#" onclick="showProducts()">Products</a>
-  <a href="#">Contact</a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="title">EIGHT STUDIOS</div>
 
   <div class="grid">
-    <div class="card" onclick="filter('Beanies')"><span>Beanies</span></div>
-    <div class="card" onclick="filter('Hoodies')"><span>Hoodies</span></div>
-    <div class="card" onclick="filter('Jeans')"><span>Jeans</span></div>
-    <div class="card" onclick="filter('Shorts')"><span>Shorts</span></div>
-    <div class="card" onclick="filter('Pants')"><span>Pants</span></div>
-    <div class="card" onclick="filter('Hats')"><span>Hats</span></div>
+    <div class="card" onclick="filter('Beanies')">Beanies</div>
+    <div class="card" onclick="filter('Hoodies')">Hoodies</div>
+    <div class="card" onclick="filter('Jeans')">Jeans</div>
+    <div class="card" onclick="filter('Shorts')">Shorts</div>
+    <div class="card" onclick="filter('Pants')">Pants</div>
+    <div class="card" onclick="filter('Hats')">Hats</div>
   </div>
 
   <div class="btn" onclick="showProducts()">View Products</div>
 </div>
 
-<!-- PRODUCTS -->
 <div class="products" id="products">
   <h2>Products</h2>
 
-  <div class="product" data-type="Shorts">🔥 Shorts Product</div>
-  <div class="product" data-type="Hoodies">🔥 Hoodie Product</div>
-  <div class="product" data-type="Beanies">🔥 Beanie Product</div>
-  <div class="product" data-type="Jeans">🔥 Jeans Product</div>
+  <div class="product" data-type="Shorts">Shorts Product</div>
+  <div class="product" data-type="Hoodies">Hoodie Product</div>
+  <div class="product" data-type="Beanies">Beanie Product</div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   © 2026 Eight Studios
 </footer>
@@ -198,10 +144,6 @@ footer {
 <script>
 function showProducts() {
   document.getElementById("products").style.display = "block";
-  window.scrollTo({
-    top: document.getElementById("products").offsetTop,
-    behavior: "smooth"
-  });
 }
 
 function filter(type) {
@@ -210,11 +152,7 @@ function filter(type) {
   let items = document.querySelectorAll(".product");
 
   items.forEach(item => {
-    if (item.dataset.type === type) {
-      item.style.display = "block";
-    } else {
-      item.style.display = "none";
-    }
+    item.style.display = item.dataset.type === type ? "block" : "none";
   });
 }
 </script>
