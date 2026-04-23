@@ -10,7 +10,25 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+
+  /* BACKGROUND IMAGE */
+  background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* dark overlay so text stays readable */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+/* make sure content is above overlay */
+.nav, .hero {
+  position: relative;
+  z-index: 1;
 }
 
 /* NAV */
