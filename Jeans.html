@@ -13,7 +13,7 @@ body {
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
 }
 
-/* NAV (HOME ONLY) */
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -55,20 +55,22 @@ body {
   padding: 30px;
 }
 
+/* LINK RESET */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* CARD */
 .card {
   width: 240px;
-
   border-radius: 18px;
 
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
 
   backdrop-filter: blur(15px);
-
   overflow: hidden;
-
-  cursor: pointer;
 
   transition: 0.25s;
 }
@@ -101,12 +103,6 @@ body {
   margin-top: 5px;
 }
 
-.price {
-  margin-top: 8px;
-  font-weight: bold;
-  color: #00c8ff;
-}
-
 /* FOOTER NOTE */
 .note {
   text-align: center;
@@ -118,51 +114,63 @@ body {
 
 <body>
 
-<!-- NAV (HOME ONLY) -->
+<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
 
 <!-- HEADER -->
 <div class="header">
-  <h1>Jeans / Pants</h1>
+  <h1>Jeans</h1>
   <p>Custom denim and patchwork pieces will appear here as new drops release.</p>
 </div>
 
 <!-- GRID -->
 <div class="grid">
 
-  <div class="card">
-    <img src="https://i.imgur.com/NkY6FRi.jpeg">
-    <div class="content">
-      <div class="title">Blue MoonStone 02</div>
-      <div class="subtitle">Custom MoonStone Denim</div>
+  <!-- PRODUCT 1 -->
+  <a href="" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/NkY6FRi.jpeg">
+      <div class="content">
+        <div class="title">Blue MoonStone 02</div>
+        <div class="subtitle">Custom MoonStone Denim</div>
+      </div>
     </div>
-  </div>
+  </a>
 
-  <div class="card">
-    <img src="https://i.imgur.com/B3323uR.jpeg">
-    <div class="content">
-      <div class="title">Hand-Sewn Woodland Camo — 1/1</div>
-      <div class="subtitle">Hand-sewn detailing</div>
+  <!-- PRODUCT 2 -->
+  <a href="https://your-stripe-link-2" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/B3323uR.jpeg">
+      <div class="content">
+        <div class="title">Hand-Sewn Woodland Camo — 1/1</div>
+        <div class="subtitle">Hand-sewn detailing</div>
+      </div>
     </div>
-  </div>
+  </a>
 
-  <div class="card">
-    <img src="https://i.imgur.com/5p9IhQ0.jpeg">
-    <div class="content">
-      <div class="title">Arctic Oil Spill — 1/1</div>
-      <div class="subtitle">Custom wash denim</div>
+  <!-- PRODUCT 3 -->
+  <a href="https://your-stripe-link-3" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/5p9IhQ0.jpeg">
+      <div class="content">
+        <div class="title">Arctic Oil Spill — 1/1</div>
+        <div class="subtitle">Custom wash denim</div>
+      </div>
     </div>
-  </div>
+  </a>
 
-  <div class="card">
-    <img src="https://i.imgur.com/NYQt6sa.jpeg">
-    <div class="content">
-      <div class="title">Plaid8 Cargo PJ’s — 1/1</div>
-      <div class="subtitle">Patchwork design</div>
+  <!-- PRODUCT 4 -->
+  <a href="https://your-stripe-link-4" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/NYQt6sa.jpeg">
+      <div class="content">
+        <div class="title">Plaid8 Cargo PJ’s — 1/1</div>
+        <div class="subtitle">Patchwork design</div>
+      </div>
     </div>
-  </div>
+  </a>
 
 </div>
 
