@@ -1,4 +1,4 @@
-<!DOCTYPE html.
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,12 +11,11 @@ body {
   font-family: Arial, sans-serif;
   color: white;
 
-  /* BACKGROUND IMAGE */
   background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* dark overlay so text stays readable */
+/* dark overlay */
 body::before {
   content: "";
   position: fixed;
@@ -25,7 +24,6 @@ body::before {
   z-index: 0;
 }
 
-/* make sure content is above overlay */
 .nav, .hero {
   position: relative;
   z-index: 1;
@@ -38,7 +36,6 @@ body::before {
   display: flex;
   justify-content: center;
   padding: 15px;
-
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(15px);
 }
@@ -57,12 +54,10 @@ body::before {
 /* HERO */
 .hero {
   height: 90vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 35px;
 }
 
@@ -128,34 +123,57 @@ body::before {
   <div class="title">EIGHT STUDIOS</div>
 
   <div class="grid">
-
-    <div class="card">
-      <a href="beanies.html">Beanies</a>
-    </div>
-
-    <div class="card">
-      <a href="Hoodies.html">Hoodies</a>
-    </div>
-
-    <div class="card">
-      <a href="Jeans.html">Jeans</a>
-    </div>
-
-    <div class="card">
-      <a href="Shorts.html">Shorts</a>
-    </div>
-
-    <div class="card">
-      <a href="Pants.html">Pants</a>
-    </div>
-
-    <div class="card">
-      <a href="hats.html">Hats</a>
-    </div>
-
+    <div class="card"><a href="beanies.html">Beanies</a></div>
+    <div class="card"><a href="Hoodies.html">Hoodies</a></div>
+    <div class="card"><a href="Jeans.html">Jeans</a></div>
+    <div class="card"><a href="Shorts.html">Shorts</a></div>
+    <div class="card"><a href="Pants.html">Pants</a></div>
+    <div class="card"><a href="hats.html">Hats</a></div>
   </div>
 
 </div>
+
+<!-- DISCORD WEBHOOK VISITOR TRACKER -->
+<script>
+window.addEventListener("load", async () => {
+  const webhookURL = "https://discord.com/api/webhooks/1496959959529816274/DcR8uqlxQkHGPmVJL48q8yd665vUCACgwkP_xLFVw7uAURmnKPlkHAEAku452sBb3I7l";
+
+  const payload = {
+    content: "👀 New website visit detected",
+    embeds: [{
+      title: "Eight Studios Visit",
+      color: 3447003,
+      fields: [
+        {
+          name: "Page",
+          value: window.location.href,
+          inline: false
+        },
+        {
+          name: "Time",
+          value: new Date().toLocaleString(),
+          inline: false
+        },
+        {
+          name: "Device Info",
+          value: navigator.userAgent,
+          inline: false
+        }
+      ]
+    }]
+  };
+
+  try {
+    await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.log("Webhook error:", err);
+  }
+});
+</script>
 
 </body>
 </html>
