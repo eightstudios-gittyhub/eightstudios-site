@@ -13,14 +13,13 @@ body {
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
 }
 
-/* NAV (HOME ONLY) */
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
   display: flex;
   justify-content: center;
   padding: 15px;
-
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
 }
@@ -59,15 +58,11 @@ body {
 .card {
   width: 230px;
   border-radius: 18px;
-
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-
   backdrop-filter: blur(15px);
-
   overflow: hidden;
   cursor: pointer;
-
   transition: 0.25s;
 }
 
@@ -98,12 +93,19 @@ body {
   opacity: 0.6;
   margin: 20px;
 }
+
+/* LINK RESET */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAV (HOME ONLY) -->
+<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
@@ -117,26 +119,35 @@ body {
 <!-- PRODUCTS -->
 <div class="grid">
 
-  <div class="card">
-    <img src="https://i.imgur.com/vdjnkAZ.jpeg">
-    <div class="content">
-      <div class="title">888 Long Beanie — Hand Sewn</div>
+  <!-- PRODUCT 1 -->
+  <a href="https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g" target="_blank" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/vdjnkAZ.jpeg" alt="888 Long Beanie">
+      <div class="content">
+        <div class="title">888 Long Beanie — Hand Sewn</div>
+      </div>
     </div>
-  </div>
+  </a>
 
-  <div class="card">
-    <img src="https://i.imgur.com/eSfJnxK.jpeg">
-    <div class="content">
-      <div class="title">888 Long Beanie — 1/1</div>
+  <!-- PRODUCT 2 -->
+  <a href="YOUR_LINK_HERE" target="_blank" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/eSfJnxK.jpeg" alt="888 Long Beanie 1/1">
+      <div class="content">
+        <div class="title">888 Long Beanie — 1/1</div>
+      </div>
     </div>
-  </div>
+  </a>
 
-  <div class="card">
-    <img src="https://i.imgur.com/0F8sDMG.jpeg">
-    <div class="content">
-      <div class="title">888 Short Beanie — 1/1</div>
+  <!-- PRODUCT 3 -->
+  <a href="YOUR_LINK_HERE" target="_blank" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/0F8sDMG.jpeg" alt="888 Short Beanie 1/1">
+      <div class="content">
+        <div class="title">888 Short Beanie — 1/1</div>
+      </div>
     </div>
-  </div>
+  </a>
 
 </div>
 
