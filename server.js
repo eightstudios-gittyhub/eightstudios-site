@@ -1,6 +1,6 @@
 const http = require("http");
 
-const WEBHOOK_URL = "webhookhere";
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1496959959529816274/DcR8uqlxQkHGPmVJL48q8yd665vUCACgwkP_xLFVw7uAURmnKPlkHAEAku452sBb3I7l";
 
 const server = http.createServer(async (req, res) => {
   if (req.method === "POST" && req.url === "/visit") {
