@@ -54,17 +54,21 @@ body {
   padding: 40px;
 }
 
+/* LINK RESET */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* PRODUCT CARD */
 .card {
   width: 260px;
-
   border-radius: 18px;
 
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
 
   backdrop-filter: blur(15px);
-
   overflow: hidden;
 
   transition: 0.25s;
@@ -101,7 +105,7 @@ body {
 
 <body>
 
-<!-- NAV (ONLY HOME) -->
+<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
@@ -115,13 +119,15 @@ body {
 <!-- PRODUCT -->
 <div class="grid">
 
-  <div class="card">
-    <img src="https://i.imgur.com/pIeNzKp.jpeg">
-    <div class="content">
-      <div class="title">888 Heavyweight Zipup — 1/1</div>
-      <div class="subtitle">Handmade zip-up hoodie</div>
+  <a href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" class="card-link">
+    <div class="card">
+      <img src="https://i.imgur.com/pIeNzKp.jpeg">
+      <div class="content">
+        <div class="title">888 Heavyweight Zipup — 1/1</div>
+        <div class="subtitle">Handmade zip-up hoodie</div>
+      </div>
     </div>
-  </div>
+  </a>
 
 </div>
 
