@@ -14,7 +14,6 @@ body {
   background-size: cover;
 }
 
-/* dark overlay */
 body::before {
   content: "";
   position: fixed;
@@ -28,7 +27,6 @@ body::before {
   z-index: 1;
 }
 
-/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -50,7 +48,6 @@ body::before {
   opacity: 1;
 }
 
-/* HERO */
 .hero {
   height: 90vh;
   display: flex;
@@ -66,7 +63,6 @@ body::before {
   letter-spacing: 2px;
 }
 
-/* PHONE */
 .phone {
   font-size: 18px;
   opacity: 0.9;
@@ -84,7 +80,6 @@ body::before {
   border-bottom: 1px solid rgba(0,200,255,0.6);
 }
 
-/* SMS BUTTON */
 .sms-btn {
   margin-top: 8px;
   padding: 10px 18px;
@@ -104,7 +99,6 @@ body::before {
   border: 1px solid rgba(0,200,255,0.5);
 }
 
-/* GRID */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -113,7 +107,6 @@ body::before {
   margin-top: 20px;
 }
 
-/* BUTTON CARDS */
 .card {
   width: 150px;
   height: 110px;
@@ -144,27 +137,21 @@ body::before {
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-
   <div class="title">EIGHT STUDIOS</div>
 
-  <!-- PHONE -->
   <div class="phone">
     📞 <a href="tel:5184770592">(518) 477-0592</a>
   </div>
 
-  <!-- TEXT BUTTON -->
   <a href="sms:5184770592?body=Hey%20I’m%20interested%20in%20your%20products" class="sms-btn">
     💬 Text Me
   </a>
 
-  <!-- GRID -->
   <div class="grid">
     <div class="card"><a href="beanies.html">Beanies</a></div>
     <div class="card"><a href="Hoodies.html">Hoodies</a></div>
@@ -172,50 +159,10 @@ body::before {
     <div class="card"><a href="Pants.html">Pants</a></div>
     <div class="card"><a href="hats.html">Hats</a></div>
   </div>
-
 </div>
 
-<!-- DISCORD WEBHOOK VISITOR TRACKER -->
-<script>
-window.addEventListener("load", async () => {
-  const webhookURL = "YOUR_WEBHOOK_HERE";
-
-  const payload = {
-    content: "👀 New website visit detected",
-    embeds: [{
-      title: "Eight Studios Visit",
-      color: 3447003,
-      fields: [
-        {
-          name: "Page",
-          value: window.location.href,
-          inline: false
-        },
-        {
-          name: "Time",
-          value: new Date().toLocaleString(),
-          inline: false
-        },
-        {
-          name: "Device Info",
-          value: navigator.userAgent,
-          inline: false
-        }
-      ]
-    }]
-  };
-
-  try {
-    await fetch(webhookURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {
-    console.log("Webhook error:", err);
-  }
-});
-</script>
+<!-- ✅ SECURE TRACKER -->
+<script src="/tracker.js"></script>
 
 </body>
 </html>
