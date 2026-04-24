@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en".
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eight Studios</title>
-                
+
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-
   background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
   background-size: cover;
 }
@@ -58,7 +57,7 @@ body::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .title {
@@ -67,11 +66,42 @@ body::before {
   letter-spacing: 2px;
 }
 
-/* PHONE NUMBER */
+/* PHONE */
 .phone {
   font-size: 18px;
-  opacity: 0.8;
-  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.phone a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  transition: 0.2s;
+}
+
+.phone a:hover {
+  color: rgba(0,200,255,1);
+  border-bottom: 1px solid rgba(0,200,255,0.6);
+}
+
+/* SMS BUTTON */
+.sms-btn {
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+
+.sms-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
 }
 
 /* GRID */
@@ -83,25 +113,19 @@ body::before {
   margin-top: 20px;
 }
 
-/* BUTTONS */
+/* BUTTON CARDS */
 .card {
   width: 150px;
   height: 110px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 18px;
-
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.2);
-
   backdrop-filter: blur(14px);
-
   font-weight: bold;
   cursor: pointer;
-
   transition: all 0.25s ease;
 }
 
@@ -129,8 +153,18 @@ body::before {
 <div class="hero">
 
   <div class="title">EIGHT STUDIOS</div>
-  <div class="phone">📞 (518) 477-0592</div>
 
+  <!-- PHONE -->
+  <div class="phone">
+    📞 <a href="tel:5184770592">123-456-7890</a>
+  </div>
+
+  <!-- TEXT BUTTON -->
+  <a href="sms:5184770592?body=Hey%20I’m%20interested%20in%20your%20products" class="sms-btn">
+    💬 Text Us
+  </a>
+
+  <!-- GRID -->
   <div class="grid">
     <div class="card"><a href="beanies.html">Beanies</a></div>
     <div class="card"><a href="Hoodies.html">Hoodies</a></div>
