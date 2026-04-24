@@ -1,1 +1,1 @@
-#Eight Sudios Shop
+Eight Sudios Shop
