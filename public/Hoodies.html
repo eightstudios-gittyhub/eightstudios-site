@@ -101,6 +101,23 @@ body {
   opacity: 0.7;
   margin-top: 5px;
 }
+
+.checkout-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-btn:hover {
+  background: rgba(0,200,255,0.35);
+}
 </style>
 </head>
 
@@ -120,15 +137,14 @@ body {
 <!-- PRODUCT -->
 <div class="grid">
 
-  <a href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" class="card-link">
-    <div class="card">
-      <img src="https://i.imgur.com/pIeNzKp.jpeg">
-      <div class="content">
-        <div class="title">888 Heavyweight Zipup — 1/1</div>
-        <div class="subtitle">Handmade zip-up hoodie</div>
-      </div>
+  <div class="card" onclick="window.open('https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d', '_blank')">
+    <img src="https://i.imgur.com/pIeNzKp.jpeg">
+    <div class="content">
+      <div class="title">888 Heavyweight Zipup — 1/1</div>
+      <div class="subtitle">Handmade zip-up hoodie</div>
+      <a href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
     </div>
-  </a>
+  </div>
 
 </div>
 

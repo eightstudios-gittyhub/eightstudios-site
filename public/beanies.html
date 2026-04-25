@@ -88,6 +88,23 @@ body {
   font-weight: bold;
 }
 
+.checkout-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-btn:hover {
+  background: rgba(0,200,255,0.35);
+}
+
 /* NOTE */
 .note {
   text-align: center;
@@ -95,12 +112,6 @@ body {
   margin: 20px;
 }
 
-/* LINK RESET */
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
 </style>
 </head>
 
@@ -121,34 +132,31 @@ body {
 <div class="grid">
 
   <!-- PRODUCT 1 -->
-  <a href="https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g" target="_blank" class="card-link">
-    <div class="card">
-      <img src="https://i.imgur.com/vdjnkAZ.jpeg" alt="888 Long Beanie">
-      <div class="content">
-        <div class="title">888 Long Beanie — Hand Sewn</div>
-      </div>
+  <div class="card" onclick="window.open('https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g', '_blank')">
+    <img src="https://i.imgur.com/vdjnkAZ.jpeg" alt="888 Long Beanie">
+    <div class="content">
+      <div class="title">888 Long Beanie — Hand Sewn</div>
+      <a href="https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
     </div>
-  </a>
+  </div>
 
   <!-- PRODUCT 2 -->
-  <a href="https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09" target="_blank" class="card-link">
-    <div class="card">
-      <img src="https://i.imgur.com/eSfJnxK.jpeg" alt="888 Long Beanie 1/1">
-      <div class="content">
-        <div class="title">888 Long Beanie — 1/1</div>
-      </div>
+  <div class="card" onclick="window.open('https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09', '_blank')">
+    <img src="https://i.imgur.com/eSfJnxK.jpeg" alt="888 Long Beanie 1/1">
+    <div class="content">
+      <div class="title">888 Long Beanie — 1/1</div>
+      <a href="https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
     </div>
-  </a>
+  </div>
 
   <!-- PRODUCT 3 -->
-  <a href="https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f" target="_blank" class="card-link">
-    <div class="card">
-      <img src="https://i.imgur.com/0F8sDMG.jpeg" alt="888 Short Beanie 1/1">
-      <div class="content">
-        <div class="title">888 Short Beanie — 1/1</div>
-      </div>
+  <div class="card" onclick="window.open('https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f', '_blank')">
+    <img src="https://i.imgur.com/0F8sDMG.jpeg" alt="888 Short Beanie 1/1">
+    <div class="content">
+      <div class="title">888 Short Beanie — 1/1</div>
+      <a href="https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
     </div>
-  </a>
+  </div>
 
 </div>
 

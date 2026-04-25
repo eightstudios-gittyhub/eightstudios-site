@@ -93,6 +93,23 @@ body {
   font-weight: bold;
 }
 
+.checkout-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-btn:hover {
+  background: rgba(0,200,255,0.35);
+}
+
 /* NOTE */
 .note {
   text-align: center;
@@ -122,6 +139,7 @@ body {
     <img src="https://i.imgur.com/Y1zxInG.jpeg">
     <div class="content">
       <div class="title">Camo Fragment Shorts — 1/1</div>
+      <a href="https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
     </div>
   </div>
 
