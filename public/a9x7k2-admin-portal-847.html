@@ -3,77 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel - Eight Studios</title>
+<title>404 Not Found</title>
+
+<meta name="robots" content="noindex, nofollow">
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, rgba(0,200,255,0.2), black);
+  font-family: Arial;
+  background: black;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
-/* PANEL */
 .panel {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
-  padding: 30px;
-  border-radius: 20px;
-  width: 340px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(0,200,255,0.3);
 }
-
-/* TITLE */
-h1 {
-  margin-bottom: 10px;
-}
-
-/* BUTTONS */
 button {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
+  padding: 10px 20px;
+  margin: 10px;
   border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  cursor: pointer;
+  border-radius: 10px;
   background: rgba(0,200,255,0.2);
   color: white;
-  transition: 0.3s;
+  cursor: pointer;
 }
-
 button:hover {
   background: rgba(0,200,255,0.5);
-}
-
-/* STATS */
-.stats {
-  margin: 15px 0;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* LOG */
-.log {
-  margin-top: 15px;
-  font-size: 12px;
-  opacity: 0.7;
-  height: 40px;
-}
-
-/* DENIED */
-.denied {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 20px;
-  color: red;
 }
 </style>
 </head>
@@ -84,121 +42,126 @@ button:hover {
 
 <script>
 /* =========================
-   🔐 PASSWORD PROTECTION
+   📡 YOUR WEBHOOK (ACTIVE)
 ========================= */
-const ADMIN_PASSWORD = "1234";
-
-let input = prompt("Enter Admin Password:");
-if (input !== ADMIN_PASSWORD) {
-  document.body.innerHTML = "<div class='denied'>Access Denied</div>";
-  throw new Error("Unauthorized");
-}
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1496959959529816274/DcR8uqlxQkHGPmVJL48q8yd665vUCACgwkP_xLFVw7uAURmnKPlkHAEAku452sBb3I7l";
 
 /* =========================
-   🖥️ BUILD PANEL UI
+   🌍 GET IP DATA
 ========================= */
-document.getElementById("app").innerHTML = `
-  <div class="panel">
-    <h1>🛠 Admin Panel</h1>
-
-    <div class="stats">
-      Visitors: <span id="visits">0</span>
-    </div>
-
-    <button onclick="restartSite()">🔄 Restart Website</button>
-    <button onclick="clearCache()">🧹 Clear Cache</button>
-    <button onclick="forceReload()">⚡ Force Reload</button>
-    <button onclick="goHome()">🏠 Go Home</button>
-    <button onclick="sendTestWebhook()">📡 Test Webhook</button>
-
-    <div class="log" id="log">Status: Ready</div>
-  </div>
-`;
-
-/* =========================
-   📊 VISITOR COUNTER
-========================= */
-let visits = localStorage.getItem("visits") || 0;
-visits++;
-localStorage.setItem("visits", visits);
-document.getElementById("visits").innerText = visits;
-
-/* =========================
-   🧠 LOG SYSTEM
-========================= */
-function log(msg) {
-  document.getElementById("log").innerText = "Status: " + msg;
-}
-
-/* =========================
-   🔄 RESTART SITE
-========================= */
-function restartSite() {
-  log("Restarting...");
-
-  setTimeout(() => {
-    localStorage.clear();
-    sessionStorage.clear();
-
-    log("Cache cleared...");
-
-    setTimeout(() => {
-      location.href = "/";
-    }, 1000);
-
-  }, 500);
-}
-
-/* =========================
-   🧹 CLEAR CACHE
-========================= */
-function clearCache() {
-  localStorage.clear();
-  sessionStorage.clear();
-  log("Cache cleared");
-}
-
-/* =========================
-   ⚡ FORCE RELOAD
-========================= */
-function forceReload() {
-  log("Force reloading...");
-  location.reload();
-}
-
-/* =========================
-   🏠 GO HOME
-========================= */
-function goHome() {
-  log("Redirecting...");
-  location.href = "/";
-}
-
-/* =========================
-   📡 DISCORD WEBHOOK
-========================= */
-const WEBHOOK_URL = "PASTE_YOUR_WEBHOOK_HERE";
-
-function sendWebhook(message) {
-  if (WEBHOOK_URL === "PASTE_YOUR_WEBHOOK_HERE") {
-    log("No webhook set");
-    return;
+async function getIPData() {
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    return await res.json();
+  } catch {
+    return {};
   }
+}
 
+/* =========================
+   📡 SEND TO DISCORD
+========================= */
+function sendWebhook(msg) {
   fetch(WEBHOOK_URL, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      content: message
-    })
-  })
-  .then(() => log("Webhook sent"))
-  .catch(() => log("Webhook failed"));
+    body: JSON.stringify({ content: msg })
+  }).catch(()=>{});
 }
 
-function sendTestWebhook() {
-  sendWebhook("🛠 Admin panel test from your site");
+/* =========================
+   🧠 AUTO FLAG SYSTEM
+========================= */
+let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+
+function fail(reason, ipData) {
+  attempts++;
+  localStorage.setItem("attempts", attempts);
+
+  let info = `
+⚠️ ${reason}
+Attempts: ${attempts}
+
+🌍 IP: ${ipData.ip}
+📍 ${ipData.city}, ${ipData.country_name}
+🖥️ ${navigator.userAgent}
+`;
+
+  sendWebhook(info);
+
+  if (attempts >= 3) {
+    sendWebhook("🚫 FLAG THIS IP FOR BAN: " + ipData.ip);
+  }
 }
+
+/* =========================
+   🔐 SECRET URL KEY
+========================= */
+const SECRET_KEY = "eight-admin-9921";
+const params = new URLSearchParams(location.search);
+const key = params.get("key");
+
+(async () => {
+  const ipData = await getIPData();
+
+  if (key !== SECRET_KEY) {
+    document.getElementById("app").innerHTML = "<h1>404 Not Found</h1>";
+    fail("Wrong key access attempt", ipData);
+    return;
+  }
+
+  /* =========================
+     🔐 PASSWORD CHECK
+  ========================= */
+  const ADMIN_PASSWORD = "1234";
+  const entered = prompt("Enter Admin Password:");
+
+  if (entered !== ADMIN_PASSWORD) {
+    document.body.innerHTML = "<h1 style='color:red;'>ACCESS DENIED</h1>";
+    fail("Wrong password attempt", ipData);
+    return;
+  }
+
+  /* RESET ATTEMPTS */
+  localStorage.setItem("attempts", 0);
+
+  sendWebhook(`
+🛠 ADMIN LOGIN SUCCESS
+
+🌍 IP: ${ipData.ip}
+📍 ${ipData.city}, ${ipData.country_name}
+🖥️ ${navigator.userAgent}
+`);
+
+  /* =========================
+     🖥️ ADMIN PANEL UI
+  ========================= */
+  document.title = "Admin Panel";
+
+  document.getElementById("app").innerHTML = `
+    <div class="panel">
+      <h1>🛠 Admin Panel</h1>
+      <button onclick="restart()">🔄 Restart Site</button><br>
+      <button onclick="clearCache()">🧹 Clear Cache</button>
+    </div>
+  `;
+})();
+
+/* =========================
+   🔄 ACTIONS
+========================= */
+function restart() {
+  sendWebhook("🔄 Site restarted from admin");
+  localStorage.clear();
+  sessionStorage.clear();
+  location.href = "/";
+}
+
+function clearCache() {
+  localStorage.clear();
+  sessionStorage.clear();
+  sendWebhook("🧹 Cache cleared from admin");
+} by
 </script>
 
 </body>
