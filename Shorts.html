@@ -55,6 +55,12 @@ body {
   padding: 30px;
 }
 
+/* LINK RESET */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* CARD */
 .card {
   width: 240px;
@@ -117,12 +123,15 @@ body {
 <!-- PRODUCT -->
 <div class="grid">
 
-  <div class="card" onclick="window.open('https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e', '_blank')">
+  <a href="checkout.html?name=Camo%20Fragment%20Shorts%20%E2%80%94%201%2F1&image=https://i.imgur.com/Y1zxInG.jpeg&checkout=https%3A%2F%2Fbuy.stripe.com%2F6oU7sN0kv5Oy1Jx98K5Rm0e" class="card-link">
+  <div class="card">
     <img src="https://i.imgur.com/Y1zxInG.jpeg">
     <div class="content">
       <div class="title">Camo Fragment Shorts — 1/1</div>
     </div>
   </div>
+
+</a>
 
 </div>
 

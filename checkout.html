@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Eight Studios</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.card {
+  width: min(420px, 100%);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background: black;
+}
+
+.content {
+  padding: 18px;
+}
+
+#productName {
+  margin: 0 0 8px;
+  font-size: 26px;
+}
+
+#productDetails {
+  margin: 0 0 18px;
+  opacity: 0.75;
+}
+
+.checkout-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(0,200,255,0.25);
+  border: 1px solid rgba(0,200,255,0.5);
+  transition: 0.2s;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0,200,255,0.35);
+}
+
+.disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="nav">
+  <a href="index.html">Home</a>
+</div>
+
+<div class="wrapper">
+  <div class="card">
+    <img id="productImage" src="https://i.imgur.com/N9WTq1o.jpeg" alt="Product Image">
+    <div class="content">
+      <h1 id="productName">Product</h1>
+      <p id="productDetails">Review your item, then continue to checkout.</p>
+      <a id="checkoutButton" class="checkout-btn" href="#">Checkout</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get('name') || 'Product';
+const image = params.get('image');
+const checkout = params.get('checkout');
+
+const productName = document.getElementById('productName');
+const productImage = document.getElementById('productImage');
+const checkoutButton = document.getElementById('checkoutButton');
+
+productName.textContent = name;
+if (image) {
+  productImage.src = image;
+}
+
+if (checkout) {
+  checkoutButton.href = checkout;
+  checkoutButton.target = '_blank';
+  checkoutButton.rel = 'noopener noreferrer';
+} else {
+  checkoutButton.textContent = 'Checkout Unavailable';
+  checkoutButton.classList.add('disabled');
+}
+</script>
+</body>
+</html>
