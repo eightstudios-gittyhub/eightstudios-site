@@ -3,23 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 Not Found</title>
-<link rel="icon" type="image/gif" href="/the-world-is-yours-ship.gif">
-<meta name="robots" content="noindex, nofollow">
+<title>Eight Studios Admin</title>
+
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: black;
   color: white;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background: url('https://eightstudios.org/the-world-is-yours-ship.gif') no-repeat center/cover;
 }
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.container {
+  position: relative;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0,200,255,0.3);
+}
+
+.glitch {
+  font-size: 28px;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px cyan, -2px -2px red; }
+  50% { text-shadow: -2px 2px cyan, 2px -2px red; }
+  100% { text-shadow: 2px -2px cyan, -2px 2px red; }
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: none;
+}
+
+button {
+  background: linear-gradient(45deg, cyan, blue);
+  color: white;
+  cursor: pointer;
+}
+
+.stat {
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+#panel { display: none; }
 </style>
 </head>
+
 <body>
-  <h1>404 Not Found</h1>
+
+<div class="container">
+
+  <div id="loginBox">
+    <div class="glitch">ADMIN ACCESS</div>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="panel">
+    <div class="glitch">DASHBOARD</div>
+
+    <div class="stat">👀 Visitors: <span id="visits">0</span></div>
+
+    <button onclick="restartServer()">🔄 Restart Server</button>
+  </div>
+
+</div>
+
+<script>
+const ADMIN_PASSWORD = "1234";
+const DEPLOY_HOOK = "https://api.render.com/deploy/srv-d7mh08og4nts73alm8tg?key=8IU-EZhxA4E";
+const WEBHOOK = "https://discord.com/api/webhooks/1496959959529816274/DcR8uqlxQkHGPmVJL48q8yd665vUCACgwkP_xLFVw7uAURmnKPlkHAEAku452sBb3I7l";
+
+function login() {
+  if (document.getElementById("password").value === ADMIN_PASSWORD) {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
+    loadVisits();
+    sendWebhook("🔐 Admin logged in");
+  } else {
+    alert("Wrong password");
+  }
+}
+
+function loadVisits() {
+  let visits = localStorage.getItem("visits") || 0;
+  document.getElementById("visits").innerText = visits;
+}
+
+function restartServer() {
+  fetch(DEPLOY_HOOK, { method: "POST" })
+    .then(() => {
+      sendWebhook("🛠 Server restarted");
+      alert("Server restarting...");
+    })
+    .catch(() => alert("Restart failed"));
+}
+
+function sendWebhook(msg) {
+  fetch(WEBHOOK, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ content: msg })
+  });
+}
+</script>
+
 </body>
 </html>
