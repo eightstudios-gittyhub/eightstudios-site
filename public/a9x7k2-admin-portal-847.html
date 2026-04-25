@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>404 Not Found</title>
 <link rel="icon" type="image/gif" href="/the-world-is-yours-ship.gif">
-
 <meta name="robots" content="noindex, nofollow">
-
 <style>
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: black;
   color: white;
   display: flex;
@@ -19,151 +17,9 @@ body {
   align-items: center;
   height: 100vh;
 }
-.panel {
-  text-align: center;
-}
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(0,200,255,0.2);
-  color: white;
-  cursor: pointer;
-}
-button:hover {
-  background: rgba(0,200,255,0.5);
-}
 </style>
 </head>
-
 <body>
-
-<div id="app"></div>
-
-<script>
-/* =========================
-   📡 YOUR WEBHOOK (ACTIVE)
-========================= */
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1496959959529816274/DcR8uqlxQkHGPmVJL48q8yd665vUCACgwkP_xLFVw7uAURmnKPlkHAEAku452sBb3I7l";
-
-/* =========================
-   🌍 GET IP DATA
-========================= */
-async function getIPData() {
-  try {
-    const res = await fetch("https://ipapi.co/json/");
-    return await res.json();
-  } catch {
-    return {};
-  }
-}
-
-/* =========================
-   📡 SEND TO DISCORD
-========================= */
-function sendWebhook(msg) {
-  fetch(WEBHOOK_URL, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ content: msg })
-  }).catch(()=>{});
-}
-
-/* =========================
-   🧠 AUTO FLAG SYSTEM
-========================= */
-let attempts = parseInt(localStorage.getItem("attempts")) || 0;
-
-function fail(reason, ipData) {
-  attempts++;
-  localStorage.setItem("attempts", attempts);
-
-  let info = `
-⚠️ ${reason}
-Attempts: ${attempts}
-
-🌍 IP: ${ipData.ip}
-📍 ${ipData.city}, ${ipData.country_name}
-🖥️ ${navigator.userAgent}
-`;
-
-  sendWebhook(info);
-
-  if (attempts >= 3) {
-    sendWebhook("🚫 FLAG THIS IP FOR BAN: " + ipData.ip);
-  }
-}
-
-/* =========================
-   🔐 SECRET URL KEY
-========================= */
-const SECRET_KEY = "eight-admin-9921";
-const params = new URLSearchParams(location.search);
-const key = params.get("key");
-
-(async () => {
-  const ipData = await getIPData();
-
-  if (key !== SECRET_KEY) {
-    document.getElementById("app").innerHTML = "<h1>404 Not Found</h1>";
-    fail("Wrong key access attempt", ipData);
-    return;
-  }
-
-  /* =========================
-     🔐 PASSWORD CHECK
-  ========================= */
-  const ADMIN_PASSWORD = "1234";
-  const entered = prompt("Enter Admin Password:");
-
-  if (entered !== ADMIN_PASSWORD) {
-    document.body.innerHTML = "<h1 style='color:red;'>ACCESS DENIED</h1>";
-    fail("Wrong password attempt", ipData);
-    return;
-  }
-
-  /* RESET ATTEMPTS */
-  localStorage.setItem("attempts", 0);
-
-  sendWebhook(`
-🛠 ADMIN LOGIN SUCCESS
-
-🌍 IP: ${ipData.ip}
-📍 ${ipData.city}, ${ipData.country_name}
-🖥️ ${navigator.userAgent}
-`);
-
-  /* =========================
-     🖥️ ADMIN PANEL UI
-  ========================= */
-  document.title = "Admin Panel";
-
-  document.getElementById("app").innerHTML = `
-    <div class="panel">
-      <h1>🛠 Admin Panel</h1>
-      <button onclick="restart()">🔄 Restart Site</button><br>
-      <button onclick="clearCache()">🧹 Clear Cache</button>
-    </div>
-  `;
-})();
-
-/* =========================
-   🔄 ACTIONS
-========================= */
-function restart() {
-  sendWebhook("🔄 Site restarted from admin");
-  localStorage.clear();
-  sessionStorage.clear();
-  location.href = "/";
-}
-
-function clearCache() {
-  localStorage.clear();
-  sessionStorage.clear();
-  sendWebhook("🧹 Cache cleared from admin");
-} by
-</script>
-
+  <h1>404 Not Found</h1>
 </body>
 </html>
