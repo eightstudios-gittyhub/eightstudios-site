@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Studios</title>
+
+<link rel="icon" type="image/gif" href="/the-world-is-yours-ship.gif">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#00111a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+.nav, .hero {
+  position: relative;
+  z-index: 1;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(15px);
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.title {
+  font-size: 55px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.phone-btn {
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.phone-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+}
+
+.sms-btn, .download-btn, .iphone-btn {
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sms-btn:hover, .download-btn:hover, .iphone-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.card {
+  width: 150px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(14px);
+  font-weight: bold;
+}
+
+.card a {
+  color: white;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <a href="index.html">Home</a>
+</div>
+
+<div class="hero">
+  <div class="title">EIGHT STUDIOS</div>
+
+  <!-- CALL BUTTON -->
+  <a href="tel:5184770592" class="phone-btn">
+    📞 Call
+  </a>
+
+  <a href="sms:5184770592?body=Hey%20I’m%20interested%20in%20your%20products" class="sms-btn">
+    💬 Text Me
+  </a>
+
+  <a href="https://warehouse.appilix.com/uploads/app-apk-69fa4ab94cdf2-1778010809.apk" class="download-btn">
+    📥 Download for Android
+  </a>
+
+  <div class="iphone-btn" onclick="showIOSInstall()">
+    🍎 Download for iPhone
+  </div>
+
+  <div class="grid">
+    <div class="card"><a href="beanies.html">Beanies</a></div>
+    <div class="card"><a href="Hoodies.html">Hoodies</a></div>
+    <div class="card"><a href="Shorts.html">Shorts</a></div>
+    <div class="card"><a href="Pants.html">Pants</a></div>
+    <div class="card"><a href="hats.html">Hats</a></div>
+  </div>
+</div>
+
+<script src="/tracker.js"></script>
+
+<div class="note">
+Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a>
+</div>
+
+<script>
+function showIOSInstall() {
+  const popup = document.createElement("div");
+  popup.innerHTML = `
+    <div style="
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 420px;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 16px;
+      color: white;
+      z-index: 9999;
+      text-align: center;
+    ">
+      <div style="font-size:18px; font-weight:bold; margin-bottom:8px;">
+        🍎 Install on iPhone
+      </div>
+      <div style="font-size:14px; opacity:0.85; margin-bottom:12px;">
+        Open in Safari → tap <b>Share ⬆️</b> → <b>Add to Home Screen</b>
+      </div>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        padding:8px 14px;
+        border-radius:12px;
+        border:none;
+        background:rgba(0,200,255,0.3);
+        color:white;
+        font-weight:bold;
+      ">
+        Got it
+      </button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+}
+</script>
+
+</body>
+</html>
