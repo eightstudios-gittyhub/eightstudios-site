@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eight Studios</title>
+
 <link rel="icon" type="image/gif" href="/the-world-is-yours-ship.gif">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#00111a">
@@ -68,24 +69,7 @@ body::before {
   letter-spacing: 2px;
 }
 
-.phone {
-  font-size: 18px;
-  opacity: 0.9;
-}
-
-.phone a {
-  color: white;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  transition: 0.2s;
-}
-
-.phone a:hover {
-  color: rgba(0,200,255,1);
-  border-bottom: 1px solid rgba(0,200,255,0.6);
-}
-
-.sms-btn {
+.phone-btn {
   margin-top: 8px;
   padding: 10px 18px;
   border-radius: 14px;
@@ -96,9 +80,31 @@ body::before {
   text-decoration: none;
   font-weight: bold;
   transition: all 0.25s ease;
+  display: inline-block;
 }
 
-.sms-btn:hover {
+.phone-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+}
+
+.sms-btn, .download-btn, .iphone-btn {
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sms-btn:hover, .download-btn:hover, .iphone-btn:hover {
   transform: translateY(-3px) scale(1.05);
   background: rgba(0,200,255,0.2);
   border: 1px solid rgba(0,200,255,0.5);
@@ -123,14 +129,6 @@ body::before {
   border: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(14px);
   font-weight: bold;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-7px) scale(1.05);
-  background: rgba(0,200,255,0.15);
-  border: 1px solid rgba(0,200,255,0.4);
 }
 
 .card a {
@@ -149,13 +147,22 @@ body::before {
 <div class="hero">
   <div class="title">EIGHT STUDIOS</div>
 
-  <div class="phone">
-    📞 <a href="tel:5184770592">(518) 477-0592</a>
-  </div>
+  <!-- CALL BUTTON -->
+  <a href="tel:5184770592" class="phone-btn">
+    📞 Call
+  </a>
 
   <a href="sms:5184770592?body=Hey%20I’m%20interested%20in%20your%20products" class="sms-btn">
     💬 Text Me
   </a>
+
+  <a href="https://warehouse.appilix.com/uploads/app-apk-69fa4ab94cdf2-1778010809.apk" class="download-btn">
+    📥 Download for Android
+  </a>
+
+  <div class="iphone-btn" onclick="showIOSInstall()">
+    🍎 Download for iPhone
+  </div>
 
   <div class="grid">
     <div class="card"><a href="beanies.html">Beanies</a></div>
@@ -166,14 +173,53 @@ body::before {
   </div>
 </div>
 
-<!-- ✅ SECURE TRACKER -->
 <script src="/tracker.js"></script>
-
 
 <div class="note">
 Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a>
 </div>
 
-<script src="/pwa-register.js" defer></script>
+<script>
+function showIOSInstall() {
+  const popup = document.createElement("div");
+  popup.innerHTML = `
+    <div style="
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 420px;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 16px;
+      color: white;
+      z-index: 9999;
+      text-align: center;
+    ">
+      <div style="font-size:18px; font-weight:bold; margin-bottom:8px;">
+        🍎 Install on iPhone
+      </div>
+      <div style="font-size:14px; opacity:0.85; margin-bottom:12px;">
+        Open in Safari → tap <b>Share ⬆️</b> → <b>Add to Home Screen</b>
+      </div>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        padding:8px 14px;
+        border-radius:12px;
+        border:none;
+        background:rgba(0,200,255,0.3);
+        color:white;
+        font-weight:bold;
+      ">
+        Got it
+      </button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+}
+</script>
+
 </body>
 </html>
