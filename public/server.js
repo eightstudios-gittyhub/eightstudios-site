@@ -1,45 +1,80 @@
 const express = require("express");
-const http = require("http");
-const WebSocket = require("ws");
-const bodyParser = require("body-parser");
+const crypto = require("crypto");
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+const PORT = 3000;
 
-let clients = [];
+// store connected clients
+const clients = [];
 
-/* WebSocket connections */
-wss.on("connection", (ws) => {
-  clients.push(ws);
-  ws.on("close", () => {
-    clients = clients.filter(c => c !== ws);
+/* ---------------------------
+   🔴 LIVE STREAM (SSE)
+----------------------------*/
+app.get("/events", (req, res) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  clients.push(res);
+
+  req.on("close", () => {
+    const index = clients.indexOf(res);
+    if (index !== -1) clients.splice(index, 1);
   });
 });
 
-/* GitHub webhook */
+/* ---------------------------
+   🔐 VERIFY GITHUB WEBHOOK
+----------------------------*/
+function verifySignature(req, secret) {
+  const signature = req.headers["x-hub-signature-256"];
+  if (!signature) return false;
+
+  const hmac = crypto.createHmac("sha256", secret);
+  const digest = "sha256=" + hmac.update(JSON.stringify(req.body)).digest("hex");
+
+  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
+}
+
+/* ---------------------------
+   📡 GITHUB WEBHOOK RECEIVER
+----------------------------*/
+const SECRET = "your_webhook_secret_here";
+
 app.post("/webhook", (req, res) => {
-  const body = req.body;
+  // optional security check
+  // if (!verifySignature(req, SECRET)) return res.status(401).send("Bad signature");
 
-  if (body?.pusher) {
-    const update = {
-      user: body.pusher.name,
-      message: body.head_commit.message,
-      time: new Date().toISOString()
-    };
+  const event = req.headers["x-github-event"];
+  const payload = req.body;
 
-    clients.forEach(ws => {
-      if (ws.readyState === 1) {
-        ws.send(JSON.stringify(update));
-      }
-    });
+  let message = "";
+
+  if (event === "push") {
+    message = `🚀 Push by ${payload.pusher.name} → ${payload.repository.full_name}`;
   }
+
+  if (event === "workflow_run") {
+    message = `⚙️ Workflow ${payload.workflow_run.name} → ${payload.workflow_run.status}`;
+  }
+
+  if (event === "pull_request") {
+    message = `🔀 PR ${payload.action} → #${payload.number}`;
+  }
+
+  const data = `data: ${JSON.stringify({
+    message,
+    time: new Date().toISOString()
+  })}\n\n`;
+
+  // broadcast to all clients
+  clients.forEach(c => c.write(data));
 
   res.sendStatus(200);
 });
 
-server.listen(3000, () => {
-  console.log("🔥 Live server running");
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
