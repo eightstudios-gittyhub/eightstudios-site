@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hats - Eight Studios</title>
   
-<!-- 🔥 FULL ICON SETUP (UPDATED IMAGE) -->
+<!-- 🔥 ICON SETUP -->
 <link rel="icon" type="image/png" sizes="32x32" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="shortcut icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="icon" sizes="192x192" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="icon" sizes="512x512" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <style>
@@ -29,7 +30,6 @@ body {
   display: flex;
   justify-content: center;
   padding: 15px;
-
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
 }
@@ -38,6 +38,14 @@ body {
   color: white;
   text-decoration: none;
   font-weight: bold;
+}
+
+/* 🔥 LOGO */
+.logo {
+  width: 120px;
+  max-width: 40%;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(0,200,255,0.6));
 }
 
 /* HEADER */
@@ -55,12 +63,87 @@ body {
   opacity: 0.7;
 }
 
+/* BUTTONS (READY FOR FUTURE USE) */
+.phone-btn, .sms-btn, .download-btn, .iphone-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: block;
+  margin: 8px auto;
+}
+
+.phone-btn:active,
+.sms-btn:active,
+.download-btn:active,
+.iphone-btn:active {
+  transform: scale(0.97);
+}
+
+.phone-btn:hover,
+.sms-btn:hover,
+.download-btn:hover,
+.iphone-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+  margin: 15px auto;
+}
+
+.card {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(14px);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card a {
+  color: white;
+  text-decoration: none;
+}
+
 /* EMPTY STATE */
 .empty {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 40px;
   opacity: 0.6;
   font-size: 18px;
+}
+
+/* FOOTER NOTE */
+.note {
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.note a {
+  color: #00c8ff;
+  text-decoration: none;
 }
 </style>
 </head>
@@ -74,8 +157,13 @@ body {
 
 <!-- HEADER -->
 <div class="header">
+
+  <!-- 🔥 LOGO DISPLAY -->
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
+
   <h1>Hats</h1>
   <p>Custom hat drops will appear here.</p>
+
 </div>
 
 <!-- EMPTY STATE -->
@@ -83,7 +171,7 @@ body {
   More items coming soon.
 </div>
 
-
+<!-- FOOTER -->
 <div class="note">
 Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a>
 </div>
