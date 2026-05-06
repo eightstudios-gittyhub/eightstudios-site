@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+
+.sidebar a:hover {
+  background: rgba(59,130,246,0.4);
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="sidebar">
+    <h2>⚙️ Admin</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Users</a>
+    <a href="#">Orders</a>
+    <a href="#">Products</a>
+  </div>
+
+  <div class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Users</h3>
+        <p id="users">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Orders</h3>
+        <p id="orders">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Revenue</h3>
+        <p id="revenue">$0</p>
+      </div>
+
+      <div class="card">
+        <h3>Products</h3>
+        <p id="products">0</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/*
+SAFE VERSION:
+This calls YOUR backend instead of GitHub directly
+*/
+
+async function loadStats() {
+  const res = await fetch("http://localhost:3000/api/stats");
+  const data = await res.json();
+
+  document.getElementById("users").innerText = data.users;
+  document.getElementById("orders").innerText = data.orders;
+  document.getElementById("revenue").innerText = "$" + data.revenue;
+  document.getElementById("products").innerText = data.products;
+}
+
+loadStats();
+</script>
+
+</body>
+</html>
