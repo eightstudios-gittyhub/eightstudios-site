@@ -5,7 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eight Studios</title>
 
-<!-- 🔥 FULL ICON SETUP (UPDATED IMAGE) -->
+<!-- 🔥 DISCORD / SOCIAL EMBED META (LOGO PREVIEW) -->
+<meta property="og:title" content="EIGHT STUDIOS">
+<meta property="og:description" content="Professional • Stylish • Yours. Shop beanies, hoodies, shorts, pants, and hats.">
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<meta property="og:url" content="https://eightstudios.org">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#00c8ff">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EIGHT STUDIOS">
+<meta name="twitter:description" content="Professional • Stylish • Yours. Shop beanies, hoodies, shorts, pants, and hats.">
+<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<!-- ICONS -->
 <link rel="icon" type="image/png" sizes="32x32" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="shortcut icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
@@ -14,7 +27,6 @@
 <link rel="icon" sizes="512x512" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#00111a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -40,7 +52,6 @@ body::before {
 
 .nav, .hero { position: relative; z-index: 1; }
 
-/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -59,7 +70,6 @@ body::before {
   font-size: 14px;
 }
 
-/* HERO */
 .hero {
   min-height: 100vh;
   padding: 20px 15px;
@@ -71,14 +81,20 @@ body::before {
   text-align: center;
 }
 
-/* TITLE */
 .title {
   font-size: clamp(28px, 8vw, 55px);
   font-weight: bold;
   letter-spacing: 2px;
 }
 
-/* BUTTONS */
+/* 🔥 LOGO ADDED TO PAGE */
+.logo {
+  width: 120px;
+  max-width: 40%;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(0,200,255,0.6));
+}
+
 .phone-btn, .sms-btn, .download-btn, .iphone-btn {
   width: 100%;
   max-width: 320px;
@@ -111,7 +127,6 @@ body::before {
   border: 1px solid rgba(0,200,255,0.5);
 }
 
-/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -121,7 +136,6 @@ body::before {
   margin-top: 15px;
 }
 
-/* CARDS */
 .card {
   height: 90px;
   display: flex;
@@ -140,7 +154,6 @@ body::before {
   text-decoration: none;
 }
 
-/* FOOTER */
 .note {
   text-align: center;
   padding: 15px;
@@ -152,12 +165,6 @@ body::before {
   color: #00c8ff;
   text-decoration: none;
 }
-
-/* SMALL DEVICES */
-@media (max-width: 400px) {
-  .card { height: 80px; font-size: 12px; }
-  .nav { padding: 10px; }
-}
 </style>
 </head>
 
@@ -168,6 +175,10 @@ body::before {
 </div>
 
 <div class="hero">
+
+  <!-- 🔥 LOGO DISPLAY -->
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
+
   <div class="title">EIGHT STUDIOS</div>
 
   <a href="tel:5184770592" class="phone-btn">📞 Call</a>
