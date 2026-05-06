@@ -5,252 +5,219 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eight Studios</title>
 
-<!-- 🔥 DISCORD / SOCIAL EMBED META (LOGO PREVIEW) -->
 <meta property="og:title" content="EIGHT STUDIOS">
-<meta property="og:description" content="Professional • Stylish • Yours. Shop beanies, hoodies, shorts, pants, and hats.">
+<meta property="og:description" content="Premium streetwear essentials.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<meta property="og:url" content="https://eightstudios.org">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#00c8ff">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EIGHT STUDIOS">
-<meta name="twitter:description" content="Professional • Stylish • Yours. Shop beanies, hoodies, shorts, pants, and hats.">
-<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
-<!-- ICONS -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="shortcut icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" sizes="192x192" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" sizes="512x512" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
-* { box-sizing: border-box; }
-
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+}
+
+/* 🔥 RESTORED BACKGROUND */
+body {
   color: white;
   background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
   background-size: cover;
-  overflow-x: hidden;
 }
 
+/* dark overlay like your original site */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   z-index: 0;
 }
 
-.nav, .hero { position: relative; z-index: 1; }
-
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
+  z-index: 10;
   display: flex;
-  justify-content: center;
-  padding: 12px;
+  justify-content: flex-end;
+  padding: 14px 20px;
   background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(20px);
 }
 
-.nav a {
+.nav-share {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
   color: white;
-  text-decoration: none;
-  font-weight: bold;
-  opacity: 0.85;
-  font-size: 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
+.nav-share:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.12);
+}
+
+/* HERO */
 .hero {
-  min-height: 100vh;
-  padding: 20px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+  position: relative;
+  z-index: 1;
+  padding: 80px 20px 40px;
   text-align: center;
 }
 
-.title {
-  font-size: clamp(28px, 8vw, 55px);
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-/* 🔥 LOGO ADDED TO PAGE */
 .logo {
-  width: 120px;
-  max-width: 40%;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 10px rgba(0,200,255,0.6));
+  width: 90px;
+  margin-bottom: 20px;
 }
 
-.phone-btn, .sms-btn, .download-btn, .iphone-btn {
-  width: 100%;
+.title {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* BUTTONS */
+.actions {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn {
+  width: 90%;
   max-width: 320px;
-  padding: 12px;
+  padding: 14px;
   border-radius: 14px;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  display: block;
+  text-align: center;
+  font-size: 14px;
+  transition: 0.25s;
+  backdrop-filter: blur(20px);
 }
 
-.phone-btn:active,
-.sms-btn:active,
-.download-btn:active,
-.iphone-btn:active {
-  transform: scale(0.97);
-}
-
-.phone-btn:hover,
-.sms-btn:hover,
-.download-btn:hover,
-.iphone-btn:hover {
+.btn:hover {
   transform: translateY(-2px);
-  background: rgba(0,200,255,0.2);
-  border: 1px solid rgba(0,200,255,0.5);
+  background: rgba(0,200,255,0.15);
 }
 
+/* GRID */
 .grid {
+  position: relative;
+  z-index: 1;
+  margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-  width: 100%;
-  max-width: 420px;
-  margin-top: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  padding: 0 20px 60px;
 }
 
 .card {
-  height: 90px;
+  height: 120px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(14px);
-  font-weight: bold;
-  font-size: 14px;
+  transition: 0.25s;
+  backdrop-filter: blur(20px);
+}
+
+.card:hover {
+  transform: scale(1.03);
+  background: rgba(255,255,255,0.12);
 }
 
 .card a {
   color: white;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.note {
+.footer {
   text-align: center;
-  padding: 15px;
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-.note a {
-  color: #00c8ff;
-  text-decoration: none;
+  font-size: 12px;
+  opacity: 0.6;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
-  <a href="index.html">Home</a>
+  <button class="nav-share" onclick="shareSite()">Share</button>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 
-  <!-- 🔥 LOGO DISPLAY -->
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
 
-  <div class="title">EIGHT STUDIOS</div>
+  <div class="title">Eight Studios</div>
+  <div class="subtitle">Premium streetwear essentials</div>
 
-  <a href="tel:5184770592" class="phone-btn">📞 Call</a>
-
-  <a href="sms:5184770592?body=Hey%20I’m%20interested%20in%20your%20products" class="sms-btn">
-    💬 Text Me
-  </a>
-
-  <a href="https://eightstudios.org/app-release%20(1).apk" class="download-btn">
-    📥 Download for Android
-  </a>
-
-  <div class="iphone-btn" onclick="showIOSInstall()">
-    🍎 Download for iPhone
+  <div class="actions">
+    <a class="btn" href="tel:5184770592">Call</a>
+    <a class="btn" href="sms:5184770592">Text</a>
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android App</a>
+    <button class="btn" onclick="showIOS()">Install on iPhone</button>
   </div>
 
-  <div class="grid">
-    <div class="card"><a href="beanies.html">Beanies</a></div>
-    <div class="card"><a href="Hoodies.html">Hoodies</a></div>
-    <div class="card"><a href="Shorts.html">Shorts</a></div>
-    <div class="card"><a href="Pants.html">Pants</a></div>
-    <div class="card"><a href="hats.html">Hats</a></div>
-  </div>
 </div>
 
-<div class="note">
-  Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a>
+<!-- GRID -->
+<div class="grid">
+  <div class="card"><a href="beanies.html">Beanies</a></div>
+  <div class="card"><a href="hoodies.html">Hoodies</a></div>
+  <div class="card"><a href="shorts.html">Shorts</a></div>
+  <div class="card"><a href="pants.html">Pants</a></div>
+  <div class="card"><a href="hats.html">Hats</a></div>
+</div>
+
+<div class="footer">
+  eight888studios@gmail.com
 </div>
 
 <script>
-function showIOSInstall() {
-  const popup = document.createElement("div");
-  popup.innerHTML = `
-    <div style="
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 420px;
-      background: rgba(0,0,0,0.9);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 18px;
-      padding: 16px;
-      color: white;
-      z-index: 9999;
-      text-align: center;
-    ">
-      <div style="font-size:18px; font-weight:bold; margin-bottom:8px;">
-        🍎 Install on iPhone
-      </div>
-      <div style="font-size:14px; opacity:0.85; margin-bottom:12px;">
-        Open in Safari → tap <b>Share ⬆️</b> → <b>Add to Home Screen</b>
-      </div>
-      <button onclick="this.parentElement.parentElement.remove()" style="
-        padding:8px 14px;
-        border-radius:12px;
-        border:none;
-        background:rgba(0,200,255,0.3);
-        color:white;
-        font-weight:bold;
-      ">
-        Got it
-      </button>
-    </div>
-  `;
-  document.body.appendChild(popup);
+function shareSite() {
+  const data = {
+    title: document.title,
+    text: "Check out Eight Studios 🔥",
+    url: window.location.href
+  };
+
+  if (navigator.share) {
+    navigator.share(data);
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied!");
+  }
+}
+
+function showIOS() {
+  alert("Safari → Share → Add to Home Screen");
 }
 </script>
-
-<script src="/tracker.js"></script>
 
 </body>
 </html>
