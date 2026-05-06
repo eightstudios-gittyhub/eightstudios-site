@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hoodies - Eight Studios</title>
 
-  <!-- 🔥 FULL ICON SETUP (UPDATED IMAGE) -->
+<!-- 🔥 FULL ICON SETUP -->
 <link rel="icon" type="image/png" sizes="32x32" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="shortcut icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
@@ -13,7 +13,19 @@
 <link rel="icon" sizes="192x192" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <link rel="icon" sizes="512x512" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-  <style>
+<!-- 🔥 SOCIAL EMBED (DISCORD / IMESSAGE / WHATSAPP PREVIEW) -->
+<meta property="og:title" content="Eight Studios - Hoodies" />
+<meta property="og:description" content="Handmade 1/1 hooded garments by Eight Studios." />
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png" />
+<meta property="og:url" content="https://eightstudios.org" />
+<meta property="og:type" content="website" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eight Studios - Hoodies">
+<meta name="twitter:description" content="Handmade 1/1 hooded garments by Eight Studios.">
+<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -21,7 +33,7 @@ body {
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
 }
 
-/* NAV (ONLY HOME) */
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -29,7 +41,6 @@ body {
   justify-content: center;
   gap: 20px;
   padding: 15px;
-
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
 }
@@ -40,10 +51,29 @@ body {
   font-weight: bold;
 }
 
+/* 🔥 LOGO HEADER */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 25px 10px 10px;
+}
+
+.brand img {
+  height: 45px;
+  width: auto;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
 /* HEADER */
 .header {
   text-align: center;
-  padding: 30px;
+  padding: 10px 30px 30px;
 }
 
 .header h1 {
@@ -62,23 +92,14 @@ body {
   padding: 40px;
 }
 
-/* LINK RESET */
-.card-link {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* PRODUCT CARD */
 .card {
   width: 260px;
   border-radius: 18px;
-
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-
   backdrop-filter: blur(15px);
   overflow: hidden;
-
   transition: 0.25s;
 }
 
@@ -94,7 +115,6 @@ body {
   border: 1px solid rgba(0,200,255,0.4);
 }
 
-/* TEXT */
 .content {
   padding: 12px;
 }
@@ -125,6 +145,18 @@ body {
 .checkout-btn:hover {
   background: rgba(0,200,255,0.35);
 }
+
+/* NOTE */
+.note {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.7;
+}
+
+.note a {
+  color: #00c8ff;
+  text-decoration: none;
+}
 </style>
 </head>
 
@@ -133,6 +165,11 @@ body {
 <!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
+</div>
+
+<!-- 🔥 BRAND LOGO -->
+<div class="brand">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" alt="Eight Studios Logo">
 </div>
 
 <!-- HEADER -->
@@ -155,11 +192,11 @@ body {
 
 </div>
 
-
 <div class="note">
 Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a>
 </div>
 
 <script src="/pwa-register.js" defer></script>
+
 </body>
 </html>
