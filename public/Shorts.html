@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shorts - Eight Studios</title>
 
-<!-- 🔥 SHARE EMBED (DISCORD / SOCIAL PREVIEW) -->
+<!-- 🔥 EMBED (DISCORD / SOCIAL) -->
 <meta property="og:title" content="Eight Studios — Custom Shorts">
 <meta property="og:description" content="Custom summer & patchwork shorts. One-of-one pieces.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <meta property="og:url" content="https://eightstudios.org">
 <meta name="theme-color" content="#00c8ff">
 
-<!-- 🔥 ICON -->
+<!-- ICON -->
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
@@ -28,20 +28,12 @@ body {
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-
+  justify-content: center;
+  padding: 15px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
 }
 
-/* LOGO */
-.logo {
-  height: 40px;
-}
-
-/* NAV LINK */
 .nav a {
   color: white;
   text-decoration: none;
@@ -51,7 +43,19 @@ body {
 /* HEADER */
 .header {
   text-align: center;
-  padding: 30px;
+  padding: 40px 20px 20px;
+}
+
+/* LOGO (CENTERED LIKE MAIN SITE) */
+.header-logo {
+  width: 120px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 15px rgba(0,200,255,0.8));
+  transition: 0.3s;
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
 }
 
 .header h1 {
@@ -76,13 +80,10 @@ body {
 .card {
   width: 240px;
   border-radius: 18px;
-
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-
   backdrop-filter: blur(15px);
   overflow: hidden;
-
   cursor: pointer;
   transition: 0.25s;
 }
@@ -139,14 +140,15 @@ body {
 
 <!-- NAV -->
 <div class="nav">
-  <!-- 🔥 LOGO -->
-  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
-
   <a href="index.html">Home</a>
 </div>
 
 <!-- HEADER -->
 <div class="header">
+
+  <!-- 🔥 LOGO -->
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="header-logo">
+
   <h1>Shorts</h1>
   <p>Custom summer and patchwork shorts.</p>
 </div>
