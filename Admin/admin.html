@@ -3,61 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
+<title>Eight Studios Live Dashboard</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #020617);
   color: white;
 }
 
+/* GLASS */
+.glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* LAYOUT */
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  height: 100vh;
 }
 
 .sidebar {
-  width: 220px;
-  height: 100vh;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
   padding: 20px;
-}
-
-.sidebar h2 {
-  margin-bottom: 20px;
-}
-
-.sidebar a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 10px;
-}
-
-.sidebar a:hover {
-  background: rgba(59,130,246,0.4);
+  border-right: 1px solid rgba(255,255,255,0.1);
 }
 
 .main {
-  flex: 1;
   padding: 20px;
+  overflow-y: auto;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
 }
+.btn:hover { background: #1d4ed8; }
 
 .card {
-  background: rgba(255,255,255,0.08);
-  padding: 20px;
-  border-radius: 15px;
-  backdrop-filter: blur(15px);
+  display: inline-block;
+  width: 250px;
+  margin: 10px;
+}
+
+/* LIVE PULSE */
+.pulse {
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(3); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* FEED */
+.feed-item {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 </style>
 </head>
@@ -66,59 +94,102 @@ body {
 
 <div class="container">
 
-  <div class="sidebar">
+  <!-- SIDEBAR -->
+  <div class="sidebar glass">
     <h2>⚙️ Admin</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Users</a>
-    <a href="#">Orders</a>
-    <a href="#">Products</a>
+    <button class="btn" onclick="show('home')">Dashboard</button>
+    <button class="btn" onclick="show('analytics')">Analytics</button>
   </div>
 
+  <!-- MAIN -->
   <div class="main">
-    <h1>Dashboard</h1>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Users</h3>
-        <p id="users">0</p>
+    <!-- HOME -->
+    <div id="home">
+
+      <h1>📊 Live Dashboard</h1>
+
+      <div class="glass card">
+        <h3>🌎 Visits</h3>
+        <p id="visits">0</p>
       </div>
 
-      <div class="card">
-        <h3>Orders</h3>
-        <p id="orders">0</p>
+      <div class="glass card">
+        <h3>👥 Users</h3>
+        <p id="users">1</p>
       </div>
 
-      <div class="card">
-        <h3>Revenue</h3>
-        <p id="revenue">$0</p>
+      <div class="glass card">
+        <h3>🕒 Last Visit</h3>
+        <p id="last"></p>
       </div>
 
-      <div class="card">
-        <h3>Products</h3>
-        <p id="products">0</p>
+      <!-- 🔥 LIVE GITHUB -->
+      <div class="glass" style="margin-top:20px;">
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="pulse"></span>
+          <strong>LIVE GitHub Activity</strong>
+        </div>
+
+        <div id="githubFeed">Waiting for live updates...</div>
+      </div>
+
+    </div>
+
+    <!-- ANALYTICS -->
+    <div id="analytics" style="display:none;">
+      <div class="glass">
+        <h2>📈 Analytics (simple demo)</h2>
+        <p>Real-time charts can be added next upgrade</p>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
 
 <script>
-/*
-SAFE VERSION:
-This calls YOUR backend instead of GitHub directly
-*/
 
-async function loadStats() {
-  const res = await fetch("http://localhost:3000/api/stats");
-  const data = await res.json();
+/* ---------------- BASIC TRACKING ---------------- */
+let visits = localStorage.getItem("visits") || 0;
+visits++;
+localStorage.setItem("visits", visits);
 
-  document.getElementById("users").innerText = data.users;
-  document.getElementById("orders").innerText = data.orders;
-  document.getElementById("revenue").innerText = "$" + data.revenue;
-  document.getElementById("products").innerText = data.products;
+localStorage.setItem("lastVisit", Date.now());
+
+document.getElementById("visits").innerText = visits;
+document.getElementById("users").innerText = Math.floor(Math.random()*5)+1;
+document.getElementById("last").innerText =
+  new Date(parseInt(localStorage.getItem("lastVisit"))).toLocaleString();
+
+/* ---------------- NAV ---------------- */
+function show(tab){
+  document.getElementById("home").style.display="none";
+  document.getElementById("analytics").style.display="none";
+  document.getElementById(tab).style.display="block";
 }
 
-loadStats();
+/* ---------------- REAL-TIME WEBSOCKET ---------------- */
+/* ⚠️ CHANGE THIS TO YOUR SERVER */
+const socket = new WebSocket("wss://YOUR-SERVER.com");
+
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+
+  const feed = document.getElementById("githubFeed");
+
+  const div = document.createElement("div");
+  div.className = "feed-item";
+
+  div.innerHTML = `
+    <strong>👤 ${data.user}</strong><br>
+    💬 ${data.message}<br>
+    <small style="opacity:0.7;">⚡ LIVE ${new Date(data.time).toLocaleTimeString()}</small>
+  `;
+
+  feed.prepend(div);
+};
+
 </script>
 
 </body>
