@@ -165,10 +165,12 @@ body::before {
 
 <body>
 
+<!-- NAV -->
 <div class="nav">
   <button class="nav-share" onclick="shareSite()">Share</button>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
@@ -193,6 +195,7 @@ body::before {
 
 </div>
 
+<!-- GRID -->
 <div class="grid">
   <div class="card"><a href="beanies.html">Beanies</a></div>
   <div class="card"><a href="hoodies.html">Hoodies</a></div>
@@ -223,35 +226,37 @@ function shareSite() {
 
 function showIOSDownload() {
   alert(
-`📱 Install Eight Studios on iPhone:
+`📱 iPhone Install:
 
 1. Open Safari
 2. Tap Share button
 3. Tap "Add to Home Screen"
 
-This installs it like an app.`
+This installs Eight Studios like an app.`
   );
 }
 </script>
 
-<!-- 📡 TRACKING -->
+<!-- 📡 TRACKING (FIXED + IMPROVED) -->
 <script>
-fetch("https://eightstudios.org/track");
+fetch("/track", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    page: "index.html",
+    event: "open"
+  })
+});
 </script>
 
-<!-- ⚡ SERVICE WORKER (PWA ENABLE) -->
+<!-- ⚡ SERVICE WORKER (ONLY ONCE FIXED) -->
 <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
 }
 </script>
-
-  <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js");
-}
-</script>
-
 
 </body>
 </html>
