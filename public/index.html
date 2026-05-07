@@ -5,19 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eight Studios</title>
 
-<!-- 🔥 ICON -->
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<!-- 🌐 SOCIAL SHARE / DISCORD EMBED -->
+<!-- 🌐 SOCIAL EMBEDS -->
 <meta name="description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
-
 <meta property="og:title" content="Eight Studios">
-<meta property="og:description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
+<meta property="og:description" content="Premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <meta property="og:url" content="https://eightstudios.org">
 <meta property="og:type" content="website">
 
-<!-- 🐦 Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Eight Studios">
 <meta name="twitter:description" content="Premium streetwear essentials. Shop now.">
@@ -108,6 +105,13 @@ body::before {
   text-decoration: none;
   text-align: center;
   font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0,200,255,0.15);
 }
 
 .grid {
@@ -140,6 +144,7 @@ body::before {
 .card a {
   color: white;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .footer {
@@ -169,9 +174,20 @@ body::before {
   <div class="subtitle">Premium streetwear essentials</div>
 
   <div class="actions">
+
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android App</a>
+
+    <!-- 📱 ANDROID DOWNLOAD -->
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">
+      Download for Android
+    </a>
+
+    <!-- 🍎 IPHONE BUTTON -->
+    <button class="btn" onclick="showIOSDownload()">
+      Download for iPhone
+    </button>
+
   </div>
 
 </div>
@@ -204,9 +220,21 @@ function shareSite() {
     alert("Link copied!");
   }
 }
+
+function showIOSDownload() {
+  alert(
+`📱 iPhone Install Guide:
+
+1. Open Safari
+2. Tap Share Button
+3. Tap "Add to Home Screen"
+
+This installs Eight Studios like an app.`
+  );
+}
 </script>
 
-<!-- 📡 TRACKING SCRIPT -->
+<!-- 📡 TRACKING -->
 <script>
 fetch("https://eightstudios.org/track");
 </script>
