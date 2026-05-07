@@ -1,13 +1,11 @@
 const express = require("express");
 const fs = require("fs");
-const path = require("path");
 
 const app = express();
-const PORT = 3000;
-
+app.use(express.json());
 app.use(express.static("public"));
 
-const DB = path.join(__dirname, "visits.json");
+const DB = "visits.json";
 
 function load() {
   if (!fs.existsSync(DB)) return [];
@@ -18,8 +16,8 @@ function save(data) {
   fs.writeFileSync(DB, JSON.stringify(data, null, 2));
 }
 
-// 📡 TRACK VISITORS
-app.get("/track", (req, res) => {
+// 📡 TRACK VISITS
+app.post("/track", (req, res) => {
   const ip =
     req.headers["x-forwarded-for"]?.split(",")[0] ||
     req.socket.remoteAddress;
@@ -27,7 +25,9 @@ app.get("/track", (req, res) => {
   const visit = {
     ip,
     time: new Date().toISOString(),
-    userAgent: req.headers["user-agent"]
+    userAgent: req.headers["user-agent"],
+    page: req.body?.page || "unknown",
+    event: req.body?.event || "open"
   };
 
   const data = load();
@@ -39,9 +39,9 @@ app.get("/track", (req, res) => {
 
 // 📊 ADMIN API
 app.get("/api/visits", (req, res) => {
-  res.json(load().reverse());
+  res.json(load());
 });
 
-app.listen(PORT, () => {
-  console.log("Eight Studios running on port " + PORT);
+app.listen(3000, () => {
+  console.log("Eight Studios running");
 });
