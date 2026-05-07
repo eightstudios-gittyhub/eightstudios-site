@@ -1,52 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Admin Panel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eight Studios Admin Panel</title>
 
 <style>
 body {
-  background:#0d1117;
-  color:white;
-  font-family:Arial;
-  padding:20px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  background: #0d1117;
+  color: white;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #222;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #58a6ff;
+}
+
+.sub {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  font-size: 14px;
+  border-bottom: 1px solid #222;
+}
+
+.container {
+  padding: 15px;
 }
 
 .card {
-  background:#161b22;
-  padding:10px;
-  margin:10px 0;
-  border-radius:10px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.01);
+  background: #1c2128;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #238636;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.ip {
+  font-weight: bold;
+  color: #58a6ff;
+}
+
+.small {
+  font-size: 12px;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<h1>📡 Eight Studios Admin</h1>
-<h3 id="count">Loading...</h3>
+<div class="header">
+  <h1>📡 Eight Studios Admin Panel</h1>
+  <div class="sub">Live Visitor Tracking Dashboard</div>
+</div>
 
-<div id="logs"></div>
+<div class="stats">
+  <div>🔴 LIVE TRACKING</div>
+  <div id="count">0 Visitors</div>
+</div>
+
+<div class="container" id="logs"></div>
 
 <script>
-async function load() {
-  const res = await fetch("/api/visits");
-  const data = await res.json();
+async function loadVisits() {
+  try {
+    const res = await fetch("/api/visits");
+    const data = await res.json();
 
-  document.getElementById("count").innerText =
-    data.length + " Visitors";
+    document.getElementById("count").innerText =
+      data.length + " Visitors";
 
-  document.getElementById("logs").innerHTML =
-    data.map(v => `
-      <div class="card">
-        <b>IP:</b> ${v.ip}<br>
-        <b>Time:</b> ${v.time}<br>
-        <b>Device:</b> ${v.userAgent}
-      </div>
-    `).join("");
+    const logs = document.getElementById("logs");
+
+    logs.innerHTML = data
+      .slice()
+      .reverse()
+      .map(v => `
+        <div class="card">
+          <div class="ip">IP: ${v.ip}</div>
+          <div class="small">Time: ${v.time}</div>
+          <div class="small">Device: ${v.userAgent}</div>
+          <div class="badge">LIVE</div>
+        </div>
+      `)
+      .join("");
+
+  } catch (err) {
+    console.log("Error loading visits:", err);
+  }
 }
 
-load();
-setInterval(load, 3000);
+// auto refresh (live feed)
+loadVisits();
+setInterval(loadVisits, 3000);
 </script>
 
 </body>
