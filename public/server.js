@@ -1,75 +1,49 @@
 const express = require("express");
-const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
+
 const app = express();
-
-app.use(express.json());
-
 const PORT = 3000;
 
-// connected clients (live dashboard users)
-const clients = [];
+app.use(express.static("public"));
 
-/* -------------------------
-   🔴 LIVE STREAM (SSE)
---------------------------*/
-app.get("/events", (req, res) => {
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
-  res.setHeader("Connection", "keep-alive");
+const DB = path.join(__dirname, "visits.json");
 
-  clients.push(res);
-
-  req.on("close", () => {
-    const i = clients.indexOf(res);
-    if (i !== -1) clients.splice(i, 1);
-  });
-});
-
-/* -------------------------
-   🔐 WEBHOOK (GitHub)
---------------------------*/
-const SECRET = "change_this_secret";
-
-function verify(req) {
-  const sig = req.headers["x-hub-signature-256"];
-  if (!sig) return true; // allow dev mode
-
-  const hmac = crypto.createHmac("sha256", SECRET);
-  const digest = "sha256=" + hmac.update(JSON.stringify(req.body)).digest("hex");
-
-  return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(digest));
+// load visits
+function getVisits() {
+  if (!fs.existsSync(DB)) return [];
+  return JSON.parse(fs.readFileSync(DB));
 }
 
-app.post("/webhook", (req, res) => {
-  if (!verify(req)) return res.status(401).send("Invalid signature");
+// save visits
+function saveVisits(data) {
+  fs.writeFileSync(DB, JSON.stringify(data, null, 2));
+}
 
-  const event = req.headers["x-github-event"];
-  const payload = req.body;
+// 📡 TRACK VISITOR
+app.get("/track", (req, res) => {
+  const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0] ||
+    req.socket.remoteAddress;
 
-  let message = "📡 Unknown event";
+  const visit = {
+    ip,
+    time: new Date().toISOString(),
+    userAgent: req.headers["user-agent"]
+  };
 
-  if (event === "push") {
-    message = `🚀 Push → ${payload.repository.full_name} by ${payload.pusher.name}`;
-  }
+  const visits = getVisits();
+  visits.push(visit);
+  saveVisits(visits);
 
-  if (event === "workflow_run") {
-    message = `⚙️ Workflow → ${payload.workflow_run.name} (${payload.workflow_run.status})`;
-  }
+  res.json({ success: true });
+});
 
-  if (event === "pull_request") {
-    message = `🔀 PR ${payload.action} #${payload.number}`;
-  }
-
-  const data = `data: ${JSON.stringify({
-    message,
-    time: Date.now()
-  })}\n\n`;
-
-  clients.forEach(c => c.write(data));
-
-  res.sendStatus(200);
+// 📊 GET ALL VISITS (ADMIN API)
+app.get("/api/visits", (req, res) => {
+  res.json(getVisits().reverse());
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🔥 Tracker running on https://eightstudios.org:${PORT}`);
 });
