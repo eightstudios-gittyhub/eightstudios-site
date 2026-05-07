@@ -1,17 +1,17 @@
 const express = require("express");
 const crypto = require("crypto");
-
 const app = express();
+
 app.use(express.json());
 
 const PORT = 3000;
 
-// store connected clients
+// connected clients (live dashboard users)
 const clients = [];
 
-/* ---------------------------
+/* -------------------------
    🔴 LIVE STREAM (SSE)
-----------------------------*/
+--------------------------*/
 app.get("/events", (req, res) => {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
@@ -20,56 +20,51 @@ app.get("/events", (req, res) => {
   clients.push(res);
 
   req.on("close", () => {
-    const index = clients.indexOf(res);
-    if (index !== -1) clients.splice(index, 1);
+    const i = clients.indexOf(res);
+    if (i !== -1) clients.splice(i, 1);
   });
 });
 
-/* ---------------------------
-   🔐 VERIFY GITHUB WEBHOOK
-----------------------------*/
-function verifySignature(req, secret) {
-  const signature = req.headers["x-hub-signature-256"];
-  if (!signature) return false;
+/* -------------------------
+   🔐 WEBHOOK (GitHub)
+--------------------------*/
+const SECRET = "change_this_secret";
 
-  const hmac = crypto.createHmac("sha256", secret);
+function verify(req) {
+  const sig = req.headers["x-hub-signature-256"];
+  if (!sig) return true; // allow dev mode
+
+  const hmac = crypto.createHmac("sha256", SECRET);
   const digest = "sha256=" + hmac.update(JSON.stringify(req.body)).digest("hex");
 
-  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(digest));
+  return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(digest));
 }
 
-/* ---------------------------
-   📡 GITHUB WEBHOOK RECEIVER
-----------------------------*/
-const SECRET = "your_webhook_secret_here";
-
 app.post("/webhook", (req, res) => {
-  // optional security check
-  // if (!verifySignature(req, SECRET)) return res.status(401).send("Bad signature");
+  if (!verify(req)) return res.status(401).send("Invalid signature");
 
   const event = req.headers["x-github-event"];
   const payload = req.body;
 
-  let message = "";
+  let message = "📡 Unknown event";
 
   if (event === "push") {
-    message = `🚀 Push by ${payload.pusher.name} → ${payload.repository.full_name}`;
+    message = `🚀 Push → ${payload.repository.full_name} by ${payload.pusher.name}`;
   }
 
   if (event === "workflow_run") {
-    message = `⚙️ Workflow ${payload.workflow_run.name} → ${payload.workflow_run.status}`;
+    message = `⚙️ Workflow → ${payload.workflow_run.name} (${payload.workflow_run.status})`;
   }
 
   if (event === "pull_request") {
-    message = `🔀 PR ${payload.action} → #${payload.number}`;
+    message = `🔀 PR ${payload.action} #${payload.number}`;
   }
 
   const data = `data: ${JSON.stringify({
     message,
-    time: new Date().toISOString()
+    time: Date.now()
   })}\n\n`;
 
-  // broadcast to all clients
   clients.forEach(c => c.write(data));
 
   res.sendStatus(200);
