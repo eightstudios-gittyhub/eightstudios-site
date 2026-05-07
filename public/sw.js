@@ -1,5 +1,5 @@
 self.addEventListener("install", () => {
-  console.log("Eight Studios PWA installed");
+  console.log("PWA installed");
 });
 
 self.addEventListener("fetch", () => {});
