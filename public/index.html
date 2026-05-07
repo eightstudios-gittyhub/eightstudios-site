@@ -16,9 +16,14 @@
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Eight Studios">
-<meta name="twitter:description" content="Premium streetwear essentials. Shop now.">
-<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<!-- 📱 PWA SETUP -->
+<link rel="manifest" href="/manifest.json">
+
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
 * {
@@ -160,12 +165,10 @@ body::before {
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <button class="nav-share" onclick="shareSite()">Share</button>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
@@ -178,12 +181,10 @@ body::before {
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
 
-    <!-- 📱 ANDROID DOWNLOAD -->
     <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">
       Download for Android
     </a>
 
-    <!-- 🍎 IPHONE BUTTON -->
     <button class="btn" onclick="showIOSDownload()">
       Download for iPhone
     </button>
@@ -192,7 +193,6 @@ body::before {
 
 </div>
 
-<!-- GRID -->
 <div class="grid">
   <div class="card"><a href="beanies.html">Beanies</a></div>
   <div class="card"><a href="hoodies.html">Hoodies</a></div>
@@ -223,13 +223,13 @@ function shareSite() {
 
 function showIOSDownload() {
   alert(
-`📱 iPhone Install Guide:
+`📱 Install Eight Studios on iPhone:
 
 1. Open Safari
-2. Tap Share Button
+2. Tap Share button
 3. Tap "Add to Home Screen"
 
-This installs Eight Studios like an app.`
+This installs it like an app.`
   );
 }
 </script>
@@ -237,6 +237,13 @@ This installs Eight Studios like an app.`
 <!-- 📡 TRACKING -->
 <script>
 fetch("https://eightstudios.org/track");
+</script>
+
+<!-- ⚡ SERVICE WORKER (PWA ENABLE) -->
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}
 </script>
 
 </body>
