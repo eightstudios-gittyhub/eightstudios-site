@@ -5,10 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eight Studios</title>
 
-<meta property="og:title" content="EIGHT STUDIOS">
-<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
+<!-- 🔥 ICON -->
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<!-- 🌐 SOCIAL SHARE / DISCORD EMBED -->
+<meta name="description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
+
+<meta property="og:title" content="Eight Studios">
+<meta property="og:description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<meta property="og:url" content="https://eightstudios.org">
+<meta property="og:type" content="website">
+
+<!-- 🐦 Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eight Studios">
+<meta name="twitter:description" content="Premium streetwear essentials. Shop now.">
+<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
 * {
@@ -18,14 +31,12 @@
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
 }
 
-/* 🔥 RESTORED BACKGROUND */
 body {
   color: white;
   background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* dark overlay like your original site */
 body::before {
   content: "";
   position: fixed;
@@ -34,7 +45,6 @@ body::before {
   z-index: 0;
 }
 
-/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -54,15 +64,8 @@ body::before {
   color: white;
   font-size: 13px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.nav-share:hover {
-  transform: scale(1.05);
-  background: rgba(255,255,255,0.12);
-}
-
-/* HERO */
 .hero {
   position: relative;
   z-index: 1;
@@ -86,7 +89,6 @@ body::before {
   opacity: 0.7;
 }
 
-/* BUTTONS */
 .actions {
   margin-top: 40px;
   display: flex;
@@ -106,16 +108,8 @@ body::before {
   text-decoration: none;
   text-align: center;
   font-size: 14px;
-  transition: 0.25s;
-  backdrop-filter: blur(20px);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  background: rgba(0,200,255,0.15);
-}
-
-/* GRID */
 .grid {
   position: relative;
   z-index: 1;
@@ -146,7 +140,6 @@ body::before {
 .card a {
   color: white;
   text-decoration: none;
-  font-weight: 500;
 }
 
 .footer {
@@ -179,7 +172,6 @@ body::before {
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
     <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android App</a>
-    <button class="btn" onclick="showIOS()">Install on iPhone</button>
   </div>
 
 </div>
@@ -212,10 +204,11 @@ function shareSite() {
     alert("Link copied!");
   }
 }
+</script>
 
-function showIOS() {
-  alert("Safari → Share → Add to Home Screen");
-}
+<!-- 📡 TRACKING SCRIPT -->
+<script>
+fetch("https://eightstudios.org/track");
 </script>
 
 </body>
