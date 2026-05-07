@@ -1,202 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>⚡ GitHub Live Store Alerts</title>
+<title>Admin Panel</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #0d1117, #05070a);
-  color: white;
+  background:#0d1117;
+  color:white;
+  font-family:Arial;
+  padding:20px;
 }
 
-/* HEADER */
-.header {
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  padding: 20px;
-}
-
-.sub {
-  text-align: center;
-  opacity: 0.6;
-}
-
-/* LAYOUT */
-.container {
-  max-width: 1100px;
-  margin: 30px auto;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 20px;
-  padding: 20px;
-}
-
-/* GLASS CARD */
-.card, .panel {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 20px;
-  backdrop-filter: blur(12px);
-}
-
-/* LIVE STATUS */
-.status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  background: limegreen;
-  border-radius: 50%;
-  box-shadow: 0 0 10px limegreen;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  50% { transform: scale(1.3); opacity: 0.5; }
-}
-
-/* FEED */
-.feed {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: 450px;
-  overflow-y: auto;
-}
-
-.item {
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.03);
-  border-left: 4px solid #58a6ff;
-  transition: 0.2s;
-}
-
-.item:hover {
-  transform: scale(1.02);
-}
-
-.time {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-/* STORE PANEL */
-.panel h2 {
-  margin-top: 0;
-}
-
-.tile {
-  margin-bottom: 12px;
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #238636;
-  font-size: 12px;
-}
-
-/* BUTTON */
-.button {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 14px;
-  background: #238636;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-}
-
-.button:hover {
-  background: #2ea043;
+.card {
+  background:#161b22;
+  padding:10px;
+  margin:10px 0;
+  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">⚡ GitHub Actions Store Dashboard</div>
-<div class="sub">Real-time webhook powered system</div>
+<h1>📡 Eight Studios Admin</h1>
+<h3 id="count">Loading...</h3>
 
-<div class="container">
-
-  <!-- LIVE FEED -->
-  <div class="card">
-    <div class="status">
-      <div class="dot"></div>
-      <div><b>LIVE</b> GitHub monitoring active</div>
-    </div>
-
-    <div class="feed" id="feed"></div>
-
-    <a class="button" href="https://github.com" target="_blank">
-      Open GitHub
-    </a>
-  </div>
-
-  <!-- STORE PANEL -->
-  <div class="panel">
-    <h2>📦 System Store Panel</h2>
-
-    <div class="tile">
-      ⚡ Push Tracking<br>
-      <span class="badge">ACTIVE</span>
-    </div>
-
-    <div class="tile">
-      ⚙️ Actions Monitor<br>
-      <span class="badge">SYNCED</span>
-    </div>
-
-    <div class="tile">
-      🔀 PR Alerts<br>
-      <span class="badge">LIVE</span>
-    </div>
-
-    <div class="tile">
-      🌐 Webhook System<br>
-      <span class="badge">CONNECTED</span>
-    </div>
-  </div>
-
-</div>
+<div id="logs"></div>
 
 <script>
-// REAL LIVE STREAM
-const feed = document.getElementById("feed");
+async function load() {
+  const res = await fetch("/api/visits");
+  const data = await res.json();
 
-const es = new EventSource("http://localhost:3000/events");
+  document.getElementById("count").innerText =
+    data.length + " Visitors";
 
-es.onmessage = (e) => {
-  const data = JSON.parse(e.data);
+  document.getElementById("logs").innerHTML =
+    data.map(v => `
+      <div class="card">
+        <b>IP:</b> ${v.ip}<br>
+        <b>Time:</b> ${v.time}<br>
+        <b>Device:</b> ${v.userAgent}
+      </div>
+    `).join("");
+}
 
-  const div = document.createElement("div");
-  div.className = "item";
-
-  div.innerHTML = `
-    ${data.message}<br>
-    <span class="time">${new Date(data.time).toLocaleTimeString()}</span>
-  `;
-
-  feed.prepend(div);
-};
+load();
+setInterval(load, 3000);
 </script>
 
 </body>
