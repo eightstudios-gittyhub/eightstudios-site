@@ -9,18 +9,16 @@ app.use(express.static("public"));
 
 const DB = path.join(__dirname, "visits.json");
 
-// load visits
-function getVisits() {
+function load() {
   if (!fs.existsSync(DB)) return [];
   return JSON.parse(fs.readFileSync(DB));
 }
 
-// save visits
-function saveVisits(data) {
+function save(data) {
   fs.writeFileSync(DB, JSON.stringify(data, null, 2));
 }
 
-// 📡 TRACK VISITOR
+// 📡 TRACK VISITORS
 app.get("/track", (req, res) => {
   const ip =
     req.headers["x-forwarded-for"]?.split(",")[0] ||
@@ -32,18 +30,18 @@ app.get("/track", (req, res) => {
     userAgent: req.headers["user-agent"]
   };
 
-  const visits = getVisits();
-  visits.push(visit);
-  saveVisits(visits);
+  const data = load();
+  data.push(visit);
+  save(data);
 
-  res.json({ success: true });
+  res.json({ ok: true });
 });
 
-// 📊 GET ALL VISITS (ADMIN API)
+// 📊 ADMIN API
 app.get("/api/visits", (req, res) => {
-  res.json(getVisits().reverse());
+  res.json(load().reverse());
 });
 
 app.listen(PORT, () => {
-  console.log(`🔥 Tracker running on https://eightstudios.org:${PORT}`);
+  console.log("Eight Studios running on port " + PORT);
 });
