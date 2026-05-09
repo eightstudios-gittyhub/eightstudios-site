@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Chat Widget</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<style>
+body {
+  margin:0;
+  font-family: -apple-system;
+  background:#0b0b0f;
+}
+
+/* FLOAT BUTTON */
+#chatBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #4c6fff;
+  color: white;
+  font-size: 26px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* CHAT BOX */
+#chatBox {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 360px;
+  height: 520px;
+  background: #111218;
+  border-radius: 20px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.header {
+  padding: 12px;
+  background:#161824;
+  color:white;
+  text-align:center;
+}
+
+.messages {
+  flex:1;
+  overflow-y:auto;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.msg {
+  padding:10px 12px;
+  border-radius:18px;
+  max-width:75%;
+  font-size:13px;
+  animation: pop 0.2s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity:0; }
+  to { transform: scale(1); opacity:1; }
+}
+
+.user {
+  align-self:flex-end;
+  background:#4c6fff;
+  color:white;
+  border-bottom-right-radius:5px;
+}
+
+.bot {
+  align-self:flex-start;
+  background:#222433;
+  color:#ddd;
+  border-bottom-left-radius:5px;
+}
+
+.inputArea {
+  display:flex;
+  padding:10px;
+  background:#161824;
+}
+
+input {
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:#0f1016;
+  color:white;
+}
+
+button {
+  margin-left:6px;
+  border:none;
+  border-radius:10px;
+  background:#4c6fff;
+  color:white;
+  padding:10px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<button id="chatBtn">💬</button>
+
+<div id="chatBox">
+  <div class="header">AI Assistant</div>
+
+  <div class="messages" id="messages"></div>
+
+  <div class="inputArea">
+    <input id="input" placeholder="Message..." />
+    <button onclick="voice()">🎤</button>
+    <button onclick="send()">➤</button>
+  </div>
+</div>
+
+<script>
+const box = document.getElementById("chatBox");
+const btn = document.getElementById("chatBtn");
+const messages = document.getElementById("messages");
+const input = document.getElementById("input");
+
+btn.onclick = () => {
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+  box.style.flexDirection = "column";
+};
+
+function saveChat() {
+  localStorage.setItem("chat", messages.innerHTML);
+}
+
+function loadChat() {
+  messages.innerHTML = localStorage.getItem("chat") || "";
+}
+loadChat();
+
+function add(text, cls) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls;
+  d.innerText = text;
+  messages.appendChild(d);
+  messages.scrollTop = messages.scrollHeight;
+  saveChat();
+}
+
+async function send() {
+  const text = input.value;
+  if (!text) return;
+
+  add(text, "user");
+  input.value = "";
+
+  const typing = document.createElement("div");
+  typing.className = "msg bot";
+  typing.innerText = "typing...";
+  messages.appendChild(typing);
+
+  const res = await fetch("http://localhost:3000/api/chat", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ message: text })
+  });
+
+  const data = await res.json();
+
+  typing.remove();
+  add(data.reply, "bot");
+}
+
+/* 🎤 VOICE INPUT */
+function voice() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const rec = new SpeechRecognition();
+
+  rec.onresult = (e) => {
+    input.value = e.results[0][0].transcript;
+  };
+
+  rec.start();
+}
+</script>
+
+</body>
+</html>
