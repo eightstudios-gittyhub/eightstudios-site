@@ -130,9 +130,7 @@ body::before {
   text-decoration: none;
 }
 
-/* =========================
-   🔥 LOADING SCREEN
-========================= */
+/* 🔥 LOADING SCREEN */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -193,9 +191,7 @@ body::before {
   50% { transform: scale(1.08); opacity: 0.7; }
 }
 
-/* =========================
-   👋 WELCOME POPUP
-========================= */
+/* 👋 WELCOME POPUP */
 .welcome-popup {
   position: fixed;
   inset: 0;
@@ -303,9 +299,9 @@ body::before {
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
 
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download For Android</a>
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
 
-    <button class="btn" onclick="iosInstall()">Download For iPhone</button>
+    <button class="btn" onclick="iosInstall()">Download iPhone</button>
 
   </div>
 
@@ -339,7 +335,7 @@ function iosInstall() {
   alert("📱 iPhone Install:\n\nOpen Safari → Share → Add to Home Screen");
 }
 
-/* 🔥 LOADING */
+/* 🔥 LOADING SCREEN */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
 
@@ -349,19 +345,17 @@ window.addEventListener("load", () => {
   }, 2200);
 });
 
-/* 👋 WELCOME */
+/* 👋 ALWAYS SHOW WELCOME */
 function showWelcome() {
-  const seen = localStorage.getItem("seenWelcome");
   const popup = document.getElementById("welcomePopup");
 
-  if (!seen) {
-    setTimeout(() => popup.classList.add("show"), 400);
-  }
+  setTimeout(() => {
+    popup.classList.add("show");
+  }, 500);
 }
 
 function closeWelcome() {
   document.getElementById("welcomePopup").classList.remove("show");
-  localStorage.setItem("seenWelcome", "true");
 }
 
 window.addEventListener("load", showWelcome);
