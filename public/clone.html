@@ -133,8 +133,10 @@ body {
   object-fit: cover;
 }
 
+/* CONTENT (LEFT ALIGN FIX) */
 .content {
   padding: 12px;
+  text-align: left;
 }
 
 .title {
@@ -147,30 +149,25 @@ body {
   margin-top: 5px;
 }
 
-/* PRICE (clean flat) */
+/* PRICE */
 .price {
   margin-top: 12px;
   margin-bottom: 8px;
 
   display: block;
-  text-align: center;
 
   font-size: 15px;
   font-weight: 700;
   color: #00c8ff;
-
-  background: transparent;
-  border: none;
-  box-shadow: none;
 }
 
-/* ================= SMALL CHECKOUT BUTTON ================= */
+/* ================= LEFT CHECKOUT BUTTON ================= */
 .checkout-btn {
-  display: block;
-  margin: 0 auto;
+  display: inline-block;
+
+  margin-top: 6px;
 
   padding: 6px 10px;
-  width: fit-content;
   min-width: 90px;
 
   border-radius: 8px;
@@ -184,6 +181,8 @@ body {
 
   text-decoration: none;
   text-align: center;
+
+  margin-left: 0; /* LEFT ALIGN */
 }
 
 .checkout-btn:hover {
