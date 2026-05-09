@@ -147,7 +147,7 @@ body {
   margin-top: 5px;
 }
 
-/* ================= PRICE (NO CIRCLE / NO BOX) ================= */
+/* PRICE (clean flat) */
 .price {
   margin-top: 12px;
   margin-bottom: 8px;
@@ -164,17 +164,24 @@ body {
   box-shadow: none;
 }
 
-/* BUTTON */
+/* ================= SMALL CHECKOUT BUTTON ================= */
 .checkout-btn {
   display: block;
   margin: 0 auto;
-  padding: 8px 12px;
-  border-radius: 10px;
+
+  padding: 6px 10px;
+  width: fit-content;
+  min-width: 90px;
+
+  border-radius: 8px;
+
   background: rgba(0,200,255,0.2);
   border: 1px solid rgba(0,200,255,0.5);
+
   color: white;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 600;
+
   text-decoration: none;
   text-align: center;
 }
@@ -297,7 +304,6 @@ body {
       <div class="title">888 Heavyweight Zipup — 1/1</div>
       <div class="subtitle">Handmade zip-up hoodie</div>
 
-      <!-- 💰 CLEAN PRICE (NO CIRCLE) -->
       <div class="price">$158.00</div>
 
       <a class="checkout-btn"
