@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beanies - Eight Studios</title>
 
-<!-- 🔥 SHARE EMBED -->
 <meta property="og:title" content="Beanies - Eight Studios">
 <meta property="og:description" content="Shop custom handmade beanies from Eight Studios. Limited drops.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
@@ -13,9 +12,6 @@
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Beanies - Eight Studios">
-<meta name="twitter:description" content="Shop custom handmade beanies from Eight Studios.">
-<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
@@ -26,6 +22,65 @@ body {
   font-family: Arial, sans-serif;
   color: white;
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+}
+
+/* 🔥 LOADING SCREEN */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.6s ease;
+}
+
+.loader-box {
+  text-align: center;
+}
+
+.loader-logo {
+  width: 80px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loader-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.loader-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 15px;
+}
+
+.bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: rgba(0,200,255,0.8);
+  animation: load 2s ease forwards;
+}
+
+@keyframes load {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.7; }
 }
 
 /* NAV */
@@ -92,7 +147,6 @@ body {
 .card:hover {
   transform: translateY(-8px) scale(1.03);
   background: rgba(0,200,255,0.15);
-  border: 1px solid rgba(0,200,255,0.4);
 }
 
 .card img {
@@ -101,7 +155,6 @@ body {
   object-fit: cover;
 }
 
-/* CONTENT */
 .content {
   padding: 12px;
 }
@@ -110,7 +163,6 @@ body {
   font-weight: bold;
 }
 
-/* DESCRIPTION */
 .description {
   font-size: 12px;
   opacity: 0.7;
@@ -118,16 +170,13 @@ body {
   line-height: 1.4;
 }
 
-/* 💰 PRICE TAG */
 .price {
   margin-top: 8px;
   font-size: 14px;
   font-weight: bold;
   color: #00c8ff;
-  text-shadow: 0 0 8px rgba(0,200,255,0.4);
 }
 
-/* BUTTON */
 .checkout-btn {
   margin-top: 10px;
   display: inline-block;
@@ -141,11 +190,6 @@ body {
   text-decoration: none;
 }
 
-.checkout-btn:hover {
-  background: rgba(0,200,255,0.35);
-}
-
-/* NOTE */
 .note {
   text-align: center;
   opacity: 0.6;
@@ -156,6 +200,22 @@ body {
 </head>
 
 <body>
+
+<!-- 🔥 LOADING SCREEN -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Beanies...</div>
+
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+
+  </div>
+</div>
 
 <!-- NAV -->
 <div class="nav">
@@ -174,79 +234,54 @@ body {
 <!-- PRODUCTS -->
 <div class="grid">
 
-  <!-- PRODUCT 1 -->
   <div class="card" onclick="window.open('https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g', '_blank')">
     <img src="https://i.imgur.com/vdjnkAZ.jpeg">
-
     <div class="content">
       <div class="title">888 Long Beanie — Hand Sewn</div>
-
-      <div class="description">
-        Hand-sewn heavyweight custom beanie with extended fit.
-      </div>
-
+      <div class="description">Hand-sewn heavyweight custom beanie with extended fit.</div>
       <div class="price">$75.00</div>
-
-      <a href="https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g"
-         target="_blank"
-         class="checkout-btn"
-         onclick="event.stopPropagation()">
-         Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/bJe8wRaZ9el40Ft70C5Rm0g" onclick="event.stopPropagation()">Checkout</a>
     </div>
   </div>
 
-  <!-- PRODUCT 2 -->
   <div class="card" onclick="window.open('https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09', '_blank')">
     <img src="https://i.imgur.com/eSfJnxK.jpeg">
-
     <div class="content">
       <div class="title">888 Long Beanie — 1/1</div>
-
-      <div class="description">
-        One-of-one custom beanie designed for the winter collection.
-      </div>
-
+      <div class="description">One-of-one custom beanie designed for the winter collection.</div>
       <div class="price">$68.00</div>
-
-      <a href="https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09"
-         target="_blank"
-         class="checkout-btn"
-         onclick="event.stopPropagation()">
-         Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/28E9AV7MX5Oy87V5Wy5Rm09" onclick="event.stopPropagation()">Checkout</a>
     </div>
   </div>
 
-  <!-- PRODUCT 3 -->
   <div class="card" onclick="window.open('https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f', '_blank')">
     <img src="https://i.imgur.com/0F8sDMG.jpeg">
-
     <div class="content">
       <div class="title">888 Short Beanie — 1/1</div>
-
-      <div class="description">
-        Minimal short-fit beanie with signature Eight Studios styling.
-      </div>
-
+      <div class="description">Minimal short-fit beanie with signature Eight Studios styling.</div>
       <div class="price">$38.00</div>
-
-      <a href="https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f"
-         target="_blank"
-         class="checkout-btn"
-         onclick="event.stopPropagation()">
-         Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/9B6bJ3d7hfp8bk74Su5Rm0f" onclick="event.stopPropagation()">Checkout</a>
     </div>
   </div>
 
 </div>
 
-<!-- NOTE -->
 <div class="note">
 More items coming soon. Customize your own clothing — eight888studios@gmail.com
 </div>
 
+<script>
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loadingScreen");
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 1800);
+});
+</script>
+
 <script src="/pwa-register.js" defer></script>
+
 </body>
 </html>
