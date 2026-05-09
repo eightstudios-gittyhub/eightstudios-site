@@ -34,6 +34,7 @@ body::before {
   z-index: 0;
 }
 
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -54,6 +55,7 @@ body::before {
   cursor: pointer;
 }
 
+/* HERO */
 .hero {
   position: relative;
   z-index: 1;
@@ -104,6 +106,7 @@ body::before {
   background: rgba(0,200,255,0.2);
 }
 
+/* GRID */
 .grid {
   position: relative;
   z-index: 1;
@@ -126,10 +129,161 @@ body::before {
   color: white;
   text-decoration: none;
 }
+
+/* =========================
+   🔥 LOADING SCREEN
+========================= */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.6s ease;
+}
+
+.loader-box {
+  text-align: center;
+  color: white;
+}
+
+.loader-logo {
+  width: 80px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loader-text {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.loader-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: rgba(0,200,255,0.8);
+  animation: load 2.2s ease forwards;
+}
+
+@keyframes load {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.7; }
+}
+
+/* =========================
+   👋 WELCOME POPUP
+========================= */
+.welcome-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+.welcome-popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.welcome-box {
+  width: 90%;
+  max-width: 340px;
+  padding: 25px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+  color: white;
+}
+
+.welcome-logo {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.welcome-box h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.welcome-box p {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+
+.welcome-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0,200,255,0.25);
+  color: white;
+  cursor: pointer;
+}
 </style>
 </head>
 
 <body>
+
+<!-- 🔥 LOADING SCREEN -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading experience...</div>
+
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 👋 WELCOME POPUP -->
+<div id="welcomePopup" class="welcome-popup">
+  <div class="welcome-box">
+
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="welcome-logo">
+
+    <h2>Welcome to Eight Studios</h2>
+    <p>Premium streetwear essentials built for clean fits & bold energy.</p>
+
+    <button onclick="closeWelcome()">Enter Site</button>
+  </div>
+</div>
 
 <!-- NAV -->
 <div class="nav">
@@ -149,13 +303,9 @@ body::before {
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
 
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">
-      Download Android
-    </a>
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
 
-    <button class="btn" onclick="iosInstall()">
-      Download iPhone
-    </button>
+    <button class="btn" onclick="iosInstall()">Download iPhone</button>
 
   </div>
 
@@ -170,9 +320,9 @@ body::before {
   <div class="card"><a href="hats.html">Hats</a></div>
 </div>
 
-<!-- ✅ CHATONBO WIDGET (ADDED HERE) -->
+<!-- CHATBOT -->
 <script>
-  window.ChatonboConfig = { botId: "1f61486b-65db-47f3-82c1-3133f75897fb" };
+window.ChatonboConfig = { botId: "1f61486b-65db-47f3-82c1-3133f75897fb" };
 </script>
 <script src="https://chatonbo.com/widget.js" async></script>
 
@@ -188,6 +338,33 @@ function shareSite() {
 function iosInstall() {
   alert("📱 iPhone Install:\n\nOpen Safari → Share → Add to Home Screen");
 }
+
+/* 🔥 LOADING */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loadingScreen");
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 2200);
+});
+
+/* 👋 WELCOME */
+function showWelcome() {
+  const seen = localStorage.getItem("seenWelcome");
+  const popup = document.getElementById("welcomePopup");
+
+  if (!seen) {
+    setTimeout(() => popup.classList.add("show"), 400);
+  }
+}
+
+function closeWelcome() {
+  document.getElementById("welcomePopup").classList.remove("show");
+  localStorage.setItem("seenWelcome", "true");
+}
+
+window.addEventListener("load", showWelcome);
 </script>
 
 </body>
