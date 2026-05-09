@@ -3,17 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Shorts - Eight Studios</title>
 
-<!-- 🔥 EMBED (DISCORD / SOCIAL) -->
 <meta property="og:title" content="Eight Studios — Custom Shorts">
-<meta property="og:description" content="Custom summer & patchwork shorts. One-of-one pieces.">
+<meta property="og:description" content="Custom summer and patchwork shorts. Limited 1/1 drops only.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<meta property="og:url" content="https://eightstudios.org">
+<meta property="og:url" content="https://eightstudios.org/shorts.html">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eight Studios — Custom Shorts">
+<meta name="twitter:description" content="Custom summer and patchwork shorts. Limited 1/1 drops only.">
+<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
 <meta name="theme-color" content="#00c8ff">
 
-<!-- ICON -->
-<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
 body {
@@ -40,26 +46,31 @@ body {
   font-weight: bold;
 }
 
-/* HEADER */
-.header {
-  text-align: center;
-  padding: 40px 20px 20px;
+/* LOGO */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-/* LOGO (CENTERED LIKE MAIN SITE) */
-.header-logo {
+.logo-wrap img {
   width: 120px;
-  margin-bottom: 15px;
-  filter: drop-shadow(0 0 15px rgba(0,200,255,0.8));
+  filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
   transition: 0.3s;
 }
 
-.header-logo:hover {
+.logo-wrap img:hover {
   transform: scale(1.05);
 }
 
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
 .header h1 {
-  margin: 0;
+  margin: 10px 0 0;
   font-size: 40px;
 }
 
@@ -70,8 +81,8 @@ body {
 /* GRID */
 .grid {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 25px;
   padding: 30px;
 }
@@ -84,8 +95,8 @@ body {
   border: 1px solid rgba(255,255,255,0.15);
   backdrop-filter: blur(15px);
   overflow: hidden;
-  cursor: pointer;
   transition: 0.25s;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -97,11 +108,12 @@ body {
 /* IMAGE */
 .card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
+  background: black;
 }
 
-/* TEXT */
+/* CONTENT */
 .content {
   padding: 12px;
 }
@@ -110,6 +122,22 @@ body {
   font-weight: bold;
 }
 
+.subtitle {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* PRICE TAGS ADDED */
+.price {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00c8ff;
+  text-shadow: 0 0 8px rgba(0,200,255,0.4);
+}
+
+/* BUTTON */
 .checkout-btn {
   margin-top: 10px;
   display: inline-block;
@@ -138,40 +166,44 @@ body {
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
 
-<!-- HEADER -->
-<div class="header">
-
-  <!-- 🔥 LOGO -->
-  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="header-logo">
-
-  <h1>Shorts</h1>
-  <p>Custom summer and patchwork shorts.</p>
+<div class="logo-wrap">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" alt="Logo">
 </div>
 
-<!-- PRODUCT -->
+<div class="header">
+  <h1>Shorts</h1>
+  <p>Custom summer and patchwork shorts will appear here as new drops release.</p>
+</div>
+
 <div class="grid">
 
   <div class="card" onclick="window.open('https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e', '_blank')">
     <img src="https://i.imgur.com/Y1zxInG.jpeg">
+
     <div class="content">
       <div class="title">Camo Fragment Shorts — 1/1</div>
-       <div class="price">$128.00</div>
-      <a href="https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
+      <div class="subtitle">Custom summer drop</div>
+
+      <!-- 💰 PRICE ADDED -->
+      <div class="price">$128.00</div>
+
+      <a href="https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e"
+         class="checkout-btn"
+         target="_blank">
+         Checkout
+      </a>
     </div>
   </div>
 
 </div>
 
-<!-- NOTE -->
 <div class="note">
 More pieces coming soon. Customize your own clothing — eight888studios@gmail.com
 </div>
 
-<script src="/pwa-register.js" defer></script>
 </body>
 </html>
