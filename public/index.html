@@ -9,7 +9,7 @@
 
 <meta name="description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
 <meta property="og:title" content="Eight Studios">
-<meta property="og:description" content="Premium streetwear essentials.">
+<meta property="og:description" content="Premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
@@ -17,7 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, Arial;
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
 }
 
 body {
@@ -34,7 +34,6 @@ body::before {
   z-index: 0;
 }
 
-/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -55,7 +54,6 @@ body::before {
   cursor: pointer;
 }
 
-/* HERO */
 .hero {
   position: relative;
   z-index: 1;
@@ -76,6 +74,7 @@ body::before {
 .subtitle {
   font-size: 14px;
   opacity: 0.7;
+  margin-top: 6px;
 }
 
 .actions {
@@ -94,8 +93,8 @@ body::before {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   color: white;
-  text-decoration: none;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -105,7 +104,6 @@ body::before {
   background: rgba(0,200,255,0.2);
 }
 
-/* GRID */
 .grid {
   position: relative;
   z-index: 1;
@@ -128,86 +126,6 @@ body::before {
   color: white;
   text-decoration: none;
 }
-
-/* CHAT */
-#chatBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #00c8ff;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-#chatBox {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  height: 420px;
-  background: rgba(20,20,20,0.95);
-  border-radius: 16px;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 999;
-}
-
-#chatHeader {
-  padding: 10px;
-  text-align: center;
-  background: rgba(255,255,255,0.1);
-}
-
-#messages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-}
-
-.msg {
-  margin: 6px 0;
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 13px;
-  max-width: 80%;
-}
-
-.user {
-  background: #00c8ff;
-  color: black;
-  margin-left: auto;
-}
-
-.bot {
-  background: rgba(255,255,255,0.1);
-}
-
-#inputArea {
-  display: flex;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-#input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: transparent;
-  color: white;
-  outline: none;
-}
-
-#send {
-  padding: 10px;
-  background: #00c8ff;
-  border: none;
-  cursor: pointer;
-}
 </style>
 </head>
 
@@ -220,16 +138,27 @@ body::before {
 
 <!-- HERO -->
 <div class="hero">
+
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
+
   <div class="title">Eight Studios</div>
   <div class="subtitle">Premium streetwear essentials</div>
 
   <div class="actions">
+
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
-    <button class="btn" onclick="ios()">Download iPhone</button>
+
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">
+      Download Android
+    </a>
+
+    <button class="btn" onclick="iosInstall()">
+      Download iPhone
+    </button>
+
   </div>
+
 </div>
 
 <!-- GRID -->
@@ -241,68 +170,23 @@ body::before {
   <div class="card"><a href="hats.html">Hats</a></div>
 </div>
 
-<!-- CHAT -->
-<button id="chatBtn" onclick="toggleChat()">💬</button>
-
-<div id="chatBox">
-  <div id="chatHeader">Eight Studios AI</div>
-  <div id="messages"></div>
-
-  <div id="inputArea">
-    <input id="input" placeholder="Ask about products..." />
-    <button id="send" onclick="sendMessage()">➤</button>
-  </div>
-</div>
+<!-- ✅ CHATONBO WIDGET (ADDED HERE) -->
+<script>
+  window.ChatonboConfig = { botId: "1f61486b-65db-47f3-82c1-3133f75897fb" };
+</script>
+<script src="https://chatonbo.com/widget.js" async></script>
 
 <script>
-function toggleChat() {
-  const box = document.getElementById("chatBox");
-  box.style.display = box.style.display === "flex" ? "none" : "flex";
-  box.style.flexDirection = "column";
-}
-
-function addMessage(text, type) {
-  const div = document.createElement("div");
-  div.className = "msg " + type;
-  div.innerText = text;
-  document.getElementById("messages").appendChild(div);
-  document.getElementById("messages").scrollTop = 99999;
-}
-
-/* 🧠 REAL CHATGPT AI */
-async function sendMessage() {
-  const input = document.getElementById("input");
-  const text = input.value.trim();
-  if (!text) return;
-
-  addMessage(text, "user");
-  input.value = "";
-
-  addMessage("Thinking...", "bot");
-
-  const res = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text })
-  });
-
-  const data = await res.json();
-
-  document.querySelectorAll(".bot:last-child")[0].innerText = data.reply;
-}
-
-/* SHARE */
 function shareSite() {
   navigator.share?.({
     title: "Eight Studios",
-    text: "Check this out 🔥",
+    text: "Check out Eight Studios 🔥",
     url: window.location.href
-  }) || alert("Copy link");
+  }) || navigator.clipboard.writeText(window.location.href);
 }
 
-/* iOS */
-function ios() {
-  alert("Safari → Share → Add to Home Screen 📱");
+function iosInstall() {
+  alert("📱 iPhone Install:\n\nOpen Safari → Share → Add to Home Screen");
 }
 </script>
 
