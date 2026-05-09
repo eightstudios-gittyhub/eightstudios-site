@@ -212,7 +212,17 @@ body {
 }
 </style>
 </head>
+<script>
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loadingScreen");
 
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 1500);
+});
+</script>
+  
 <body>
   
   <!-- LOADING SCREEN -->
