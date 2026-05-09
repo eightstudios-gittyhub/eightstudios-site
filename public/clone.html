@@ -3,18 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hats - Eight Studios</title>
+<title>Hoodies - Eight Studios</title>
 
-<meta property="og:title" content="Hats - Eight Studios">
-<meta property="og:description" content="Explore custom hat drops from Eight Studios. More coming soon.">
-<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<meta property="og:url" content="https://eightstudios.org/hats.html">
+<link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<meta property="og:title" content="Eight Studios - Hoodies" />
+<meta property="og:description" content="Handmade 1/1 hooded garments by Eight Studios." />
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png" />
+<meta property="og:url" content="https://eightstudios.org" />
+<meta property="og:type" content="website" />
+
+<meta name="twitter:card" content="summary_large_image">
 
 <style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+}
 
-/* ================= LOADING ================= */
+/* LOADING */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -29,13 +38,13 @@
 .loader-box { text-align:center; }
 
 .loader-logo {
-  width: 85px;
+  width: 80px;
   margin-bottom: 10px;
   animation: pulse 1.5s infinite;
 }
 
-.loader-text { color:white; font-weight:bold; font-size:20px; }
-.loader-sub { color:white; opacity:0.6; font-size:12px; margin-bottom:15px; }
+.loader-text { font-size:20px; font-weight:bold; }
+.loader-sub { font-size:12px; opacity:0.6; margin-bottom:15px; }
 
 .bar {
   width:200px;
@@ -55,42 +64,24 @@
 @keyframes load { to { width:100%; } }
 @keyframes pulse {
   0%,100%{transform:scale(1);}
-  50%{transform:scale(1.08); opacity:0.6;}
+  50%{transform:scale(1.08); opacity:0.7;}
 }
 
-/* ================= PAGE ================= */
-body {
-  margin:0;
-  font-family:Arial;
-  color:white;
-  background:radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
-}
-
+/* NAV */
 .nav {
-  position:sticky;
-  top:0;
-  padding:15px;
-  text-align:center;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
 }
 
-.nav a { color:white; text-decoration:none; }
-
-.header {
-  text-align:center;
-  padding:40px 20px;
-}
-
-.logo {
-  width:120px;
-  max-width:40%;
-  margin-bottom:10px;
-}
-
-.empty {
-  text-align:center;
-  opacity:0.6;
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* ================= CHAT ================= */
@@ -170,6 +161,55 @@ body {
   border:none;
 }
 
+/* PAGE CONTENT */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo-wrap img {
+  width: 120px;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card {
+  width: 240px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 12px;
+}
+
+.checkout-btn {
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 12px;
+  background:rgba(0,200,255,0.2);
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+}
+
 </style>
 </head>
 
@@ -180,7 +220,7 @@ body {
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
     <div class="loader-text">Eight Studios</div>
-    <div class="loader-sub">Loading Hats...</div>
+    <div class="loader-sub">Loading Hoodies...</div>
     <div class="bar"><div class="progress"></div></div>
   </div>
 </div>
@@ -191,13 +231,29 @@ body {
 </div>
 
 <!-- HEADER -->
-<div class="header">
-  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
-  <h1>Hats</h1>
-  <p>Custom hat drops will appear here.</p>
+<div class="logo-wrap">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
 </div>
 
-<div class="empty">More items coming soon.</div>
+<div class="header">
+  <h1>Hoodies</h1>
+  <p>Handmade 1/1 hooded garments by Eight Studios.</p>
+</div>
+
+<!-- PRODUCT -->
+<div class="grid">
+  <div class="card">
+    <img src="https://i.imgur.com/pIeNzKp.jpeg">
+    <div class="content">
+      <div>888 Heavyweight Zipup — 1/1</div>
+      <div>$158.00</div>
+
+      <a class="checkout-btn" href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" target="_blank">
+        Checkout
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- 💬 CHAT BUTTON -->
 <div class="chat-fab" onclick="openChat()">
@@ -225,18 +281,15 @@ body {
 <script>
 let unread = 0;
 
-/* open */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
   resetBadge();
 }
 
-/* close */
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
-/* outside click */
 document.addEventListener("click",(e)=>{
   const modal = document.getElementById("chatModal");
   if(e.target === modal) closeChat();
@@ -254,18 +307,18 @@ function resetBadge(){
   unread = 0;
   document.getElementById("chatBadge").style.display = "none";
 }
-</script>
 
-<!-- LOADING -->
-<script>
+/* loading */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
   setTimeout(() => {
     loader.style.opacity = "0";
     setTimeout(() => loader.remove(), 600);
-  }, 1500);
+  }, 1800);
 });
 </script>
+
+<script src="/pwa-register.js" defer></script>
 
 </body>
 </html>
