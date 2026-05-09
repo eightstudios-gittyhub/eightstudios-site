@@ -142,34 +142,87 @@ body::before {
   transition: opacity 0.6s ease;
 }
 
-/* 💬 CHAT BUTTON */
+.loader-box {
+  text-align: center;
+  color: white;
+}
+
+.loader-logo {
+  width: 80px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loader-text {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.loader-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: rgba(0,200,255,0.8);
+  animation: load 2.2s ease forwards;
+}
+
+@keyframes load {
+  to { width: 100%; }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.7; }
+}
+
+/* 💬 CHAT BUTTON (Tawk.to link) */
 .chat-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: none;
-  background: linear-gradient(135deg, #00c8ff, #0077ff);
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background: #00c8ff;
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   transition: 0.2s;
 }
 
 .chat-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="loadingScreen" class="loading-screen"></div>
+<!-- 🔥 LOADING SCREEN -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Eight Studios...</div>
+    <div class="bar"><div class="progress"></div></div>
+  </div>
+</div>
 
 <!-- NAV -->
 <div class="nav">
@@ -199,28 +252,12 @@ body::before {
   <div class="card"><a href="hats.html">Hats</a></div>
 </div>
 
-<!-- 💬 FLOATING CHAT BUTTON -->
-<button class="chat-btn" onclick="openChat()">💬</button>
-
-<!-- CHATBOT SCRIPT -->
-<script>
-window.ChatonboConfig = { botId: "1f61486b-65db-47f3-82c1-3133f75897fb" };
-</script>
-<script src="https://chatonbo.com/widget.js" async></script>
+<!-- 💬 CHAT BUTTON -->
+<a class="chat-btn" href="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37" target="_blank">
+  Chat 💬
+</a>
 
 <script>
-function openChat() {
-  // try real API open methods first
-  if (window.Chatonbo?.open) {
-    window.Chatonbo.open();
-  } else {
-    // fallback: try click injected widget button
-    const el = document.querySelector("iframe, .chatonbo, [id*='chat']");
-    if (el) el.click();
-    else alert("Chat loading... please wait a second.");
-  }
-}
-
 function shareSite() {
   navigator.share?.({
     title: "Eight Studios",
@@ -233,10 +270,13 @@ function iosInstall() {
   alert("📱 iPhone Install:\n\nOpen Safari → Share → Add to Home Screen");
 }
 
-/* loading */
+/* LOADING SCREEN */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
-  setTimeout(() => loader.remove(), 1200);
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 2200);
 });
 </script>
 
