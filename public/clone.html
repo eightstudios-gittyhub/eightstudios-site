@@ -84,6 +84,123 @@ body {
   font-weight: bold;
 }
 
+/* LOGO */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo-wrap img {
+  width: 120px;
+  filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  margin: 10px 0 0;
+  font-size: 40px;
+}
+
+.header p {
+  opacity: 0.7;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px;
+}
+
+/* CARD */
+.card {
+  width: 240px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(0,200,255,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 12px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* 🔥 PRICE TAG (MATCHED TO SITE UI) */
+.price {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #00c8ff;
+
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  background: rgba(0, 200, 255, 0.12);
+  border: 1px solid rgba(0, 200, 255, 0.35);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.15);
+
+  transition: 0.2s ease;
+}
+
+.price:hover {
+  transform: scale(1.05);
+  background: rgba(0, 200, 255, 0.2);
+  box-shadow: 0 0 18px rgba(0, 200, 255, 0.35);
+}
+
+/* BUTTON */
+.checkout-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-btn:hover {
+  background: rgba(0,200,255,0.35);
+}
+
 /* ================= CHAT ================= */
 .chat-fab {
   position:fixed;
@@ -102,7 +219,7 @@ body {
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* 🔴 badge */
+/* badge */
 #chatBadge {
   position:absolute;
   top:0;
@@ -160,56 +277,6 @@ body {
   height:calc(100% - 48px);
   border:none;
 }
-
-/* PAGE CONTENT */
-.logo-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.logo-wrap img {
-  width: 120px;
-}
-
-.header {
-  text-align: center;
-  padding: 20px;
-}
-
-.grid {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-}
-
-.card {
-  width: 240px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.08);
-  overflow: hidden;
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.content {
-  padding: 12px;
-}
-
-.checkout-btn {
-  display:inline-block;
-  margin-top:10px;
-  padding:8px 12px;
-  background:rgba(0,200,255,0.2);
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
-}
-
 </style>
 </head>
 
@@ -242,26 +309,30 @@ body {
 
 <!-- PRODUCT -->
 <div class="grid">
+
   <div class="card">
     <img src="https://i.imgur.com/pIeNzKp.jpeg">
+
     <div class="content">
-      <div>888 Heavyweight Zipup — 1/1</div>
-      <div>$158.00</div>
+      <div class="title">888 Heavyweight Zipup — 1/1</div>
+      <div class="subtitle">Handmade zip-up hoodie</div>
+
+      <div class="price">$158.00</div>
 
       <a class="checkout-btn" href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" target="_blank">
         Checkout
       </a>
     </div>
   </div>
+
 </div>
 
-<!-- 💬 CHAT BUTTON -->
+<!-- 💬 CHAT -->
 <div class="chat-fab" onclick="openChat()">
   💬
   <span id="chatBadge">0</span>
 </div>
 
-<!-- 💬 CHAT POPUP -->
 <div id="chatModal" class="chat-modal">
   <div class="chat-box">
 
@@ -270,10 +341,8 @@ body {
       <button onclick="closeChat()">✕</button>
     </div>
 
-    <iframe
-      src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
-      class="chat-frame">
-    </iframe>
+    <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
+      class="chat-frame"></iframe>
 
   </div>
 </div>
@@ -290,12 +359,6 @@ function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
-document.addEventListener("click",(e)=>{
-  const modal = document.getElementById("chatModal");
-  if(e.target === modal) closeChat();
-});
-
-/* badge */
 function addBadge(){
   unread++;
   const badge = document.getElementById("chatBadge");
@@ -317,8 +380,6 @@ window.addEventListener("load", () => {
   }, 1800);
 });
 </script>
-
-<script src="/pwa-register.js" defer></script>
 
 </body>
 </html>
