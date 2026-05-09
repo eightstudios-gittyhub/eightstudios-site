@@ -4,31 +4,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hats - Eight Studios</title>
-  
-<!-- 🔥 EMBED / LINK PREVIEW -->
+
 <meta property="og:title" content="Hats - Eight Studios">
 <meta property="og:description" content="Explore custom hat drops from Eight Studios. More coming soon.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 <meta property="og:url" content="https://eightstudios.org/hats.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Eight Studios">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hats - Eight Studios">
-<meta name="twitter:description" content="Explore custom hat drops from Eight Studios.">
-<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
-<!-- 🔥 ICON SETUP -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="shortcut icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" sizes="192x192" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" sizes="512x512" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
+
+/* ================= LOADING SCREEN ================= */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.6s ease;
+}
+
+.loader-box {
+  text-align: center;
+}
+
+.loader-logo {
+  width: 85px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loader-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.loader-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #00c8ff;
+  animation: load 2s ease forwards;
+}
+
+@keyframes load {
+  to { width: 100%; }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.6; }
+}
+
+/* ================= PAGE ================= */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -36,7 +82,6 @@ body {
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
 }
 
-/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -53,7 +98,6 @@ body {
   font-weight: bold;
 }
 
-/* LOGO */
 .logo {
   width: 120px;
   max-width: 40%;
@@ -61,7 +105,6 @@ body {
   filter: drop-shadow(0 0 10px rgba(0,200,255,0.6));
 }
 
-/* HEADER */
 .header {
   text-align: center;
   padding: 40px 20px;
@@ -76,69 +119,6 @@ body {
   opacity: 0.7;
 }
 
-/* BUTTONS */
-.phone-btn, .sms-btn, .download-btn, .iphone-btn {
-  width: 100%;
-  max-width: 320px;
-  padding: 12px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(12px);
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  display: block;
-  margin: 8px auto;
-}
-
-.phone-btn:active,
-.sms-btn:active,
-.download-btn:active,
-.iphone-btn:active {
-  transform: scale(0.97);
-}
-
-.phone-btn:hover,
-.sms-btn:hover,
-.download-btn:hover,
-.iphone-btn:hover {
-  transform: translateY(-2px);
-  background: rgba(0,200,255,0.2);
-  border: 1px solid rgba(0,200,255,0.5);
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-  width: 100%;
-  max-width: 420px;
-  margin: 15px auto;
-}
-
-.card {
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(14px);
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.card a {
-  color: white;
-  text-decoration: none;
-}
-
-/* EMPTY STATE */
 .empty {
   text-align: center;
   margin-top: 40px;
@@ -146,7 +126,6 @@ body {
   font-size: 18px;
 }
 
-/* FOOTER */
 .note {
   text-align: center;
   padding: 15px;
@@ -158,10 +137,21 @@ body {
   color: #00c8ff;
   text-decoration: none;
 }
+
 </style>
 </head>
 
 <body>
+
+<!-- 🔥 LOADING SCREEN -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Hats...</div>
+    <div class="bar"><div class="progress"></div></div>
+  </div>
+</div>
 
 <!-- NAV -->
 <div class="nav">
@@ -175,7 +165,7 @@ body {
   <p>Custom hat drops will appear here.</p>
 </div>
 
-<!-- EMPTY STATE -->
+<!-- EMPTY -->
 <div class="empty">
   More items coming soon.
 </div>
@@ -186,5 +176,18 @@ Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a
 </div>
 
 <script src="/pwa-register.js" defer></script>
+
+<!-- 🔥 LOADING SCRIPT -->
+<script>
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loadingScreen");
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 1500);
+});
+</script>
+
 </body>
 </html>
