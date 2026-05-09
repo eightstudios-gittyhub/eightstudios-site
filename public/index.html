@@ -7,113 +7,17 @@
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<!-- 🌐 SOCIAL EMBEDS -->
 <meta name="description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
 <meta property="og:title" content="Eight Studios">
-<meta property="og:description" content="Premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
+<meta property="og:description" content="Premium streetwear essentials.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<meta property="og:url" content="https://eightstudios.org">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-
-<!-- 📱 PWA SETUP -->
-<link rel="manifest" href="/manifest.json">
-
-<meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
-  #chatBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #00c8ff;
-  color: black;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 999;
-}
-
-#chatBox {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  height: 420px;
-  background: rgba(20,20,20,0.95);
-  border-radius: 16px;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 999;
-}
-
-#chatHeader {
-  padding: 10px;
-  background: rgba(255,255,255,0.1);
-  text-align: center;
-  color: white;
-  font-weight: 600;
-}
-
-#messages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  color: white;
-}
-
-.msg {
-  margin: 6px 0;
-  padding: 10px;
-  border-radius: 12px;
-  max-width: 80%;
-  font-size: 13px;
-}
-
-.user {
-  background: #00c8ff;
-  color: black;
-  margin-left: auto;
-}
-
-.bot {
-  background: rgba(255,255,255,0.1);
-  margin-right: auto;
-}
-
-#inputArea {
-  display: flex;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-#input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: white;
-}
-
-#send {
-  padding: 10px;
-  background: #00c8ff;
-  border: none;
-  cursor: pointer;
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Arial;
 }
 
 body {
@@ -130,13 +34,14 @@ body::before {
   z-index: 0;
 }
 
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
   z-index: 10;
   display: flex;
   justify-content: flex-end;
-  padding: 14px 20px;
+  padding: 14px;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(20px);
 }
@@ -147,15 +52,15 @@ body::before {
   border: 1px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.06);
   color: white;
-  font-size: 13px;
   cursor: pointer;
 }
 
+/* HERO */
 .hero {
   position: relative;
   z-index: 1;
-  padding: 80px 20px 40px;
   text-align: center;
+  padding: 70px 20px;
 }
 
 .logo {
@@ -169,7 +74,6 @@ body::before {
 }
 
 .subtitle {
-  margin-top: 8px;
   font-size: 14px;
   opacity: 0.7;
 }
@@ -192,56 +96,117 @@ body::before {
   color: white;
   text-decoration: none;
   text-align: center;
-  font-size: 14px;
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.2s;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  background: rgba(0,200,255,0.15);
+  background: rgba(0,200,255,0.2);
 }
 
+/* GRID */
 .grid {
   position: relative;
   z-index: 1;
-  margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 14px;
-  padding: 0 20px 60px;
+  padding: 20px;
 }
 
 .card {
   height: 120px;
   border-radius: 18px;
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.25s;
-  backdrop-filter: blur(20px);
-}
-
-.card:hover {
-  transform: scale(1.03);
-  background: rgba(255,255,255,0.12);
 }
 
 .card a {
   color: white;
   text-decoration: none;
-  font-weight: 500;
 }
 
-.footer {
+/* CHAT */
+#chatBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #00c8ff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#chatBox {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: rgba(20,20,20,0.95);
+  border-radius: 16px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#chatHeader {
+  padding: 10px;
   text-align: center;
-  font-size: 12px;
-  opacity: 0.6;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
+  background: rgba(255,255,255,0.1);
+}
+
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.msg {
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  max-width: 80%;
+}
+
+.user {
+  background: #00c8ff;
+  color: black;
+  margin-left: auto;
+}
+
+.bot {
+  background: rgba(255,255,255,0.1);
+}
+
+#inputArea {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+#input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+  outline: none;
+}
+
+#send {
+  padding: 10px;
+  background: #00c8ff;
+  border: none;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -255,27 +220,16 @@ body::before {
 
 <!-- HERO -->
 <div class="hero">
-
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
-
   <div class="title">Eight Studios</div>
   <div class="subtitle">Premium streetwear essentials</div>
 
   <div class="actions">
-
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
-
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">
-      Download for Android
-    </a>
-
-    <button class="btn" onclick="showIOSDownload()">
-      Download for iPhone
-    </button>
-
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
+    <button class="btn" onclick="ios()">Download iPhone</button>
   </div>
-
 </div>
 
 <!-- GRID -->
@@ -287,75 +241,20 @@ body::before {
   <div class="card"><a href="hats.html">Hats</a></div>
 </div>
 
-<div class="footer">
-  eight888studios@gmail.com
-</div>
-
-<script>
-function shareSite() {
-  const data = {
-    title: document.title,
-    text: "Check out Eight Studios 🔥",
-    url: window.location.href
-  };
-
-  if (navigator.share) {
-    navigator.share(data);
-  } else {
-    navigator.clipboard.writeText(window.location.href);
-    alert("Link copied!");
-  }
-}
-
-function showIOSDownload() {
-  alert(
-`📱 iPhone Install:
-
-1. Open Safari
-2. Tap Share button
-3. Tap "Add to Home Screen"
-
-This installs Eight Studios like an app.`
-  );
-}
-</script>
-
-<!-- 📡 TRACKING (FIXED + IMPROVED) -->
-<script>
-fetch("/track", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    page: "index.html",
-    event: "open"
-  })
-});
-</script>
-
-<!-- ⚡ SERVICE WORKER (ONLY ONCE FIXED) -->
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js");
-}
-</script>
-
-  <!-- CHAT BUTTON -->
+<!-- CHAT -->
 <button id="chatBtn" onclick="toggleChat()">💬</button>
 
-<!-- CHAT BOX -->
 <div id="chatBox">
-  <div id="chatHeader">AI Chat</div>
-
+  <div id="chatHeader">Eight Studios AI</div>
   <div id="messages"></div>
 
   <div id="inputArea">
-    <input id="input" placeholder="Message..." />
+    <input id="input" placeholder="Ask about products..." />
     <button id="send" onclick="sendMessage()">➤</button>
   </div>
 </div>
-  <script>
+
+<script>
 function toggleChat() {
   const box = document.getElementById("chatBox");
   box.style.display = box.style.display === "flex" ? "none" : "flex";
@@ -367,10 +266,11 @@ function addMessage(text, type) {
   div.className = "msg " + type;
   div.innerText = text;
   document.getElementById("messages").appendChild(div);
-  document.getElementById("messages").scrollTop = 9999;
+  document.getElementById("messages").scrollTop = 99999;
 }
 
-function sendMessage() {
+/* 🧠 REAL CHATGPT AI */
+async function sendMessage() {
   const input = document.getElementById("input");
   const text = input.value.trim();
   if (!text) return;
@@ -378,22 +278,33 @@ function sendMessage() {
   addMessage(text, "user");
   input.value = "";
 
-  setTimeout(() => {
-    addMessage(getResponse(text), "bot");
-  }, 500);
+  addMessage("Thinking...", "bot");
+
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: text })
+  });
+
+  const data = await res.json();
+
+  document.querySelectorAll(".bot:last-child")[0].innerText = data.reply;
 }
 
-/* 🤖 SIMPLE AI RESPONSES */
-function getResponse(msg) {
-  msg = msg.toLowerCase();
+/* SHARE */
+function shareSite() {
+  navigator.share?.({
+    title: "Eight Studios",
+    text: "Check this out 🔥",
+    url: window.location.href
+  }) || alert("Copy link");
+}
 
-  if (msg.includes("hello")) return "Hey 👋";
-  if (msg.includes("help")) return "I can help you explore the site";
-  if (msg.includes("price")) return "Prices are on each product page 🔥";
-  if (msg.includes("shop")) return "Check out hoodies, hats, and more 🛒";
-
-  return "I’m still learning 🧠";
+/* iOS */
+function ios() {
+  alert("Safari → Share → Add to Home Screen 📱");
 }
 </script>
+
 </body>
 </html>
