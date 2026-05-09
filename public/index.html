@@ -26,6 +26,89 @@
 <link rel="apple-touch-icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
+  #chatBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #00c8ff;
+  color: black;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#chatBox {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: rgba(20,20,20,0.95);
+  border-radius: 16px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#chatHeader {
+  padding: 10px;
+  background: rgba(255,255,255,0.1);
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  color: white;
+}
+
+.msg {
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 80%;
+  font-size: 13px;
+}
+
+.user {
+  background: #00c8ff;
+  color: black;
+  margin-left: auto;
+}
+
+.bot {
+  background: rgba(255,255,255,0.1);
+  margin-right: auto;
+}
+
+#inputArea {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+#input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+}
+
+#send {
+  padding: 10px;
+  background: #00c8ff;
+  border: none;
+  cursor: pointer;
+}
 * {
   margin: 0;
   padding: 0;
@@ -258,5 +341,59 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+  <!-- CHAT BUTTON -->
+<button id="chatBtn" onclick="toggleChat()">💬</button>
+
+<!-- CHAT BOX -->
+<div id="chatBox">
+  <div id="chatHeader">AI Chat</div>
+
+  <div id="messages"></div>
+
+  <div id="inputArea">
+    <input id="input" placeholder="Message..." />
+    <button id="send" onclick="sendMessage()">➤</button>
+  </div>
+</div>
+  <script>
+function toggleChat() {
+  const box = document.getElementById("chatBox");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+  box.style.flexDirection = "column";
+}
+
+function addMessage(text, type) {
+  const div = document.createElement("div");
+  div.className = "msg " + type;
+  div.innerText = text;
+  document.getElementById("messages").appendChild(div);
+  document.getElementById("messages").scrollTop = 9999;
+}
+
+function sendMessage() {
+  const input = document.getElementById("input");
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage(text, "user");
+  input.value = "";
+
+  setTimeout(() => {
+    addMessage(getResponse(text), "bot");
+  }, 500);
+}
+
+/* 🤖 SIMPLE AI RESPONSES */
+function getResponse(msg) {
+  msg = msg.toLowerCase();
+
+  if (msg.includes("hello")) return "Hey 👋";
+  if (msg.includes("help")) return "I can help you explore the site";
+  if (msg.includes("price")) return "Prices are on each product page 🔥";
+  if (msg.includes("shop")) return "Check out hoodies, hats, and more 🛒";
+
+  return "I’m still learning 🧠";
+}
+</script>
 </body>
 </html>
