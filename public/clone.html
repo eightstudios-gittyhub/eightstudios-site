@@ -114,9 +114,7 @@ body {
 /* GRID */
 .grid {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
   padding: 30px;
 }
 
@@ -126,15 +124,7 @@ body {
   border-radius: 18px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(15px);
   overflow: hidden;
-  transition: 0.25s;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.03);
-  background: rgba(0,200,255,0.15);
 }
 
 .card img {
@@ -157,15 +147,24 @@ body {
   margin-top: 5px;
 }
 
-/* PRICE TAG */
+/* ================= PRICE FIXED (PERFECT ALIGNMENT) ================= */
 .price {
   margin-top: 12px;
+  margin-bottom: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
   font-size: 15px;
   font-weight: 700;
   color: #00c8ff;
 
-  display: inline-block;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 10px;
 
   background: rgba(0, 200, 255, 0.12);
@@ -173,10 +172,10 @@ body {
   backdrop-filter: blur(10px);
 }
 
-/* CHECKOUT BUTTON */
+/* BUTTON */
 .checkout-btn {
-  margin-top: 10px;
-  display: inline-block;
+  display: block;
+  margin: 0 auto;
   padding: 8px 12px;
   border-radius: 10px;
   background: rgba(0,200,255,0.2);
@@ -185,6 +184,7 @@ body {
   font-size: 13px;
   font-weight: bold;
   text-decoration: none;
+  text-align: center;
 }
 
 .checkout-btn:hover {
@@ -209,7 +209,6 @@ body {
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* badge */
 #chatBadge {
   position:absolute;
   top:0;
@@ -227,7 +226,6 @@ body {
   font-weight:bold;
 }
 
-/* modal */
 .chat-modal {
   position:fixed;
   inset:0;
@@ -307,7 +305,7 @@ body {
       <div class="title">888 Heavyweight Zipup — 1/1</div>
       <div class="subtitle">Handmade zip-up hoodie</div>
 
-      <!-- 💰 PRICE ABOVE BUTTON -->
+      <!-- 💰 PERFECT PRICE POSITION -->
       <div class="price">$158.00</div>
 
       <a class="checkout-btn"
