@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Eight Studios</title>
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
@@ -26,6 +26,7 @@ body {
   background-size: cover;
 }
 
+/* overlay */
 body::before {
   content: "";
   position: fixed;
@@ -42,17 +43,19 @@ body::before {
   display: flex;
   justify-content: flex-end;
   padding: 14px;
+  padding-top: calc(14px + env(safe-area-inset-top));
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(20px);
 }
 
 .nav-share {
-  padding: 8px 14px;
+  padding: 10px 16px;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.06);
   color: white;
   cursor: pointer;
+  font-size: 14px;
 }
 
 /* HERO */
@@ -60,16 +63,16 @@ body::before {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 70px 20px;
+  padding: 60px 20px;
 }
 
 .logo {
   width: 90px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .title {
-  font-size: 34px;
+  font-size: clamp(24px, 5vw, 34px);
   font-weight: 600;
 }
 
@@ -80,7 +83,7 @@ body::before {
 }
 
 .actions {
-  margin-top: 40px;
+  margin-top: 35px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -88,9 +91,9 @@ body::before {
 }
 
 .btn {
-  width: 90%;
-  max-width: 320px;
-  padding: 14px;
+  width: 92%;
+  max-width: 340px;
+  padding: 15px;
   border-radius: 14px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
@@ -99,6 +102,7 @@ body::before {
   text-decoration: none;
   cursor: pointer;
   transition: 0.2s;
+  font-size: 15px;
 }
 
 .btn:hover {
@@ -111,7 +115,7 @@ body::before {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 14px;
   padding: 20px;
 }
@@ -123,6 +127,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 15px;
 }
 
 .card a {
@@ -130,7 +135,7 @@ body::before {
   text-decoration: none;
 }
 
-/* LOADING SCREEN */
+/* LOADING */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -181,19 +186,13 @@ body::before {
   animation: load 2.2s ease forwards;
 }
 
-@keyframes load {
-  to { width: 100%; }
-}
-
+@keyframes load { to { width: 100%; } }
 @keyframes pulse {
   0%,100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.08); opacity: 0.7; }
 }
 
-/* ========================= */
-/* 💬 CHAT BUTTON + POPUP */
-/* ========================= */
-
+/* CHAT BUTTON */
 .chat-fab{
   position:fixed;
   bottom:18px;
@@ -213,6 +212,7 @@ body::before {
   animation:pulse 1.8s infinite;
 }
 
+/* CHAT MODAL */
 .chat-modal{
   position:fixed;
   inset:0;
@@ -231,6 +231,27 @@ body::before {
   border-radius:18px 18px 0 0;
   overflow:hidden;
   animation:slideUp 0.35s forwards;
+}
+
+/* 📱 FULL SCREEN ON MOBILE */
+@media (max-width: 600px){
+  .chat-box{
+    height:100vh;
+    border-radius:0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 16px;
+  }
+
+  .nav {
+    justify-content: center;
+  }
 }
 
 .chat-header{
@@ -266,12 +287,12 @@ body::before {
 
 <body>
 
-<!-- LOADING SCREEN -->
+<!-- LOADING -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
     <div class="loader-text">Eight Studios</div>
-    <div class="loader-sub">Loading Eight Studios...</div>
+    <div class="loader-sub">Loading Eight Studios ...</div>
     <div class="bar"><div class="progress"></div></div>
   </div>
 </div>
@@ -290,8 +311,8 @@ body::before {
   <div class="actions">
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download For Android</a>
-    <button class="btn" onclick="iosInstall()">Download For iPhone</button>
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
+    <button class="btn" onclick="iosInstall()">Download iPhone</button>
   </div>
 </div>
 
@@ -304,60 +325,50 @@ body::before {
   <div class="card"><a href="hats.html">Hats</a></div>
 </div>
 
-<!-- 💬 CHAT BUTTON -->
+<!-- CHAT -->
 <div class="chat-fab" onclick="openChat()">💬</div>
 
-<!-- 💬 CHAT POPUP -->
 <div id="chatModal" class="chat-modal">
   <div class="chat-box">
-
     <div class="chat-header">
       <span>Eight Studios Chat</span>
       <button onclick="closeChat()">✕</button>
     </div>
-
-    <iframe
-      src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
-      class="chat-frame">
-    </iframe>
-
+    <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37" class="chat-frame"></iframe>
   </div>
 </div>
 
 <script>
-function shareSite() {
+function shareSite(){
   navigator.share?.({
-    title: "Eight Studios",
-    text: "Check out Eight Studios 🔥",
-    url: window.location.href
+    title:"Eight Studios",
+    text:"Check this out 🔥",
+    url:window.location.href
   }) || navigator.clipboard.writeText(window.location.href);
 }
 
-function iosInstall() {
-  alert("📱 iPhone Install:\n\nOpen Safari → Share → Add to Home Screen");
+function iosInstall(){
+  alert("Open Safari → Share → Add to Home Screen");
 }
 
-/* CHAT */
 function openChat(){
-  document.getElementById("chatModal").style.display = "flex";
+  document.getElementById("chatModal").style.display="flex";
 }
 
 function closeChat(){
-  document.getElementById("chatModal").style.display = "none";
+  document.getElementById("chatModal").style.display="none";
 }
 
-document.addEventListener("click", function(e){
-  const modal = document.getElementById("chatModal");
-  if (e.target === modal) closeChat();
+document.addEventListener("click", (e)=>{
+  if(e.target.id==="chatModal") closeChat();
 });
 
-/* LOADING */
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loadingScreen");
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => loader.remove(), 600);
-  }, 2200);
+window.addEventListener("load", ()=>{
+  const loader=document.getElementById("loadingScreen");
+  setTimeout(()=>{
+    loader.style.opacity="0";
+    setTimeout(()=>loader.remove(),600);
+  },2000);
 });
 </script>
 
