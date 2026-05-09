@@ -5,15 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hoodies - Eight Studios</title>
 
-<!-- 🔥 FULL ICON SETUP -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="shortcut icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" sizes="192x192" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<link rel="icon" sizes="512x512" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<!-- 🔥 SOCIAL EMBED -->
 <meta property="og:title" content="Eight Studios - Hoodies" />
 <meta property="og:description" content="Handmade 1/1 hooded garments by Eight Studios." />
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png" />
@@ -39,7 +32,6 @@ body {
   top: 0;
   display: flex;
   justify-content: center;
-  gap: 20px;
   padding: 15px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(12px);
@@ -51,28 +43,31 @@ body {
   font-weight: bold;
 }
 
-/* 🔥 LOGO HEADER (BIGGER) */
-.brand {
+/* LOGO */
+.logo-wrap {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 25px 10px 10px;
+  margin-top: 20px;
 }
 
-.brand img {
-  height: 110px; /* 🔥 BIGGER LOGO */
-  width: auto;
+.logo-wrap img {
+  width: 120px;
+  filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
+  transition: 0.3s;
+}
+
+.logo-wrap img:hover {
+  transform: scale(1.05);
 }
 
 /* HEADER */
 .header {
   text-align: center;
-  padding: 10px 30px 30px;
+  padding: 20px;
 }
 
 .header h1 {
-  margin: 0;
+  margin: 10px 0 0;
   font-size: 40px;
 }
 
@@ -83,25 +78,22 @@ body {
 /* GRID */
 .grid {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 40px;
+  gap: 25px;
+  padding: 30px;
 }
 
-/* PRODUCT CARD */
+/* CARD */
 .card {
-  width: 260px;
+  width: 240px;
   border-radius: 18px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   backdrop-filter: blur(15px);
   overflow: hidden;
   transition: 0.25s;
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -110,6 +102,15 @@ body {
   border: 1px solid rgba(0,200,255,0.4);
 }
 
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: black;
+}
+
+/* CONTENT */
 .content {
   padding: 12px;
 }
@@ -124,6 +125,16 @@ body {
   margin-top: 5px;
 }
 
+/* PRICE (MATCH OTHER PAGES) */
+.price {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00c8ff;
+  text-shadow: 0 0 8px rgba(0,200,255,0.4);
+}
+
+/* BUTTON */
 .checkout-btn {
   margin-top: 10px;
   display: inline-block;
@@ -144,52 +155,51 @@ body {
 /* NOTE */
 .note {
   text-align: center;
-  padding: 30px;
   opacity: 0.7;
-}
-
-.note a {
-  color: #00c8ff;
-  text-decoration: none;
+  padding: 30px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
 
-<!-- 🔥 LOGO -->
-<div class="brand">
-  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" alt="Eight Studios Logo">
+<div class="logo-wrap">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" alt="Logo">
 </div>
 
-<!-- HEADER -->
 <div class="header">
   <h1>Hoodies</h1>
   <p>Handmade 1/1 hooded garments by Eight Studios.</p>
 </div>
 
-<!-- PRODUCT -->
 <div class="grid">
 
   <div class="card" onclick="window.open('https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d', '_blank')">
     <img src="https://i.imgur.com/pIeNzKp.jpeg">
+
     <div class="content">
       <div class="title">888 Heavyweight Zipup — 1/1</div>
       <div class="subtitle">Handmade zip-up hoodie</div>
-       <div class="price">$158.00</div>
-      <a href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" target="_blank" class="checkout-btn" onclick="event.stopPropagation()">Checkout</a>
+
+      <div class="price">$158.00</div>
+
+      <a href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d"
+         target="_blank"
+         class="checkout-btn"
+         onclick="event.stopPropagation()">
+         Checkout
+      </a>
     </div>
   </div>
 
 </div>
 
 <div class="note">
-Contact: <a href="mailto:eight888studios@gmail.com">eight888studios@gmail.com</a>
+Contact: <a href="mailto:eight888studios@gmail.com" style="color:#00c8ff;text-decoration:none;">eight888studios@gmail.com</a>
 </div>
 
 <script src="/pwa-register.js" defer></script>
