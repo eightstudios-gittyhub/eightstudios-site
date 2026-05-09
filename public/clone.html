@@ -129,19 +129,6 @@ body {
   font-weight:bold;
 }
 
-/* 🟢 online dot */
-#statusDot {
-  position:absolute;
-  bottom:6px;
-  left:6px;
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#00ff6a;
-  border:2px solid black;
-  box-shadow:0 0 8px rgba(0,255,106,0.8);
-}
-
 /* modal */
 .chat-modal {
   position:fixed;
@@ -212,11 +199,10 @@ body {
 
 <div class="empty">More items coming soon.</div>
 
-<!-- 💬 CHAT BUTTON (ONLY ONE) -->
+<!-- 💬 CHAT BUTTON -->
 <div class="chat-fab" onclick="openChat()">
   💬
   <span id="chatBadge">0</span>
-  <span id="statusDot"></span>
 </div>
 
 <!-- 💬 CHAT POPUP -->
@@ -239,24 +225,24 @@ body {
 <script>
 let unread = 0;
 
-/* OPEN */
+/* open */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
   resetBadge();
 }
 
-/* CLOSE */
+/* close */
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
-/* OUTSIDE CLOSE */
+/* outside click */
 document.addEventListener("click",(e)=>{
   const modal = document.getElementById("chatModal");
   if(e.target === modal) closeChat();
 });
 
-/* 🔴 badge */
+/* badge */
 function addBadge(){
   unread++;
   const badge = document.getElementById("chatBadge");
@@ -268,14 +254,9 @@ function resetBadge(){
   unread = 0;
   document.getElementById("chatBadge").style.display = "none";
 }
-
-/* 🟢 online */
-window.addEventListener("load",()=>{
-  document.getElementById("statusDot").style.background = "#00ff6a";
-});
 </script>
 
-<!-- LOADING SCRIPT -->
+<!-- LOADING -->
 <script>
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
