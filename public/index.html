@@ -190,63 +190,6 @@ body::before {
   0%,100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.08); opacity: 0.7; }
 }
-
-/* 👋 WELCOME POPUP */
-.welcome-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s ease;
-}
-
-.welcome-popup.show {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.welcome-box {
-  width: 90%;
-  max-width: 340px;
-  padding: 25px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  text-align: center;
-  color: white;
-}
-
-.welcome-logo {
-  width: 70px;
-  margin-bottom: 10px;
-}
-
-.welcome-box h2 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.welcome-box p {
-  font-size: 13px;
-  opacity: 0.8;
-  margin-bottom: 18px;
-}
-
-.welcome-box button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: rgba(0,200,255,0.25);
-  color: white;
-  cursor: pointer;
-}
 </style>
 </head>
 
@@ -268,19 +211,6 @@ body::before {
   </div>
 </div>
 
-<!-- 👋 WELCOME POPUP -->
-<div id="welcomePopup" class="welcome-popup">
-  <div class="welcome-box">
-
-    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="welcome-logo">
-
-    <h2>Welcome to Eight Studios</h2>
-    <p>Premium streetwear essentials built for clean fits & bold energy.</p>
-
-    <button onclick="closeWelcome()">Enter Site</button>
-  </div>
-</div>
-
 <!-- NAV -->
 <div class="nav">
   <button class="nav-share" onclick="shareSite()">Share</button>
@@ -299,9 +229,9 @@ body::before {
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
 
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download For Android</a>
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
 
-    <button class="btn" onclick="iosInstall()">Download For iPhone</button>
+    <button class="btn" onclick="iosInstall()">Download iPhone</button>
 
   </div>
 
@@ -344,21 +274,6 @@ window.addEventListener("load", () => {
     setTimeout(() => loader.remove(), 600);
   }, 2200);
 });
-
-/* 👋 ALWAYS SHOW WELCOME */
-function showWelcome() {
-  const popup = document.getElementById("welcomePopup");
-
-  setTimeout(() => {
-    popup.classList.add("show");
-  }, 500);
-}
-
-function closeWelcome() {
-  document.getElementById("welcomePopup").classList.remove("show");
-}
-
-window.addEventListener("load", showWelcome);
 </script>
 
 </body>
