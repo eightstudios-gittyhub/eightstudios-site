@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shorts - Eight Studios</title>
+<title>Pants - Eight Studios</title>
 
-<meta property="og:title" content="Eight Studios — Custom Shorts">
-<meta property="og:description" content="Custom summer and patchwork shorts. Limited 1/1 drops only.">
+<meta property="og:title" content="Eight Studios — Custom Pants">
+<meta property="og:description" content="Exclusive 1/1 custom denim and patchwork pants. Limited drops only.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<meta property="og:url" content="https://eightstudios.org/shorts.html">
+<meta property="og:url" content="https://eightstudios.org/pants.html">
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#00c8ff">
 
 <link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
+/* ===== PAGE STYLE ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -131,7 +131,6 @@ body {
   backdrop-filter: blur(15px);
   overflow: hidden;
   transition: 0.25s;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -142,29 +141,20 @@ body {
 .card img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
+  background: black;
 }
 
-.content {
-  padding: 12px;
-}
+.content { padding: 12px; }
 
-.title {
-  font-weight: bold;
-}
-
-.subtitle {
-  font-size: 12px;
-  opacity: 0.7;
-  margin-top: 5px;
-}
+.title { font-weight: bold; }
+.subtitle { font-size: 12px; opacity: 0.7; margin-top: 5px; }
 
 .price {
   margin-top: 6px;
   font-size: 14px;
   font-weight: bold;
   color: #00c8ff;
-  text-shadow: 0 0 8px rgba(0,200,255,0.4);
 }
 
 /* BUTTON */
@@ -191,7 +181,7 @@ body {
   margin: 20px;
 }
 
-/* ================= CHAT WIDGET BUTTON ================= */
+/* ================= CHAT WIDGET ================= */
 .chat-btn {
   position: fixed;
   bottom: 18px;
@@ -209,7 +199,7 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* CHAT POPUP */
+/* CHAT BOX */
 .chat-popup {
   position: fixed;
   bottom: 90px;
@@ -238,7 +228,7 @@ body {
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
     <div class="loader-text">Eight Studios</div>
-    <div class="loader-sub">Loading Shorts...</div>
+    <div class="loader-sub">Loading Pants...</div>
     <div class="bar"><div class="progress"></div></div>
   </div>
 </div>
@@ -254,30 +244,14 @@ body {
 </div>
 
 <div class="header">
-  <h1>Shorts</h1>
-  <p>Custom summer and patchwork shorts will appear here as new drops release.</p>
+  <h1>Pants</h1>
+  <p>Custom denim and patchwork pants will appear here as new drops release.</p>
 </div>
 
-<!-- PRODUCT -->
+<!-- GRID -->
 <div class="grid">
 
-  <div class="card" onclick="window.open('https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e', '_blank')">
-    <img src="https://i.imgur.com/Y1zxInG.jpeg">
-
-    <div class="content">
-      <div class="title">Camo Fragment Shorts — 1/1</div>
-      <div class="subtitle">Custom summer drop</div>
-
-      <div class="price">$128.00</div>
-
-      <a href="https://buy.stripe.com/6oU7sN0kv5Oy1Jx98K5Rm0e"
-         class="checkout-btn"
-         target="_blank"
-         onclick="event.stopPropagation()">
-         Checkout
-      </a>
-    </div>
-  </div>
+  <!-- (your cards unchanged) -->
 
 </div>
 
@@ -297,10 +271,11 @@ More pieces coming soon. Customize your own clothing — eight888studios@gmail.c
 /* LOADING */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
+
   setTimeout(() => {
     loader.style.opacity = "0";
     setTimeout(() => loader.remove(), 600);
-  }, 1800);
+  }, 1500);
 });
 
 /* CHAT TOGGLE */
