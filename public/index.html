@@ -311,6 +311,7 @@ body::before {
   <div class="actions">
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
+    <button class="btn" onclick="openInstagram()">Instagram</button>
     <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
     <button class="btn" onclick="iosInstall()">Download iPhone</button>
   </div>
@@ -349,6 +350,17 @@ function shareSite(){
 
 function iosInstall(){
   alert("Open Safari → Share → Add to Home Screen");
+}
+
+function openInstagram(){
+  const appUrl="instagram://user?username=eightstudios";
+  const webUrl="https://www.instagram.com/eightstudios/";
+
+  window.location.href=appUrl;
+
+  setTimeout(()=>{
+    if(!document.hidden) window.location.href=webUrl;
+  },900);
 }
 
 function openChat(){
