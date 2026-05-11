@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews - Eight Studios</title>
+
+<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #00111a, #000);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* 🔥 BACKGROUND GLOW */
+body::before {
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  background: radial-gradient(circle, #00ffcc33, transparent);
+  top:-150px;
+  left:-150px;
+  filter: blur(80px);
+  animation: floatGlow 10s infinite alternate;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(100px,100px); }
+}
+
+/* NAV (CENTERED TITLE) */
+.nav {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(15px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.nav h1 {
+  font-size:26px;
+  letter-spacing:2px;
+  background: linear-gradient(90deg, #00ffcc, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LOGO */
+.logo {
+  text-align:center;
+  margin-top:25px;
+}
+
+.logo img {
+  height:85px;
+  opacity:0.95;
+  filter: drop-shadow(0 0 20px #00ffcc55);
+}
+
+/* HEADER */
+.header {
+  text-align:center;
+  padding:20px;
+}
+
+.header h2 {
+  font-size:40px;
+  margin-top:15px;
+}
+
+.header p {
+  opacity:0.6;
+  margin-top:10px;
+}
+
+/* EMBED WRAPPER */
+.embed-wrapper {
+  padding:20px;
+}
+
+/* EMBED BOX */
+.embed-box {
+  position: relative;
+  height:75vh;
+  border-radius:20px;
+  overflow:hidden;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow: 
+    0 0 40px rgba(0,255,204,0.1),
+    inset 0 0 30px rgba(0,0,0,0.6);
+  transition:0.3s;
+}
+
+.embed-box:hover {
+  box-shadow: 
+    0 0 60px rgba(0,255,204,0.2),
+    inset 0 0 40px rgba(0,0,0,0.7);
+}
+
+/* IFRAME */
+iframe {
+  width:100%;
+  height:100%;
+  border:none;
+  position:relative;
+  z-index:1;
+}
+
+/* EDGE BLUR FADES */
+.fade {
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+}
+
+.fade.top {
+  top:0;
+  left:0;
+  width:100%;
+  height:70px;
+  background: linear-gradient(to bottom, #000, transparent);
+}
+
+.fade.bottom {
+  bottom:0;
+  left:0;
+  width:100%;
+  height:70px;
+  background: linear-gradient(to top, #000, transparent);
+}
+
+.fade.left {
+  top:0;
+  left:0;
+  width:70px;
+  height:100%;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.fade.right {
+  top:0;
+  right:0;
+  width:70px;
+  height:100%;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+/* GLASS OVERLAY */
+.glass-overlay {
+  position:absolute;
+  inset:0;
+  backdrop-filter: blur(2px);
+  background: rgba(255,255,255,0.02);
+  z-index:2;
+  pointer-events:none;
+}
+
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:20px;
+  font-size:12px;
+  opacity:0.4;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <h1>EIGHT STUDIOS</h1>
+</div>
+
+<!-- LOGO -->
+<div class="logo">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>Customer Reviews</h2>
+  <p>Real feedback from our community</p>
+</div>
+
+<!-- EMBED -->
+<div class="embed-wrapper">
+  <div class="embed-box">
+
+    <iframe src="https://share.google/VqFNKC9AfITJGFnIs"></iframe>
+
+    <!-- BLUR EDGES -->
+    <div class="fade top"></div>
+    <div class="fade bottom"></div>
+    <div class="fade left"></div>
+    <div class="fade right"></div>
+
+    <!-- GLASS EFFECT -->
+    <div class="glass-overlay"></div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 Eight Studios — The World Is Yours
+</div>
+
+</body>
+</html>
