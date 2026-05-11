@@ -84,3 +84,31 @@ app.get("/api/visits", (req, res) => {
 app.listen(3000, () => {
   console.log("Eight Studios running");
 });
+
+const express = require("express");
+const fs = require("fs");
+const app = express();
+
+app.use(express.json());
+
+const FILE = "./reviews.json";
+
+// GET reviews
+app.get("/reviews", (req, res) => {
+  const data = JSON.parse(fs.readFileSync(FILE));
+  res.json(data);
+});
+
+// ADD review
+app.post("/reviews", (req, res) => {
+  const data = JSON.parse(fs.readFileSync(FILE));
+
+  data.push(req.body);
+
+  fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
+
+  res.json({ success: true });
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
+
