@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Eight Studios</title>
+
+<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<meta name="description" content="Eight Studios — premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
+<meta property="og:title" content="Eight Studios">
+<meta property="og:description" content="Premium streetwear essentials. Shop hoodies, beanies, shorts & more.">
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+body {
+  color: white;
+  background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 0;
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px;
+  padding-top: calc(14px + env(safe-area-inset-top));
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+}
+
+.nav-share {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 🔍 SEARCH */
+.search-wrap {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.search {
+  width: 92%;
+  max-width: 420px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(16px);
+  color: white;
+  outline: none;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.logo {
+  width: 90px;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: clamp(24px, 5vw, 34px);
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+/* ACTIONS */
+.actions {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn {
+  width: 92%;
+  max-width: 340px;
+  padding: 15px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0,200,255,0.2);
+}
+
+/* GRID */
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  padding: 20px;
+}
+
+.card {
+  height: 120px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card a {
+  color: white;
+  text-decoration: none;
+}
+
+/* LOADING SCREEN (RESTORED FULL VERSION) */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.6s ease;
+}
+
+.loader-box {
+  text-align: center;
+  color: white;
+}
+
+.loader-logo {
+  width: 80px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loader-text {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.loader-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: rgba(0,200,255,0.8);
+  animation: load 2.2s ease forwards;
+}
+
+@keyframes load { to { width: 100%; } }
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.7; }
+}
+
+/* CHAT */
+.chat-fab{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#00c8ff,#0077ff);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  cursor:pointer;
+  z-index:9999;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Eight Studios ...</div>
+    <div class="bar"><div class="progress"></div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nav-share" onclick="shareSite()">Share</button>
+</div>
+
+<!-- 🔍 SEARCH (YOUR FEATURE ADDED BACK PROPERLY) -->
+<div class="search-wrap">
+  <input id="search" class="search" placeholder="Search hoodies, beanies, pants..." oninput="searchItems()">
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
+  <div class="title">Eight Studios</div>
+  <div class="subtitle">Premium streetwear essentials</div>
+
+  <div class="actions">
+    <a class="btn" href="tel:5184770592">Call</a>
+    <a class="btn" href="sms:5184770592">Text</a>
+    <button class="btn">Instagram</button>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="grid">
+  <div class="card" data-item="beanies"><a href="beanies.html">Beanies</a></div>
+  <div class="card" data-item="hoodies"><a href="hoodies.html">Hoodies</a></div>
+  <div class="card" data-item="shorts"><a href="shorts.html">Shorts</a></div>
+  <div class="card" data-item="pants"><a href="pants.html">Pants</a></div>
+  <div class="card" data-item="hats"><a href="hats.html">Hats</a></div>
+</div>
+
+<!-- CHAT -->
+<div class="chat-fab">💬</div>
+
+<script>
+
+/* 🔍 SEARCH FUNCTION (YOUR FEATURE) */
+function searchItems() {
+  const query = document.getElementById("search").value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    const item = card.getAttribute("data-item");
+
+    let show = false;
+
+    if (query === "") show = true;
+
+    if (item.includes(query)) show = true;
+
+    if (query.includes("hood")) show = item === "hoodies";
+    if (query.includes("beanie")) show = item === "beanies";
+    if (query.includes("hat")) show = item === "hats";
+    if (query.includes("pant")) show = item === "pants";
+    if (query.includes("short")) show = item === "shorts";
+
+    card.style.display = show ? "flex" : "none";
+  });
+}
+
+/* SHARE */
+function shareSite(){
+  navigator.share?.({
+    title:"Eight Studios",
+    url:window.location.href
+  }) || navigator.clipboard.writeText(window.location.href);
+}
+
+/* LOADING */
+window.addEventListener("load", ()=>{
+  setTimeout(()=>{
+    document.getElementById("loadingScreen").style.opacity="0";
+    setTimeout(()=>document.getElementById("loadingScreen").remove(),600);
+  },2000);
+});
+
+</script>
+
+</body>
+</html>
