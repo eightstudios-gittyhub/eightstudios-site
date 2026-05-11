@@ -26,7 +26,6 @@ body {
   background-size: cover;
 }
 
-/* overlay */
 body::before {
   content: "";
   position: fixed;
@@ -233,7 +232,6 @@ body::before {
   animation:slideUp 0.35s forwards;
 }
 
-/* 📱 FULL SCREEN ON MOBILE */
 @media (max-width: 600px){
   .chat-box{
     height:100vh;
@@ -340,12 +338,26 @@ body::before {
 </div>
 
 <script>
+
+/* 🔥 UPDATED SHARE LINK (REFERRAL FIX) */
 function shareSite(){
-  navigator.share?.({
-    title:"Eight Studios",
-    text:"Check this out 🔥",
-    url:window.location.href
-  }) || navigator.clipboard.writeText(window.location.href);
+
+  const referralLink = "https://eightstudios.org/?ref=888Studios";
+
+  const shareData = {
+    title: "Eight Studios",
+    text: "Check out Eight Studios 🔥",
+    url: referralLink
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData);
+  } else {
+    navigator.clipboard.writeText(
+      shareData.text + "\n" + referralLink
+    );
+    alert("Link copied!");
+  }
 }
 
 function iosInstall(){
