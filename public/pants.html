@@ -249,6 +249,7 @@ body {
   background: rgba(0,200,255,0.3);
 }
 
+/* INSTAGRAM BUTTON FIX */
 .insta-btn {
   width: 45px;
   height: 45px;
@@ -261,10 +262,11 @@ body {
   justify-content: center;
 }
 
-.insta-btn svg {
+.insta-btn img {
   width: 22px;
   height: 22px;
-  fill: white;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-text {
@@ -388,9 +390,7 @@ More pieces coming soon. Customize your own clothing — eight888studios@gmail.c
     <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
 
     <button class="insta-btn" onclick="window.open('https://instagram.com/eightstudios','_blank')">
-      <svg viewBox="0 0 24 24">
-        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
     </button>
 
   </div>
