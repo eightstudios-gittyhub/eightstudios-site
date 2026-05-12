@@ -34,13 +34,13 @@ body::before {
   z-index: 0;
 }
 
-/* NAV (FIXED CENTER SHARE BUTTON) */
+/* NAV (CENTER SHARE) */
 .nav {
   position: sticky;
   top: 0;
   z-index: 10;
   display: flex;
-  justify-content: center; /* ✅ CENTERED */
+  justify-content: center;
   padding: 14px;
   padding-top: calc(14px + env(safe-area-inset-top));
   background: rgba(0,0,0,0.5);
@@ -55,7 +55,7 @@ body::before {
   color: white;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
 .nav-share:hover {
@@ -208,7 +208,7 @@ body::before {
   50% { transform: scale(1.08); opacity: 0.7; }
 }
 
-/* CHAT */
+/* DRAGGABLE CHAT BUBBLE */
 .chat-fab {
   position: fixed;
   bottom: 18px;
@@ -223,7 +223,15 @@ body::before {
   font-size: 26px;
   z-index: 9999;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  cursor: pointer;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.15s ease;
+}
+
+.chat-fab:active {
+  cursor: grabbing;
+  transform: scale(1.1);
 }
 
 /* CHAT MODAL */
@@ -289,7 +297,7 @@ body::before {
   gap: 12px;
 }
 
-/* INSTAGRAM BUTTON */
+/* INSTAGRAM */
 .insta-btn {
   width: 52px;
   height: 52px;
@@ -315,7 +323,6 @@ body::before {
   transform: translateY(-3px) scale(1.05);
   border: 1px solid rgba(0,200,255,0.5);
   background: rgba(0,200,255,0.12);
-  box-shadow: 0 0 25px rgba(0,200,255,0.25);
 }
 
 .footer-text {
@@ -337,7 +344,7 @@ body::before {
   </div>
 </div>
 
-<!-- NAV (CENTERED) -->
+<!-- NAV -->
 <div class="nav">
   <button class="nav-share" onclick="shareSite()">Share</button>
 </div>
@@ -367,7 +374,9 @@ body::before {
 </div>
 
 <!-- CHAT -->
-<div class="chat-fab" onclick="openChat()">💬</div>
+<div id="chatBubble" class="chat-fab" onclick="openChat()">
+  💬
+</div>
 
 <div id="chatModal" class="chat-modal">
   <div class="chat-box">
@@ -420,6 +429,80 @@ function closeChat(){
   document.getElementById("chatModal").style.display="none";
 }
 
+/* DRAG BUBBLE */
+let bubble = document.getElementById("chatBubble");
+let dragging = false;
+let offsetX = 0;
+let offsetY = 0;
+
+bubble.addEventListener("mousedown", startDrag);
+bubble.addEventListener("touchstart", startDrag);
+
+function startDrag(e){
+  dragging = true;
+  const t = e.touches ? e.touches[0] : e;
+  const rect = bubble.getBoundingClientRect();
+
+  offsetX = t.clientX - rect.left;
+  offsetY = t.clientY - rect.top;
+
+  document.addEventListener("mousemove", move);
+  document.addEventListener("mouseup", stop);
+  document.addEventListener("touchmove", move, {passive:false});
+  document.addEventListener("touchend", stop);
+}
+
+function move(e){
+  if(!dragging) return;
+  e.preventDefault();
+
+  const t = e.touches ? e.touches[0] : e;
+
+  let x = t.clientX - offsetX;
+  let y = t.clientY - offsetY;
+
+  const maxX = window.innerWidth - bubble.offsetWidth;
+  const maxY = window.innerHeight - bubble.offsetHeight;
+
+  x = Math.max(0, Math.min(x, maxX));
+  y = Math.max(0, Math.min(y, maxY));
+
+  bubble.style.left = x + "px";
+  bubble.style.top = y + "px";
+  bubble.style.bottom = "auto";
+  bubble.style.right = "auto";
+  bubble.style.position = "fixed";
+}
+
+function stop(){
+  dragging = false;
+
+  document.removeEventListener("mousemove", move);
+  document.removeEventListener("mouseup", stop);
+  document.removeEventListener("touchmove", move);
+  document.removeEventListener("touchend", stop);
+
+  snap();
+}
+
+function snap(){
+  const rect = bubble.getBoundingClientRect();
+  const center = window.innerWidth / 2;
+
+  bubble.style.transition = "0.25s ease";
+
+  if(rect.left < center){
+    bubble.style.left = "12px";
+    bubble.style.right = "auto";
+  } else {
+    bubble.style.right = "12px";
+    bubble.style.left = "auto";
+  }
+
+  setTimeout(()=> bubble.style.transition="none", 300);
+}
+
+/* LOADING */
 window.addEventListener("load",()=>{
   setTimeout(()=>{
     const l=document.getElementById("loadingScreen");
