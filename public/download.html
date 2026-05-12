@@ -29,6 +29,28 @@ body::before {
   z-index: 0;
 }
 
+/* ================= SPLASH SCREEN ================= */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#splash img {
+  width: 90px;
+  animation: splashPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes splashPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
 /* NAV */
 nav {
   position: fixed;
@@ -52,6 +74,12 @@ nav a {
   border-radius: 10px;
   font-size: 14px;
   letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  border-color: white;
+  transform: translateY(-2px);
 }
 
 /* MAIN */
@@ -69,9 +97,10 @@ main {
 
 h1 {
   font-size: 32px;
+  letter-spacing: 2px;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .download-btn {
   width: 240px;
   padding: 14px;
@@ -82,6 +111,12 @@ h1 {
   color: black;
   background: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #dcdcdc;
+  transform: translateY(-3px);
 }
 
 .secondary {
@@ -90,7 +125,7 @@ h1 {
   border: 1px solid rgba(255,255,255,0.25);
 }
 
-/* ================= INSTALL MODAL ================= */
+/* MODAL */
 .modal {
   position: fixed;
   inset: 0;
@@ -137,10 +172,25 @@ h1 {
   cursor: pointer;
   font-weight: bold;
 }
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px;
+  font-size: 12px;
+  opacity: 0.5;
+}
 </style>
 </head>
 
 <body>
+
+<!-- ⚡ SPLASH -->
+<div id="splash">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
+</div>
 
 <!-- NAV -->
 <nav>
@@ -149,58 +199,81 @@ h1 {
 
 <!-- MAIN -->
 <main>
-  <h1>DOWNLOADS</h1>
+  <h1>DOWNLOAD</h1>
 
-  <!-- ANDROID BUTTON -->
-  <div class="download-btn" onclick="openInstallGuide()">
+  <!-- ANDROID -->
+  <div class="download-btn" onclick="openAndroid()">
     DOWNLOAD FOR ANDROID
   </div>
 
   <!-- IOS -->
-  <div class="download-btn secondary">
-    DOWNLOAD FOR IOS (COMING SOON)
+  <div class="download-btn secondary" onclick="openIOS()">
+    DOWNLOAD FOR IOS
   </div>
 </main>
 
-<!-- INSTALL MODAL -->
+<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-box">
 
-    <h2>INSTALL INSTRUCTIONS</h2>
-    <p>Follow these steps before installing Eight Studios APK</p>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
 
-    <div class="steps">
-      1. Download the APK<br>
-      2. Open your Files app<br>
-      3. Tap the downloaded file<br>
-      4. Enable “Install Unknown Apps”<br>
-      5. Install & open app
-    </div>
+    <div class="steps" id="modalSteps"></div>
 
-    <div class="close-btn" onclick="downloadAPK()">
-      CONTINUE DOWNLOAD
-    </div>
-
-    <div class="close-btn" style="background:#333;color:white;margin-top:10px;" onclick="closeModal()">
-      CANCEL
-    </div>
+    <div class="close-btn" onclick="actionMain()">CONTINUE</div>
+    <div class="close-btn" style="background:#333;color:white;" onclick="closeModal()">CLOSE</div>
 
   </div>
 </div>
 
+<footer>
+  © 2026 Eight Studios
+</footer>
+
 <script>
 const apkLink = "https://eightstudios.org/app-release%20(1).apk";
+let mode = "";
 
-function openInstallGuide() {
+/* SPLASH */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const splash = document.getElementById("splash");
+    splash.style.opacity = "0";
+    splash.style.visibility = "hidden";
+  }, 1500);
+});
+
+/* MODALS */
+function openAndroid(){
+  mode = "android";
+  document.getElementById("modalTitle").innerText = "ANDROID INSTALL";
+  document.getElementById("modalDesc").innerText = "Install Eight Studios APK";
+  document.getElementById("modalSteps").innerHTML =
+    "1. Download APK<br>2. Open Files<br>3. Tap file<br>4. Allow unknown apps<br>5. Install";
   document.getElementById("modal").style.display = "flex";
 }
 
-function closeModal() {
+function openIOS(){
+  mode = "ios";
+  document.getElementById("modalTitle").innerText = "IOS PWA INSTALL";
+  document.getElementById("modalDesc").innerText = "Add Eight Studios to home screen";
+  document.getElementById("modalSteps").innerHTML =
+    "1. Open Safari<br>2. Tap Share button<br>3. Add to Home Screen<br>4. Confirm install";
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
   document.getElementById("modal").style.display = "none";
 }
 
-function downloadAPK() {
-  window.location.href = apkLink;
+function actionMain(){
+  if(mode === "android"){
+    window.location.href = apkLink;
+  }
+  if(mode === "ios"){
+    window.location.href = "https://eightstudios.org";
+  }
 }
 </script>
 
