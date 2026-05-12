@@ -111,7 +111,6 @@ body {
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* 🔴 badge */
 #chatBadge {
   position:absolute;
   top:0;
@@ -129,7 +128,6 @@ body {
   font-weight:bold;
 }
 
-/* modal */
 .chat-modal {
   position:fixed;
   inset:0;
@@ -168,6 +166,68 @@ body {
   width:100%;
   height:calc(100% - 48px);
   border:none;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  margin-top:60px;
+  padding:25px 15px;
+  text-align:center;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+}
+
+.footer-buttons {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:10px;
+  flex-wrap:wrap;
+}
+
+.icon-btn {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  background:#222;
+  color:white;
+  transition:0.2s;
+}
+
+.icon-btn:hover {
+  transform:scale(1.1);
+  background:#333;
+}
+
+.insta-btn {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  background:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.2s;
+}
+
+.insta-btn img {
+  width:22px;
+  height:22px;
+}
+
+.insta-btn:hover {
+  transform:scale(1.1);
+  background:#333;
+}
+
+.footer-text {
+  font-size:12px;
+  opacity:0.6;
 }
 
 </style>
@@ -222,27 +282,40 @@ body {
   </div>
 </div>
 
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-buttons">
+
+    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
+    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
+
+    <button class="insta-btn" onclick="window.open('https://instagram.com/eightstudios','_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    </button>
+
+  </div>
+
+  <div class="footer-text">© 2026 Eight Studios</div>
+</div>
+
 <script>
 let unread = 0;
 
-/* open */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
   resetBadge();
 }
 
-/* close */
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
-/* outside click */
 document.addEventListener("click",(e)=>{
   const modal = document.getElementById("chatModal");
   if(e.target === modal) closeChat();
 });
 
-/* badge */
 function addBadge(){
   unread++;
   const badge = document.getElementById("chatBadge");
