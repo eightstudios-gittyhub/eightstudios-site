@@ -8,181 +8,219 @@
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<meta name="description" content="Eight Studios Virtual Terminal — Admin-only cash payment system. Secure Square-powered payments.">
-
-<meta property="og:title" content="Eight Studios Virtual Terminal">
-<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
 <style>
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
   background: radial-gradient(circle at top, #012533, #00111a);
   color: white;
   min-height: 100vh;
   display: flex;
-  align-items: flex-end;
   justify-content: center;
-  padding: 15px;
+  align-items: center;
 }
 
-/* MAIN CARD */
+/* MAIN APP */
 .container {
   width: 100%;
   max-width: 520px;
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(18px);
-  border-radius: 24px;
-  padding: 18px;
+  border-radius: 20px;
+  padding: 20px;
   box-shadow: 0 10px 40px rgba(0,255,255,0.15);
 }
 
 /* HEADER */
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .logo {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   margin-bottom: 8px;
 }
 
-h1 {
+.title {
   font-size: 18px;
-  margin-bottom: 6px;
+  font-weight: bold;
 }
 
-.status {
+.subtitle {
   font-size: 12px;
-  color: #7CFF8A;
-}
-
-/* TRANSACTION ID */
-.txid {
-  font-size: 11px;
+  opacity: 0.7;
   margin-top: 4px;
-  opacity: 0.8;
-  color: #00d4ff;
 }
 
 /* TERMINAL */
 iframe {
   width: 100%;
-  height: 460px;
+  height: 420px;
   border: none;
+  border-radius: 14px;
+  margin-top: 10px;
+}
+
+/* LOCK SCREEN */
+.lock {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.login-box {
+  width: 90%;
+  max-width: 360px;
+  background: rgba(255,255,255,0.08);
   border-radius: 16px;
-}
-
-/* LOG */
-.log {
-  margin-top: 12px;
-  font-size: 12px;
-  background: rgba(0,0,0,0.25);
-  border-radius: 12px;
-  padding: 10px;
-}
-
-/* FOOTER */
-.footer {
-  margin-top: 12px;
-  font-size: 11px;
+  padding: 22px;
   text-align: center;
-  opacity: 0.75;
-  line-height: 1.6;
+}
+
+/* TX DISPLAY */
+.txid {
+  margin: 12px 0;
   padding: 10px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  font-size: 13px;
+  color: #00d4ff;
+  font-weight: bold;
 }
 
-.down {
+/* INPUTS */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #00d4ff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ERROR */
+.error {
+  margin-top: 10px;
+  font-size: 12px;
   color: #ff4d4d;
-  font-weight: bold;
-}
-
-.online {
-  color: #7CFF8A;
-  font-weight: bold;
-}
-
-.copyright {
-  margin-top: 8px;
-  font-size: 10px;
-  opacity: 0.6;
+  display: none;
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🔒 LOCK SCREEN -->
+<div class="lock" id="lockScreen">
+  <div class="login-box">
+
+    <div class="title">Secure Terminal Access</div>
+    <div class="subtitle">Enter Transaction ID + PIN</div>
+
+    <!-- 🆔 TX DISPLAY -->
+    <div class="txid" id="txDisplay">Generating Transaction ID...</div>
+
+    <!-- TX INPUT (COPY BLOCKED) -->
+    <input id="txInput"
+           placeholder="Transaction ID"
+           oncopy="return false"
+           oncut="return false"
+           onpaste="return false"
+           oncontextmenu="return false"
+           autocomplete="off"
+           spellcheck="false">
+
+    <!-- PIN INPUT -->
+    <input id="pinInput" type="password" placeholder="PIN Code">
+
+    <button onclick="verify()">Authenticate</button>
+
+    <div class="error" id="error">Invalid Transaction ID or PIN</div>
+
+  </div>
+</div>
+
+<!-- MAIN APP -->
 <div class="container">
 
-  <!-- HEADER -->
   <div class="header">
     <img class="logo" src="https://eightstudios.org/IMG_7229-removebg-preview.png">
-    <h1>Virtual Terminal</h1>
-    <div class="status">LIVE TERMINAL ACTIVE</div>
-
-    <!-- 🆔 Transaction ID -->
-    <div class="txid" id="txid">Generating transaction ID...</div>
+    <div class="title">Virtual Terminal</div>
+    <div class="subtitle">Secure Admin Processing System</div>
   </div>
 
-  <p style="text-align:center; opacity:0.7; font-size:12px;">
-    Admin Cash Payment Terminal — Secure Square Processing
-  </p>
-
-  <!-- TERMINAL -->
   <iframe src="https://app.squareup.com/terminal/checkout"></iframe>
-
-  <!-- LOG -->
-  <div class="log" id="log">
-    System initialized...
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    ⚠️ <span class="down">IP Logging API is currently DOWN</span><br>
-    🟢 Transaction API: <span class="online">ONLINE</span><br>
-    🟢 Terminal Service: <span class="online">ONLINE</span><br>
-    🟢 Authentication Service: <span class="online">ONLINE</span>
-
-    <div class="copyright">
-      © 2026 Eight Studios. All rights reserved.
-    </div>
-  </div>
 
 </div>
 
 <script>
-function addLog(msg) {
-  const log = document.getElementById("log");
-  const div = document.createElement("div");
-  div.textContent = msg + " — " + new Date().toLocaleTimeString();
-  log.prepend(div);
+let tx = "";
+
+/* 🔑 PIN */
+const PIN = "1234";
+
+/* generate TX */
+function generateTX() {
+  tx = "TX-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+  document.getElementById("txDisplay").textContent = "Transaction ID: " + tx;
 }
 
-/* Generate transaction ID */
-function generateTXID() {
-  const id = "TX-" + Math.random().toString(36).substring(2, 10).toUpperCase();
-  document.getElementById("txid").textContent = "🆔 Transaction ID: " + id;
-  addLog("Session started: " + id);
+generateTX();
+
+/* VERIFY */
+function verify() {
+  const txInput = document.getElementById("txInput").value.trim();
+  const pinInput = document.getElementById("pinInput").value.trim();
+  const error = document.getElementById("error");
+
+  if (txInput === tx && pinInput === PIN) {
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    error.style.display = "block";
+  }
 }
 
-generateTXID();
+/* EXTRA PROTECTION AGAINST COPY/PASTE */
+const txField = document.getElementById("txInput");
 
-/* IP log attempt */
-fetch("/log-ip")
-  .then(() => addLog("IP logging check complete"))
-  .catch(() => addLog("IP logging unavailable"));
+txField.addEventListener("keydown", function(e) {
+  if ((e.ctrlKey || e.metaKey) &&
+     (e.key === "c" || e.key === "v" || e.key === "x")) {
+    e.preventDefault();
+  }
+});
+
+txField.addEventListener("contextmenu", e => e.preventDefault());
 </script>
 
 </body>
