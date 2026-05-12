@@ -25,6 +25,7 @@ body {
   color: white;
   background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
   text-align: center;
+  padding-bottom: 120px; /* prevents footer overlap */
 }
 
 .container {
@@ -59,13 +60,14 @@ button {
   color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
   transform: scale(1.05);
 }
 
-/* EMAIL LIST */
+/* EMAIL */
 .subscribe-box {
   margin-top: 20px;
 }
@@ -100,6 +102,7 @@ input {
   justify-content: center;
   font-size: 26px;
   cursor: pointer;
+  z-index: 999;
 }
 
 .chat-modal {
@@ -109,6 +112,7 @@ input {
   display: none;
   align-items: flex-end;
   justify-content: center;
+  z-index: 1000;
 }
 
 .chat-box {
@@ -117,6 +121,7 @@ input {
   height: 75vh;
   background: #111;
   border-radius: 18px 18px 0 0;
+  overflow: hidden;
 }
 
 /* FOOTER */
@@ -127,6 +132,7 @@ input {
   padding: 15px;
   background: rgba(0,0,0,0.75);
   text-align: center;
+  backdrop-filter: blur(10px);
 }
 
 .footer-buttons {
@@ -137,7 +143,7 @@ input {
   flex-wrap: wrap;
 }
 
-.icon-btn, .insta-btn {
+.icon-btn {
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -150,9 +156,10 @@ input {
   justify-content:center;
 }
 
-.insta-btn img {
+.icon-btn img {
   width: 22px;
   height: 22px;
+  display: block;
 }
 
 .footer-text {
@@ -167,25 +174,24 @@ input {
 
 <div class="container">
 
-  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo" alt="Eight Studios Logo">
 
   <h1>Coming Soon</h1>
   <p>Something new is on the way from Eight Studios.</p>
 
-  <!-- EMAIL SUBSCRIBE -->
   <div class="subscribe-box">
     <input id="emailInput" type="email" placeholder="Enter your email">
     <br>
-    <button onclick="subscribe()">Notify Me</button>
+    <button type="button" onclick="subscribe()">Notify Me</button>
     <div class="msg" id="msg"></div>
   </div>
 
 </div>
 
-<!-- CHAT -->
+<!-- CHAT BUTTON -->
 <div class="chat-fab" onclick="openChat()">💬</div>
 
-<div id="chatModal" class="chat-modal">
+<div id="chatModal" class="chat-modal" onclick="outsideClose(event)">
   <div class="chat-box">
     <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
     style="width:100%; height:100%; border:none;"></iframe>
@@ -196,12 +202,12 @@ input {
 <div class="footer">
   <div class="footer-buttons">
 
-    <button onclick="window.location.href='tel:+15184770592'">📞</button>
-    <button onclick="window.location.href='sms:5184770592'">💬</button>
-    <button onclick="window.location.href='download.html'">⬇️</button>
+    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
+    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
 
-    <button onclick="window.open('https://instagram.com/eightstudios','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+    <button class="icon-btn" onclick="window.open('https://instagram.com/eightstudios','_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
     </button>
 
   </div>
@@ -211,12 +217,26 @@ input {
 
 <script>
 
-/* CHAT */
+/* CHAT OPEN */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
 }
 
-/* EMAIL SUBSCRIBE SYSTEM */
+/* CHAT CLOSE OUTSIDE CLICK */
+function outsideClose(e){
+  if (e.target.id === "chatModal") {
+    document.getElementById("chatModal").style.display = "none";
+  }
+}
+
+/* ESC CLOSE */
+document.addEventListener("keydown", function(e){
+  if (e.key === "Escape") {
+    document.getElementById("chatModal").style.display = "none";
+  }
+});
+
+/* EMAIL SUBSCRIBE */
 function subscribe() {
   const email = document.getElementById("emailInput").value.trim();
   const msg = document.getElementById("msg");
