@@ -7,6 +7,18 @@
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
+<!-- SOCIAL SHARE (DISCORD / LINK PREVIEW) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Download Eight Studios">
+<meta property="og:description" content="Download the official Eight Studios app for Android or install on iOS. Fast, secure, and updated drops.">
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<meta property="og:url" content="https://eightstudios.org/download.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Download Eight Studios">
+<meta name="twitter:description" content="Get the official Eight Studios app for Android or iOS.">
+<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
 <style>
 * {
   margin: 0;
@@ -296,7 +308,6 @@ h1 { font-size: 32px; letter-spacing: 2px; }
 const apkLink = "https://eightstudios.org/app-release%20(1).apk";
 let mode = "";
 
-/* LOADING */
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("loadingScreen").style.opacity = "0";
@@ -309,7 +320,6 @@ window.addEventListener("load", () => {
   }, 1500);
 });
 
-/* MODAL */
 function openAndroid(){
   mode = "android";
   modalTitle.innerText = "ANDROID INSTALL";
@@ -335,7 +345,6 @@ function actionMain(){
   if(mode === "ios") window.location.href = "https://eightstudios.org";
 }
 
-/* CHAT */
 function toggleChat(){
   const chat = document.getElementById("chatPopup");
   chat.style.display = chat.style.display === "block" ? "none" : "block";
