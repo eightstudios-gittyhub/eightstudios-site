@@ -21,7 +21,6 @@ body {
   background-size: cover;
 }
 
-/* DARK OVERLAY */
 body::before {
   content: "";
   position: fixed;
@@ -53,12 +52,6 @@ nav a {
   border-radius: 10px;
   font-size: 14px;
   letter-spacing: 2px;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  border-color: white;
-  transform: translateY(-2px);
 }
 
 /* MAIN */
@@ -74,13 +67,11 @@ main {
   padding-top: 80px;
 }
 
-/* TITLE */
 h1 {
   font-size: 32px;
-  letter-spacing: 2px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .download-btn {
   width: 240px;
   padding: 14px;
@@ -90,64 +81,128 @@ h1 {
   text-decoration: none;
   color: black;
   background: white;
-  transition: 0.3s;
+  cursor: pointer;
 }
 
-.download-btn:hover {
-  background: #dcdcdc;
-  transform: translateY(-3px);
-}
-
-/* SECONDARY BUTTON */
 .secondary {
   background: transparent;
   color: white;
   border: 1px solid rgba(255,255,255,0.25);
 }
 
-.secondary:hover {
-  border-color: white;
+/* ================= INSTALL MODAL ================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
 
-/* FOOTER */
-footer {
-  position: relative;
-  z-index: 2;
+.modal-box {
+  width: 320px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 20px;
   text-align: center;
-  padding: 30px;
-  font-size: 12px;
-  opacity: 0.5;
+}
+
+.modal-box h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  font-size: 13px;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+.steps {
+  text-align: left;
+  margin-top: 15px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.close-btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="index.html">HOME</a>
+  <a href="https://eightstudios.org">HOME</a>
 </nav>
 
+<!-- MAIN -->
 <main>
   <h1>DOWNLOADS</h1>
 
-  <!-- ANDROID -->
-  <a class="download-btn" href="YOUR-APK-LINK.apk">
+  <!-- ANDROID BUTTON -->
+  <div class="download-btn" onclick="openInstallGuide()">
     DOWNLOAD FOR ANDROID
-  </a>
+  </div>
 
-  <!-- OPTIONAL IOS / OTHER -->
-  <a class="download-btn secondary" href="#">
+  <!-- IOS -->
+  <div class="download-btn secondary">
     DOWNLOAD FOR IOS (COMING SOON)
-  </a>
-
-  <a class="download-btn secondary" href="#">
-    DESKTOP VERSION
-  </a>
+  </div>
 </main>
 
-<footer>
-  © 2026 Eight Studios
-</footer>
+<!-- INSTALL MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+
+    <h2>INSTALL INSTRUCTIONS</h2>
+    <p>Follow these steps before installing Eight Studios APK</p>
+
+    <div class="steps">
+      1. Download the APK<br>
+      2. Open your Files app<br>
+      3. Tap the downloaded file<br>
+      4. Enable “Install Unknown Apps”<br>
+      5. Install & open app
+    </div>
+
+    <div class="close-btn" onclick="downloadAPK()">
+      CONTINUE DOWNLOAD
+    </div>
+
+    <div class="close-btn" style="background:#333;color:white;margin-top:10px;" onclick="closeModal()">
+      CANCEL
+    </div>
+
+  </div>
+</div>
+
+<script>
+const apkLink = "https://eightstudios.org/app-release%20(1).apk";
+
+function openInstallGuide() {
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function downloadAPK() {
+  window.location.href = apkLink;
+}
+</script>
 
 </body>
 </html>
