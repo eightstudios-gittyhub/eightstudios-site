@@ -130,23 +130,6 @@ button:hover {
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-#chatBadge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(30%,-30%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: red;
-  color: white;
-  font-size: 12px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
 .chat-modal {
   position: fixed;
   inset: 0;
@@ -217,7 +200,9 @@ button:hover {
   transition: 0.2s;
 }
 
-.icon-btn:hover { transform: scale(1.1); }
+.icon-btn:hover {
+  transform: scale(1.1);
+}
 
 .insta-btn {
   width: 45px;
@@ -229,7 +214,6 @@ button:hover {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .insta-btn img {
@@ -316,6 +300,7 @@ button:hover {
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
 }
+
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
@@ -329,8 +314,8 @@ window.addEventListener("load", () => {
   }, 1500);
 });
 
-/* COUNTDOWN */
-const launchDate = new Date("2026-12-31T00:00:00").getTime(); // 👈 change this
+/* ================= 7-DAY COUNTDOWN ================= */
+const launchDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
 
 const countdown = setInterval(() => {
   const now = new Date().getTime();
