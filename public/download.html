@@ -29,40 +29,7 @@ body::before {
   z-index: 0;
 }
 
-/* ================= INTRO SCREEN (NEW ONLY) ================= */
-#introScreen {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-.intro-box img {
-  width: 90px;
-  margin-bottom: 10px;
-}
-
-.intro-box h1 {
-  font-size: 26px;
-  margin-bottom: 8px;
-  letter-spacing: 2px;
-}
-
-.intro-box p {
-  font-size: 13px;
-  opacity: 0.7;
-  max-width: 260px;
-  line-height: 1.4;
-  margin: auto;
-}
-
-/* ================= LOADING SCREEN ================= */
+/* ================= LOADING (ORIGINAL RESTORED) ================= */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -70,7 +37,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999998;
+  z-index: 99999;
   transition: opacity 0.6s ease;
 }
 
@@ -127,7 +94,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999997;
+  z-index: 99998;
   transition: opacity 0.6s ease;
 }
 
@@ -285,16 +252,7 @@ h1 {
 
 <body>
 
-<!-- 🧠 INTRO SCREEN (ADDED ONLY) -->
-<div id="introScreen">
-  <div class="intro-box">
-    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
-    <h1>Eight Studios</h1>
-    <p>Download the official app for Android or install on iOS (PWA)</p>
-  </div>
-</div>
-
-<!-- LOADING -->
+<!-- ⚡ ORIGINAL LOADING SCREEN RESTORED -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
@@ -345,14 +303,8 @@ h1 {
 const apkLink = "https://eightstudios.org/app-release%20(1).apk";
 let mode = "";
 
-/* INTRO ONLY */
+/* LOADING (RESTORED LOGIC) */
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    const intro = document.getElementById("introScreen");
-    intro.style.opacity = "0";
-    intro.style.visibility = "hidden";
-  }, 2200);
-
   setTimeout(() => {
     document.getElementById("loadingScreen").style.opacity = "0";
     setTimeout(() => document.getElementById("loadingScreen").remove(), 600);
