@@ -54,6 +54,12 @@ body::before {
   background: rgba(255,255,255,0.06);
   color: white;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-share:hover {
+  transform: scale(1.05);
+  background: rgba(0,200,255,0.15);
 }
 
 /* HERO */
@@ -70,7 +76,7 @@ body::before {
 }
 
 .title {
-  font-size: 28px;
+  font-size: clamp(24px, 5vw, 34px);
   font-weight: 600;
 }
 
@@ -136,7 +142,7 @@ body::before {
   align-items: center;
 }
 
-/* ICON BUTTONS */
+/* CALL + TEXT + DOWNLOAD */
 .icon-btn {
   width: 52px;
   height: 52px;
@@ -150,17 +156,18 @@ body::before {
   font-size: 18px;
 }
 
-/* INSTAGRAM */
+/* INSTAGRAM ORIGINAL STYLE */
 .insta-btn {
   width: 52px;
   height: 52px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .insta-btn svg {
@@ -170,6 +177,7 @@ body::before {
   opacity: 0.85;
 }
 
+/* FOOTER TEXT */
 .footer-text {
   font-size: 12px;
   opacity: 0.6;
@@ -212,8 +220,8 @@ body::before {
         💬
       </button>
 
-      <!-- DOWNLOAD (NEW) -->
-      <button class="icon-btn" onclick="downloadFile()">
+      <!-- DOWNLOAD -->
+      <button class="icon-btn" onclick="goToDownload()">
         ⬇️
       </button>
 
@@ -236,14 +244,9 @@ function openInstagram(){
   window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
 }
 
-/* DOWNLOAD BUTTON */
-function downloadFile(){
-  const link = document.createElement("a");
-  link.href = "https://eightstudios.org/";
-  link.download = "EightStudios-Download";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+/* DOWNLOAD PAGE REDIRECT */
+function goToDownload(){
+  window.location.href = "download.html";
 }
 </script>
 
