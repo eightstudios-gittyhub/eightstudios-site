@@ -26,7 +26,6 @@
 .loader-logo {
   width: 85px;
   margin-bottom: 10px;
-  /* removed pulse animation */
 }
 
 .loader-text { color:white; font-weight:bold; font-size:20px; }
@@ -69,7 +68,6 @@ body {
 .logo {
   width: 110px;
   margin-bottom: 15px;
-  /* removed float animation */
 }
 
 h1 {
@@ -80,6 +78,22 @@ h1 {
 p {
   opacity: 0.7;
   font-size: 14px;
+}
+
+/* ================= COUNTDOWN ================= */
+.countdown {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #00c8ff;
+}
+
+.countdown small {
+  display:block;
+  font-size:12px;
+  opacity:0.6;
+  margin-top:5px;
 }
 
 button {
@@ -203,9 +217,7 @@ button:hover {
   transition: 0.2s;
 }
 
-.icon-btn:hover {
-  transform: scale(1.1);
-}
+.icon-btn:hover { transform: scale(1.1); }
 
 .insta-btn {
   width: 45px;
@@ -223,10 +235,6 @@ button:hover {
 .insta-btn img {
   width: 22px;
   height: 22px;
-}
-
-.insta-btn:hover {
-  transform: scale(1.1);
 }
 
 .footer-text {
@@ -256,21 +264,23 @@ button:hover {
   <h1>Coming Soon</h1>
   <p>Something new is on the way from Eight Studios.</p>
 
+  <!-- COUNTDOWN -->
+  <div class="countdown" id="countdown">
+    Loading timer...
+    <small>Until launch</small>
+  </div>
+
   <button onclick="window.location.href='https://eightstudios.org'">
     Return Home
   </button>
 
 </div>
 
-<!-- 💬 CHAT -->
-<div class="chat-fab" onclick="openChat()">
-  💬
-  <span id="chatBadge">0</span>
-</div>
+<!-- CHAT -->
+<div class="chat-fab" onclick="openChat()">💬</div>
 
 <div id="chatModal" class="chat-modal">
   <div class="chat-box">
-
     <div class="chat-header">
       <span>Eight Studios Chat</span>
       <button onclick="closeChat()">✕</button>
@@ -280,7 +290,6 @@ button:hover {
       src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
       class="chat-frame">
     </iframe>
-
   </div>
 </div>
 
@@ -302,14 +311,16 @@ button:hover {
 </div>
 
 <script>
+
+/* CHAT */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
 }
-
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
+/* LOADER */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
   setTimeout(() => {
@@ -317,6 +328,31 @@ window.addEventListener("load", () => {
     setTimeout(() => loader.remove(), 600);
   }, 1500);
 });
+
+/* COUNTDOWN */
+const launchDate = new Date("2026-12-31T00:00:00").getTime(); // 👈 change this
+
+const countdown = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+
+  if (distance <= 0) {
+    document.getElementById("countdown").innerHTML = "WE ARE LIVE 🔥";
+    clearInterval(countdown);
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    `${days}d ${hours}h ${minutes}m ${seconds}s
+     <small>Until launch</small>`;
+
+}, 1000);
+
 </script>
 
 </body>
