@@ -8,60 +8,13 @@
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<!-- ================= DISCORD / SOCIAL PREVIEW ================= -->
 <meta property="og:title" content="Eight Studios - Coming Soon">
 <meta property="og:description" content="Something new is on the way from Eight Studios. Stay tuned for the official launch.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-<meta property="og:url" content="https://eightstudios.org">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Eight Studios - Coming Soon">
-<meta name="twitter:description" content="Something new is on the way from Eight Studios. Stay tuned for the official launch.">
-<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
 
-/* ================= LOADING ================= */
-.loading-screen {
-  position: fixed;
-  inset: 0;
-  background: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  transition: opacity 0.6s ease;
-}
-
-.loader-box { text-align:center; }
-
-.loader-logo {
-  width: 85px;
-  margin-bottom: 10px;
-}
-
-.loader-text { color:white; font-weight:bold; font-size:20px; }
-.loader-sub { color:white; opacity:0.6; font-size:12px; margin-bottom:15px; }
-
-.bar {
-  width:200px;
-  height:4px;
-  background:rgba(255,255,255,0.15);
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.progress {
-  width:0%;
-  height:100%;
-  background:#00c8ff;
-  animation:load 2s forwards;
-}
-
-@keyframes load { to { width:100%; } }
-
-/* ================= BASE ================= */
+/* BASE */
 body {
   margin: 0;
   min-height: 100vh;
@@ -96,8 +49,9 @@ p {
   font-size: 14px;
 }
 
+/* BUTTON */
 button {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px 18px;
   border: none;
   border-radius: 30px;
@@ -105,14 +59,34 @@ button {
   color: white;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.2s;
 }
 
 button:hover {
   transform: scale(1.05);
 }
 
-/* ================= CHAT ================= */
+/* EMAIL LIST */
+.subscribe-box {
+  margin-top: 20px;
+}
+
+input {
+  width: 80%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.msg {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* CHAT */
 .chat-fab {
   position: fixed;
   bottom: 18px;
@@ -126,8 +100,6 @@ button:hover {
   justify-content: center;
   font-size: 26px;
   cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .chat-modal {
@@ -137,7 +109,6 @@ button:hover {
   display: none;
   align-items: flex-end;
   justify-content: center;
-  z-index: 10000;
 }
 
 .chat-box {
@@ -146,17 +117,15 @@ button:hover {
   height: 75vh;
   background: #111;
   border-radius: 18px 18px 0 0;
-  overflow: hidden;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   padding: 15px;
   background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
   text-align: center;
 }
 
@@ -179,11 +148,6 @@ button:hover {
   display:flex;
   align-items:center;
   justify-content:center;
-  transition: 0.2s;
-}
-
-.icon-btn:hover, .insta-btn:hover {
-  transform: scale(1.1);
 }
 
 .insta-btn img {
@@ -196,33 +160,10 @@ button:hover {
   opacity: 0.6;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  h1 { font-size: 34px; }
-  .chat-box { height: 80vh; }
-}
-
-@media (max-width: 480px) {
-  h1 { font-size: 28px; }
-  p { font-size: 12px; }
-  button { width: 100%; max-width: 260px; }
-  .chat-fab { width: 55px; height: 55px; font-size: 22px; }
-}
-
 </style>
 </head>
 
 <body>
-
-<!-- LOADING -->
-<div id="loadingScreen" class="loading-screen">
-  <div class="loader-box">
-    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
-    <div class="loader-text">Eight Studios</div>
-    <div class="loader-sub">Loading Coming Soon...</div>
-    <div class="bar"><div class="progress"></div></div>
-  </div>
-</div>
 
 <div class="container">
 
@@ -231,9 +172,13 @@ button:hover {
   <h1>Coming Soon</h1>
   <p>Something new is on the way from Eight Studios.</p>
 
-  <button onclick="window.location.href='https://eightstudios.org'">
-    Return Home
-  </button>
+  <!-- EMAIL SUBSCRIBE -->
+  <div class="subscribe-box">
+    <input id="emailInput" type="email" placeholder="Enter your email">
+    <br>
+    <button onclick="subscribe()">Notify Me</button>
+    <div class="msg" id="msg"></div>
+  </div>
 
 </div>
 
@@ -242,10 +187,8 @@ button:hover {
 
 <div id="chatModal" class="chat-modal">
   <div class="chat-box">
-    <iframe
-      src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
-      style="width:100%; height:100%; border:none;">
-    </iframe>
+    <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
+    style="width:100%; height:100%; border:none;"></iframe>
   </div>
 </div>
 
@@ -253,11 +196,11 @@ button:hover {
 <div class="footer">
   <div class="footer-buttons">
 
-    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
-    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
-    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
+    <button onclick="window.location.href='tel:+15184770592'">📞</button>
+    <button onclick="window.location.href='sms:5184770592'">💬</button>
+    <button onclick="window.location.href='download.html'">⬇️</button>
 
-    <button class="insta-btn" onclick="window.open('https://instagram.com/eightstudios','_blank')">
+    <button onclick="window.open('https://instagram.com/eightstudios','_blank')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
     </button>
 
@@ -268,18 +211,33 @@ button:hover {
 
 <script>
 
-/* LOADER */
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loadingScreen");
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => loader.remove(), 600);
-  }, 1500);
-});
-
 /* CHAT */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
+}
+
+/* EMAIL SUBSCRIBE SYSTEM */
+function subscribe() {
+  const email = document.getElementById("emailInput").value.trim();
+  const msg = document.getElementById("msg");
+
+  if (!email.includes("@")) {
+    msg.textContent = "Enter a valid email.";
+    return;
+  }
+
+  let list = JSON.parse(localStorage.getItem("subscribers")) || [];
+
+  if (list.includes(email)) {
+    msg.textContent = "You're already subscribed.";
+    return;
+  }
+
+  list.push(email);
+  localStorage.setItem("subscribers", JSON.stringify(list));
+
+  msg.textContent = "You're on the list 🔥";
+  document.getElementById("emailInput").value = "";
 }
 
 </script>
