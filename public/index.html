@@ -55,13 +55,6 @@ body::before {
   color: white;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s;
-}
-
-.nav-share:hover {
-  transform: scale(1.05);
-  border: 1px solid rgba(0,200,255,0.5);
-  background: rgba(0,200,255,0.15);
 }
 
 /* HERO */
@@ -208,7 +201,7 @@ body::before {
   50% { transform: scale(1.08); opacity: 0.7; }
 }
 
-/* CHAT ICON */
+/* CHAT BUTTON */
 .chat-fab {
   position: fixed;
   bottom: 18px;
@@ -224,14 +217,9 @@ body::before {
   z-index: 9999;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.chat-fab:hover {
-  transform: scale(1.08);
-}
-
-/* 🖥️ DESKTOP CHAT WINDOW */
+/* CHAT WINDOW */
 .chat-modal {
   position: fixed;
   inset: 0;
@@ -252,10 +240,9 @@ body::before {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* TOP BAR LIKE DESKTOP WINDOW */
+/* TOP BAR */
 .chat-topbar {
   height: 42px;
   background: rgba(255,255,255,0.06);
@@ -266,10 +253,6 @@ body::before {
   font-size: 13px;
 }
 
-.chat-title {
-  opacity: 0.9;
-}
-
 .chat-close {
   width: 28px;
   height: 28px;
@@ -278,18 +261,13 @@ body::before {
   background: rgba(255,255,255,0.1);
   color: white;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.chat-close:hover {
-  background: rgba(255,0,0,0.4);
-}
-
-/* CHAT FRAME */
+/* FRAME */
 .chat-frame {
   flex: 1;
-  width: 100%;
   border: none;
+  width: 100%;
 }
 
 /* FOOTER */
@@ -301,34 +279,6 @@ body::before {
   text-align: center;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(20px);
-}
-
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-/* INSTAGRAM */
-.insta-btn {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.insta-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: white;
-  opacity: 0.85;
 }
 
 .footer-text {
@@ -360,6 +310,14 @@ body::before {
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
   <div class="title">Eight Studios</div>
   <div class="subtitle">Premium streetwear essentials</div>
+
+  <!-- ✅ RESTORED CALL + TEXT BUTTONS -->
+  <div class="actions">
+    <a class="btn" href="tel:5184770592">Call</a>
+    <a class="btn" href="sms:5184770592">Text</a>
+    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
+    <button class="btn" onclick="iosInstall()">Download iPhone</button>
+  </div>
 </div>
 
 <!-- GRID -->
@@ -372,38 +330,25 @@ body::before {
   <div class="card"><a href="phone-cases.html">Phone Cases</a></div>
 </div>
 
-<!-- CHAT BUTTON -->
+<!-- CHAT -->
 <div class="chat-fab" onclick="openChat()">💬</div>
 
-<!-- DESKTOP CHAT WINDOW -->
 <div id="chatModal" class="chat-modal">
   <div class="chat-window">
-    
     <div class="chat-topbar">
-      <div class="chat-title">Eight Studios Chat</div>
+      <div>Eight Studios Chat</div>
       <button class="chat-close" onclick="closeChat()">✕</button>
     </div>
 
     <iframe class="chat-frame"
       src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37">
     </iframe>
-
   </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-inner">
-
-    <button class="insta-btn" onclick="openInstagram()">
-      <svg viewBox="0 0 24 24">
-        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
-        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-      </svg>
-    </button>
-
-    <div class="footer-text">© 2026 Eight Studios. All rights reserved.</div>
-  </div>
+  <div class="footer-text">© 2026 Eight Studios. All rights reserved.</div>
 </div>
 
 <script>
@@ -423,8 +368,8 @@ function shareSite(){
   });
 }
 
-function openInstagram(){
-  window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
+function iosInstall(){
+  alert("Open Safari → Share → Add to Home Screen");
 }
 
 window.addEventListener("load",()=>{
