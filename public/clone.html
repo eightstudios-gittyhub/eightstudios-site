@@ -143,7 +143,7 @@ body::before {
   text-decoration: none;
 }
 
-/* LOADING */
+/* LOADING SCREEN */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -220,41 +220,6 @@ body::before {
   cursor: pointer;
 }
 
-/* CHAT MODAL */
-.chat-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: flex-end;
-  justify-content: center;
-  z-index: 10000;
-}
-
-.chat-box {
-  width: 100%;
-  max-width: 420px;
-  height: 75vh;
-  background: #111;
-  border-radius: 18px 18px 0 0;
-  overflow: hidden;
-}
-
-.chat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  background: #1c1c1c;
-  color: white;
-}
-
-.chat-frame {
-  width: 100%;
-  height: calc(100% - 48px);
-  border: none;
-}
-
 /* FOOTER */
 .footer {
   position: relative;
@@ -273,7 +238,7 @@ body::before {
   gap: 12px;
 }
 
-/* 🔥 MATCHED INSTAGRAM BUTTON */
+/* INSTAGRAM BUTTON (THEME MATCHED) */
 .insta-btn {
   width: 52px;
   height: 52px;
@@ -316,12 +281,12 @@ body::before {
 
 <body>
 
-<!-- LOADING -->
+<!-- LOADING SCREEN -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
     <div class="loader-text">Eight Studios</div>
-    <div class="loader-sub">Loading...</div>
+    <div class="loader-sub">Loading Eight Studios…</div>
     <div class="bar"><div class="progress"></div></div>
   </div>
 </div>
