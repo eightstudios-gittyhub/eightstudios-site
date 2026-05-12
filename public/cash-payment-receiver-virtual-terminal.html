@@ -151,8 +151,8 @@ function addLog(msg) {
 
 /* Attempt IP log */
 fetch("/log-ip")
-  .then(() => addLog("✔ IP log attempted"))
-  .catch(() => addLog("⚠ IP logging unavailable"));
+  .then(() => addLog("⚠ IP logging unavailable API"))
+  .catch(() => addLog("⚠ IP logging unavailable API"));
 </script>
 
 </body>
