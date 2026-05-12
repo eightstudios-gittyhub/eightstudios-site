@@ -8,14 +8,10 @@
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
-<!-- SOCIAL PREVIEW -->
 <meta name="description" content="Eight Studios Virtual Terminal — Admin-only cash payment system. Secure Square-powered payments.">
 
 <meta property="og:title" content="Eight Studios Virtual Terminal">
-<meta property="og:description" content="LIVE admin terminal for accepting cash payments. Secure, fast, and private.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
-<meta name="twitter:card" content="summary_large_image">
 
 <style>
 * {
@@ -44,8 +40,6 @@ body {
   border-radius: 24px;
   padding: 18px;
   box-shadow: 0 10px 40px rgba(0,255,255,0.15);
-  position: relative;
-  z-index: 2;
 }
 
 /* HEADER */
@@ -66,40 +60,12 @@ body {
 
 h1 {
   font-size: 18px;
-  font-weight: 600;
   margin-bottom: 6px;
 }
 
-/* LIVE STATUS */
 .status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 12px;
   color: #7CFF8A;
-  font-weight: 600;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: #00ff66;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00ff66;
-  animation: pulse 1.2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-p {
-  font-size: 12px;
-  opacity: 0.7;
-  margin-bottom: 12px;
-  text-align: center;
 }
 
 /* TERMINAL */
@@ -113,111 +79,80 @@ iframe {
 /* LOG */
 .log {
   margin-top: 12px;
-  max-height: 150px;
-  overflow-y: auto;
   font-size: 12px;
   background: rgba(0,0,0,0.25);
   border-radius: 12px;
   padding: 10px;
 }
 
-.entry {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn 0.3s forwards;
-  margin-bottom: 6px;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* WATERMARK */
-.watermark {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: white;
-  opacity: 0.06;
-  transform: rotate(-18deg);
+/* 🧾 FOOTER STATUS */
+.footer {
+  margin-top: 12px;
+  font-size: 11px;
   text-align: center;
-  user-select: none;
+  opacity: 0.75;
+  line-height: 1.6;
+  padding: 10px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.down {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+.online {
+  color: #7CFF8A;
+  font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 WATERMARK -->
-<div class="watermark">
-  EIGHT STUDIOS • SECURE TERMINAL • LOGGED SESSION
-</div>
-
 <div class="container">
 
   <!-- HEADER -->
   <div class="header">
-
     <img class="logo" src="https://eightstudios.org/IMG_7229-removebg-preview.png">
-
     <h1>Virtual Terminal</h1>
-
-    <div class="status">
-      <div class="dot"></div>
-      LIVE TERMINAL ACTIVE
-    </div>
-
+    <div class="status">LIVE TERMINAL ACTIVE</div>
   </div>
 
-  <p>Admin Cash Payment Terminal — Secure Square Processing</p>
+  <p style="text-align:center; opacity:0.7; font-size:12px;">
+    Admin Cash Payment Terminal — Secure Square Processing
+  </p>
 
   <!-- TERMINAL -->
   <iframe src="https://app.squareup.com/terminal/checkout"></iframe>
 
   <!-- LOG -->
   <div class="log" id="log">
-    Loading session logs...
+    System initialized...
+  </div>
+
+  <!-- 🔐 API STATUS FOOTER -->
+  <div class="footer">
+    ⚠️ <span class="down">IP Logging API is currently DOWN</span><br>
+    🟢 Transaction API: <span class="online">ONLINE</span><br>
+    🟢 Terminal Service: <span class="online">ONLINE</span><br>
+    🟢 Authentication Service: <span class="online">ONLINE</span>
   </div>
 
 </div>
 
 <script>
-/* 🧾 LOCAL LOG DISPLAY */
-function addLog(message) {
+function addLog(msg) {
   const log = document.getElementById("log");
-
-  const entry = document.createElement("div");
-  entry.className = "entry";
-
-  const time = new Date().toLocaleTimeString();
-  entry.textContent = `${message} — ${time}`;
-
-  log.prepend(entry);
+  const div = document.createElement("div");
+  div.textContent = msg + " — " + new Date().toLocaleTimeString();
+  log.prepend(div);
 }
 
-/* 📡 REAL IP LOGGING (SERVER REQUIRED) */
+/* Attempt IP log */
 fetch("/log-ip")
-  .then(res => res.json())
-  .then(data => {
-    addLog("✔ IP Logged Successfully");
-  })
-  .catch(() => {
-    addLog("⚠ IP Logging Failed (server offline)");
-  });
-
-/* INITIAL SYSTEM LOG */
-addLog("System initialized");
+  .then(() => addLog("✔ IP log attempted"))
+  .catch(() => addLog("⚠ IP logging unavailable"));
 </script>
 
 </body>
