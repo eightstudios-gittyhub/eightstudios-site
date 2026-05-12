@@ -1,29 +1,226 @@
-<!-- FOOTER -->
-<div class="footer">
-  <div class="footer-buttons">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+<title>Pants - Eight Studios</title>
 
-    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
+<meta property="og:title" content="Eight Studios — Custom Pants">
+<meta property="og:description" content="Exclusive 1/1 custom denim and patchwork pants. Limited drops only.">
+<meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
+<meta property="og:url" content="https://eightstudios.org/pants.html">
+<meta property="og:type" content="website">
 
-    <button class="icon-btn" onclick="goToDownload()">⬇️</button>
+<meta name="twitter:card" content="summary_large_image">
 
-    <button class="insta-btn" onclick="openInstagram()">
-      <svg viewBox="0 0 24 24">
-        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
-        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-      </svg>
-    </button>
-
-  </div>
-
-  <div class="footer-text">© 2026 Eight Studios</div>
-</div>
+<link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
-/* FOOTER STYLE */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: radial-gradient(circle at top, rgba(0,200,255,0.25), black 70%);
+}
+
+/* LOADING */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.6s ease;
+}
+
+.loader-box { text-align:center; }
+
+.loader-logo {
+  width: 80px;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+.loader-text { font-size:20px; font-weight:bold; }
+.loader-sub { font-size:12px; opacity:0.6; margin-bottom:15px; }
+
+.bar {
+  width:200px;
+  height:4px;
+  background:rgba(255,255,255,0.15);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.progress {
+  width:0%;
+  height:100%;
+  background:#00c8ff;
+  animation:load 2s forwards;
+}
+
+@keyframes load { to { width:100%; } }
+@keyframes pulse {
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.08); opacity:0.7;}
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* LOGO */
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo-wrap img {
+  width: 120px;
+  filter: drop-shadow(0 0 12px rgba(0,200,255,0.6));
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  margin: 10px 0 0;
+  font-size: 40px;
+}
+
+.header p {
+  opacity: 0.7;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px;
+}
+
+/* CARD */
+.card {
+  width: 240px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(0,200,255,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: black;
+}
+
+.content { padding: 12px; }
+
+.title { font-weight: bold; }
+.subtitle { font-size: 12px; opacity: 0.7; margin-top: 5px; }
+
+.price {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00c8ff;
+}
+
+/* BUTTON */
+.checkout-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,200,255,0.2);
+  border: 1px solid rgba(0,200,255,0.5);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.checkout-btn:hover {
+  background: rgba(0,200,255,0.35);
+}
+
+.note {
+  text-align: center;
+  opacity: 0.6;
+  margin: 20px;
+}
+
+/* CHAT */
+.chat-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00c8ff, #0077ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.chat-popup {
+  position: fixed;
+  bottom: 90px;
+  right: 18px;
+  width: 320px;
+  height: 450px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.chat-popup iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* FOOTER */
 .footer {
-  margin-top: 40px;
+  margin-top: 50px;
   padding: 25px 0;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
@@ -75,13 +272,153 @@
   opacity: 0.6;
 }
 </style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Pants...</div>
+    <div class="bar"><div class="progress"></div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <a href="index.html">Home</a>
+</div>
+
+<!-- HEADER -->
+<div class="logo-wrap">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
+</div>
+
+<div class="header">
+  <h1>Pants</h1>
+  <p>Custom denim and patchwork pants will appear here as new drops release.</p>
+</div>
+
+<!-- PRODUCTS -->
+<div class="grid">
+
+  <div class="card" onclick="window.open('https://buy.stripe.com/fZubJ3d7h2Cm5ZN98K5Rm0i', '_blank')">
+    <img src="https://i.imgur.com/NkY6FRi.jpeg">
+    <div class="content">
+      <div class="title">Blue MoonStone 02</div>
+      <div class="subtitle">Custom MoonStone Denim</div>
+      <div class="price">$341.00</div>
+      <a class="checkout-btn" href="https://buy.stripe.com/fZubJ3d7h2Cm5ZN98K5Rm0i">Checkout</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="window.open('https://buy.stripe.com/bJeaEZ0kv2CmcobckW5Rm0c', '_blank')">
+    <img src="https://i.imgur.com/B3323uR.jpeg">
+    <div class="content">
+      <div class="title">Hand-Sewn Woodland Camo</div>
+      <div class="subtitle">Hand-sewn detailing</div>
+      <div class="price">$208.00</div>
+      <a class="checkout-btn" href="https://buy.stripe.com/bJeaEZ0kv2CmcobckW5Rm0c">Checkout</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="window.open('https://buy.stripe.com/3cI3cx1ozel42NBgBc5Rm0a', '_blank')">
+    <img src="https://i.imgur.com/5p9IhQ0.jpeg">
+    <div class="content">
+      <div class="title">Arctic Oil Spill</div>
+      <div class="subtitle">Custom wash denim</div>
+      <div class="price">$108.00</div>
+      <a class="checkout-btn" href="https://buy.stripe.com/3cI3cx1ozel42NBgBc5Rm0a">Checkout</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="window.open('https://buy.stripe.com/6oUfZj0kvdh0dsfet45Rm07', '_blank')">
+    <img src="https://i.imgur.com/NYQt6sa.jpeg">
+    <div class="content">
+      <div class="title">Plaid8 Cargo PJ’s</div>
+      <div class="subtitle">Cargo-inspired patchwork</div>
+      <div class="price">$60.00</div>
+      <a class="checkout-btn" href="https://buy.stripe.com/6oUfZj0kvdh0dsfet45Rm07">Checkout</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="window.open('https://buy.stripe.com/14AfZjeblel487V70C5Rm0n', '_blank')">
+    <img src="https://i.imgur.com/KqBrlZA.jpeg">
+    <div class="content">
+      <div class="title">888 Sweatpants — 1/1</div>
+      <div class="subtitle">One-time release</div>
+      <div class="price">$53.00</div>
+      <a class="checkout-btn" href="https://buy.stripe.com/14AfZjeblel487V70C5Rm0n">Checkout</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://i.imgur.com/N9WTq1o.jpeg">
+    <div class="content">
+      <div class="title">Starfade Denim — 1/1</div>
+      <div class="subtitle">Signature fade finish</div>
+      <div class="price">Sold Out</div>
+    </div>
+  </div>
+
+  <div class="card" onclick="window.open('https://buy.stripe.com/eVq7sNc3d5Oy2NB1Gi5Rm0h', '_blank')">
+    <img src="https://i.imgur.com/zCDwOmK.jpeg">
+    <div class="content">
+      <div class="title">Blooming Through Concrete — Women’s</div>
+      <div class="subtitle">Custom women’s fit</div>
+      <div class="price">$163.00</div>
+      <a class="checkout-btn" href="https://buy.stripe.com/eVq7sNc3d5Oy2NB1Gi5Rm0h">Checkout</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+More pieces coming soon. Customize your own clothing — eight888studios@gmail.com
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-buttons">
+
+    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
+    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
+
+    <button class="insta-btn" onclick="window.open('https://instagram.com/eightstudios','_blank')">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <div class="footer-text">© 2026 Eight Studios</div>
+</div>
+
+<!-- CHAT -->
+<div class="chat-btn" onclick="toggleChat()">💬</div>
+
+<div id="chatPopup" class="chat-popup">
+  <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"></iframe>
+</div>
 
 <script>
-function goToDownload(){
-  window.location.href = "download.html";
-}
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loadingScreen");
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 1500);
+});
 
-function openInstagram(){
-  window.open("https://instagram.com/eightstudios", "_blank");
+function toggleChat(){
+  const chat = document.getElementById("chatPopup");
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
 }
 </script>
+
+</body>
+</html>
