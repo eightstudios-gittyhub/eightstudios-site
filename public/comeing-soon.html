@@ -96,23 +96,6 @@ p {
   font-size: 14px;
 }
 
-/* ================= COUNTDOWN ================= */
-.countdown {
-  margin-top: 15px;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #00c8ff;
-  word-wrap: break-word;
-}
-
-.countdown small {
-  display:block;
-  font-size:12px;
-  opacity:0.6;
-  margin-top:5px;
-}
-
 button {
   margin-top: 20px;
   padding: 10px 18px;
@@ -216,14 +199,12 @@ button:hover {
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   h1 { font-size: 34px; }
-  .countdown { font-size: 18px; }
   .chat-box { height: 80vh; }
 }
 
 @media (max-width: 480px) {
   h1 { font-size: 28px; }
   p { font-size: 12px; }
-  .countdown { font-size: 16px; letter-spacing: 1px; }
   button { width: 100%; max-width: 260px; }
   .chat-fab { width: 55px; height: 55px; font-size: 22px; }
 }
@@ -250,11 +231,6 @@ button:hover {
   <h1>Coming Soon</h1>
   <p>Something new is on the way from Eight Studios.</p>
 
-  <div class="countdown" id="countdown">
-    Loading timer...
-    <small>Until launch</small>
-  </div>
-
   <button onclick="window.location.href='https://eightstudios.org'">
     Return Home
   </button>
@@ -268,7 +244,7 @@ button:hover {
   <div class="chat-box">
     <iframe
       src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"
-      class="chat-frame">
+      style="width:100%; height:100%; border:none;">
     </iframe>
   </div>
 </div>
@@ -305,30 +281,6 @@ window.addEventListener("load", () => {
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
 }
-
-/* 7 DAY COUNTDOWN */
-const launchDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
-
-const countdown = setInterval(() => {
-  const now = new Date().getTime();
-  const distance = launchDate - now;
-
-  if (distance <= 0) {
-    document.getElementById("countdown").innerHTML = "WE ARE LIVE 🔥";
-    clearInterval(countdown);
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("countdown").innerHTML =
-    `${days}d ${hours}h ${minutes}m ${seconds}s
-     <small>Until launch</small>`;
-
-}, 1000);
 
 </script>
 
