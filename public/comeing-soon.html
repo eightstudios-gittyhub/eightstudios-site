@@ -28,6 +28,26 @@ body {
   padding-bottom: 120px;
 }
 
+/* TOP BACK BUTTON */
+.top-back {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 2000;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(34,34,34,0.9);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.top-back:hover {
+  background: rgba(60,60,60,0.9);
+}
+
 .container {
   width: 100%;
   max-width: 600px;
@@ -70,6 +90,9 @@ button:hover {
 /* EMAIL */
 .subscribe-box {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
@@ -172,6 +195,9 @@ input {
 
 <body>
 
+<!-- TOP BACK BUTTON -->
+<button class="top-back" onclick="history.back()">⬅ Back</button>
+
 <div class="container">
 
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo" alt="Eight Studios Logo">
@@ -180,10 +206,13 @@ input {
   <p>Something new is on the way from Eight Studios.</p>
 
   <div class="subscribe-box">
+
     <input id="emailInput" type="email" placeholder="Enter your email">
-    <br>
-    <button type="button" onclick="subscribe()">Notify Me</button>
+
+    <button onclick="subscribe()">Notify Me</button>
+
     <div class="msg" id="msg"></div>
+
   </div>
 
 </div>
@@ -202,15 +231,12 @@ input {
 <div class="footer">
   <div class="footer-buttons">
 
-    <!-- HOME BUTTON (NEW) -->
-    <button class="icon-btn" onclick="window.location.href='index.html'">🏠</button>
-
     <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
     <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
     <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
 
     <button class="icon-btn" onclick="window.open('https://instagram.com/eightstudios','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
     </button>
 
   </div>
@@ -220,26 +246,22 @@ input {
 
 <script>
 
-/* CHAT OPEN */
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
 }
 
-/* CHAT CLOSE OUTSIDE CLICK */
 function outsideClose(e){
   if (e.target.id === "chatModal") {
     document.getElementById("chatModal").style.display = "none";
   }
 }
 
-/* ESC CLOSE */
 document.addEventListener("keydown", function(e){
   if (e.key === "Escape") {
     document.getElementById("chatModal").style.display = "none";
   }
 });
 
-/* EMAIL SUBSCRIBE */
 function subscribe() {
   const email = document.getElementById("emailInput").value.trim();
   const msg = document.getElementById("msg");
