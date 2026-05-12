@@ -16,7 +16,6 @@
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
 <style>
 * {
@@ -36,7 +35,7 @@ body {
   padding: 15px;
 }
 
-/* FLOATING CARD */
+/* MAIN CARD */
 .container {
   width: 100%;
   max-width: 520px;
@@ -45,6 +44,8 @@ body {
   border-radius: 24px;
   padding: 18px;
   box-shadow: 0 10px 40px rgba(0,255,255,0.15);
+  position: relative;
+  z-index: 2;
 }
 
 /* HEADER */
@@ -104,7 +105,7 @@ p {
 /* TERMINAL */
 iframe {
   width: 100%;
-  height: 480px;
+  height: 460px;
   border: none;
   border-radius: 16px;
 }
@@ -130,10 +131,38 @@ iframe {
 @keyframes fadeIn {
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* WATERMARK */
+.watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: white;
+  opacity: 0.06;
+  transform: rotate(-18deg);
+  text-align: center;
+  user-select: none;
+}
 </style>
 </head>
 
 <body>
+
+<!-- 🔐 WATERMARK -->
+<div class="watermark">
+  EIGHT STUDIOS • SECURE TERMINAL • LOGGED SESSION
+</div>
 
 <div class="container">
 
@@ -156,42 +185,39 @@ iframe {
   <!-- TERMINAL -->
   <iframe src="https://app.squareup.com/terminal/checkout"></iframe>
 
-  <!-- LOG ONLY -->
-  <div class="log" id="log"></div>
+  <!-- LOG -->
+  <div class="log" id="log">
+    Loading session logs...
+  </div>
 
 </div>
 
-<!-- SOUND (READY BUT NOT AUTO-TRIGGERED) -->
-<audio id="cashSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
-
 <script>
-// 🔊 Ready function (not attached to UI anymore)
-function playCashSound() {
-  const sound = document.getElementById("cashSound");
-  sound.currentTime = 0;
-  sound.play();
-}
-
-// 📳 Ready vibration function (not auto used yet)
-function vibrateCash() {
-  if (navigator.vibrate) {
-    navigator.vibrate([80, 50, 120]);
-  }
-}
-
-// 🧾 Example log system (can be triggered later by backend or webhook)
+/* 🧾 LOCAL LOG DISPLAY */
 function addLog(message) {
   const log = document.getElementById("log");
 
   const entry = document.createElement("div");
   entry.className = "entry";
-  entry.textContent = message;
+
+  const time = new Date().toLocaleTimeString();
+  entry.textContent = `${message} — ${time}`;
 
   log.prepend(entry);
 }
 
-// Example placeholder log entry
-addLog("System initialized — awaiting transactions");
+/* 📡 REAL IP LOGGING (SERVER REQUIRED) */
+fetch("/log-ip")
+  .then(res => res.json())
+  .then(data => {
+    addLog("✔ IP Logged Successfully");
+  })
+  .catch(() => {
+    addLog("⚠ IP Logging Failed (server offline)");
+  });
+
+/* INITIAL SYSTEM LOG */
+addLog("System initialized");
 </script>
 
 </body>
