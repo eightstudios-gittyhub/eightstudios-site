@@ -133,15 +133,13 @@ body {
   object-fit: cover;
 }
 
-/* CONTENT (LEFT ALIGN FIX) */
+/* CONTENT */
 .content {
   padding: 12px;
   text-align: left;
 }
 
-.title {
-  font-weight: bold;
-}
+.title { font-weight: bold; }
 
 .subtitle {
   font-size: 12px;
@@ -149,47 +147,33 @@ body {
   margin-top: 5px;
 }
 
-/* PRICE */
 .price {
   margin-top: 12px;
   margin-bottom: 8px;
-
   display: block;
-
   font-size: 15px;
   font-weight: 700;
   color: #00c8ff;
 }
 
-/* ================= LEFT CHECKOUT BUTTON ================= */
 .checkout-btn {
   display: inline-block;
-
   margin-top: 6px;
-
   padding: 6px 10px;
-  min-width: 90px;
-
   border-radius: 8px;
-
   background: rgba(0,200,255,0.2);
   border: 1px solid rgba(0,200,255,0.5);
-
   color: white;
   font-size: 12px;
   font-weight: 600;
-
   text-decoration: none;
-  text-align: center;
-
-  margin-left: 0; /* LEFT ALIGN */
 }
 
 .checkout-btn:hover {
   background: rgba(0,200,255,0.35);
 }
 
-/* ================= CHAT ================= */
+/* CHAT */
 .chat-fab {
   position:fixed;
   bottom:18px;
@@ -263,6 +247,60 @@ body {
   height:calc(100% - 48px);
   border:none;
 }
+
+/* ================= FOOTER ================= */
+.footer {
+  margin-top: 40px;
+  padding: 25px 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.icon-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.icon-btn:hover {
+  background: rgba(0,200,255,0.3);
+}
+
+.insta-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insta-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+}
+
+.footer-text {
+  font-size: 12px;
+  opacity: 0.6;
+}
 </style>
 </head>
 
@@ -302,12 +340,9 @@ body {
     <div class="content">
       <div class="title">888 Heavyweight Zipup — 1/1</div>
       <div class="subtitle">Handmade zip-up hoodie</div>
-
       <div class="price">$158.00</div>
 
-      <a class="checkout-btn"
-         href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d"
-         target="_blank">
+      <a class="checkout-btn" href="https://buy.stripe.com/28EfZj4AL90K87V70C5Rm0d" target="_blank">
         Checkout
       </a>
     </div>
@@ -315,9 +350,30 @@ body {
 
 </div>
 
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-buttons">
+
+    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+
+    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
+
+    <button class="icon-btn" onclick="goToDownload()">⬇️</button>
+
+    <button class="insta-btn" onclick="openInstagram()">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
+        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <div class="footer-text">© 2026 Eight Studios</div>
+</div>
+
 <!-- 💬 CHAT -->
-<div class="chat-fab" onclick="openChat()">
-  💬
+<div class="chat-fab" onclick="openChat()">💬
   <span id="chatBadge">0</span>
 </div>
 
@@ -336,30 +392,23 @@ body {
 </div>
 
 <script>
-let unread = 0;
-
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
-  resetBadge();
 }
 
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
-function addBadge(){
-  unread++;
-  const badge = document.getElementById("chatBadge");
-  badge.style.display = "flex";
-  badge.innerText = unread;
+function goToDownload(){
+  window.location.href = "download.html";
 }
 
-function resetBadge(){
-  unread = 0;
-  document.getElementById("chatBadge").style.display = "none";
+function openInstagram(){
+  window.open("https://instagram.com/eightstudios", "_blank");
 }
 
-/* loading */
+/* LOADING */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
   setTimeout(() => {
