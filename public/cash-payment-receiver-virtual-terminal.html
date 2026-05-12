@@ -68,107 +68,10 @@ iframe {
   border-radius: 14px;
   margin-top: 10px;
 }
-
-/* LOCK SCREEN */
-.lock {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.login-box {
-  width: 90%;
-  max-width: 360px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 22px;
-  text-align: center;
-}
-
-/* TX DISPLAY */
-.txid {
-  margin: 12px 0;
-  padding: 10px;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.4);
-  font-size: 13px;
-  color: #00d4ff;
-  font-weight: bold;
-}
-
-/* INPUTS */
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  text-align: center;
-  font-size: 13px;
-}
-
-/* BUTTON */
-button {
-  width: 100%;
-  margin-top: 12px;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  background: #00d4ff;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-/* ERROR */
-.error {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #ff4d4d;
-  display: none;
-}
 </style>
 </head>
 
 <body>
-
-<!-- 🔒 LOCK SCREEN -->
-<div class="lock" id="lockScreen">
-  <div class="login-box">
-
-    <div class="title">Secure Terminal Access</div>
-    <div class="subtitle">Enter Transaction ID + PIN</div>
-
-    <!-- 🆔 TX DISPLAY -->
-    <div class="txid" id="txDisplay">Generating Transaction ID...</div>
-
-    <!-- TX INPUT (COPY BLOCKED) -->
-    <input id="txInput"
-           placeholder="Transaction ID"
-           oncopy="return false"
-           oncut="return false"
-           onpaste="return false"
-           oncontextmenu="return false"
-           autocomplete="off"
-           spellcheck="false">
-
-    <!-- PIN INPUT -->
-    <input id="pinInput" type="password" placeholder="PIN Code">
-
-    <button onclick="verify()">Authenticate</button>
-
-    <div class="error" id="error">Invalid Transaction ID or PIN</div>
-
-  </div>
-</div>
 
 <!-- MAIN APP -->
 <div class="container">
@@ -182,46 +85,6 @@ button:hover {
   <iframe src="https://app.squareup.com/terminal/checkout"></iframe>
 
 </div>
-
-<script>
-let tx = "";
-
-/* 🔑 PIN */
-const PIN = "1234";
-
-/* generate TX */
-function generateTX() {
-  tx = "TX-" + Math.random().toString(36).substring(2, 10).toUpperCase();
-  document.getElementById("txDisplay").textContent = "Transaction ID: " + tx;
-}
-
-generateTX();
-
-/* VERIFY */
-function verify() {
-  const txInput = document.getElementById("txInput").value.trim();
-  const pinInput = document.getElementById("pinInput").value.trim();
-  const error = document.getElementById("error");
-
-  if (txInput === tx && pinInput === PIN) {
-    document.getElementById("lockScreen").style.display = "none";
-  } else {
-    error.style.display = "block";
-  }
-}
-
-/* EXTRA PROTECTION AGAINST COPY/PASTE */
-const txField = document.getElementById("txInput");
-
-txField.addEventListener("keydown", function(e) {
-  if ((e.ctrlKey || e.metaKey) &&
-     (e.key === "c" || e.key === "v" || e.key === "x")) {
-    e.preventDefault();
-  }
-});
-
-txField.addEventListener("contextmenu", e => e.preventDefault());
-</script>
 
 </body>
 </html>
