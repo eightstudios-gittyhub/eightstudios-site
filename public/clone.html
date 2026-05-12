@@ -143,7 +143,7 @@ body::before {
   text-decoration: none;
 }
 
-/* LOADING */
+/* LOADING (FIXED CENTERING) */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -156,8 +156,11 @@ body::before {
 }
 
 .loader-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  color: white;
 }
 
 .loader-logo {
@@ -195,67 +198,66 @@ body::before {
 }
 
 @keyframes load { to { width: 100%; } }
+
 @keyframes pulse {
-  0%,100% { transform: scale(1); opacity: 1; }
+  0%,100% { transform: scale(1); }
   50% { transform: scale(1.08); opacity: 0.7; }
 }
 
 /* CHAT BUTTON */
-.chat-fab{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#00c8ff,#0077ff);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-  cursor:pointer;
-  z-index:9999;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-  animation:pulse 1.8s infinite;
+.chat-fab {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#00c8ff,#0077ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  cursor: pointer;
 }
 
 /* CHAT MODAL */
-.chat-modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-  z-index:10000;
+.chat-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 10000;
 }
 
-.chat-box{
-  width:100%;
-  max-width:420px;
-  height:75vh;
-  background:#111;
-  border-radius:18px 18px 0 0;
-  overflow:hidden;
+.chat-box {
+  width: 100%;
+  max-width: 420px;
+  height: 75vh;
+  background: #111;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
 }
 
-.chat-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px 14px;
-  background:#1c1c1c;
-  color:white;
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #1c1c1c;
+  color: white;
 }
 
-.chat-frame{
-  width:100%;
-  height:calc(100% - 48px);
-  border:none;
+.chat-frame {
+  width: 100%;
+  height: calc(100% - 48px);
+  border: none;
 }
 
-/* FOOTER (ADDED ONLY PART) */
+/* FOOTER */
 .footer {
   position: relative;
   z-index: 2;
@@ -292,7 +294,7 @@ body::before {
 
 <body>
 
-<!-- LOADING -->
+<!-- LOADING SCREEN -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
@@ -316,7 +318,6 @@ body::before {
   <div class="actions">
     <a class="btn" href="tel:5184770592">Call</a>
     <a class="btn" href="sms:5184770592">Text</a>
-    <button class="btn" onclick="openInstagram()">Instagram</button>
     <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
     <button class="btn" onclick="iosInstall()">Download iPhone</button>
   </div>
@@ -345,7 +346,7 @@ body::before {
   </div>
 </div>
 
-<!-- FOOTER (ADDED) -->
+<!-- FOOTER -->
 <div class="footer">
   <div class="footer-inner">
     <button class="insta-btn" onclick="openInstagram()">📸 Instagram</button>
@@ -355,19 +356,11 @@ body::before {
 
 <script>
 function shareSite(){
-  const referralLink = "https://eightstudios.org/?ref=888Studios";
-  const shareData = {
-    title: "Eight Studios",
-    text: "Check out Eight Studios 🔥",
-    url: referralLink
-  };
-
-  if (navigator.share) {
-    navigator.share(shareData);
-  } else {
-    navigator.clipboard.writeText(shareData.text + "\n" + referralLink);
-    alert("Link copied!");
-  }
+  navigator.share?.({
+    title:"Eight Studios",
+    text:"Check out Eight Studios 🔥",
+    url:"https://eightstudios.org/?ref=888Studios"
+  });
 }
 
 function iosInstall(){
@@ -375,8 +368,7 @@ function iosInstall(){
 }
 
 function openInstagram(){
-  const url="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
-  window.location.href=url;
+  window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
 }
 
 function openChat(){
