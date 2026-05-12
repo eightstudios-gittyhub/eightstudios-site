@@ -46,7 +46,9 @@ body::before {
   transition: opacity 0.6s ease;
 }
 
-.loader-box { text-align:center; }
+.loader-box {
+  text-align: center;
+}
 
 .loader-logo {
   width: 80px;
@@ -54,56 +56,47 @@ body::before {
   animation: pulse 1.5s infinite;
 }
 
-.loader-text { font-size:20px; font-weight:bold; }
-.loader-sub { font-size:12px; opacity:0.6; margin-bottom:15px; }
+.loader-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.loader-sub {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 15px;
+}
 
 .bar {
-  width:200px;
-  height:4px;
-  background:rgba(255,255,255,0.15);
-  border-radius:10px;
-  overflow:hidden;
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .progress {
-  width:0%;
-  height:100%;
-  background:#00c8ff;
-  animation:load 2s forwards;
+  width: 0%;
+  height: 100%;
+  background: #00c8ff;
+  animation: load 2s forwards;
 }
 
-@keyframes load { to { width:100%; } }
+@keyframes load {
+  to {
+    width: 100%;
+  }
+}
+
 @keyframes pulse {
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.08); opacity:0.7;}
-}
+  0%,100% {
+    transform: scale(1);
+  }
 
-/* NAV */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  padding: 14px;
-  padding-top: calc(14px + env(safe-area-inset-top));
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(20px);
-}
-
-.nav-share {
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.06);
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.nav-share:hover {
-  transform: scale(1.05);
-  background: rgba(0,200,255,0.15);
+  50% {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
 }
 
 /* HERO */
@@ -186,7 +179,7 @@ body::before {
   align-items: center;
 }
 
-/* CALL + TEXT + DOWNLOAD */
+/* BUTTONS */
 .icon-btn {
   width: 52px;
   height: 52px;
@@ -200,7 +193,6 @@ body::before {
   font-size: 18px;
 }
 
-/* INSTAGRAM ORIGINAL STYLE */
 .insta-btn {
   width: 52px;
   height: 52px;
@@ -221,7 +213,6 @@ body::before {
   opacity: 0.85;
 }
 
-/* FOOTER TEXT */
 .footer-text {
   font-size: 12px;
   opacity: 0.6;
@@ -230,6 +221,27 @@ body::before {
 </head>
 
 <body>
+
+<!-- LOADING -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loader-box">
+
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
+
+    <div class="loader-text">
+      Eight Studios
+    </div>
+
+    <div class="loader-sub">
+      Loading Eight Studios...
+    </div>
+
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -255,12 +267,12 @@ body::before {
     <div class="footer-buttons">
 
       <!-- CALL -->
-      <button class="icon-btn" onclick="window.location.href='tel:+10000000000'">
+      <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">
         📞
       </button>
 
       <!-- TEXT -->
-      <button class="icon-btn" onclick="window.location.href='sms:+10000000000'">
+      <button class="icon-btn" onclick="window.location.href='sms:5184770592'">
         💬
       </button>
 
@@ -279,7 +291,10 @@ body::before {
 
     </div>
 
-    <div class="footer-text">© 2026 Eight Studios. All rights reserved.</div>
+    <div class="footer-text">
+      © 2026 Eight Studios. All rights reserved.
+    </div>
+
   </div>
 </div>
 
@@ -288,10 +303,19 @@ function openInstagram(){
   window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
 }
 
-/* DOWNLOAD PAGE REDIRECT */
 function goToDownload(){
-  window.location.href = "download.html";
+  window.location.href="download.html";
 }
+
+/* LOADING */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loadingScreen");
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => loader.remove(), 600);
+  }, 1800);
+});
 </script>
 
 </body>
