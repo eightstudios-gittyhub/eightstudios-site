@@ -29,7 +29,39 @@ body::before {
   z-index: 0;
 }
 
-/* ================= LOADING ================= */
+/* ================= INTRO SCREEN ================= */
+#introScreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.intro-box img {
+  width: 90px;
+  margin-bottom: 10px;
+}
+
+.intro-box h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.intro-box p {
+  font-size: 13px;
+  opacity: 0.7;
+  max-width: 260px;
+  line-height: 1.4;
+}
+
+/* ================= LOADING SCREEN ================= */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -37,7 +69,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999999;
+  z-index: 999998;
   transition: opacity 0.6s ease;
 }
 
@@ -81,7 +113,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999998;
+  z-index: 999997;
   transition: opacity 0.6s ease;
 }
 
@@ -90,19 +122,43 @@ body::before {
   animation: pulse 1.2s infinite;
 }
 
+/* ================= TOP BRAND ================= */
+.top-brand {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.top-brand img {
+  width: 22px;
+  height: 22px;
+}
+
+.top-brand span {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
 /* NAV */
 nav {
   position: fixed;
-  top: 0;
+  top: 70px;
   width: 100%;
-  height: 70px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  backdrop-filter: blur(15px);
-  background: rgba(0,0,0,0.5);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 nav a {
@@ -112,7 +168,6 @@ nav a {
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 10px;
   font-size: 14px;
-  letter-spacing: 2px;
 }
 
 /* MAIN */
@@ -125,12 +180,11 @@ main {
   align-items: center;
   justify-content: center;
   gap: 18px;
-  padding-top: 80px;
+  padding-top: 120px;
 }
 
 h1 {
   font-size: 32px;
-  letter-spacing: 2px;
 }
 
 /* BUTTONS */
@@ -143,12 +197,6 @@ h1 {
   color: black;
   background: white;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.download-btn:hover {
-  background: #dcdcdc;
-  transform: translateY(-3px);
 }
 
 .secondary {
@@ -171,7 +219,6 @@ h1 {
 .modal-box {
   width: 320px;
   background: #111;
-  border: 1px solid #2a2a2a;
   border-radius: 14px;
   padding: 20px;
   text-align: center;
@@ -194,7 +241,7 @@ h1 {
   font-weight: bold;
 }
 
-/* ================= CHAT ================= */
+/* CHAT */
 .chat-btn {
   position: fixed;
   bottom: 18px;
@@ -234,7 +281,16 @@ h1 {
 
 <body>
 
-<!-- LOADING -->
+<!-- 🧠 INTRO -->
+<div id="introScreen">
+  <div class="intro-box">
+    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
+    <h1>Eight Studios</h1>
+    <p>Download the official app for Android or install on iOS (PWA)</p>
+  </div>
+</div>
+
+<!-- ⚡ LOADING -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
@@ -249,6 +305,12 @@ h1 {
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
 </div>
 
+<!-- 🏷️ BRAND -->
+<div class="top-brand">
+  <img src="https://eightstudios.org/IMG_7229-removebg-preview.png">
+  <span>Eight Studios</span>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="https://eightstudios.org">HOME</a>
@@ -258,8 +320,8 @@ h1 {
 <main>
   <h1>DOWNLOAD</h1>
 
-  <div class="download-btn" onclick="openAndroid()">DOWNLOAD FOR ANDROID</div>
-  <div class="download-btn secondary" onclick="openIOS()">DOWNLOAD FOR IOS</div>
+  <div class="download-btn" onclick="openAndroid()">ANDROID APK</div>
+  <div class="download-btn secondary" onclick="openIOS()">IOS PWA</div>
 </main>
 
 <!-- MODAL -->
@@ -285,38 +347,41 @@ h1 {
 const apkLink = "https://eightstudios.org/app-release%20(1).apk";
 let mode = "";
 
-/* LOADING + SPLASH */
+/* INTRO */
 window.addEventListener("load", () => {
-  const loader = document.getElementById("loadingScreen");
+  setTimeout(() => {
+    document.getElementById("introScreen").style.opacity = "0";
+    document.getElementById("introScreen").style.visibility = "hidden";
+  }, 2200);
 
   setTimeout(() => {
-    loader.style.opacity = "0";
-    setTimeout(() => loader.remove(), 600);
+    document.getElementById("loadingScreen").style.opacity = "0";
+    setTimeout(() => document.getElementById("loadingScreen").remove(), 600);
   }, 1800);
 
   setTimeout(() => {
-    const splash = document.getElementById("splash");
-    splash.style.opacity = "0";
-    splash.style.visibility = "hidden";
+    document.getElementById("splash").style.opacity = "0";
+    document.getElementById("splash").style.visibility = "hidden";
   }, 1500);
 });
 
-/* MODALS */
+/* MODAL */
 function openAndroid(){
   mode = "android";
-  document.getElementById("modalTitle").innerText = "ANDROID INSTALL";
-  document.getElementById("modalDesc").innerText = "Install APK file";
-  document.getElementById("modalSteps").innerHTML =
-    "1. Download APK<br>2. Open Files<br>3. Tap file<br>4. Allow unknown apps<br>5. Install";
-  document.getElementById("modal").style.display = "flex";
+  modalOpen("ANDROID INSTALL", "Install APK file",
+  "1. Download APK<br>2. Open Files<br>3. Tap file<br>4. Allow unknown apps<br>5. Install");
 }
 
 function openIOS(){
   mode = "ios";
-  document.getElementById("modalTitle").innerText = "IOS PWA INSTALL";
-  document.getElementById("modalDesc").innerText = "Add to Home Screen";
-  document.getElementById("modalSteps").innerHTML =
-    "1. Open Safari<br>2. Tap Share<br>3. Add to Home Screen<br>4. Confirm";
+  modalOpen("IOS PWA INSTALL", "Add to Home Screen",
+  "1. Open Safari<br>2. Tap Share<br>3. Add to Home Screen<br>4. Confirm");
+}
+
+function modalOpen(t, d, s){
+  document.getElementById("modalTitle").innerText = t;
+  document.getElementById("modalDesc").innerText = d;
+  document.getElementById("modalSteps").innerHTML = s;
   document.getElementById("modal").style.display = "flex";
 }
 
