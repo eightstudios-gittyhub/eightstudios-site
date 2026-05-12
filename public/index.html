@@ -42,7 +42,6 @@ body::before {
   display: flex;
   justify-content: center;
   padding: 14px;
-  padding-top: calc(14px + env(safe-area-inset-top));
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(20px);
 }
@@ -54,7 +53,6 @@ body::before {
   background: rgba(255,255,255,0.06);
   color: white;
   cursor: pointer;
-  font-size: 14px;
 }
 
 /* HERO */
@@ -71,7 +69,7 @@ body::before {
 }
 
 .title {
-  font-size: clamp(24px, 5vw, 34px);
+  font-size: 32px;
   font-weight: 600;
 }
 
@@ -79,34 +77,6 @@ body::before {
   font-size: 14px;
   opacity: 0.7;
   margin-top: 6px;
-}
-
-.actions {
-  margin-top: 35px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-}
-
-.btn {
-  width: 92%;
-  max-width: 340px;
-  padding: 15px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: 15px;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  background: rgba(0,200,255,0.2);
 }
 
 /* GRID */
@@ -127,78 +97,11 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
-  transition: 0.25s ease;
-  backdrop-filter: blur(10px);
-}
-
-.card:hover {
-  transform: translateY(-4px) scale(1.02);
-  background: rgba(0,200,255,0.18);
-  border: 1px solid rgba(0,200,255,0.4);
 }
 
 .card a {
   color: white;
   text-decoration: none;
-}
-
-/* LOADING */
-.loading-screen {
-  position: fixed;
-  inset: 0;
-  background: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  transition: opacity 0.6s ease;
-}
-
-.loader-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.loader-logo {
-  width: 80px;
-  margin-bottom: 10px;
-  animation: pulse 1.5s infinite;
-}
-
-.loader-text {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.loader-sub {
-  font-size: 12px;
-  opacity: 0.6;
-  margin-top: 6px;
-  margin-bottom: 18px;
-}
-
-.bar {
-  width: 200px;
-  height: 4px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress {
-  width: 0%;
-  height: 100%;
-  background: rgba(0,200,255,0.8);
-  animation: load 2.2s ease forwards;
-}
-
-@keyframes load { to { width: 100%; } }
-@keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.08); opacity: 0.7; }
 }
 
 /* CHAT BUTTON */
@@ -215,7 +118,6 @@ body::before {
   justify-content: center;
   font-size: 26px;
   z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   cursor: pointer;
 }
 
@@ -235,53 +137,85 @@ body::before {
   height: 600px;
   background: rgba(25,25,25,0.95);
   backdrop-filter: blur(25px);
-  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 14px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-/* TOP BAR */
 .chat-topbar {
   height: 42px;
   background: rgba(255,255,255,0.06);
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 0 10px;
-  font-size: 13px;
 }
 
 .chat-close {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
   border: none;
+  border-radius: 6px;
   background: rgba(255,255,255,0.1);
   color: white;
   cursor: pointer;
 }
 
-/* FRAME */
 .chat-frame {
   flex: 1;
   border: none;
-  width: 100%;
 }
 
-/* FOOTER */
+/* 🔥 NEW FOOTER DOCK */
 .footer {
   position: relative;
   z-index: 2;
   margin-top: 40px;
-  padding: 20px;
+  padding: 25px 10px;
   text-align: center;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(20px);
 }
 
-.footer-text {
+.footer-dock {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+/* ICON BUTTONS */
+.dock-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.dock-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+  opacity: 0.85;
+}
+
+.dock-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  border: 1px solid rgba(0,200,255,0.5);
+  background: rgba(0,200,255,0.12);
+}
+
+/* COPYRIGHT */
+.copyright {
   font-size: 12px;
   opacity: 0.6;
 }
@@ -290,34 +224,11 @@ body::before {
 
 <body>
 
-<!-- LOADING -->
-<div id="loadingScreen" class="loading-screen">
-  <div class="loader-box">
-    <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
-    <div class="loader-text">Eight Studios</div>
-    <div class="loader-sub">Loading Eight Studios…</div>
-    <div class="bar"><div class="progress"></div></div>
-  </div>
-</div>
-
-<!-- NAV -->
-<div class="nav">
-  <button class="nav-share" onclick="shareSite()">Share</button>
-</div>
-
 <!-- HERO -->
 <div class="hero">
   <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="logo">
   <div class="title">Eight Studios</div>
   <div class="subtitle">Premium streetwear essentials</div>
-
-  <!-- ✅ RESTORED CALL + TEXT BUTTONS -->
-  <div class="actions">
-    <a class="btn" href="tel:5184770592">Call</a>
-    <a class="btn" href="sms:5184770592">Text</a>
-    <a class="btn" href="https://eightstudios.org/app-release%20(1).apk">Download Android</a>
-    <button class="btn" onclick="iosInstall()">Download iPhone</button>
-  </div>
 </div>
 
 <!-- GRID -->
@@ -326,8 +237,6 @@ body::before {
   <div class="card"><a href="hoodies.html">Hoodies</a></div>
   <div class="card"><a href="shorts.html">Shorts</a></div>
   <div class="card"><a href="pants.html">Pants</a></div>
-  <div class="card"><a href="hats.html">Hats</a></div>
-  <div class="card"><a href="phone-cases.html">Phone Cases</a></div>
 </div>
 
 <!-- CHAT -->
@@ -336,19 +245,39 @@ body::before {
 <div id="chatModal" class="chat-modal">
   <div class="chat-window">
     <div class="chat-topbar">
-      <div>Eight Studios Chat</div>
+      <span>Chat</span>
       <button class="chat-close" onclick="closeChat()">✕</button>
     </div>
-
-    <iframe class="chat-frame"
-      src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37">
-    </iframe>
+    <iframe class="chat-frame" src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"></iframe>
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER (ALL BUTTONS COMBINED) -->
 <div class="footer">
-  <div class="footer-text">© 2026 Eight Studios. All rights reserved.</div>
+
+  <div class="footer-dock">
+
+    <!-- CALL -->
+    <a class="dock-btn" href="tel:5184770592">
+      📞
+    </a>
+
+    <!-- TEXT -->
+    <a class="dock-btn" href="sms:5184770592">
+      💬
+    </a>
+
+    <!-- INSTAGRAM -->
+    <div class="dock-btn" onclick="openInstagram()">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
+        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="copyright">© 2026 Eight Studios. All rights reserved.</div>
 </div>
 
 <script>
@@ -360,25 +289,9 @@ function closeChat(){
   document.getElementById("chatModal").style.display="none";
 }
 
-function shareSite(){
-  navigator.share?.({
-    title:"Eight Studios",
-    text:"Check out Eight Studios 🔥",
-    url:"https://eightstudios.org/?ref=888Studios"
-  });
+function openInstagram(){
+  window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
 }
-
-function iosInstall(){
-  alert("Open Safari → Share → Add to Home Screen");
-}
-
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    const l=document.getElementById("loadingScreen");
-    l.style.opacity="0";
-    setTimeout(()=>l.remove(),600);
-  },2000);
-});
 </script>
 
 </body>
