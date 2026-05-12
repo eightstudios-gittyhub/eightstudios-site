@@ -26,7 +26,7 @@
 .loader-logo {
   width: 85px;
   margin-bottom: 10px;
-  animation: pulse 1.5s infinite;
+  /* removed pulse animation */
 }
 
 .loader-text { color:white; font-weight:bold; font-size:20px; }
@@ -48,10 +48,6 @@
 }
 
 @keyframes load { to { width:100%; } }
-@keyframes pulse {
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.08); opacity:0.6;}
-}
 
 /* ================= PAGE ================= */
 body {
@@ -73,7 +69,7 @@ body {
 .logo {
   width: 110px;
   margin-bottom: 15px;
-  animation: float 2s ease-in-out infinite;
+  /* removed float animation */
 }
 
 h1 {
@@ -100,11 +96,6 @@ button {
 
 button:hover {
   transform: scale(1.05);
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 /* ================= CHAT ================= */
@@ -293,7 +284,7 @@ button:hover {
   </div>
 </div>
 
-<!-- 🔻 FOOTER -->
+<!-- FOOTER -->
 <div class="footer">
   <div class="footer-buttons">
 
@@ -311,28 +302,14 @@ button:hover {
 </div>
 
 <script>
-let unread = 0;
-
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
-  resetBadge();
 }
 
 function closeChat(){
   document.getElementById("chatModal").style.display = "none";
 }
 
-document.addEventListener("click",(e)=>{
-  const modal = document.getElementById("chatModal");
-  if(e.target === modal) closeChat();
-});
-
-function resetBadge(){
-  unread = 0;
-  document.getElementById("chatBadge").style.display = "none";
-}
-
-/* LOADING */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
   setTimeout(() => {
