@@ -34,13 +34,13 @@ body::before {
   z-index: 0;
 }
 
-/* NAV */
+/* NAV (FIXED CENTER SHARE BUTTON) */
 .nav {
   position: sticky;
   top: 0;
   z-index: 10;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* ✅ CENTERED */
   padding: 14px;
   padding-top: calc(14px + env(safe-area-inset-top));
   background: rgba(0,0,0,0.5);
@@ -55,6 +55,13 @@ body::before {
   color: white;
   cursor: pointer;
   font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.nav-share:hover {
+  transform: scale(1.05);
+  border: 1px solid rgba(0,200,255,0.5);
+  background: rgba(0,200,255,0.15);
 }
 
 /* HERO */
@@ -201,7 +208,7 @@ body::before {
   50% { transform: scale(1.08); opacity: 0.7; }
 }
 
-/* CHAT BUTTON */
+/* CHAT */
 .chat-fab {
   position: fixed;
   bottom: 18px;
@@ -219,7 +226,7 @@ body::before {
   cursor: pointer;
 }
 
-/* CHAT MODAL FIXED */
+/* CHAT MODAL */
 .chat-modal {
   position: fixed;
   inset: 0;
@@ -330,7 +337,7 @@ body::before {
   </div>
 </div>
 
-<!-- NAV -->
+<!-- NAV (CENTERED) -->
 <div class="nav">
   <button class="nav-share" onclick="shareSite()">Share</button>
 </div>
