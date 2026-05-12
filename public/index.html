@@ -83,20 +83,12 @@ body::before {
 }
 
 @keyframes load {
-  to {
-    width: 100%;
-  }
+  to { width: 100%; }
 }
 
 @keyframes pulse {
-  0%,100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.08);
-    opacity: 0.7;
-  }
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); opacity: 0.7; }
 }
 
 /* HERO */
@@ -172,14 +164,12 @@ body::before {
   gap: 12px;
 }
 
-/* BUTTON ROW */
 .footer-buttons {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-/* BUTTONS */
 .icon-btn {
   width: 52px;
   height: 52px;
@@ -199,7 +189,6 @@ body::before {
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -217,6 +206,43 @@ body::before {
   font-size: 12px;
   opacity: 0.6;
 }
+
+/* ================= CHAT WIDGET ================= */
+.chat-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00c8ff, #0077ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.chat-popup {
+  position: fixed;
+  bottom: 90px;
+  right: 18px;
+  width: 320px;
+  height: 450px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.chat-popup iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 </style>
 </head>
 
@@ -225,21 +251,10 @@ body::before {
 <!-- LOADING -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
-
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
-
-    <div class="loader-text">
-      Eight Studios
-    </div>
-
-    <div class="loader-sub">
-      Loading Eight Studios...
-    </div>
-
-    <div class="bar">
-      <div class="progress"></div>
-    </div>
-
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Eight Studios...</div>
+    <div class="bar"><div class="progress"></div></div>
   </div>
 </div>
 
@@ -266,22 +281,12 @@ body::before {
 
     <div class="footer-buttons">
 
-      <!-- CALL -->
-      <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">
-        📞
-      </button>
+      <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
 
-      <!-- TEXT -->
-      <button class="icon-btn" onclick="window.location.href='sms:5184770592'">
-        💬
-      </button>
+      <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
 
-      <!-- DOWNLOAD -->
-      <button class="icon-btn" onclick="goToDownload()">
-        ⬇️
-      </button>
+      <button class="icon-btn" onclick="goToDownload()">⬇️</button>
 
-      <!-- INSTAGRAM -->
       <button class="insta-btn" onclick="openInstagram()">
         <svg viewBox="0 0 24 24">
           <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
@@ -291,11 +296,16 @@ body::before {
 
     </div>
 
-    <div class="footer-text">
-      © 2026 Eight Studios. All rights reserved.
-    </div>
-
+    <div class="footer-text">© 2026 Eight Studios</div>
   </div>
+</div>
+
+<!-- 💬 CHAT BUTTON -->
+<div class="chat-btn" onclick="toggleChat()">💬</div>
+
+<!-- 💬 CHAT POPUP -->
+<div id="chatPopup" class="chat-popup">
+  <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"></iframe>
 </div>
 
 <script>
@@ -305,6 +315,12 @@ function openInstagram(){
 
 function goToDownload(){
   window.location.href="download.html";
+}
+
+/* CHAT TOGGLE */
+function toggleChat(){
+  const chat = document.getElementById("chatPopup");
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
 }
 
 /* LOADING */
