@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download - Eight Studios</title>
+
+<link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+body {
+  color: white;
+  background: url("https://eightstudios.org/the-world-is-yours-ship.gif") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  backdrop-filter: blur(15px);
+  background: rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+/* MAIN */
+main {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding-top: 80px;
+}
+
+/* TITLE */
+h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+/* BUTTONS */
+.download-btn {
+  width: 240px;
+  padding: 14px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+  background: white;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #dcdcdc;
+  transform: translateY(-3px);
+}
+
+/* SECONDARY BUTTON */
+.secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.secondary:hover {
+  border-color: white;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">HOME</a>
+</nav>
+
+<main>
+  <h1>DOWNLOADS</h1>
+
+  <!-- ANDROID -->
+  <a class="download-btn" href="YOUR-APK-LINK.apk">
+    DOWNLOAD FOR ANDROID
+  </a>
+
+  <!-- OPTIONAL IOS / OTHER -->
+  <a class="download-btn secondary" href="#">
+    DOWNLOAD FOR IOS (COMING SOON)
+  </a>
+
+  <a class="download-btn secondary" href="#">
+    DESKTOP VERSION
+  </a>
+</main>
+
+<footer>
+  © 2026 Eight Studios
+</footer>
+
+</body>
+</html>
