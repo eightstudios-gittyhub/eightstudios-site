@@ -54,6 +54,14 @@ body::before {
   background: rgba(255,255,255,0.06);
   color: white;
   cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav-share:hover {
+  transform: scale(1.05);
+  border: 1px solid rgba(0,200,255,0.5);
+  background: rgba(0,200,255,0.15);
 }
 
 /* HERO */
@@ -70,7 +78,7 @@ body::before {
 }
 
 .title {
-  font-size: 28px;
+  font-size: clamp(24px, 5vw, 34px);
   font-weight: 600;
 }
 
@@ -106,6 +114,11 @@ body::before {
   background: rgba(0,200,255,0.18);
 }
 
+.card a {
+  color: white;
+  text-decoration: none;
+}
+
 /* FOOTER */
 .footer {
   position: relative;
@@ -128,9 +141,10 @@ body::before {
 .footer-buttons {
   display: flex;
   gap: 12px;
+  align-items: center;
 }
 
-/* ICON BUTTONS */
+/* CALL + TEXT */
 .icon-btn {
   width: 52px;
   height: 52px;
@@ -144,7 +158,21 @@ body::before {
   font-size: 18px;
 }
 
-.icon-btn svg {
+/* INSTAGRAM ORIGINAL STYLE */
+.insta-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insta-btn svg {
   width: 24px;
   height: 24px;
   fill: white;
@@ -188,14 +216,17 @@ body::before {
         📞
       </button>
 
-      <!-- TEXT (NEW) -->
+      <!-- TEXT -->
       <button class="icon-btn" onclick="window.location.href='sms:+10000000000'">
         💬
       </button>
 
-      <!-- INSTAGRAM -->
-      <button class="icon-btn" onclick="openInstagram()">
-        📸
+      <!-- INSTAGRAM (RESTORED) -->
+      <button class="insta-btn" onclick="openInstagram()">
+        <svg viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
+          <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+        </svg>
       </button>
 
     </div>
