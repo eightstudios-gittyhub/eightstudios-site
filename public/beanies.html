@@ -13,6 +13,10 @@
 
 <link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
+
+<!-- PWA -->
+<link rel="manifest" href="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/progressier.json"/>
+<script defer src="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/script.js"></script>
 <style>
 
 body {
@@ -168,7 +172,7 @@ body {
 .chat-btn {
   position: fixed;
   bottom: 18px;
-  right: 18px;
+  left: 18px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -185,7 +189,7 @@ body {
 .chat-popup {
   position: fixed;
   bottom: 90px;
-  right: 18px;
+  left: 18px;
   width: 320px;
   height: 450px;
   border-radius: 14px;
@@ -339,7 +343,6 @@ More items coming soon. Customize your own clothing — eight888studios@gmail.co
 
       <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
 
-      <button class="icon-btn" onclick="goToDownload()">⬇️</button>
 
       <button class="insta-btn" onclick="openInstagram()">
         <svg viewBox="0 0 24 24">
@@ -378,9 +381,6 @@ function toggleChat(){
 }
 
 /* FOOTER FUNCTIONS */
-function goToDownload(){
-  window.location.href = "download.html";
-}
 
 function openInstagram(){
   window.open("https://instagram.com/eight888studios", "_blank");

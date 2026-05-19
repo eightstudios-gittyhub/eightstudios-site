@@ -12,6 +12,10 @@
 <meta property="og:description" content="Something new is on the way from Eight Studios. Stay tuned for the official launch.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
+
+<!-- PWA -->
+<link rel="manifest" href="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/progressier.json"/>
+<script defer src="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/script.js"></script>
 <style>
 
 /* BASE */
@@ -115,7 +119,7 @@ input {
 .chat-fab {
   position: fixed;
   bottom: 18px;
-  right: 18px;
+  left: 18px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -185,6 +189,25 @@ input {
   display: block;
 }
 
+.insta-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: #222;
+  color: white;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.insta-btn img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
 .footer-text {
   font-size: 12px;
   opacity: 0.6;
@@ -233,9 +256,8 @@ input {
 
     <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
     <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
-    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
 
-    <button class="icon-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
+    <button class="insta-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
     </button>
 
