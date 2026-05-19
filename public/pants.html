@@ -85,14 +85,13 @@ body {
   0%,100% {
     transform: scale(1);
   }
-
   50% {
     transform: scale(1.08);
     opacity: 0.7;
   }
 }
 
-/* NAV */
+/* NAV (CLEAN HOME BUTTON - NO EFFECTS) */
 .nav {
   position: sticky;
   top: 0;
@@ -105,41 +104,25 @@ body {
 }
 
 .nav a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 12px 22px;
-  border-radius: 16px;
-
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-
-  backdrop-filter: blur(15px);
-
   color: white;
   text-decoration: none;
   font-weight: bold;
   font-size: 14px;
 
-  box-shadow:
-    0 0 12px rgba(0,200,255,0.15),
-    inset 0 0 12px rgba(255,255,255,0.03);
+  padding: 10px 16px;
+  border-radius: 8px;
 
-  transition: all 0.25s ease;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+
+  transition: 0.2s ease;
 }
 
 .nav a:hover {
-  transform: translateY(-3px) scale(1.03);
-
-  background: rgba(0,200,255,0.15);
-
-  border: 1px solid rgba(0,200,255,0.4);
-
-  box-shadow:
-    0 0 18px rgba(0,200,255,0.35),
-    0 0 35px rgba(0,200,255,0.18);
+  background: rgba(255,255,255,0.15);
+  transform: none;
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 /* LOGO */
@@ -193,7 +176,6 @@ body {
 .card:hover {
   transform: translateY(-8px) scale(1.03);
   background: rgba(0,200,255,0.15);
-  box-shadow: 0 0 30px rgba(0,200,255,0.18);
 }
 
 .card img {
@@ -236,7 +218,6 @@ body {
   font-size: 13px;
   font-weight: bold;
   text-decoration: none;
-  transition: 0.25s;
 }
 
 .checkout-btn:hover {
@@ -317,12 +298,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.25s;
 }
 
 .icon-btn:hover,
 .insta-btn:hover {
-  background: rgba(0,200,255,0.3);
+  background: rgba(255,255,255,0.18);
 }
 
 .insta-btn img {
@@ -338,7 +318,6 @@ body {
 
 /* MOBILE */
 @media (max-width: 700px) {
-
   .header h1 {
     font-size: 32px;
   }
@@ -366,29 +345,16 @@ body {
 <!-- LOADING -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loader-box">
-
     <img src="https://eightstudios.org/IMG_7229-removebg-preview.png" class="loader-logo">
-
-    <div class="loader-text">
-      Eight Studios
-    </div>
-
-    <div class="loader-sub">
-      Loading Pants...
-    </div>
-
-    <div class="bar">
-      <div class="progress"></div>
-    </div>
-
+    <div class="loader-text">Eight Studios</div>
+    <div class="loader-sub">Loading Pants...</div>
+    <div class="bar"><div class="progress"></div></div>
   </div>
 </div>
 
 <!-- NAV -->
 <div class="nav">
-  <a href="https://eightstudios.org">
-    Home
-  </a>
+  <a href="https://eightstudios.org">Home</a>
 </div>
 
 <!-- HEADER -->
@@ -398,10 +364,7 @@ body {
 
 <div class="header">
   <h1>Pants</h1>
-
-  <p>
-    Custom denim and patchwork pants will appear here as new drops release.
-  </p>
+  <p>Custom denim and patchwork pants will appear here as new drops release.</p>
 </div>
 
 <!-- PRODUCTS -->
@@ -409,137 +372,95 @@ body {
 
   <div class="card" onclick="window.open('https://buy.stripe.com/fZubJ3d7h2Cm5ZN98K5Rm0i', '_blank')">
     <img src="https://i.imgur.com/NkY6FRi.jpeg">
-
     <div class="content">
       <div class="title">Blue MoonStone 02</div>
       <div class="subtitle">Custom MoonStone Denim</div>
       <div class="price">$341.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/fZubJ3d7h2Cm5ZN98K5Rm0i">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/fZubJ3d7h2Cm5ZN98K5Rm0i">Checkout</a>
     </div>
   </div>
 
   <div class="card" onclick="window.open('https://buy.stripe.com/bJeaEZ0kv2CmcobckW5Rm0c', '_blank')">
     <img src="https://i.imgur.com/B3323uR.jpeg">
-
     <div class="content">
       <div class="title">Hand-Sewn Woodland Camo</div>
       <div class="subtitle">Hand-sewn detailing</div>
       <div class="price">$208.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/bJeaEZ0kv2CmcobckW5Rm0c">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/bJeaEZ0kv2CmcobckW5Rm0c">Checkout</a>
     </div>
   </div>
 
   <div class="card" onclick="window.open('https://buy.stripe.com/3cI3cx1ozel42NBgBc5Rm0a', '_blank')">
     <img src="https://i.imgur.com/5p9IhQ0.jpeg">
-
     <div class="content">
       <div class="title">Arctic Oil Spill</div>
       <div class="subtitle">Custom wash denim</div>
       <div class="price">$108.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/3cI3cx1ozel42NBgBc5Rm0a">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/3cI3cx1ozel42NBgBc5Rm0a">Checkout</a>
     </div>
   </div>
 
   <div class="card" onclick="window.open('https://buy.stripe.com/6oUfZj0kvdh0dsfet45Rm07', '_blank')">
     <img src="https://i.imgur.com/NYQt6sa.jpeg">
-
     <div class="content">
       <div class="title">Plaid8 Cargo PJ’s</div>
       <div class="subtitle">Cargo-inspired patchwork</div>
       <div class="price">$60.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/6oUfZj0kvdh0dsfet45Rm07">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/6oUfZj0kvdh0dsfet45Rm07">Checkout</a>
     </div>
   </div>
 
   <div class="card" onclick="window.open('https://buy.stripe.com/14AfZjeblel487V70C5Rm0n', '_blank')">
     <img src="https://i.imgur.com/KqBrlZA.jpeg">
-
     <div class="content">
       <div class="title">888 Sweatpants — 1/1</div>
       <div class="subtitle">One-time release</div>
       <div class="price">$53.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/14AfZjeblel487V70C5Rm0n">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/14AfZjeblel487V70C5Rm0n">Checkout</a>
     </div>
   </div>
 
   <div class="card" onclick="window.open('https://buy.stripe.com/cNi8wRd7h7WG73R1Gi5Rm08', '_blank')">
     <img src="https://i.imgur.com/N9WTq1o.jpeg">
-
     <div class="content">
       <div class="title">Starfade Denim — 1/1</div>
       <div class="subtitle">Signature fade finish</div>
       <div class="price">$270.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/cNi8wRd7h7WG73R1Gi5Rm08">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/cNi8wRd7h7WG73R1Gi5Rm08">Checkout</a>
     </div>
   </div>
 
   <div class="card" onclick="window.open('https://buy.stripe.com/eVq7sNc3d5Oy2NB1Gi5Rm0h', '_blank')">
     <img src="https://i.imgur.com/zCDwOmK.jpeg">
-
     <div class="content">
       <div class="title">Blooming Through Concrete — Women’s</div>
       <div class="subtitle">Custom women’s fit</div>
       <div class="price">$163.00</div>
-
-      <a class="checkout-btn" href="https://buy.stripe.com/eVq7sNc3d5Oy2NB1Gi5Rm0h">
-        Checkout
-      </a>
+      <a class="checkout-btn" href="https://buy.stripe.com/eVq7sNc3d5Oy2NB1Gi5Rm0h">Checkout</a>
     </div>
   </div>
 
 </div>
 
 <div class="note">
-  More pieces coming soon. Customize your own clothing — eight888studios@gmail.com
+More pieces coming soon. Customize your own clothing — eight888studios@gmail.com
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-
   <div class="footer-buttons">
-
-    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">
-      📞
-    </button>
-
-    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">
-      💬
-    </button>
-
+    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
     <button class="insta-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/960px-Instagram_icon.png">
     </button>
-
   </div>
 
-  <div class="footer-text">
-    © 2026 Eight Studios
-  </div>
-
+  <div class="footer-text">© 2026 Eight Studios</div>
 </div>
 
 <!-- CHAT -->
-<div class="chat-btn" onclick="toggleChat()">
-  💬
-</div>
+<div class="chat-btn" onclick="toggleChat()">💬</div>
 
 <div id="chatPopup" class="chat-popup">
   <iframe src="https://tawk.to/chat/69febf581262751c34a07c2a/1jo5hmt37"></iframe>
@@ -547,29 +468,16 @@ body {
 
 <script>
 window.addEventListener("load", () => {
-
   const loader = document.getElementById("loadingScreen");
-
   setTimeout(() => {
-
     loader.style.opacity = "0";
-
-    setTimeout(() => {
-      loader.remove();
-    }, 600);
-
+    setTimeout(() => loader.remove(), 600);
   }, 1500);
-
 });
 
 function toggleChat() {
-
   const chat = document.getElementById("chatPopup");
-
-  chat.style.display =
-    chat.style.display === "block"
-      ? "none"
-      : "block";
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
 }
 </script>
 
