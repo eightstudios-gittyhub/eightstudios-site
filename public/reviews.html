@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Eight Studios Reviews</title>
+<title>Eight Studios Wall</title>
 
 <link rel="icon" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
@@ -13,300 +13,38 @@
 <script defer src="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/script.js"></script>
 
 <style>
-body {
+*{
   margin:0;
-  font-family:'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #00111a, #000);
-  color:white;
-  padding-bottom:120px;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* HEADER */
-.header {
-  text-align:center;
-  padding:30px 20px 10px;
-}
-
-.header h1 {
-  font-size:42px;
-  background: linear-gradient(90deg,#00ffcc,#00aaff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* FORM */
-.form {
-  max-width:600px;
-  margin:0 auto;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-input, textarea, select {
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  outline:none;
-}
-
-button {
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  background:#00ffcc;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* REVIEWS */
-.reviews {
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-  padding:20px;
-}
-
-/* CARD */
-.card {
-  background: rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:16px;
-  padding:22px;
-  animation: popIn 0.4s ease forwards;
-}
-
-@keyframes popIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* NAME */
-.name {
-  font-weight:600;
-  margin-bottom:10px;
-}
-
-/* STARS */
-.stars {
-  color:#ffd700;
-  margin-bottom:10px;
-}
-
-/* TEXT */
-.text {
-  font-size:14px;
-  opacity:0.85;
-  line-height:1.5;
-}
-
-/* OWNER */
-.reply {
-  margin-top:10px;
-  border-left:2px solid #00ffcc;
-  padding-left:10px;
-  font-size:13px;
-  opacity:0.7;
-}
-
-/* EMBED */
-.embed-section {
-  width:90%;
-  max-width:1100px;
-  margin:30px auto;
-  background: rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:20px;
-  overflow:hidden;
-  backdrop-filter: blur(10px);
-}
-
-.embed-title {
-  padding:15px;
-  text-align:center;
-  font-size:22px;
-  font-weight:bold;
-  background: rgba(0,255,204,0.1);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.embed-frame {
+body{
   width:100%;
-  height:700px;
+  height:100vh;
+  overflow:hidden;
+  background:#000;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* EMBED ONLY */
+.embed-frame{
+  width:100%;
+  height:100vh;
   border:none;
   background:#000;
-}
-
-/* FOOTER */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  background: rgba(0,0,0,0.75);
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.footer-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-}
-
-.icon-btn, .insta-btn {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: none;
-  background: #222;
-  color: white;
-  cursor: pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.insta-btn img { 
-  width: 22px; 
-  height: 22px; 
-  display:block; 
-}
-
-.footer-text {
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .header h1{
-    font-size:28px;
-  }
-
-  .embed-frame{
-    height:500px;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>EIGHT STUDIOS REVIEWS</h1>
-</div>
-
-<!-- FORM -->
-<div class="form">
-  <input id="name" placeholder="Your name">
-  <textarea id="text" placeholder="Write your review"></textarea>
-
-  <select id="rating">
-    <option value="5">★★★★★</option>
-    <option value="4">★★★★☆</option>
-    <option value="3">★★★☆☆</option>
-    <option value="2">★★☆☆☆</option>
-    <option value="1">★☆☆☆☆</option>
-  </select>
-
-  <button onclick="submitReview()">Submit Review</button>
-</div>
-
-<!-- REVIEWS -->
-<div class="reviews" id="feed"></div>
-
-<!-- EMBED WEBSITE -->
-<div class="embed-section">
-  <div class="embed-title">Eight Studios Wall</div>
-
-  <iframe 
-    class="embed-frame"
-    src="https://wall.love/eightstudios?hl=en"
-    allowfullscreen
-    loading="lazy">
-  </iframe>
-</div>
-
-<script>
-
-let reviews = JSON.parse(localStorage.getItem("reviews")) || [
-  {
-    name:"🐼 Panda Man",
-    rating:5,
-    text:"The best store ever has the best products that are handmade.",
-    reply:"Happy you enjoyed our products"
-  }
-];
-
-const feed = document.getElementById("feed");
-
-function stars(r){
-  return "★".repeat(r) + "☆".repeat(5-r);
-}
-
-function render(){
-  feed.innerHTML = "";
-
-  reviews.forEach(r=>{
-    const div = document.createElement("div");
-    div.className = "card";
-
-    div.innerHTML = `
-      <div class="name">${r.name}</div>
-      <div class="stars">${stars(r.rating)}</div>
-      <div class="text">${r.text}</div>
-      <div class="reply"><b>Eight Studios:</b> ${r.reply || ""}</div>
-    `;
-
-    feed.prepend(div);
-  });
-}
-
-function submitReview(){
-  const name = document.getElementById("name").value;
-  const text = document.getElementById("text").value;
-  const rating = parseInt(document.getElementById("rating").value);
-
-  if(!name || !text) return alert("Fill out all fields");
-
-  const newReview = {
-    name,
-    text,
-    rating,
-    reply:"Thank you for your review!"
-  };
-
-  reviews.push(newReview);
-  localStorage.setItem("reviews", JSON.stringify(reviews));
-
-  render();
-
-  document.getElementById("name").value = "";
-  document.getElementById("text").value = "";
-}
-
-render();
-
-</script>
-
-<!-- FOOTER -->
-<div class="footer">
-  <div class="footer-buttons">
-    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
-
-    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
-
-    <button class="insta-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    </button>
-  </div>
-
-  <div class="footer-text">© 2026 Eight Studios</div>
-</div>
+<iframe
+  class="embed-frame"
+  src="https://wall.love/eightstudios?hl=en"
+  allowfullscreen
+  loading="lazy">
+</iframe>
 
 </body>
 </html>
