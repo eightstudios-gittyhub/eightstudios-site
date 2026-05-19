@@ -18,6 +18,7 @@ body {
   font-family:'Segoe UI', sans-serif;
   background: radial-gradient(circle at top, #00111a, #000);
   color:white;
+  padding-bottom:120px;
 }
 
 /* HEADER */
@@ -108,6 +109,45 @@ button {
   font-size:13px;
   opacity:0.7;
 }
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: rgba(0,0,0,0.75);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.icon-btn, .insta-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: #222;
+  color: white;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.insta-btn img { width: 22px; height: 22px; display:block; }
+
+.footer-text {
+  font-size: 12px;
+  opacity: 0.6;
+}
 </style>
 </head>
 
@@ -197,6 +237,18 @@ function submitReview(){
 render();
 
 </script>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-buttons">
+    <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
+    <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
+    <button class="insta-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    </button>
+  </div>
+  <div class="footer-text">© 2026 Eight Studios</div>
+</div>
 
 </body>
 </html>
