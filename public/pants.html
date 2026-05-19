@@ -16,6 +16,10 @@
 
 <link rel="icon" type="image/png" href="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
+
+<!-- PWA -->
+<link rel="manifest" href="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/progressier.json"/>
+<script defer src="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/script.js"></script>
 <style>
 body {
   margin: 0;
@@ -185,7 +189,7 @@ body {
 .chat-btn {
   position: fixed;
   bottom: 18px;
-  right: 18px;
+  left: 18px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -202,7 +206,7 @@ body {
 .chat-popup {
   position: fixed;
   bottom: 90px;
-  right: 18px;
+  left: 18px;
   width: 320px;
   height: 450px;
   border-radius: 14px;
@@ -220,53 +224,58 @@ body {
 
 /* FOOTER */
 .footer {
-  margin-top: 50px;
-  padding: 25px 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+  padding: 20px;
   text-align: center;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(20px);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .footer-buttons {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .icon-btn {
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  border: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   font-size: 18px;
-  background: rgba(255,255,255,0.1);
-  color: white;
 }
 
-.icon-btn:hover {
-  background: rgba(0,200,255,0.3);
-}
-
-/* INSTAGRAM BUTTON FIX */
 .insta-btn {
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  border: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
   cursor: pointer;
-  background: rgba(255,255,255,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.insta-btn img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  display: block;
+.insta-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  opacity: 0.85;
 }
 
 .footer-text {
@@ -384,19 +393,23 @@ More pieces coming soon. Customize your own clothing — eight888studios@gmail.c
 
 <!-- FOOTER -->
 <div class="footer">
+  <div class="footer-inner">
   <div class="footer-buttons">
 
     <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
     <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
-    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
 
-    <button class="insta-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/960px-Instagram_icon.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20200512141346" alt="Instagram">
+    <button class="insta-btn" onclick="openInstagram()">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
+        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+      </svg>
     </button>
 
   </div>
 
   <div class="footer-text">© 2026 Eight Studios</div>
+  </div>
 </div>
 
 <!-- CHAT -->
@@ -407,6 +420,10 @@ More pieces coming soon. Customize your own clothing — eight888studios@gmail.c
 </div>
 
 <script>
+function openInstagram(){
+  window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
+}
+
 window.addEventListener("load", () => {
   const loader = document.getElementById("loadingScreen");
   setTimeout(() => {

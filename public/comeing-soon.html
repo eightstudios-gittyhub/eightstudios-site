@@ -12,6 +12,10 @@
 <meta property="og:description" content="Something new is on the way from Eight Studios. Stay tuned for the official launch.">
 <meta property="og:image" content="https://eightstudios.org/IMG_7229-removebg-preview.png">
 
+
+<!-- PWA -->
+<link rel="manifest" href="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/progressier.json"/>
+<script defer src="https://progressier.app/3pu6Vi4Vxb4iVmqgUNwC/script.js"></script>
 <style>
 
 /* BASE */
@@ -115,7 +119,7 @@ input {
 .chat-fab {
   position: fixed;
   bottom: 18px;
-  right: 18px;
+  left: 18px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -149,40 +153,57 @@ input {
 
 /* FOOTER */
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  background: rgba(0,0,0,0.75);
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+  padding: 20px;
   text-align: center;
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(20px);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .footer-buttons {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
 }
 
 .icon-btn {
-  width: 45px;
-  height: 45px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: none;
-  background: #222;
-  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
   cursor: pointer;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-.icon-btn img {
-  width: 22px;
-  height: 22px;
-  display: block;
+.insta-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.insta-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  opacity: 0.85;
 }
 
 .footer-text {
@@ -229,22 +250,29 @@ input {
 
 <!-- FOOTER -->
 <div class="footer">
+  <div class="footer-inner">
   <div class="footer-buttons">
 
     <button class="icon-btn" onclick="window.location.href='tel:+15184770592'">📞</button>
     <button class="icon-btn" onclick="window.location.href='sms:5184770592'">💬</button>
-    <button class="icon-btn" onclick="window.location.href='download.html'">⬇️</button>
 
-    <button class="icon-btn" onclick="window.open('https://instagram.com/eight888studios','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+    <button class="insta-btn" onclick="openInstagram()">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5z"/>
+        <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+      </svg>
     </button>
 
   </div>
 
   <div class="footer-text">© 2026 Eight Studios</div>
+  </div>
 </div>
 
 <script>
+function openInstagram(){
+  window.location.href="https://www.instagram.com/eight888studios?igsh=anB0c2R3dmsxbnc3&utm_source=qr";
+}
 
 function openChat(){
   document.getElementById("chatModal").style.display = "flex";
