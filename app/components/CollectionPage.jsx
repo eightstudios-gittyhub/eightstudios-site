@@ -19,6 +19,7 @@ export default function CollectionPage({
   ctaLabel = "See Details →",
   descriptionTone = "default",
   showThumbnail = true,
+  hideSubtitle = false,
 }) {
   const [columns, setColumns] = useState(2);
   const [tiltEnabled, setTiltEnabled] = useState(false);
@@ -163,7 +164,7 @@ export default function CollectionPage({
                     </div>
                   )}
                   <div className="product-title">{product.title}</div>
-                  {product.subtitle && (
+                  {!hideSubtitle && product.subtitle && (
                     <div className="product-subtitle">{product.subtitle}</div>
                   )}
                   {product.price && <div className="product-price">{product.price}</div>}
@@ -179,7 +180,7 @@ export default function CollectionPage({
 
       <style jsx>{`
         .collection {
-          color: white;
+          color: var(--ink);
           min-height: 100vh;
           width: 100%;
           padding: 48px 20px 88px;
@@ -220,9 +221,7 @@ export default function CollectionPage({
         }
 
         .description-glow {
-          color: #d4b9ff;
-          text-shadow: 0 0 10px rgba(179, 136, 255, 0.65),
-            0 0 22px rgba(202, 169, 255, 0.55);
+          color: var(--accent);
           opacity: 0.95;
         }
 
@@ -232,10 +231,9 @@ export default function CollectionPage({
           gap: 12px;
           padding: 10px 14px;
           border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          background: rgba(18, 22, 30, 0.48);
-          backdrop-filter: blur(10px);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+          border: 1px solid var(--border);
+          background: var(--surface);
+          box-shadow: 0 8px 24px rgba(62, 49, 31, 0.07);
         }
 
         .controls-label {
@@ -255,7 +253,7 @@ export default function CollectionPage({
           height: 34px;
           border-radius: 10px;
           border: 1px solid transparent;
-          background: rgba(255, 255, 255, 0.05);
+          background: var(--surface-muted);
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -264,12 +262,12 @@ export default function CollectionPage({
         }
 
         .control-button:hover {
-          border-color: rgba(255, 255, 255, 0.28);
+          border-color: #b7a993;
         }
 
         .control-button.active {
-          border-color: rgba(255, 255, 255, 0.55);
-          background: rgba(255, 255, 255, 0.1);
+          border-color: var(--accent);
+          background: var(--accent-soft);
         }
 
         .grid-icon {
@@ -293,7 +291,7 @@ export default function CollectionPage({
 
         .grid-icon span {
           display: block;
-          background: rgba(255, 255, 255, 0.8);
+          background: var(--accent);
           border-radius: 3px;
           opacity: 0.7;
         }
@@ -308,20 +306,15 @@ export default function CollectionPage({
 
         .product-card {
           text-decoration: none;
-          color: #fff;
+          color: var(--ink);
           border-radius: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.055),
-            rgba(255, 255, 255, 0.02)
-          );
+          border: 1px solid var(--border);
+          background: var(--surface);
           overflow: hidden;
           display: flex;
           flex-direction: column;
           min-height: 100%;
-          backdrop-filter: blur(10px);
-          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 28px rgba(62, 49, 31, 0.08);
           transition: transform 0.28s ease, border-color 0.28s ease,
             background 0.28s ease, box-shadow 0.28s ease;
         }
@@ -331,7 +324,7 @@ export default function CollectionPage({
         .product-card:hover,
         .product-card:focus,
         .product-card:active {
-          color: #fff;
+          color: var(--ink);
           text-decoration: none;
         }
 
@@ -341,13 +334,9 @@ export default function CollectionPage({
 
         .product-card:hover {
           transform: translateY(-5px);
-          border-color: rgba(203, 213, 245, 0.28);
-          background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.075),
-            rgba(255, 255, 255, 0.025)
-          );
-          box-shadow: 0 24px 54px rgba(0, 0, 0, 0.24);
+          border-color: #b7a993;
+          background: var(--surface);
+          box-shadow: 0 16px 36px rgba(62, 49, 31, 0.13);
         }
 
         .product-visual {
@@ -370,10 +359,9 @@ export default function CollectionPage({
           transition: opacity 0.28s ease;
           background: radial-gradient(
             circle at var(--glow-x) var(--glow-y),
-            rgba(255, 255, 255, 0.14),
+            rgba(117, 99, 76, 0.12),
             transparent 42%
           );
-          mix-blend-mode: screen;
         }
 
         .tilt-enabled:hover::after {
@@ -391,11 +379,11 @@ export default function CollectionPage({
           transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) scale(1.01);
           transform-style: preserve-3d;
           transition: transform 0.28s ease, box-shadow 0.28s ease;
-          box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 8px 20px rgba(62, 49, 31, 0.12);
         }
 
         .tilt-enabled:hover .product-image {
-          box-shadow: 0 24px 42px rgba(0, 0, 0, 0.28);
+          box-shadow: 0 12px 26px rgba(62, 49, 31, 0.16);
         }
 
         .product-image::before {
@@ -404,8 +392,8 @@ export default function CollectionPage({
           inset: 0;
           background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.06),
-            rgba(0, 0, 0, 0.12)
+            rgba(255, 255, 255, 0.12),
+            rgba(40, 37, 31, 0.04)
           );
           pointer-events: none;
         }
@@ -430,8 +418,8 @@ export default function CollectionPage({
           height: 52px;
           border-radius: 14px;
           overflow: hidden;
-          border: 1px solid rgba(255, 255, 255, 0.18);
-          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid var(--border);
+          background: var(--surface-muted);
         }
 
         .product-thumb img {
@@ -443,18 +431,18 @@ export default function CollectionPage({
         .product-title {
           font-size: 16px;
           font-weight: 600;
-          color: #fff;
+          color: var(--ink);
           text-decoration: none;
         }
 
         .product-subtitle {
           font-size: 14px;
-          color: rgba(255, 255, 255, 0.68);
+          color: var(--ink-muted);
         }
 
         .product-price {
           font-size: 14px;
-          color: #fff;
+          color: var(--ink);
           opacity: 0.88;
         }
 
@@ -464,7 +452,7 @@ export default function CollectionPage({
           letter-spacing: 0.2em;
           opacity: 0.76;
           margin-top: 8px;
-          color: #cbd5f5;
+          color: var(--accent);
           text-decoration: none;
         }
 

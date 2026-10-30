@@ -201,8 +201,8 @@ Please allow 1–2 weeks for production and processing before shipment.
                       onClick={() => toggleSize(size)}
                       style={{
                         ...pillStyle,
-                        backgroundColor: active ? "white" : "transparent",
-                        color: active ? "black" : "white",
+                        backgroundColor: active ? "var(--accent-soft)" : "transparent",
+                        color: "var(--ink)",
                       }}
                     >
                       {size}
@@ -276,7 +276,7 @@ const pillRowStyle = {
 const pillStyle = {
   padding: "10px 16px",
   borderRadius: "999px",
-  border: "1px solid rgba(255,255,255,0.25)",
+  border: "1px solid var(--border)",
   background: "transparent",
   fontSize: "14px",
   cursor: "pointer",

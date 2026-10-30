@@ -36,10 +36,10 @@ function InquireForm() {
   return (
     <main
       style={{
-        backgroundColor: "black",
+        backgroundColor: "var(--page)",
         minHeight: "100vh",
         padding: "40px 20px",
-        color: "white",
+        color: "var(--ink)",
         maxWidth: "700px",
         margin: "0 auto",
         position: "relative",
@@ -56,8 +56,8 @@ function InquireForm() {
           height: "2px",
           margin: "12px auto 30px",
           background:
-            "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(180,160,255,0.9) 50%, rgba(255,255,255,0) 100%)",
-          boxShadow: "0 0 14px rgba(180,160,255,0.8)",
+            "linear-gradient(90deg, rgba(117,99,76,0) 0%, rgba(117,99,76,0.7) 50%, rgba(117,99,76,0) 100%)",
+          boxShadow: "0 0 14px rgba(117,99,76,0.25)",
         }}
       />
 
@@ -94,11 +94,11 @@ function InquireForm() {
             style={{
               width: "90%",
               maxWidth: "420px",
-              background: "rgba(20,20,20,0.7)",
+              background: "var(--surface)",
               padding: "30px 24px",
               borderRadius: "14px",
-              border: "1px solid rgba(255,255,255,0.18)",
-              boxShadow: "0 0 22px rgba(180,160,255,0.55)",
+              border: "1px solid var(--border)",
+              boxShadow: "0 10px 32px rgba(62,49,31,0.16)",
               textAlign: "center",
               animation: "fadeIn 0.4s ease forwards",
             }}
@@ -124,11 +124,10 @@ function InquireForm() {
                 display: "inline-block",
                 padding: "12px 22px",
                 borderRadius: "10px",
-                background:
-                  "linear-gradient(90deg, rgba(120,110,150,0.35), rgba(150,130,200,0.35))",
-                boxShadow: "0 0 18px rgba(180,160,255,0.4)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "white",
+                background: "var(--accent-soft)",
+                boxShadow: "0 6px 18px rgba(62,49,31,0.08)",
+                border: "1px solid var(--border)",
+                color: "var(--ink)",
                 fontSize: "16px",
                 fontWeight: "600",
                 textDecoration: "none",
@@ -192,11 +191,10 @@ function InquireForm() {
               fontSize: "17px",
               fontWeight: "600",
               borderRadius: "12px",
-              background:
-                "linear-gradient(90deg, rgba(120,110,150,0.35), rgba(150,130,200,0.35))",
-              boxShadow: "0 0 18px rgba(180,160,255,0.45)",
-              color: "white",
-              border: "1px solid rgba(255,255,255,0.15)",
+              background: "var(--accent-soft)",
+              boxShadow: "0 6px 18px rgba(62,49,31,0.08)",
+              color: "var(--ink)",
+              border: "1px solid var(--border)",
               cursor: "pointer",
               transition: "0.3s",
             }}
@@ -220,14 +218,13 @@ function InquireForm() {
 }
 
 const inputStyle = {
-  background: "rgba(20,20,20,0.6)",
-  border: "1px solid rgba(255,255,255,0.15)",
+  background: "var(--surface)",
+  border: "1px solid var(--border)",
   padding: "14px 16px",
-  color: "white",
+  color: "var(--ink)",
   borderRadius: "10px",
   fontSize: "16px",
   outline: "none",
-  backdropFilter: "blur(6px)",
 };
 
 export default function Page() {

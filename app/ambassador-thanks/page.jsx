@@ -1,20 +1,15 @@
 export default function AmbassadorThanks() {
-  const glow = {
-    color: "#caa9ff",
-    textShadow: "0 0 12px #b388ff, 0 0 22px #caa9ff",
-  };
-
   return (
     <main
       style={{
-        backgroundColor: "black",
-        color: "white",
+        backgroundColor: "var(--page)",
+        color: "var(--ink)",
         minHeight: "100vh",
         padding: "40px 20px",
         textAlign: "center",
       }}
     >
-      <h1 style={{ fontSize: "32px", marginBottom: "20px", ...glow }}>
+      <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>
         Thank You!
       </h1>
 
@@ -27,23 +22,22 @@ export default function AmbassadorThanks() {
         style={{
           maxWidth: "520px",
           margin: "0 auto",
-          background:
-            "radial-gradient(circle at center, rgba(150,110,255,0.18) 0%, rgba(0,0,0,0.85) 90%)",
+          background: "var(--surface)",
           padding: "30px 25px",
           borderRadius: "14px",
-          border: "1px solid rgba(140,100,255,0.25)",
-          boxShadow: "0 0 25px rgba(140,100,255,0.25)",
+          border: "1px solid var(--border)",
+          boxShadow: "0 8px 24px rgba(62,49,31,0.08)",
         }}
       >
         {/* CASH APP */}
-        <h3 style={{ marginBottom: "8px", ...glow }}>💸 Cash App</h3>
+        <h3 style={{ marginBottom: "8px" }}>💸 Cash App</h3>
 
         <p style={{ marginBottom: "20px" }}>
           <a
             href="https://cash.app/$KylieRivers420"
             target="_blank"
             style={{
-              color: "#caa9ff",
+              color: "var(--accent)",
               textDecoration: "none",
               fontSize: "18px",
             }}
@@ -54,7 +48,7 @@ export default function AmbassadorThanks() {
 
         {/* APPLE PAY */}
         <div style={{ marginTop: "20px" }}>
-          <h3 style={{ marginBottom: "8px", ...glow }}> Apple Pay</h3>
+          <h3 style={{ marginBottom: "8px" }}> Apple Pay</h3>
 
           <a
             href="sms:5184770592"
@@ -62,13 +56,13 @@ export default function AmbassadorThanks() {
               display: "inline-block",
               marginTop: "5px",
               padding: "12px 22px",
-              backgroundColor: "#caa9ff",
-              color: "black",
+              backgroundColor: "var(--accent-soft)",
+              color: "var(--ink)",
               borderRadius: "8px",
               fontWeight: "bold",
               fontSize: "16px",
               textDecoration: "none",
-              boxShadow: "0 0 18px #b388ff",
+              boxShadow: "0 6px 18px rgba(62,49,31,0.1)",
             }}
           >
             Open Messages

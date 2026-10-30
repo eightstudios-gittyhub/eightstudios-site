@@ -15,7 +15,7 @@ const RESERVED = new Set([
   "sitemap.xml",
 ]);
 
-export function middleware(req) {
+export function proxy(req) {
   const { pathname } = req.nextUrl;
 
   // ignore files + anything deeper than "/slug"

@@ -1,0 +1,43 @@
+:root {
+  color-scheme: light;
+  --page: #f5f0e7;
+  --surface: #fffdf8;
+  --surface-muted: #eee7dc;
+  --ink: #28251f;
+  --ink-muted: #6a6257;
+  --border: #d7cfc2;
+  --accent: #75634c;
+  --accent-soft: #e8dfd1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  color: var(--ink);
+  background: #e2d3bb;
+}

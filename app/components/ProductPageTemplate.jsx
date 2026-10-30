@@ -36,7 +36,7 @@ function MediaCarousel({ items = [] }) {
     height: "clamp(360px, 78vw, 620px)",
     objectFit: "contain",
     borderRadius: "12px",
-    background: "black",
+    background: "var(--surface-muted)",
     margin: "0 auto",
   };
 
@@ -137,8 +137,8 @@ function MediaCarousel({ items = [] }) {
                   width: "9px",
                   height: "9px",
                   borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.8)",
-                  background: isActive ? "white" : "transparent",
+                  border: "1px solid var(--accent)",
+                  background: isActive ? "var(--accent)" : "transparent",
                   cursor: "pointer",
                   padding: 0,
                 }}
@@ -164,7 +164,7 @@ function MediaCarousel({ items = [] }) {
             height: clamp(640px, 72vh, 860px) !important;
             max-width: 100% !important;
             object-fit: contain !important;
-            background: #000;
+            background: var(--surface-muted);
           }
         }
       `}</style>
@@ -191,9 +191,9 @@ const selectStyle = {
   boxSizing: "border-box",
   padding: "12px",
   borderRadius: "6px",
-  background: "#111",
-  color: "white",
-  border: "1px solid #444",
+  background: "var(--surface)",
+  color: "var(--ink)",
+  border: "1px solid var(--border)",
   marginBottom: "20px",
   outline: "none",
 };
@@ -214,8 +214,8 @@ const buyButtonStyle = {
   boxSizing: "border-box",
   marginTop: "28px",
   padding: "15px",
-  background: "white",
-  color: "black",
+  background: "var(--ink)",
+  color: "var(--surface)",
   borderRadius: "6px",
   textAlign: "center",
   fontWeight: "600",
@@ -275,15 +275,15 @@ export default function ProductPageTemplate({
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              color: "white",
+              color: "var(--ink)",
               textDecoration: "none",
               fontSize: "14px",
               fontWeight: 600,
               letterSpacing: "0.02em",
               padding: "10px 14px",
               borderRadius: "999px",
-              border: "1px solid rgba(255,255,255,0.2)",
-              background: "rgba(255,255,255,0.06)",
+              border: "1px solid var(--border)",
+              background: "var(--surface)",
               margin: "0 auto 24px",
               width: "fit-content",
             }}
@@ -367,7 +367,7 @@ export default function ProductPageTemplate({
                     <label style={labelStyle}>Size</label>
                     <select style={selectStyle} defaultValue={sizes[0]}>
                       {sizes.map((s) => (
-                        <option key={s} value={s} style={{ color: "black" }}>
+                        <option key={s} value={s} style={{ color: "var(--ink)" }}>
                           {s}
                         </option>
                       ))}
@@ -406,9 +406,9 @@ export default function ProductPageTemplate({
 
       <style jsx>{`
         .product-page-shell {
-          background: black;
+          background: var(--page);
           min-height: 100vh;
-          color: white;
+          color: var(--ink);
           padding: 40px 20px 64px;
         }
 
@@ -436,7 +436,7 @@ export default function ProductPageTemplate({
           width: 100%;
           max-width: 760px;
           height: 1px;
-          background: rgba(255, 255, 255, 0.15);
+          background: var(--border);
           margin: 28px auto 32px;
         }
 

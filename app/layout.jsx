@@ -1,4 +1,5 @@
 import AmbassadorCapture from "./components/AmbassadorCapture";
+import "./globals.css";
 
 export const metadata = {
   title: "Eight Studios of 888",
@@ -22,16 +23,12 @@ export default function RootLayout({ children }) {
           display: "flex",
           flexDirection: "column",
           fontFamily: "Arial, sans-serif",
-          color: "white",
+          color: "var(--ink)",
           overflowX: "hidden",
           width: "100%",
           position: "relative",
 
-          backgroundColor: "black",
-          backgroundImage:
-            "radial-gradient(circle at center, rgba(160, 200, 220, 0.35) 0%, rgba(0, 0, 0, 1) 70%)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
+          backgroundColor: "var(--page)",
         }}
       >
         <style>{`
@@ -43,16 +40,6 @@ export default function RootLayout({ children }) {
           body a:active {
             color: inherit;
             text-decoration: none;
-          }
-
-          .product-card,
-          .product-card:link,
-          .product-card:visited,
-          .product-card:hover,
-          .product-card:focus,
-          .product-card:active {
-            color: #fff !important;
-            text-decoration: none !important;
           }
 
           .product-card * {
@@ -69,8 +56,8 @@ export default function RootLayout({ children }) {
             zIndex: 9999,
             maxWidth: "100vw",
             overflow: "hidden",
-            background: "rgba(0,0,0,0.85)",
-            backdropFilter: "blur(6px)",
+            background: "rgba(245,240,231,0.94)",
+            borderBottom: "1px solid var(--border)",
           }}
         >
           {/* Left Fade */}
@@ -83,7 +70,7 @@ export default function RootLayout({ children }) {
               height: "100%",
               pointerEvents: "none",
               background:
-                "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))",
+                "linear-gradient(to right, var(--page), rgba(245,240,231,0))",
               zIndex: 10000,
             }}
           />
@@ -98,7 +85,7 @@ export default function RootLayout({ children }) {
               height: "100%",
               pointerEvents: "none",
               background:
-                "linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0))",
+                "linear-gradient(to left, var(--page), rgba(245,240,231,0))",
               zIndex: 10000,
             }}
           />
@@ -140,7 +127,7 @@ export default function RootLayout({ children }) {
                   href={item.href}
                   data-nav={item.label.toLowerCase().replace(" ", "-")}
                   style={{
-                    color: "white",
+                    color: "var(--ink)",
                     textDecoration: "none",
                     padding: "4px",
                     display: "inline-block",
@@ -234,7 +221,7 @@ export default function RootLayout({ children }) {
             marginTop: "28px",
             marginBottom: "10px",
             background:
-              "linear-gradient(90deg, rgba(185,205,255,0.35), rgba(255,255,255,0.1), rgba(185,205,255,0.35))",
+              "linear-gradient(90deg, rgba(117,99,76,0.25), rgba(117,99,76,0.08), rgba(117,99,76,0.25))",
           }}
         />
 

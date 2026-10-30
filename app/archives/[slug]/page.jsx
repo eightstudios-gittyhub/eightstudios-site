@@ -1,11 +1,12 @@
 // /app/archives/[slug]/page.jsx
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import { archiveItems } from "../archiveData";
 
 export default function ArchiveDetail({ params }) {
-  const item = archiveItems.find((x) => x.slug === params.slug);
+  const { slug } = use(params);
+  const item = archiveItems.find((x) => x.slug === slug);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(null);
@@ -14,8 +15,8 @@ export default function ArchiveDetail({ params }) {
     return (
       <main
         style={{
-          backgroundColor: "black",
-          color: "white",
+          backgroundColor: "var(--page)",
+          color: "var(--ink)",
           padding: "60px 20px",
           textAlign: "center",
           minHeight: "100vh",
@@ -51,10 +52,10 @@ export default function ArchiveDetail({ params }) {
   return (
     <main
       style={{
-        backgroundColor: "black",
+        backgroundColor: "var(--page)",
         minHeight: "100vh",
         padding: "40px 20px 60px",
-        color: "white",
+        color: "var(--ink)",
         maxWidth: "900px",
         margin: "0 auto",
         textAlign: "center",
@@ -69,8 +70,8 @@ export default function ArchiveDetail({ params }) {
           height: "2px",
           margin: "12px auto 30px",
           background:
-            "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(180,160,255,0.9) 50%, rgba(255,255,255,0) 100%)",
-          boxShadow: "0 0 14px rgba(180,160,255,0.8)",
+            "linear-gradient(90deg, rgba(117,99,76,0) 0%, rgba(117,99,76,0.7) 50%, rgba(117,99,76,0) 100%)",
+          boxShadow: "0 0 14px rgba(117,99,76,0.25)",
         }}
       />
 
@@ -118,12 +119,7 @@ export default function ArchiveDetail({ params }) {
           fontSize: "16px",
           marginTop: "30px",
           marginBottom: "40px",
-          textShadow: `
-            0 0 8px rgba(255, 180, 255, 0.55),
-            0 0 16px rgba(170, 110, 255, 0.45),
-            0 0 28px rgba(120, 90, 255, 0.35),
-            0 0 44px rgba(110, 60, 255, 0.35)
-          `,
+          color: "var(--ink-muted)",
         }}
       >
         {item.description}
@@ -134,11 +130,10 @@ export default function ArchiveDetail({ params }) {
         style={{
           display: "inline-block",
           padding: "14px 26px",
-          background:
-            "linear-gradient(90deg, rgba(140,120,255,1), rgba(200,160,255,1))",
-          boxShadow: "0 0 16px rgba(180,160,255,0.7)",
+          background: "var(--accent)",
+          boxShadow: "0 6px 18px rgba(62,49,31,0.16)",
           borderRadius: "10px",
-          color: "white",
+          color: "var(--surface)",
           textDecoration: "none",
           fontSize: "17px",
           fontWeight: "600",
@@ -159,8 +154,8 @@ export default function ArchiveDetail({ params }) {
           width: 100%;
           border-radius: 14px;
           overflow: hidden;
-          border: 1px solid rgba(255,255,255,0.1);
-          box-shadow: 0 0 20px rgba(0,0,0,0.8);
+          border: 1px solid var(--border);
+          box-shadow: 0 8px 20px rgba(62,49,31,0.1);
           margin: 0 auto 18px;
         }
 
@@ -184,7 +179,7 @@ export default function ArchiveDetail({ params }) {
           border-radius: 8px;
           overflow: hidden;
           cursor: pointer;
-          border: 1px solid rgba(255,255,255,0.18);
+          border: 1px solid var(--border);
           opacity: 0.75;
           transition: 0.2s;
         }

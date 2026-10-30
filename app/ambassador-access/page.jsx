@@ -33,8 +33,8 @@ export default function AmbassadorAccess() {
   return (
     <main
       style={{
-        background: "black",
-        color: "white",
+        background: "var(--page)",
+        color: "var(--ink)",
         padding: "40px",
         minHeight: "100vh",
       }}
@@ -99,7 +99,7 @@ export default function AmbassadorAccess() {
           value={form.item}
           onChange={update}
           required
-          style={{ ...inputStyle, color: "white" }}
+          style={{ ...inputStyle, color: "var(--ink)" }}
         >
           <option value="">Select item type…</option>
           <option value="Beanie">Beanie</option>
@@ -124,8 +124,8 @@ export default function AmbassadorAccess() {
         {form.item === "Beanie" && (
           <div
             style={{
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
               padding: "18px",
               borderRadius: "10px",
               marginTop: "4px",
@@ -156,8 +156,8 @@ export default function AmbassadorAccess() {
  {form.item === "Hoodie" && (
           <div
             style={{
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
               padding: "18px",
               borderRadius: "10px",
               marginTop: "4px",
@@ -191,8 +191,8 @@ export default function AmbassadorAccess() {
         {form.item === "Phone Case" && (
           <div
             style={{
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
               padding: "18px",
               borderRadius: "10px",
               marginTop: "4px",
@@ -266,8 +266,8 @@ export default function AmbassadorAccess() {
 
 const inputStyle = {
   padding: "12px",
-  background: "#111",
-  border: "1px solid #444",
-  color: "white",
+  background: "var(--surface)",
+  border: "1px solid var(--border)",
+  color: "var(--ink)",
   borderRadius: "6px",
 };

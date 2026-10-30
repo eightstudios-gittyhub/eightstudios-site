@@ -8,10 +8,10 @@ export default function ArchivePage() {
   return (
     <main
       style={{
-        backgroundColor: "black",
+        backgroundColor: "var(--page)",
         minHeight: "100vh",
         padding: "40px 20px",
-        color: "white",
+        color: "var(--ink)",
         textAlign: "center",
       }}
     >
@@ -27,8 +27,8 @@ export default function ArchivePage() {
           height: "2px",
           margin: "12px auto 30px",
           background:
-            "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(180,160,255,0.9) 50%, rgba(255,255,255,0) 100%)",
-          boxShadow: "0 0 12px rgba(180,160,255,0.7)",
+            "linear-gradient(90deg, rgba(117,99,76,0) 0%, rgba(117,99,76,0.7) 50%, rgba(117,99,76,0) 100%)",
+          boxShadow: "0 0 12px rgba(117,99,76,0.24)",
         }}
       />
 
@@ -75,11 +75,11 @@ export default function ArchivePage() {
               href={`/archives/${item.slug}`}
               style={{
                 textDecoration: "none",
-                color: "white",
-                backgroundColor: "#111",
+                color: "var(--ink)",
+                backgroundColor: "var(--surface)",
                 borderRadius: "10px",
                 overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.12)",
+                border: "1px solid var(--border)",
                 display: "flex",
                 flexDirection: "column",
                 transition: "0.3s",
@@ -93,7 +93,7 @@ export default function ArchivePage() {
                   backgroundImage: thumb ? `url(${thumb})` : "none",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  backgroundColor: "#222",
+                  backgroundColor: "var(--surface-muted)",
                 }}
               />
 

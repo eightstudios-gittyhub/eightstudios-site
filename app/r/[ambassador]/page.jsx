@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { use } from "react";
 import { useRouter } from "next/navigation";
 import { setAmbRef } from "../../../lib/ambassadorRef";
 
 export default function AmbassadorLanding({ params }) {
   const router = useRouter();
-  const amb = (params?.ambassador || "").toLowerCase();
+  const { ambassador } = use(params);
+  const amb = (ambassador || "").toLowerCase();
 
   useEffect(() => {
     setAmbRef(amb);

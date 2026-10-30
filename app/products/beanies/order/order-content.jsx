@@ -44,9 +44,9 @@ export default function OrderContent() {
   return (
     <main
       style={{
-        background: "black",
+        background: "var(--page)",
         minHeight: "100vh",
-        color: "white",
+        color: "var(--ink)",
         padding: "40px 20px",
       }}
     >
@@ -82,17 +82,17 @@ export default function OrderContent() {
             style={{
               padding: "12px",
               borderRadius: "6px",
-              border: "1px solid #444",
-              background: "#111",
-              color: "white",
+              border: "1px solid var(--border)",
+              background: "var(--surface)",
+              color: "var(--ink)",
             }}
           />
 
           <button
             type="submit"
             style={{
-              background: "white",
-              color: "black",
+              background: "var(--ink)",
+              color: "var(--surface)",
               padding: "14px",
               borderRadius: "6px",
               cursor: "pointer",

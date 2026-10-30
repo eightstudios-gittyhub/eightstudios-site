@@ -6,12 +6,6 @@ export default function Hero() {
   return (
     <main className={styles.homepage}>
       <div className={styles.heroBackground} aria-hidden="true" />
-      <div className={styles.heroOverlay} aria-hidden="true" />
-      <img
-        src="/hero/the-world-is-yours.png"
-        alt="Airship silhouette with 'THE WORLD' text"
-        className={styles.srOnly}
-      />
 
       <div className={styles.content}>
         <div className={styles.grid}>

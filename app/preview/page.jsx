@@ -14,8 +14,8 @@ export default function Page() {
           min-height: 100vh;
           display: grid;
           place-items: center;
-          background: radial-gradient(circle at top, #141322, #050507);
-          color: white;
+          background: var(--page);
+          color: var(--ink);
         }
       `}</style>
     </main>
